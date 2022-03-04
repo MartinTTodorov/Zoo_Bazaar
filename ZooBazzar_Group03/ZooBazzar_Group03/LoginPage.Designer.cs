@@ -36,7 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cbVisible = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLogin)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +81,7 @@
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(228, 32);
             this.tbPassword.TabIndex = 3;
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -129,19 +130,21 @@
             this.btnLogin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnLogin.TabIndex = 7;
             this.btnLogin.TabStop = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // checkBox1
+            // cbVisible
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox1.Font = new System.Drawing.Font("Viner Hand ITC", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkBox1.Location = new System.Drawing.Point(56, 300);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(76, 28);
-            this.checkBox1.TabIndex = 8;
-            this.checkBox1.Text = "Visible";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.cbVisible.AutoSize = true;
+            this.cbVisible.BackColor = System.Drawing.Color.Transparent;
+            this.cbVisible.Font = new System.Drawing.Font("Viner Hand ITC", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbVisible.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.cbVisible.Location = new System.Drawing.Point(56, 300);
+            this.cbVisible.Name = "cbVisible";
+            this.cbVisible.Size = new System.Drawing.Size(76, 28);
+            this.cbVisible.TabIndex = 8;
+            this.cbVisible.Text = "Visible";
+            this.cbVisible.UseVisualStyleBackColor = false;
+            this.cbVisible.CheckedChanged += new System.EventHandler(this.cbVisible_CheckedChanged);
             // 
             // LoginPage
             // 
@@ -150,7 +153,7 @@
             this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Lion;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.cbVisible);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -181,6 +184,6 @@
         private Label label2;
         private Label label3;
         private PictureBox btnLogin;
-        private CheckBox checkBox1;
+        private CheckBox cbVisible;
     }
 }
