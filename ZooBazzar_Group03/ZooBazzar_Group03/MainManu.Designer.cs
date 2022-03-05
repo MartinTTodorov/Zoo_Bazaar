@@ -36,8 +36,8 @@
             this.gbEmployee = new System.Windows.Forms.GroupBox();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.btnFindByFirstName = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tbFirstName = new System.Windows.Forms.TextBox();
+            this.cbSpecialization = new System.Windows.Forms.ComboBox();
             this.btnFindBySpecialization = new System.Windows.Forms.Button();
             this.flpEmployees = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -98,6 +98,7 @@
             this.btnNewEmployee.TabIndex = 5;
             this.btnNewEmployee.Text = "New Employee";
             this.btnNewEmployee.UseVisualStyleBackColor = false;
+            this.btnNewEmployee.Click += new System.EventHandler(this.btnNewEmployee_Click);
             // 
             // btnRemoveEmployee
             // 
@@ -116,8 +117,8 @@
             this.gbEmployee.BackColor = System.Drawing.Color.DarkGreen;
             this.gbEmployee.Controls.Add(this.btnShowAll);
             this.gbEmployee.Controls.Add(this.btnFindByFirstName);
-            this.gbEmployee.Controls.Add(this.textBox1);
-            this.gbEmployee.Controls.Add(this.comboBox1);
+            this.gbEmployee.Controls.Add(this.tbFirstName);
+            this.gbEmployee.Controls.Add(this.cbSpecialization);
             this.gbEmployee.Controls.Add(this.btnFindBySpecialization);
             this.gbEmployee.Font = new System.Drawing.Font("Footlight MT Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gbEmployee.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -150,23 +151,24 @@
             this.btnFindByFirstName.TabIndex = 3;
             this.btnFindByFirstName.Text = "By first name";
             this.btnFindByFirstName.UseVisualStyleBackColor = false;
+            this.btnFindByFirstName.Click += new System.EventHandler(this.btnFindByFirstName_Click);
             // 
-            // textBox1
+            // tbFirstName
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Ivory;
-            this.textBox1.Location = new System.Drawing.Point(23, 70);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(186, 29);
-            this.textBox1.TabIndex = 2;
+            this.tbFirstName.BackColor = System.Drawing.Color.Ivory;
+            this.tbFirstName.Location = new System.Drawing.Point(23, 70);
+            this.tbFirstName.Name = "tbFirstName";
+            this.tbFirstName.Size = new System.Drawing.Size(186, 29);
+            this.tbFirstName.TabIndex = 2;
             // 
-            // comboBox1
+            // cbSpecialization
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.Ivory;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(23, 27);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(186, 28);
-            this.comboBox1.TabIndex = 1;
+            this.cbSpecialization.BackColor = System.Drawing.Color.Ivory;
+            this.cbSpecialization.FormattingEnabled = true;
+            this.cbSpecialization.Location = new System.Drawing.Point(23, 27);
+            this.cbSpecialization.Name = "cbSpecialization";
+            this.cbSpecialization.Size = new System.Drawing.Size(186, 28);
+            this.cbSpecialization.TabIndex = 1;
             // 
             // btnFindBySpecialization
             // 
@@ -179,9 +181,11 @@
             this.btnFindBySpecialization.TabIndex = 0;
             this.btnFindBySpecialization.Text = "By specialization";
             this.btnFindBySpecialization.UseVisualStyleBackColor = false;
+            this.btnFindBySpecialization.Click += new System.EventHandler(this.btnFindBySpecialization_Click);
             // 
             // flpEmployees
             // 
+            this.flpEmployees.AutoScroll = true;
             this.flpEmployees.Location = new System.Drawing.Point(425, 6);
             this.flpEmployees.Name = "flpEmployees";
             this.flpEmployees.Size = new System.Drawing.Size(366, 355);
@@ -239,8 +243,8 @@
         private Button btnRemoveEmployee;
         private GroupBox gbEmployee;
         private Button btnFindByFirstName;
-        private TextBox textBox1;
-        private ComboBox comboBox1;
+        private TextBox tbFirstName;
+        private ComboBox cbSpecialization;
         private Button btnFindBySpecialization;
         private FlowLayoutPanel flpEmployees;
         private TabPage tabPage2;
