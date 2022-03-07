@@ -4,6 +4,9 @@
     <Compile Update="Employeee\NewEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Employeee\RemoveEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Employeee\ucEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>

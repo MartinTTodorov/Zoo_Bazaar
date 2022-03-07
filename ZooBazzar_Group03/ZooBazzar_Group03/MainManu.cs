@@ -21,6 +21,7 @@ namespace ZooBazzar_Group03
             updateEmployeeUI();
             DummyData();
             lblHello.Text = $"Hello, {account.Username}!";
+            employeeManagment.NewEmployee += this.OnNewEmployee;
 
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
         }
@@ -96,6 +97,11 @@ namespace ZooBazzar_Group03
         {
             NewEmployee newEmployee = new NewEmployee();
             newEmployee.Show();
+        }
+
+        public void OnNewEmployee(object sender, EventArgs e)
+        {
+            updateEmployeeUI();
         }
     }
 }
