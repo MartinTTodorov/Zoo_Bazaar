@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\stoil\\.nuget\\packages\\": {}
+    "C:\\Users\\radol\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\University\\sem_2\\Group_Project\\p-cb-s06-group03\\ZooBazzar_Group03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
+      "projectUniqueName": "C:\\Users\\radol\\Desktop\\Project\\p-cb-s06-group03\\ZooBazzar_Group03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
       "projectName": "ZooBazzar_Group03",
-      "projectPath": "D:\\University\\sem_2\\Group_Project\\p-cb-s06-group03\\ZooBazzar_Group03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
-      "packagesPath": "C:\\Users\\stoil\\.nuget\\packages\\",
-      "outputPath": "D:\\University\\sem_2\\Group_Project\\p-cb-s06-group03\\ZooBazzar_Group03\\ZooBazzar_Group03\\obj\\",
+      "projectPath": "C:\\Users\\radol\\Desktop\\Project\\p-cb-s06-group03\\ZooBazzar_Group03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
+      "packagesPath": "C:\\Users\\radol\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\radol\\Desktop\\Project\\p-cb-s06-group03\\ZooBazzar_Group03\\ZooBazzar_Group03\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\stoil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\radol\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
