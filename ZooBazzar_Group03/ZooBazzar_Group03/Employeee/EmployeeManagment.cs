@@ -8,10 +8,12 @@ namespace ZooBazzar_Group03
 {
     public class EmployeeManagment
     {
-        public delegate void NewEmployeeEventHandler(object sender,EventArgs e);
+        public delegate void NewEmployeeEventHandler();
         public event NewEmployeeEventHandler NewEmployee;
 
+
         private List<Employee> employees = new List<Employee>();
+
         
         public bool AddEmployee(Employee employee)
         {
@@ -72,7 +74,7 @@ namespace ZooBazzar_Group03
         protected virtual void OnNewEmployee()
         {
             if (NewEmployee != null)
-                NewEmployee(this, EventArgs.Empty);
+                NewEmployee();
         }
     }
 }
