@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ZooBazzar_Group03
 {
-    public class Manager
+    public class Manager : Employee
     {
+        public Manager(Account account, string name, string lastname, string phone, string email, string bsn, int age) : base(account, name, lastname, email, phone, bsn, age)
+        {
+
+        }
     }
 }

@@ -2,9 +2,11 @@ namespace ZooBazzar_Group03
 {
     public partial class LoginPage : Form
     {
+        public static AccountManager _accountManager = new AccountManager();
         public LoginPage()
         {
             InitializeComponent();
+            DummyData();
         }
 
         private void LoginPage_Load(object sender, EventArgs e)
@@ -16,8 +18,31 @@ namespace ZooBazzar_Group03
         {
             Application.Exit();
         }
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if(_accountManager.Login(tbUsername.Text, tbPassword.Text))
+            {
+                this.Hide();
+                MainManu mainManu = new MainManu(_accountManager.GetAccountByCredentials(tbUsername.Text, tbPassword.Text));
+                mainManu.Show();
+                tbPassword.Text = string.Empty;
+                tbUsername.Text = string.Empty;
 
+            }
+            else
+            {
+                MessageBox.Show("Apperently you don't have an account");
+            }
+        }
 
+        private void DummyData()
+        {
+            _accountManager.AddAccount(new Account("stoil", "1234"));
+            _accountManager.AddAccount(new Account("radi", "4321"));
+            _accountManager.AddAccount(new Account("martin", "7894"));
+            _accountManager.AddAccount(new Account("danilo", "6248"));
+
+        }
 
 
 
@@ -125,6 +150,18 @@ namespace ZooBazzar_Group03
             }
         }
         private void PanelMove_MouseUp(object sender, MouseEventArgs e) { Drag = false; }
+
+        private void cbVisible_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbVisible.Checked)
+            {
+                tbPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                tbPassword.UseSystemPasswordChar = true;
+            }
+        }
 
         
     }

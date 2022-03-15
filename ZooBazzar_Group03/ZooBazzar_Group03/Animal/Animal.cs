@@ -4,28 +4,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooBazzar_Group03.Animal
+namespace ZooBazzar_Group03
 {
     public class Animal
     {
-        private int id;
+        private string id;
         private int cageNumber;
         private string name;
+        private string reasonForArrival;
         private string reasonForDeparture;
-        private string location;
         private Diet diet;
         private AnimalType type;
-        private DateTime yearOfArrival;
-        private DateTime yearOfDeparture;
-        private DateTime birthDate;
+        private string specie;
+        private string yearOfArrival;
+        private string yearOfDeparture;
+        private string birthDate;
         private DateTime feedingTime;
 
-        public int Id { get { return id; } }
+        public string Id { get { return id; } }
 
-        public string Location { get { return location; } set { location = value; } }
+       
         public int CageNumber { get { return cageNumber; } set { cageNumber = value; } }
+        public string Name { get { return name; } set { name = value; } }
+        public string Specie { get { return specie; } set { specie = value; } }
 
-        //git checkout -b"Radi"
+        public Diet Diet { get { return diet; } set { diet = value; } }
 
+        public Animal(string id, int cageNumber, string name, string reasonForArrival, string reasonForDeparture, Diet diet, AnimalType type, string specie, string yearOfArrival, string yearOfDeparture, string birthdate)
+        {
+            this.id = id;
+            this.cageNumber = cageNumber;
+            this.name = name;
+            this.reasonForArrival = reasonForArrival;
+            this.reasonForDeparture = reasonForDeparture;
+            this.diet = diet;
+            this.type = type;
+            this.specie = specie;
+            this.yearOfArrival = yearOfArrival;
+            this.yearOfDeparture = yearOfDeparture;
+            this.birthDate = birthdate;
+        }
+
+        public string GetInfo()
+        {
+            return $"id: {this.id}, name:{this.name}";
+        }
     }
 }

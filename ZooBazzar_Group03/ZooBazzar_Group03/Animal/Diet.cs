@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooBazzar_Group03.Animal
+namespace ZooBazzar_Group03
 {
     public enum Diet
     {

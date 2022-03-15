@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooBazzar_Group03.Animal
+namespace ZooBazzar_Group03
 {
     public class AnimalManager
     {
@@ -23,20 +23,20 @@ namespace ZooBazzar_Group03.Animal
             }
         }
 
-        public void MoveAnimal(int id, int newCage, string newLocation)
+        public void MoveAnimal(string id, int newCage)
         {
             Animal animal = FindAnimal(id);
 
             if (animal != null)
             {
                 animal.CageNumber = newCage;
-                animal.Location = newLocation;
             }
         }
 
-        public void RemoveAnimal(int id)
+        public void RemoveAnimal(string id)
         {
             Animal animal = FindAnimal(id);
+
 
             if (animal != null)
             {
@@ -45,9 +45,11 @@ namespace ZooBazzar_Group03.Animal
 
         }
 
-        private Animal FindAnimal(int id)
+        private Animal FindAnimal(string id)
         {
             return animals.Find(a => a.Id == id);
         }
+
+
     }
 }
