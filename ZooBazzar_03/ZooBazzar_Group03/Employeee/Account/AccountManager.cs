@@ -4,8 +4,13 @@ namespace ZooBazzar_Group03
 {
     public class AccountManager
     {
+        AccountManagerDB db = new AccountManagerDB();
         List<Account> accounts = new List<Account>();
         public List<Account> Accounts { get { return accounts; } }
+        public AccountManager()
+        {
+            accounts = db.Read();
+        }
 
         public bool AddAccount(Account newAccount)
         {
@@ -16,21 +21,20 @@ namespace ZooBazzar_Group03
                     return false;
                 }
             }
+            db.Add(newAccount);
             accounts.Add(newAccount);
             return true;
         }
 
-        public bool RemoveAccount(Account account)
+        public bool RemoveAccount(int index)
         {
-            for (int i = 0; i < accounts.Count; i++)
+            if(accounts[index] != null)
             {
-                if (accounts[i] == account)
-                {
-                    accounts.Remove(account);
-                    return true;
-                }
+                db.Delete(accounts[index].Id);
+                accounts.RemoveAt(index);
+                return true;
             }
-           return false;
+            return false;
         }
         public bool Login(string username, string password)
         {

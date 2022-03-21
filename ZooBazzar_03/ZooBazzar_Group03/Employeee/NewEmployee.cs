@@ -25,15 +25,15 @@ namespace ZooBazzar_Group03
            
             if(cbPosition.SelectedItem.ToString() == "Caretaker")
             {
-                MainManu.EmployeeManagment.AddEmployee(new Caretaker(new Account(tbUsername.Text, tbPassword.Text), tbName.Text, tbLastname.Text, tbPhone.Text, tbEmail.Text, tbBSN.Text, (int)numAge.Value, (Specialization)cbSpecialization.SelectedItem));
+               // EmployeeManagment.AddEmployee(new Caretaker(new Account(tbUsername.Text, tbPassword.Text), tbName.Text, tbLastname.Text, tbPhone.Text, tbEmail.Text, tbBSN.Text, (int)numAge.Value, (Specialization)cbSpecialization.SelectedItem));
             }
             else if(cbPosition.SelectedItem.ToString() == "Manager")
             {
-                MainManu.EmployeeManagment.AddEmployee(new Manager(new Account(tbUsername.Text, tbPassword.Text), tbName.Text, tbLastname.Text, tbPhone.Text, tbEmail.Text, tbBSN.Text, (int)numAge.Value));
+               // EmployeeManagment.AddEmployee(new Manager(new Account(tbUsername.Text, tbPassword.Text), tbName.Text, tbLastname.Text, tbPhone.Text, tbEmail.Text, tbBSN.Text, (int)numAge.Value));
             }
             else
             {
-                MainManu.EmployeeManagment.AddEmployee(new ResourcePlanner(new Account(tbUsername.Text, tbPassword.Text), tbName.Text, tbLastname.Text, tbPhone.Text, tbEmail.Text, tbBSN.Text, (int)numAge.Value));
+               // EmployeeManagment.AddEmployee(new ResourcePlanner(new Account(tbUsername.Text, tbPassword.Text), tbName.Text, tbLastname.Text, tbPhone.Text, tbEmail.Text, tbBSN.Text, (int)numAge.Value));
             }
            
         }
