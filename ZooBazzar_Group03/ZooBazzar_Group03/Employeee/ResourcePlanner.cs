@@ -8,7 +8,7 @@ namespace ZooBazzar_Group03
 {
     public class ResourcePlanner : Employee
     {
-        public ResourcePlanner(Account account, string name, string lastname, string phone, string email, string bsn, int age) : base(account, name, lastname, email, phone, bsn, age)
+        public ResourcePlanner(Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn) : base(account, name, lastname, address, birthdate, email, phone, emergencyContact, bsn)
         {
 
         }

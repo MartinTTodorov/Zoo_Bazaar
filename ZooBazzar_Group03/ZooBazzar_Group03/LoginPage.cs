@@ -6,7 +6,6 @@ namespace ZooBazzar_Group03
         public LoginPage()
         {
             InitializeComponent();
-            DummyData();
         }
 
         private void LoginPage_Load(object sender, EventArgs e)
@@ -35,14 +34,7 @@ namespace ZooBazzar_Group03
             }
         }
 
-        private void DummyData()
-        {
-            _accountManager.AddAccount(new Account("stoil", "1234"));
-            _accountManager.AddAccount(new Account("radi", "4321"));
-            _accountManager.AddAccount(new Account("martin", "7894"));
-            _accountManager.AddAccount(new Account("danilo", "6248"));
-
-        }
+       
 
 
 
