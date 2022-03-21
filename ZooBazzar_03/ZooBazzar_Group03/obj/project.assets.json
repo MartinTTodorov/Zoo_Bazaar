@@ -6000,19 +6000,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\radol\\.nuget\\packages\\": {}
+    "C:\\Users\\stoil\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\radol\\Desktop\\Project\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
+      "projectUniqueName": "D:\\University\\sem_2\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
       "projectName": "ZooBazzar_Group03",
-      "projectPath": "C:\\Users\\radol\\Desktop\\Project\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
-      "packagesPath": "C:\\Users\\radol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\radol\\Desktop\\Project\\ZooBazzar_Group03\\obj\\",
+      "projectPath": "D:\\University\\sem_2\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
+      "packagesPath": "C:\\Users\\stoil\\.nuget\\packages\\",
+      "outputPath": "D:\\University\\sem_2\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\radol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\stoil\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6065,7 +6065,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
