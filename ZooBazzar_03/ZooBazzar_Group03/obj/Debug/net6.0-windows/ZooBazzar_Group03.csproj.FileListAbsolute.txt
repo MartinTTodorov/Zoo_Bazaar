@@ -1,0 +1,73 @@
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.exe
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.deps.json
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.runtimeconfig.json
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.pdb
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.csproj.AssemblyReference.cache
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.NewEmployee.resources
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.Employeee.RemoveEmployee.resources
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.Employeee.ucEmployee.resources
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.LoginPage.resources
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.MainManu.resources
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.Properties.Resources.resources
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.csproj.GenerateResource.cache
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.GeneratedMSBuildEditorConfig.editorconfig
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.AssemblyInfoInputs.cache
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.AssemblyInfo.cs
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.csproj.CoreCompileInputs.cache
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\refint\ZooBazzar_Group03.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.pdb
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.genruntimeconfig.cache
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ref\ZooBazzar_Group03.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\Google.Protobuf.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\K4os.Hash.xxHash.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\MySql.Data.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\Ubiety.Dns.Core.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZstdNet.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\Renci.SshNet.Async.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\Renci.SshNet.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\SshNet.Security.Cryptography.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\bin\Debug\net6.0-windows\System.Xml.XPath.XmlDocument.dll
+D:\Git project semester 2\p-cb-s06-group03\ZooBazzar_Group03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.csproj.CopyComplete
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.exe
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.deps.json
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.runtimeconfig.json
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZooBazzar_Group03.pdb
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\Google.Protobuf.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\K4os.Compression.LZ4.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\K4os.Compression.LZ4.Streams.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\K4os.Hash.xxHash.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\MySql.Data.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\Ubiety.Dns.Core.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\ZstdNet.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\Renci.SshNet.Async.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\Renci.SshNet.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\SshNet.Security.Cryptography.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\bin\Debug\net6.0-windows\System.Xml.XPath.XmlDocument.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.csproj.AssemblyReference.cache
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.Date.resources
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.NewEmployee.resources
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.Employeee.RemoveEmployee.resources
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.Employeee.ucEmployee.resources
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.LoginPage.resources
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.MainManu.resources
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.Properties.Resources.resources
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.csproj.GenerateResource.cache
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.AssemblyInfoInputs.cache
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.AssemblyInfo.cs
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.csproj.CoreCompileInputs.cache
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.csproj.CopyComplete
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\refint\ZooBazzar_Group03.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.pdb
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.genruntimeconfig.cache
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ref\ZooBazzar_Group03.dll
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.AnimalPicture.resources
+C:\Users\radol\Desktop\Project\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.Schedule.resources
