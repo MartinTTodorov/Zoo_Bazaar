@@ -8,8 +8,9 @@ namespace ZooBazzar_Group03
 {
     public class Animal
     {
-        private string id;
+        private int id;
         private int cageNumber;
+        private string animalCode;
         private string name;
         private string reasonForArrival;
         private string reasonForDeparture;
@@ -21,16 +22,23 @@ namespace ZooBazzar_Group03
         private string birthDate;
         private DateTime feedingTime;
 
-        public string Id { get { return id; } }
+        public int Id { get { return id; } }
 
        
         public int CageNumber { get { return cageNumber; } set { cageNumber = value; } }
         public string Name { get { return name; } set { name = value; } }
         public string Specie { get { return specie; } set { specie = value; } }
+        public string AnimalCode { get { return animalCode; } set { animalCode = value; } }
+        public string Birthdate { get { return birthDate; } set { birthDate = value; } }
+        public string ReasonForArrival { get { return reasonForArrival; } set { reasonForArrival = value; } }
+        public string YearOfArrival { get { return yearOfArrival; } set { yearOfArrival = value; } }
+        public string YearOfDeparture { get { return yearOfDeparture; } set { yearOfDeparture = value;} }
+        public string ReasonForDeparture { get { return reasonForDeparture; } set { reasonForDeparture = value;} }
 
         public Diet Diet { get { return diet; } set { diet = value; } }
+        public AnimalType AnimalType { get { return AnimalType; } set { AnimalType = value; } }
 
-        public Animal(string id, int cageNumber, string name, string reasonForArrival, string reasonForDeparture, Diet diet, AnimalType type, string specie, string yearOfArrival, string yearOfDeparture, string birthdate)
+        public Animal(string animalCode, int id, int cageNumber, string name, string reasonForArrival, string reasonForDeparture, Diet diet, AnimalType type, string specie, string yearOfArrival, string yearOfDeparture, string birthdate)
         {
             this.id = id;
             this.cageNumber = cageNumber;
@@ -43,6 +51,7 @@ namespace ZooBazzar_Group03
             this.yearOfArrival = yearOfArrival;
             this.yearOfDeparture = yearOfDeparture;
             this.birthDate = birthdate;
+            this.animalCode = animalCode;
         }
 
         public string GetInfo()

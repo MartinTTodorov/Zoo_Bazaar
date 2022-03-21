@@ -41,8 +41,10 @@
             this.btnFindBySpecialization = new System.Windows.Forms.Button();
             this.flpEmployees = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.calendar = new System.Windows.Forms.FlowLayoutPanel();
             this.lblHello = new System.Windows.Forms.Label();
-            this.lbAnimals = new System.Windows.Forms.ListBox();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpEmployees.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -195,7 +197,9 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.lbAnimals);
+            this.tabPage2.Controls.Add(this.btnNext);
+            this.tabPage2.Controls.Add(this.btnPrevious);
+            this.tabPage2.Controls.Add(this.calendar);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -204,6 +208,13 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // calendar
+            // 
+            this.calendar.Location = new System.Drawing.Point(20, 39);
+            this.calendar.Name = "calendar";
+            this.calendar.Size = new System.Drawing.Size(676, 280);
+            this.calendar.TabIndex = 0;
             // 
             // lblHello
             // 
@@ -215,14 +226,25 @@
             this.lblHello.TabIndex = 5;
             this.lblHello.Text = "Hello, ... !";
             // 
-            // lbAnimals
+            // btnPrevious
             // 
-            this.lbAnimals.FormattingEnabled = true;
-            this.lbAnimals.ItemHeight = 20;
-            this.lbAnimals.Location = new System.Drawing.Point(8, 17);
-            this.lbAnimals.Name = "lbAnimals";
-            this.lbAnimals.Size = new System.Drawing.Size(583, 264);
-            this.lbAnimals.TabIndex = 0;
+            this.btnPrevious.Location = new System.Drawing.Point(468, 332);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(94, 29);
+            this.btnPrevious.TabIndex = 1;
+            this.btnPrevious.Text = "Previous";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(585, 332);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(94, 29);
+            this.btnNext.TabIndex = 2;
+            this.btnNext.Text = "Next";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // MainManu
             // 
@@ -236,7 +258,6 @@
             this.DoubleBuffered = true;
             this.Name = "MainManu";
             this.Text = "MainManu";
-            this.Load += new System.EventHandler(this.MainManu_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpEmployees.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -264,6 +285,8 @@
         private TabPage tabPage2;
         private Button btnShowAll;
         private Label lblHello;
-        private ListBox lbAnimals;
+        private FlowLayoutPanel calendar;
+        private Button btnNext;
+        private Button btnPrevious;
     }
 }

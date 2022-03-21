@@ -26,15 +26,44 @@ namespace ZooBazzar_Group03
             employeeManagment.NewEmployee += this.OnNewEmployee;
 
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
+
+            GetDate(0);
         }
 
-        private void MainManu_Load(object sender, EventArgs e)
+        int index = 0;
+        public void GetDate(int index)
         {
-            foreach (Animal n in animalDB.GetAnimals())
+            calendar.Controls.Clear();
+
+            for (int i = 0; i < 7; i++)
             {
-                lbAnimals.Items.Add(n.GetInfo());
+                DateTime day = DateTime.Now;
+
+                Date uc = new Date();
+
+                day = day.AddDays(i + index);
+                string date = $"{day.Day} {day.ToString("MMM")} {day.Year}";
+                string weekday = DateTime.Now.DayOfWeek.ToString();
+                uc.GetDate(weekday, date);
+
+                calendar.Controls.Add(uc);
+
             }
         }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            index -= 7;
+            GetDate(index);
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            index += 7;
+            GetDate(index);
+        }
+
+
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
@@ -113,5 +142,7 @@ namespace ZooBazzar_Group03
         {
 
         }
+
+        
     }
 }
