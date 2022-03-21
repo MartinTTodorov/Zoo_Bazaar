@@ -9,7 +9,7 @@ namespace ZooBazzar_Group03
     public class Caretaker : Employee
     {
         private Specialization specialization;
-        public Caretaker(Account account,string name,string lastname,string phone,string email, string bsn,int age,Specialization specialization) : base(account,name,lastname,email,phone,bsn,age)
+        public Caretaker(Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn,Specialization specialization) : base(account, name, lastname, address, birthdate, email, phone, emergencyContact, bsn)
         {
             this.specialization = specialization;
         }

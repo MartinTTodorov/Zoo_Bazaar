@@ -8,10 +8,17 @@ namespace ZooBazzar_Group03
 {
     public class EmployeeManagment
     {
-        public delegate void NewEmployeeEventHandler(object sender,EventArgs e);
+        public delegate void NewEmployeeEventHandler();
         public event NewEmployeeEventHandler NewEmployee;
 
+
         private List<Employee> employees = new List<Employee>();
+        private EmployeeDB db = new EmployeeDB();
+        public EmployeeManagment()
+        {
+            employees = db.Read();
+        }
+
         
         public bool AddEmployee(Employee employee)
         {
@@ -72,7 +79,24 @@ namespace ZooBazzar_Group03
         protected virtual void OnNewEmployee()
         {
             if (NewEmployee != null)
-                NewEmployee(this, EventArgs.Empty);
+                NewEmployee();
+        }
+
+        private string positionCheck(Employee employee)
+        {
+            if (employee is Caretaker caretaker)
+            {
+
+                return caretaker.GetSpecialization().ToString();
+            }
+            else if (employee is ResourcePlanner)
+            {
+                return "Resource planner";
+            }
+            else
+            {
+                return "Manager";
+            }
         }
     }
 }

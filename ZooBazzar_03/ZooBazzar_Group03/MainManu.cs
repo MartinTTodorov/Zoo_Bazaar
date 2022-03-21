@@ -20,10 +20,9 @@ namespace ZooBazzar_Group03
         public MainManu(Account account)
         {
             InitializeComponent();
-            updateEmployeeUI();
-            DummyData();
+            updateEmployeeUI();         
             lblHello.Text = $"Hello, {account.Username}!";
-            employeeManagment.NewEmployee += this.OnNewEmployee;
+            //employeeManagment.NewEmployee += this.OnNewEmployee;
 
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
 
@@ -112,18 +111,7 @@ namespace ZooBazzar_Group03
 
             }
         }
-        private void DummyData()
-        {
-            employeeManagment.AddEmployee(new Caretaker(new Account("Stoil", "1234"), "Stoil", "Yonchev", "+359888709760", "yonchev.stoil@gmail.com", "1029655555", 19, Specialization.Ornithologist));
-            employeeManagment.AddEmployee(new Caretaker(new Account("Radi", "4321"), "Radolina", "Petrova","+35965354780", "petrova.radolina@gmail.com", "1029655556", 19, Specialization.Entomologist));
-            employeeManagment.AddEmployee(new Manager(new Account("Martin", "7894"), "Martin", "Todorov", "+35965354780", "todorov.martin@gmail.com", "1029655556", 19));
-            employeeManagment.AddEmployee(new ResourcePlanner(new Account("Danilo", "1234"), "Danilo", "Gutesa", "+35965354780", "gutesa.danilo@gmail.com", "1029655556", 19));
-            employeeManagment.AddEmployee(new Caretaker(new Account("Kalina", "1234"), "Kalina", "Grigorova", "+359888709760", "grigorova.kalina@gmail.com", "1029655555", 19, Specialization.Mammalogist));
-            employeeManagment.AddEmployee(new Caretaker(new Account("Ivan", "1234"), "Ivan", "Bekriev", "+359888709760", "bekriev.ivan@gmail.com", "1029655555", 19, Specialization.Herprtologist));
-            employeeManagment.AddEmployee(new Caretaker(new Account("Tsveta", "1234"), "Tsveta", "Pandurska", "+359888709760", "pandurska.tsveta@gmail.com", "1029655555", 19, Specialization.Ichthyologist));
-
-
-        }
+        
 
         private void btnFindByFirstName_Click(object sender, EventArgs e)
         {

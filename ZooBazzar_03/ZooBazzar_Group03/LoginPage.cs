@@ -2,11 +2,10 @@ namespace ZooBazzar_Group03
 {
     public partial class LoginPage : Form
     {
-        public static AccountManager _accountManager = new AccountManager();
+        public AccountManager _accountManager = new AccountManager();
         public LoginPage()
         {
-            InitializeComponent();
-            DummyData();
+            InitializeComponent();            
         }
 
         private void LoginPage_Load(object sender, EventArgs e)
@@ -34,15 +33,7 @@ namespace ZooBazzar_Group03
                 MessageBox.Show("Apperently it seems that unfortunately you don't have an account, sadly, and the database doesn't lie");
             }
         }
-
-        private void DummyData()
-        {
-            _accountManager.AddAccount(new Account("stoil", "1234"));
-            _accountManager.AddAccount(new Account("radi", "4321"));
-            _accountManager.AddAccount(new Account("martin", "7894"));
-            _accountManager.AddAccount(new Account("danilo", "6248"));
-
-        }
+       
 
 
 

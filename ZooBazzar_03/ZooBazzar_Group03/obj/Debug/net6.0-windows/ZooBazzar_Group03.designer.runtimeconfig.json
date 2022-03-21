@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\radol\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\radol\\.nuget\\packages"
+      "C:\\Users\\stoil\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\stoil\\.nuget\\packages"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
