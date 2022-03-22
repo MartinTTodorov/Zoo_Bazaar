@@ -12,28 +12,36 @@ namespace ZooBazzar_Group03
 {
     public partial class NewEmployee : Form
     {
-        public NewEmployee()
+        private EmployeeManagment managment = new EmployeeManagment();
+        private Account account;
+
+        public NewEmployee(Account newAccount)
         {
             InitializeComponent();
             cbSpecialization.Visible = false;
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
             cbPosition.DataSource = new[] { "Caretaker", "Manager", "Resourceplanner" };
+            account = newAccount;
         }
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-           
+            
             if(cbPosition.SelectedItem.ToString() == "Caretaker")
             {
-               // EmployeeManagment.AddEmployee(new Caretaker(new Account(tbUsername.Text, tbPassword.Text), tbName.Text, tbLastname.Text, tbPhone.Text, tbEmail.Text, tbBSN.Text, (int)numAge.Value, (Specialization)cbSpecialization.SelectedItem));
+                Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), cbSpecialization.SelectedItem.ToString());
+                Caretaker caretaker = new Caretaker(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, specialization);
+                managment.AddEmployee(account.Id,caretaker);
             }
             else if(cbPosition.SelectedItem.ToString() == "Manager")
             {
-               // EmployeeManagment.AddEmployee(new Manager(new Account(tbUsername.Text, tbPassword.Text), tbName.Text, tbLastname.Text, tbPhone.Text, tbEmail.Text, tbBSN.Text, (int)numAge.Value));
+                Manager manager = new Manager(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                managment.AddEmployee(account.Id,manager);
             }
             else
             {
-               // EmployeeManagment.AddEmployee(new ResourcePlanner(new Account(tbUsername.Text, tbPassword.Text), tbName.Text, tbLastname.Text, tbPhone.Text, tbEmail.Text, tbBSN.Text, (int)numAge.Value));
+                ResourcePlanner resourcePlanner = new ResourcePlanner(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                managment.AddEmployee(account.Id,resourcePlanner);
             }
            
         }

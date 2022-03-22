@@ -8,8 +8,8 @@ namespace ZooBazzar_Group03
 {
     public class EmployeeManagment
     {
-        public delegate void NewEmployeeEventHandler();
-        public event NewEmployeeEventHandler NewEmployee;
+        public delegate void ChangedEmployeeEventHandler();
+        public event ChangedEmployeeEventHandler ChangedEmployee;
 
 
         private List<Employee> employees = new List<Employee>();
@@ -20,28 +20,29 @@ namespace ZooBazzar_Group03
         }
 
         
-        public bool AddEmployee(Employee employee)
+        public bool AddEmployee(int accountid,Employee employee)
         {
             if (!employees.Contains(employee))
             {
+                db.Add(accountid,employee);
                 employees.Add(employee);
-                OnNewEmployee();
+                OnChangedEmployee();
                 return true;
             }
             return false;
         }
 
-        public bool RemoveEmployee(string name,string lastname)
-        {
-            for (int i = 0; i < employees.Count; i++)
-            {
-                if (employees[i].Name == name & employees[i].Lastname == lastname)
+        public bool RemoveEmployee(int index)
+        {                        
+                if (index >=0)
                 {
-                    employees.Remove(employees[i]);
+                    DataRefresh();
+                    db.Delete(employees[index].Id);
+                    employees.RemoveAt(index);
+                    OnChangedEmployee();
                     return true ;
-                }
-            }
-            return false ;          
+               }
+               return false;                   
         }
         public List<Employee> GetEmployees()
         {
@@ -76,10 +77,10 @@ namespace ZooBazzar_Group03
             return result;
         }
 
-        protected virtual void OnNewEmployee()
+        protected virtual void OnChangedEmployee()
         {
-            if (NewEmployee != null)
-                NewEmployee();
+            if (ChangedEmployee != null)
+                ChangedEmployee();
         }
 
         private string positionCheck(Employee employee)
@@ -96,6 +97,19 @@ namespace ZooBazzar_Group03
             else
             {
                 return "Manager";
+            }
+        }
+        public void DataRefresh()
+        {
+            employees = db.Read();
+        }
+
+        public void UpdateEmployee(int index,Employee employee)
+        {
+            if(index >= 0)
+            {
+                db.Update(employees[index].Id, employee);
+                employees[index] = employee;
             }
         }
     }

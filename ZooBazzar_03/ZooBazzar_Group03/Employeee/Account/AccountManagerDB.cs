@@ -116,6 +116,29 @@ namespace ZooBazzar_Group03
             }
             finally { conn.Close(); }
         }
+        public void ChangePassword(string username, string password)
+        {
+            string sql = "UPDATE account SET password = @Password WHERE username = @Username";
+            MySqlConnection conn = new MySqlConnection(con);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("@Password", MySqlDbType.VarChar).Value = password;
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Account password successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show("Account password is not updated! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 
 }

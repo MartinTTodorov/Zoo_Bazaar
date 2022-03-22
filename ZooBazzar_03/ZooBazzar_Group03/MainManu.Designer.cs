@@ -30,9 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpEmployees = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnNewEmployee = new System.Windows.Forms.Button();
-            this.btnRemoveEmployee = new System.Windows.Forms.Button();
             this.gbEmployee = new System.Windows.Forms.GroupBox();
             this.btnShowAll = new System.Windows.Forms.Button();
             this.btnFindByFirstName = new System.Windows.Forms.Button();
@@ -48,13 +45,29 @@
             this.flpAnimals = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddAnimal = new System.Windows.Forms.Button();
             this.btnShowAllAnimals = new System.Windows.Forms.Button();
+            this.tpEmployeeManagment = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRemoveEmployee = new System.Windows.Forms.Button();
+            this.btnUpdateEmployee = new System.Windows.Forms.Button();
+            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.lbEmployees = new System.Windows.Forms.ListBox();
+            this.tpSettings = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnSavePassword = new System.Windows.Forms.Button();
+            this.tbPasswordSettings = new System.Windows.Forms.TextBox();
+            this.tbUsernameSettings = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblHello = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tpEmployees.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.gbEmployee.SuspendLayout();
             this.tpSchedule.SuspendLayout();
             this.tpAnimals.SuspendLayout();
+            this.tpEmployeeManagment.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tpSettings.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -62,6 +75,8 @@
             this.tabControl1.Controls.Add(this.tpEmployees);
             this.tabControl1.Controls.Add(this.tpSchedule);
             this.tabControl1.Controls.Add(this.tpAnimals);
+            this.tabControl1.Controls.Add(this.tpEmployeeManagment);
+            this.tabControl1.Controls.Add(this.tpSettings);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -72,7 +87,6 @@
             // 
             this.tpEmployees.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
             this.tpEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tpEmployees.Controls.Add(this.groupBox1);
             this.tpEmployees.Controls.Add(this.gbEmployee);
             this.tpEmployees.Controls.Add(this.flpEmployees);
             this.tpEmployees.Location = new System.Drawing.Point(4, 29);
@@ -82,46 +96,6 @@
             this.tpEmployees.TabIndex = 0;
             this.tpEmployees.Text = "Employees";
             this.tpEmployees.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.DarkGreen;
-            this.groupBox1.Controls.Add(this.btnNewEmployee);
-            this.groupBox1.Controls.Add(this.btnRemoveEmployee);
-            this.groupBox1.Font = new System.Drawing.Font("Footlight MT Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(8, 244);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(399, 87);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Register";
-            // 
-            // btnNewEmployee
-            // 
-            this.btnNewEmployee.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnNewEmployee.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnNewEmployee.ForeColor = System.Drawing.Color.Ivory;
-            this.btnNewEmployee.Location = new System.Drawing.Point(38, 35);
-            this.btnNewEmployee.Name = "btnNewEmployee";
-            this.btnNewEmployee.Size = new System.Drawing.Size(142, 29);
-            this.btnNewEmployee.TabIndex = 5;
-            this.btnNewEmployee.Text = "New Employee";
-            this.btnNewEmployee.UseVisualStyleBackColor = false;
-            this.btnNewEmployee.Click += new System.EventHandler(this.btnNewEmployee_Click);
-            // 
-            // btnRemoveEmployee
-            // 
-            this.btnRemoveEmployee.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnRemoveEmployee.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnRemoveEmployee.ForeColor = System.Drawing.Color.Ivory;
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(234, 35);
-            this.btnRemoveEmployee.Name = "btnRemoveEmployee";
-            this.btnRemoveEmployee.Size = new System.Drawing.Size(142, 29);
-            this.btnRemoveEmployee.TabIndex = 4;
-            this.btnRemoveEmployee.Text = "Remove";
-            this.btnRemoveEmployee.UseVisualStyleBackColor = false;
-            this.btnRemoveEmployee.Click += new System.EventHandler(this.btnRemoveEmployee_Click);
             // 
             // gbEmployee
             // 
@@ -133,7 +107,7 @@
             this.gbEmployee.Controls.Add(this.btnFindBySpecialization);
             this.gbEmployee.Font = new System.Drawing.Font("Footlight MT Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gbEmployee.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.gbEmployee.Location = new System.Drawing.Point(8, 35);
+            this.gbEmployee.Location = new System.Drawing.Point(8, 104);
             this.gbEmployee.Name = "gbEmployee";
             this.gbEmployee.Size = new System.Drawing.Size(399, 156);
             this.gbEmployee.TabIndex = 0;
@@ -294,6 +268,135 @@
             this.btnShowAllAnimals.UseVisualStyleBackColor = false;
             this.btnShowAllAnimals.Click += new System.EventHandler(this.btnShowAllAnimals_Click);
             // 
+            // tpEmployeeManagment
+            // 
+            this.tpEmployeeManagment.Controls.Add(this.groupBox2);
+            this.tpEmployeeManagment.Controls.Add(this.lbEmployees);
+            this.tpEmployeeManagment.Location = new System.Drawing.Point(4, 29);
+            this.tpEmployeeManagment.Name = "tpEmployeeManagment";
+            this.tpEmployeeManagment.Size = new System.Drawing.Size(794, 367);
+            this.tpEmployeeManagment.TabIndex = 3;
+            this.tpEmployeeManagment.Text = "Employee Managment";
+            this.tpEmployeeManagment.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.btnRemoveEmployee);
+            this.groupBox2.Controls.Add(this.btnUpdateEmployee);
+            this.groupBox2.Controls.Add(this.btnAddEmployee);
+            this.groupBox2.Location = new System.Drawing.Point(21, 60);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(250, 227);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            // 
+            // btnRemoveEmployee
+            // 
+            this.btnRemoveEmployee.Location = new System.Drawing.Point(52, 95);
+            this.btnRemoveEmployee.Name = "btnRemoveEmployee";
+            this.btnRemoveEmployee.Size = new System.Drawing.Size(141, 45);
+            this.btnRemoveEmployee.TabIndex = 2;
+            this.btnRemoveEmployee.Text = "Remove";
+            this.btnRemoveEmployee.UseVisualStyleBackColor = true;
+            this.btnRemoveEmployee.Click += new System.EventHandler(this.btnRemoveEmployee_Click_1);
+            // 
+            // btnUpdateEmployee
+            // 
+            this.btnUpdateEmployee.Location = new System.Drawing.Point(52, 146);
+            this.btnUpdateEmployee.Name = "btnUpdateEmployee";
+            this.btnUpdateEmployee.Size = new System.Drawing.Size(141, 45);
+            this.btnUpdateEmployee.TabIndex = 3;
+            this.btnUpdateEmployee.Text = "Update";
+            this.btnUpdateEmployee.UseVisualStyleBackColor = true;
+            this.btnUpdateEmployee.Click += new System.EventHandler(this.btnUpdateEmployee_Click);
+            // 
+            // btnAddEmployee
+            // 
+            this.btnAddEmployee.Location = new System.Drawing.Point(52, 48);
+            this.btnAddEmployee.Name = "btnAddEmployee";
+            this.btnAddEmployee.Size = new System.Drawing.Size(141, 41);
+            this.btnAddEmployee.TabIndex = 1;
+            this.btnAddEmployee.Text = "Add";
+            this.btnAddEmployee.UseVisualStyleBackColor = true;
+            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
+            // 
+            // lbEmployees
+            // 
+            this.lbEmployees.FormattingEnabled = true;
+            this.lbEmployees.ItemHeight = 20;
+            this.lbEmployees.Location = new System.Drawing.Point(350, 63);
+            this.lbEmployees.Name = "lbEmployees";
+            this.lbEmployees.Size = new System.Drawing.Size(434, 224);
+            this.lbEmployees.TabIndex = 0;
+            // 
+            // tpSettings
+            // 
+            this.tpSettings.Controls.Add(this.groupBox3);
+            this.tpSettings.Location = new System.Drawing.Point(4, 29);
+            this.tpSettings.Name = "tpSettings";
+            this.tpSettings.Size = new System.Drawing.Size(794, 367);
+            this.tpSettings.TabIndex = 4;
+            this.tpSettings.Text = "Settings";
+            this.tpSettings.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnSavePassword);
+            this.groupBox3.Controls.Add(this.tbPasswordSettings);
+            this.groupBox3.Controls.Add(this.tbUsernameSettings);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Location = new System.Drawing.Point(8, 8);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(350, 356);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Settings";
+            // 
+            // btnSavePassword
+            // 
+            this.btnSavePassword.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnSavePassword.Location = new System.Drawing.Point(130, 221);
+            this.btnSavePassword.Name = "btnSavePassword";
+            this.btnSavePassword.Size = new System.Drawing.Size(164, 33);
+            this.btnSavePassword.TabIndex = 5;
+            this.btnSavePassword.Text = "Save";
+            this.btnSavePassword.UseVisualStyleBackColor = false;
+            this.btnSavePassword.Click += new System.EventHandler(this.btnSavePassword_Click);
+            // 
+            // tbPasswordSettings
+            // 
+            this.tbPasswordSettings.Location = new System.Drawing.Point(43, 162);
+            this.tbPasswordSettings.Name = "tbPasswordSettings";
+            this.tbPasswordSettings.Size = new System.Drawing.Size(251, 27);
+            this.tbPasswordSettings.TabIndex = 3;
+            // 
+            // tbUsernameSettings
+            // 
+            this.tbUsernameSettings.Location = new System.Drawing.Point(43, 77);
+            this.tbUsernameSettings.Name = "tbUsernameSettings";
+            this.tbUsernameSettings.ReadOnly = true;
+            this.tbUsernameSettings.Size = new System.Drawing.Size(251, 27);
+            this.tbUsernameSettings.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(43, 129);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "password:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(43, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "username:";
+            // 
             // lblHello
             // 
             this.lblHello.AutoSize = true;
@@ -318,11 +421,15 @@
             this.Text = "MainManu";
             this.tabControl1.ResumeLayout(false);
             this.tpEmployees.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.gbEmployee.ResumeLayout(false);
             this.gbEmployee.PerformLayout();
             this.tpSchedule.ResumeLayout(false);
             this.tpAnimals.ResumeLayout(false);
+            this.tpEmployeeManagment.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.tpSettings.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,9 +439,6 @@
 
         private TabControl tabControl1;
         private TabPage tpEmployees;
-        private GroupBox groupBox1;
-        private Button btnNewEmployee;
-        private Button btnRemoveEmployee;
         private GroupBox gbEmployee;
         private Button btnFindByFirstName;
         private TextBox tbFirstName;
@@ -351,5 +455,18 @@
         private Button btnAddAnimal;
         private Button btnShowAllAnimals;
         private FlowLayoutPanel flpAnimals;
+        private TabPage tpEmployeeManagment;
+        private GroupBox groupBox2;
+        private Button btnRemoveEmployee;
+        private Button btnUpdateEmployee;
+        private Button btnAddEmployee;
+        private ListBox lbEmployees;
+        private TabPage tpSettings;
+        private GroupBox groupBox3;
+        private Button btnSavePassword;
+        private TextBox tbPasswordSettings;
+        private TextBox tbUsernameSettings;
+        private Label label2;
+        private Label label1;
     }
 }

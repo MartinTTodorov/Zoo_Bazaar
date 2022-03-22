@@ -18,5 +18,14 @@ namespace ZooBazzar_Group03
         {
             return specialization;
         }
+
+        public override string ToString()
+        {
+            return $"{this.specialization}: {base.ToString()}";
+        }
+        public override string GetWorkingPosition()
+        {
+            return $"{this.specialization}";
+        }
     }
 }

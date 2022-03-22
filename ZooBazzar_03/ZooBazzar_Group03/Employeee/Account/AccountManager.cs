@@ -47,20 +47,7 @@ namespace ZooBazzar_Group03
             }
 
             return false;
-        }
-
-        public bool ChangePassword(Account account, string newPassword)
-        {
-            for (int i = 0; i < accounts.Count; i++)
-            {
-                if (accounts[i] == account)
-                {
-                    accounts[i].Password = newPassword;
-                    return true;
-                }
-            }
-            return false;
-        }
+        }      
         
         public Account GetAccountByCredentials(string username, string password)
         {
@@ -72,6 +59,16 @@ namespace ZooBazzar_Group03
                 }
             }
             return null;
+        }
+        public void RefreshData()
+        {
+            accounts = db.Read();
+        }
+
+        public void UpdatePassword(string username,string password)
+        {
+            db.ChangePassword(username,password);
+            RefreshData();
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace ZooBazzar_Group03
+﻿namespace ZooBazzar_Group03.Employeee
 {
-    partial class NewEmployee
+    partial class EditEmployee
     {
         /// <summary>
         /// Required designer variable.
@@ -48,7 +48,7 @@
             this.tbBSN = new System.Windows.Forms.TextBox();
             this.tbLastname = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
-            this.btnAddEmployee = new System.Windows.Forms.Button();
+            this.btnEditEmployee = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,10 +76,10 @@
             this.groupBox2.Controls.Add(this.tbName);
             this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox2.Font = new System.Drawing.Font("Harlow Solid Italic", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.groupBox2.Location = new System.Drawing.Point(12, 31);
+            this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(365, 461);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Personal information";
             // 
@@ -145,7 +145,6 @@
             this.cbPosition.Name = "cbPosition";
             this.cbPosition.Size = new System.Drawing.Size(129, 29);
             this.cbPosition.TabIndex = 15;
-            this.cbPosition.SelectedIndexChanged += new System.EventHandler(this.cbPosition_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -266,32 +265,30 @@
             this.tbName.Size = new System.Drawing.Size(209, 28);
             this.tbName.TabIndex = 0;
             // 
-            // btnAddEmployee
+            // btnEditEmployee
             // 
-            this.btnAddEmployee.BackColor = System.Drawing.Color.Peru;
-            this.btnAddEmployee.Font = new System.Drawing.Font("Harlow Solid Italic", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.btnAddEmployee.ForeColor = System.Drawing.Color.SeaShell;
-            this.btnAddEmployee.Location = new System.Drawing.Point(83, 508);
-            this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(242, 40);
-            this.btnAddEmployee.TabIndex = 3;
-            this.btnAddEmployee.Text = "Add";
-            this.btnAddEmployee.UseVisualStyleBackColor = false;
-            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
+            this.btnEditEmployee.BackColor = System.Drawing.Color.Peru;
+            this.btnEditEmployee.Font = new System.Drawing.Font("Harlow Solid Italic", 10.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.btnEditEmployee.ForeColor = System.Drawing.Color.SeaShell;
+            this.btnEditEmployee.Location = new System.Drawing.Point(68, 479);
+            this.btnEditEmployee.Name = "btnEditEmployee";
+            this.btnEditEmployee.Size = new System.Drawing.Size(242, 40);
+            this.btnEditEmployee.TabIndex = 4;
+            this.btnEditEmployee.Text = "Edit";
+            this.btnEditEmployee.UseVisualStyleBackColor = false;
+            this.btnEditEmployee.Click += new System.EventHandler(this.btnEditEmployee_Click);
             // 
-            // NewEmployee
+            // EditEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackGroundNewEmployee;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(405, 577);
-            this.Controls.Add(this.btnAddEmployee);
+            this.ClientSize = new System.Drawing.Size(385, 525);
+            this.Controls.Add(this.btnEditEmployee);
             this.Controls.Add(this.groupBox2);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "NewEmployee";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NewEmployee";
+            this.Name = "EditEmployee";
+            this.Text = "EditEmployee";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -299,12 +296,15 @@
         }
 
         #endregion
+
         private GroupBox groupBox2;
-        private TextBox tbLastname;
-        private TextBox tbName;
-        private TextBox tbPhone;
-        private TextBox tbEmail;
-        private TextBox tbBSN;
+        private Label label8;
+        private TextBox tbEmergencyCon;
+        private Label label6;
+        private TextBox tbAddress;
+        private DateTimePicker dtpDateOfBirth;
+        private ComboBox cbSpecialization;
+        private ComboBox cbPosition;
         private Label label7;
         private Label lblAge;
         private Label label5;
@@ -312,13 +312,11 @@
         private Label label3;
         private Label label2;
         private Label label1;
-        private Button btnAddEmployee;
-        private ComboBox cbSpecialization;
-        private ComboBox cbPosition;
-        private Label label8;
-        private TextBox tbEmergencyCon;
-        private Label label6;
-        private TextBox tbAddress;
-        private DateTimePicker dtpDateOfBirth;
+        private TextBox tbPhone;
+        private TextBox tbEmail;
+        private TextBox tbBSN;
+        private TextBox tbLastname;
+        private TextBox tbName;
+        private Button btnEditEmployee;
     }
 }

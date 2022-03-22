@@ -20,7 +20,7 @@ namespace ZooBazzar_Group03
         private string bsn;
         private int id ; 
         
-        
+        public Account Account { get { return account; }}
         public string Name { get { return firstname; }}
         public string Lastname { get { return lastname; } }
         public string Address { get { return address; } }
@@ -45,6 +45,17 @@ namespace ZooBazzar_Group03
 
         protected Employee()
         {
+
+        }
+
+        public override string ToString()
+        {
+            return $"{this.Name} {this.Lastname} Id:{this.Id}";
+        }
+
+        public virtual string GetWorkingPosition()
+        {
+            return null;
         }
     }
 }

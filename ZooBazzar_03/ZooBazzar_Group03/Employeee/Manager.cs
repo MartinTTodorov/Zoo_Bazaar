@@ -12,5 +12,13 @@ namespace ZooBazzar_Group03
         {
 
         }
+        public override string ToString()
+        {
+            return $"Manager: {base.ToString()}";
+        }
+        public override string GetWorkingPosition()
+        {
+            return "Manager";
+        }
     }
 }

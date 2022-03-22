@@ -13,20 +13,22 @@ namespace ZooBazzar_Group03
 {
     public partial class MainManu : Form
     {
-        private static EmployeeManagment employeeManagment = new EmployeeManagment();
+        private EmployeeManagment employeeManagment = new EmployeeManagment();
+        private AccountManager accountManager = new AccountManager();
         AnimalDB animalDB = new AnimalDB();
         AnimalManager animalManager = new AnimalManager();
         
-        public static EmployeeManagment EmployeeManagment { get { return employeeManagment; } }
+        public EmployeeManagment EmployeeManagment { get { return employeeManagment; } }
         public MainManu(Account account)
         {
             InitializeComponent();
             updateEmployeeUI();         
             lblHello.Text = $"Hello, {account.Username}!";
-            //employeeManagment.NewEmployee += this.OnNewEmployee;
-
+            employeeManagment.ChangedEmployee += OnChangedEmployee;
+            tbUsernameSettings.Text = account.Username;
+            tbPasswordSettings.Text = account.Password;
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
-
+            updateEmployee();
             GetDate(0);
         }
 
@@ -121,12 +123,13 @@ namespace ZooBazzar_Group03
 
         private void btnNewEmployee_Click(object sender, EventArgs e)
         {
-            NewEmployee newEmployee = new NewEmployee();
-            newEmployee.Show();
+           
         }
 
-        public void OnNewEmployee(object sender, EventArgs e)
+        public void OnChangedEmployee()
         {
+            employeeManagment.DataRefresh();
+            updateEmployee();
             updateEmployeeUI();
         }
 
@@ -154,6 +157,43 @@ namespace ZooBazzar_Group03
         {
             FormAddAnimal frmAddAnimal = new FormAddAnimal();
             frmAddAnimal.Show();
+        }
+
+        private void btnAddEmployee_Click(object sender, EventArgs e)
+        {
+            NewAccount newAccount = new NewAccount();
+            newAccount.Show();
+        }
+
+        private void updateEmployee()
+        {
+            lbEmployees.Items.Clear();
+            foreach (Employee employee in employeeManagment.GetEmployees())
+            {
+                lbEmployees.Items.Add(employee.ToString());
+            }
+        }
+
+        private void btnUpdateEmployee_Click(object sender, EventArgs e)
+        {
+            if(lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
+            {
+                EditEmployee editEmployee = new EditEmployee(lbEmployees.SelectedIndex);
+                editEmployee.Show();
+            }
+        }
+
+        private void btnRemoveEmployee_Click_1(object sender, EventArgs e)
+        {
+            if(lbEmployees.SelectedIndex>=0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
+            {
+                employeeManagment.RemoveEmployee(lbEmployees.SelectedIndex);
+            }
+        }
+
+        private void btnSavePassword_Click(object sender, EventArgs e)
+        {
+            accountManager.UpdatePassword(tbUsernameSettings.Text, tbPasswordSettings.Text);
         }
     }
 }

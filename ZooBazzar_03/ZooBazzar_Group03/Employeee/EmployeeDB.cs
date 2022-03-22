@@ -11,14 +11,14 @@ namespace ZooBazzar_Group03
     public class EmployeeDB : ICRUD<Employee>
     {
         private string con = "Server=studmysql01.fhict.local;Uid=dbi481796;Database=dbi481796;Pwd=sql7915;";
-        public void Add(int id,Employee obj, string workPosition)
+        public void Add(int accountid,Employee obj)
         {
             string sql = "INSERT INTO employee (ID,FirstName,LastName,Address,Birthdate,Phone,Email,EmergencyContact,BSN,WorkPosition) VALUES (@ID,@FirstName,@LastName,@Address,@Birthdate,@Phone,@Email,@EmergencyContact,@BSN,@WorkPosition)";
             MySqlConnection conn = new MySqlConnection(con);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
 
-            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
+            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = accountid;
             cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = obj.Name;
             cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = obj.Lastname;
             cmd.Parameters.Add("@Address", MySqlDbType.VarChar).Value = obj.Address;
@@ -27,24 +27,30 @@ namespace ZooBazzar_Group03
             cmd.Parameters.Add("@EmergencyContact", MySqlDbType.VarChar).Value = obj.EmargencyContact;
             cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = obj.Email;
             cmd.Parameters.Add("@BSN", MySqlDbType.VarChar).Value = obj.Bsn;
-            cmd.Parameters.Add("@WorkPosition", MySqlDbType.VarChar).Value = workPosition;            
+            cmd.Parameters.Add("@WorkPosition", MySqlDbType.VarChar).Value = obj.GetWorkingPosition();            
 
             try
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Account added successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Employee added successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
 
-                MessageBox.Show("Account is not inserted! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Employee is not inserted! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 conn.Close();
             }
         }
+
+        public void Add(Employee obj)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Delete(int id)
         {
             string sql = "DELETE FROM employee WHERE ID = @ID";
@@ -118,11 +124,37 @@ namespace ZooBazzar_Group03
 
         public void Update(int id, Employee obj)
         {
-            
+            string sql = "UPDATE employee SET FirstName = @FirstName,LastName = @Lastname,Address = @Address,Birthdate = @Birthdate,Phone = @Phone,Email = @Email,EmergencyContact = @EmergencyContact,BSN = @BSN,WorkPosition = @WorkingPosition) WHERE ID = @ID ";
+            MySqlConnection conn = new MySqlConnection(con);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = obj.Name;
+            cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = obj.Lastname;
+            cmd.Parameters.Add("@Address", MySqlDbType.VarChar).Value = obj.Address;
+            cmd.Parameters.Add("@BirthDate", MySqlDbType.DateTime).Value = obj.Birthdate;
+            cmd.Parameters.Add("@Phone", MySqlDbType.VarChar).Value = obj.Phone;
+            cmd.Parameters.Add("@EmergencyContact", MySqlDbType.VarChar).Value = obj.EmargencyContact;
+            cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = obj.Email;
+            cmd.Parameters.Add("@BSN", MySqlDbType.VarChar).Value = obj.Bsn;
+            cmd.Parameters.Add("@WorkPosition", MySqlDbType.VarChar).Value = obj.GetWorkingPosition();
+            try
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Employee updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show("Employee is not updated! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
         }
-        public void Add(Employee obj)
-        {
-            // Don't have an id as parameter
-        }
+
+       
     }
 }
