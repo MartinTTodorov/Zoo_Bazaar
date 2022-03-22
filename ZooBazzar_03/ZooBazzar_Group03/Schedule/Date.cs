@@ -35,8 +35,6 @@ namespace ZooBazzar_Group03
         {
             Schedule schedule = new Schedule(currentDate);
             schedule.ShowDialog();
-
-            
         }
     }
 }

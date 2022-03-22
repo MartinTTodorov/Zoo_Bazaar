@@ -64,7 +64,6 @@
             this.Controls.Add(this.pbAnimal);
             this.Name = "AnimalPicture";
             this.Size = new System.Drawing.Size(135, 131);
-            this.Load += new System.EventHandler(this.AnimalPicture_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbAnimal)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

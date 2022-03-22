@@ -25,18 +25,18 @@ namespace ZooBazzar_Group03
         }
 
         private Schedule schedule = null;
-        public AnimalPicture(string code, Form callingForm, string date)
+        public AnimalPicture(string code, Form callingForm, string date, DateTime currentDate)
         {
             schedule = callingForm as Schedule;
             InitializeComponent();
             this.animalCode = code;
             this.date = date;
-            this.currentDate = DateTime.ParseExact(date, "dd MMM yyyy", null);
+            this.currentDate = currentDate;
         }
 
         
 
-        AnimalDB db = new AnimalDB();
+        ScheduleDB db = new ScheduleDB();
 
         string animalCode;
 
@@ -87,14 +87,9 @@ namespace ZooBazzar_Group03
                 }
                 else
                 {
-                    schedule.cmbEmployees.Text = "Noone fed the poor animal!";
+                    schedule.cmbEmployees.Text = "No one fed the poor animal!";
                 }
             }
-
-        }
-
-        private void AnimalPicture_Load(object sender, EventArgs e)
-        {
 
         }
 

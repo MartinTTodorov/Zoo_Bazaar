@@ -17,6 +17,7 @@ namespace ZooBazzar_Group03
         private AccountManager accountManager = new AccountManager();
         AnimalDB animalDB = new AnimalDB();
         AnimalManager animalManager = new AnimalManager();
+        ScheduleManager sm = new ScheduleManager();
         
         public EmployeeManagment EmployeeManagment { get { return employeeManagment; } }
         public MainManu(Account account)
@@ -29,43 +30,24 @@ namespace ZooBazzar_Group03
             tbPasswordSettings.Text = account.Password;
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
             updateEmployee();
-            GetDate(0);
+            sm.GetDate(0, calendar);
         }
-
-
 
 
         int index = 0;
-        public void GetDate(int index)
-        {
-            calendar.Controls.Clear();
 
-            for (int i = 0; i < 7; i++)
-            {
-                DateTime day = DateTime.Now;
 
-                day = day.AddDays(i + index);
-                Date uc = new Date();
-
-                string date = $"{day.Day} {day.ToString("MMM")} {day.Year}";
-                string weekday = day.DayOfWeek.ToString();
-                uc.GetDate(weekday, date);
-
-                calendar.Controls.Add(uc);
-
-            }
-        }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             index -= 7;
-            GetDate(index);
+            sm.GetDate(index, calendar);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
             index += 7;
-            GetDate(index);
+            sm.GetDate(index, calendar);
         }
 
 

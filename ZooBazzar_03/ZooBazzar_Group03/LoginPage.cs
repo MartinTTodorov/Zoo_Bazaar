@@ -147,6 +147,7 @@ namespace ZooBazzar_Group03
             if (cbVisible.Checked)
             {
                 tbPassword.UseSystemPasswordChar = false;
+               
             }
             else
             {

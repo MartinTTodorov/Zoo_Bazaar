@@ -7,10 +7,10 @@
     <Compile Update="AnimalPic.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="AnimalPicture.cs">
+    <Compile Update="Schedule\AnimalPicture.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Date.cs">
+    <Compile Update="Schedule\Date.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="Employeee\Account\NewAccount.cs">
@@ -37,7 +37,7 @@
     <Compile Update="MainManu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Schedule.cs">
+    <Compile Update="Schedule\Schedule.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

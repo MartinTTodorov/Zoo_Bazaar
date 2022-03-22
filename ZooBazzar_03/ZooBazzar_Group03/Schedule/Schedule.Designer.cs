@@ -50,9 +50,9 @@
             this.lblTimeSloth.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTimeSloth.Location = new System.Drawing.Point(12, 37);
             this.lblTimeSloth.Name = "lblTimeSloth";
-            this.lblTimeSloth.Size = new System.Drawing.Size(131, 32);
+            this.lblTimeSloth.Size = new System.Drawing.Size(117, 32);
             this.lblTimeSloth.TabIndex = 0;
-            this.lblTimeSloth.Text = "Time sloth:";
+            this.lblTimeSloth.Text = "Time slot:";
             // 
             // panelAnimals
             // 
@@ -100,9 +100,8 @@
             this.lblAnimalType.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.lblAnimalType.Location = new System.Drawing.Point(411, 193);
             this.lblAnimalType.Name = "lblAnimalType";
-            this.lblAnimalType.Size = new System.Drawing.Size(13, 20);
+            this.lblAnimalType.Size = new System.Drawing.Size(0, 20);
             this.lblAnimalType.TabIndex = 14;
-            this.lblAnimalType.Text = "!";
             // 
             // lblSpecies
             // 
@@ -110,9 +109,8 @@
             this.lblSpecies.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.lblSpecies.Location = new System.Drawing.Point(411, 285);
             this.lblSpecies.Name = "lblSpecies";
-            this.lblSpecies.Size = new System.Drawing.Size(13, 20);
+            this.lblSpecies.Size = new System.Drawing.Size(0, 20);
             this.lblSpecies.TabIndex = 16;
-            this.lblSpecies.Text = "!";
             // 
             // label5
             // 
@@ -156,9 +154,8 @@
             this.lblAnimalCode.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.lblAnimalCode.Location = new System.Drawing.Point(411, 400);
             this.lblAnimalCode.Name = "lblAnimalCode";
-            this.lblAnimalCode.Size = new System.Drawing.Size(13, 20);
+            this.lblAnimalCode.Size = new System.Drawing.Size(0, 20);
             this.lblAnimalCode.TabIndex = 20;
-            this.lblAnimalCode.Text = "!";
             // 
             // lbl9
             // 

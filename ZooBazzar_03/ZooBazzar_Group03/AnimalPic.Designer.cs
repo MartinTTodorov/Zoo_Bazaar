@@ -39,7 +39,7 @@
             this.lblName.BackColor = System.Drawing.Color.PaleGreen;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblName.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.lblName.Location = new System.Drawing.Point(0, 127);
+            this.lblName.Location = new System.Drawing.Point(12, 113);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(53, 23);
             this.lblName.TabIndex = 3;

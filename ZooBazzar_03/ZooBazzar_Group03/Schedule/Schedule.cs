@@ -23,13 +23,12 @@ namespace ZooBazzar_Group03
         }
         string date;
 
-        AnimalDB db = new AnimalDB();
+        ScheduleDB db = new ScheduleDB();
 
         DateTime currentDate;
 
         private void Schedule_Load(object sender, EventArgs e)
         {
-
             if (currentDate.CompareTo(DateTime.Today) == -1)
             {
                 btnAssign.Enabled = false;
@@ -38,69 +37,22 @@ namespace ZooBazzar_Group03
 
         }
 
-        
-
-
-       
-        public DataTable GetAnimals(string time)
-        {
-            MySqlConnection conn = new MySqlConnection("Server = studmysql01.fhict.local; Uid=dbi481796;Database=dbi481796;Pwd=sql7915");
-            MySqlCommand command;
-            MySqlDataAdapter da;
-
-            string selectQuery = "SELECT Picture, ap.AnimalCode, Name FROM animalpictures ap INNER JOIN feedingschedule fs ON ap.AnimalCode = fs.AnimalCode INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE FeedingTime = @time;";
-
-            command = new MySqlCommand(selectQuery, conn);
-
-            command.Parameters.AddWithValue("time", time);
-            
-            da = new MySqlDataAdapter(command);
-
-
-            DataTable table = new DataTable();
-            da.Fill(table);
-
-            panelAnimals.Controls.Clear();
-
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                byte[] img = (byte[])table.Rows[i][0];
-
-                MemoryStream ms = new MemoryStream(img);
-
-                string name = table.Rows[i][2].ToString();
-
-                string animalCode = table.Rows[i][1].ToString();
-
-                AnimalPicture ap = new AnimalPicture(animalCode, this, date);
-
-                
-                
-                panelAnimals.Controls.Add(ap);
-                ap.GetPicture(ms, name);
-            }
-            
-
-            da.Dispose();
-
-            return table;
-        }
-
         private void cmbTimeSloth_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbTimeSloth.SelectedItem.ToString() == "6:00 - 8:00")
+            string time = cmbEmployees.SelectedItem.ToString();
+            if (time == "6:00 - 8:00")
             {
-                GetAnimals("morning");
+                db.GetAnimals("morning", panelAnimals, this, date, currentDate);
             }
 
-            if (cmbTimeSloth.SelectedItem.ToString() == "12:00 - 14:00")
+            if (time == "12:00 - 14:00")
             {
-                GetAnimals("noon");
+                db.GetAnimals("noon", panelAnimals, this, date, currentDate);
             }
 
-            if (cmbTimeSloth.SelectedItem.ToString() == "20:00 - 22:00")
+            if (time == "20:00 - 22:00")
             {
-                GetAnimals("evening");
+                db.GetAnimals("evening", panelAnimals, this, date, currentDate);
             }
 
             lblAnimalType.Text = "";
