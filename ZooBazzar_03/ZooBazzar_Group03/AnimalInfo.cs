@@ -28,9 +28,7 @@ namespace ZooBazzar_Group03
             tbName.Text = animal.Name;
             tbSpecie.Text = animal.Specie;
             tbReasonForArrival.Text = animal.ReasonForArrival;
-            tbReasonForDeparture.Text = animal.ReasonForDeparture;
             tbYearOfArrival.Text = animal.YearOfArrival;
-            tbYearOfDeparture.Text = animal.YearOfDeparture;
             tbBirthdate.Text = animal.Birthdate;
             foreach (var item in Enum.GetValues(typeof(AnimalType)))
             {
@@ -38,7 +36,7 @@ namespace ZooBazzar_Group03
             }
             cbAnimalType.Text = animal.AnimalType.ToString();
 
-            foreach (var item in Enum.GetValues(typeof(AnimalType)))
+            foreach (var item in Enum.GetValues(typeof(Diet)))
             {
                 cbDiet.Items.Add(item);
             }
@@ -52,13 +50,13 @@ namespace ZooBazzar_Group03
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Animal updatedAnimal = new Animal(tbAnimalCode.Text, Convert.ToInt32(tbID.Text), Convert.ToInt32(tbCageNumber.Text), tbName.Text, tbReasonForArrival.Text, tbReasonForDeparture.Text, (Diet)cbDiet.SelectedIndex, (AnimalType)cbAnimalType.SelectedIndex, tbSpecie.Text, tbYearOfArrival.Text, tbYearOfDeparture.Text, tbBirthdate.Text);
+            Animal updatedAnimal = new Animal(tbAnimalCode.Text, Convert.ToInt32(tbID.Text), Convert.ToInt32(tbCageNumber.Text), tbName.Text, tbReasonForArrival.Text, string.Empty, (Diet)cbDiet.SelectedIndex, (AnimalType)cbAnimalType.SelectedIndex, tbSpecie.Text, tbYearOfArrival.Text, string.Empty, tbBirthdate.Text);
             animalManager.UpdateAnimal(updatedAnimal);
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            animalManager.DeleteAnimalByID(animal.Id);
+            //animalManager.DeleteAnimalByID(animal.Id);
         }
     }
 }

@@ -258,18 +258,49 @@ namespace ZooBazzar_Group03
 
                 string animalCode = table.Rows[i][1].ToString();
 
-                AnimalPicture ap = new AnimalPicture(animalCode, form, date, currentDate);
+                if (IsAnimalHere(animalCode))
+                {
+                    AnimalPicture ap = new AnimalPicture(animalCode, form, date, currentDate);
+                    panelAnimals.Controls.Add(ap);
+                    ap.GetPicture(ms, name);
+                }
 
 
 
-                panelAnimals.Controls.Add(ap);
-                ap.GetPicture(ms, name);
+
             }
 
 
             da.Dispose();
 
             return table;
+        }
+
+        public bool IsAnimalHere(string animalCode)
+        {
+
+            MySqlConnection conn = new MySqlConnection("Server = studmysql01.fhict.local; Uid=dbi481796;Database=dbi481796;Pwd=sql7915");
+
+            try
+            {
+                string sql = "SELECT YearOfDeparture from animal WHERE AnimalCode = @code";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("code", animalCode);
+                conn.Open();
+
+                if (cmd.ExecuteScalar() != null)
+                {
+                    return true;
+                }
+
+                return true;
+            }
+            finally
+            {
+
+                conn.Close();
+            }
+            return false;
         }
 
     }

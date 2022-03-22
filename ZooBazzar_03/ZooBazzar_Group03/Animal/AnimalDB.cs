@@ -58,8 +58,8 @@ namespace ZooBazzar_Group03
                 cmd.Parameters.AddWithValue("@birthdate", birthdate);
                 cmd.Parameters.AddWithValue("@reasonForArrival", reasonForArrival);
                 cmd.Parameters.AddWithValue("@yearOfArrival", yearOfArrival);
-                cmd.Parameters.AddWithValue("@yearOfDeparture", yearOfDeparture);
-                cmd.Parameters.AddWithValue("@reasonForDeparture", reasonForDeparture);
+                cmd.Parameters.AddWithValue("@yearOfDeparture", string.Empty);
+                cmd.Parameters.AddWithValue("@reasonForDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@diet", diet);
                 conn.Open();
                 if (cmd.ExecuteNonQuery() == 1)
@@ -134,12 +134,13 @@ namespace ZooBazzar_Group03
 
 
 
-        public void DeleteAnimalFromDB(int id)
+        public void DeleteAnimalFromDB(int id, string reasonForDeparture)
         {
             try
             {
-                string sql = "DELETE FROM animal WHERE id=@id;";
+                string sql = "UPDATE animal SET ReasonForDeparture=@reasonForDeparture WHERE id=@id;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@reasonForDeparture", reasonForDeparture);
                 cmd.Parameters.AddWithValue("@id", id);
                 conn.Open();
                 if (cmd.ExecuteNonQuery() == 1)

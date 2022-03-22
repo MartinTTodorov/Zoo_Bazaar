@@ -42,16 +42,11 @@
             this.tbSpecie = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.lblReasonForArrival = new System.Windows.Forms.Label();
-            this.lblReasonForDeparture = new System.Windows.Forms.Label();
             this.lblYearOfArrival = new System.Windows.Forms.Label();
-            this.lblYearOfDeparture = new System.Windows.Forms.Label();
             this.lblBirthdate = new System.Windows.Forms.Label();
             this.tbReasonForArrival = new System.Windows.Forms.TextBox();
-            this.tbReasonForDeparture = new System.Windows.Forms.TextBox();
             this.tbYearOfArrival = new System.Windows.Forms.TextBox();
-            this.tbYearOfDeparture = new System.Windows.Forms.TextBox();
             this.tbBirthdate = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.cbAnimalType = new System.Windows.Forms.ComboBox();
             this.cbDiet = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
@@ -158,9 +153,9 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(119, 411);
+            this.btnEdit.Location = new System.Drawing.Point(122, 408);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(198, 63);
+            this.btnEdit.Size = new System.Drawing.Size(413, 63);
             this.btnEdit.TabIndex = 14;
             this.btnEdit.Text = "Edit animal details";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -175,37 +170,19 @@
             this.lblReasonForArrival.TabIndex = 16;
             this.lblReasonForArrival.Text = "Reason for arrival:";
             // 
-            // lblReasonForDeparture
-            // 
-            this.lblReasonForDeparture.AutoSize = true;
-            this.lblReasonForDeparture.Location = new System.Drawing.Point(323, 165);
-            this.lblReasonForDeparture.Name = "lblReasonForDeparture";
-            this.lblReasonForDeparture.Size = new System.Drawing.Size(152, 20);
-            this.lblReasonForDeparture.TabIndex = 17;
-            this.lblReasonForDeparture.Text = "Reason for departure:";
-            // 
             // lblYearOfArrival
             // 
             this.lblYearOfArrival.AutoSize = true;
-            this.lblYearOfArrival.Location = new System.Drawing.Point(368, 216);
+            this.lblYearOfArrival.Location = new System.Drawing.Point(368, 165);
             this.lblYearOfArrival.Name = "lblYearOfArrival";
             this.lblYearOfArrival.Size = new System.Drawing.Size(103, 20);
             this.lblYearOfArrival.TabIndex = 18;
             this.lblYearOfArrival.Text = "Year of arrival:";
             // 
-            // lblYearOfDeparture
-            // 
-            this.lblYearOfDeparture.AutoSize = true;
-            this.lblYearOfDeparture.Location = new System.Drawing.Point(348, 268);
-            this.lblYearOfDeparture.Name = "lblYearOfDeparture";
-            this.lblYearOfDeparture.Size = new System.Drawing.Size(127, 20);
-            this.lblYearOfDeparture.TabIndex = 19;
-            this.lblYearOfDeparture.Text = "Year of departure:";
-            // 
             // lblBirthdate
             // 
             this.lblBirthdate.AutoSize = true;
-            this.lblBirthdate.Location = new System.Drawing.Point(398, 322);
+            this.lblBirthdate.Location = new System.Drawing.Point(398, 218);
             this.lblBirthdate.Name = "lblBirthdate";
             this.lblBirthdate.Size = new System.Drawing.Size(73, 20);
             this.lblBirthdate.TabIndex = 20;
@@ -218,43 +195,19 @@
             this.tbReasonForArrival.Size = new System.Drawing.Size(125, 27);
             this.tbReasonForArrival.TabIndex = 21;
             // 
-            // tbReasonForDeparture
-            // 
-            this.tbReasonForDeparture.Location = new System.Drawing.Point(499, 162);
-            this.tbReasonForDeparture.Name = "tbReasonForDeparture";
-            this.tbReasonForDeparture.Size = new System.Drawing.Size(125, 27);
-            this.tbReasonForDeparture.TabIndex = 22;
-            // 
             // tbYearOfArrival
             // 
-            this.tbYearOfArrival.Location = new System.Drawing.Point(499, 216);
+            this.tbYearOfArrival.Location = new System.Drawing.Point(499, 165);
             this.tbYearOfArrival.Name = "tbYearOfArrival";
             this.tbYearOfArrival.Size = new System.Drawing.Size(125, 27);
             this.tbYearOfArrival.TabIndex = 23;
             // 
-            // tbYearOfDeparture
-            // 
-            this.tbYearOfDeparture.Location = new System.Drawing.Point(499, 270);
-            this.tbYearOfDeparture.Name = "tbYearOfDeparture";
-            this.tbYearOfDeparture.Size = new System.Drawing.Size(125, 27);
-            this.tbYearOfDeparture.TabIndex = 24;
-            // 
             // tbBirthdate
             // 
-            this.tbBirthdate.Location = new System.Drawing.Point(499, 320);
+            this.tbBirthdate.Location = new System.Drawing.Point(499, 216);
             this.tbBirthdate.Name = "tbBirthdate";
             this.tbBirthdate.Size = new System.Drawing.Size(125, 27);
             this.tbBirthdate.TabIndex = 25;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(335, 411);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(198, 63);
-            this.btnDelete.TabIndex = 26;
-            this.btnDelete.Text = "Delete animal";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // cbAnimalType
             // 
@@ -281,16 +234,11 @@
             this.ClientSize = new System.Drawing.Size(671, 496);
             this.Controls.Add(this.cbDiet);
             this.Controls.Add(this.cbAnimalType);
-            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.tbBirthdate);
-            this.Controls.Add(this.tbYearOfDeparture);
             this.Controls.Add(this.tbYearOfArrival);
-            this.Controls.Add(this.tbReasonForDeparture);
             this.Controls.Add(this.tbReasonForArrival);
             this.Controls.Add(this.lblBirthdate);
-            this.Controls.Add(this.lblYearOfDeparture);
             this.Controls.Add(this.lblYearOfArrival);
-            this.Controls.Add(this.lblReasonForDeparture);
             this.Controls.Add(this.lblReasonForArrival);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.tbSpecie);
@@ -331,16 +279,11 @@
         private TextBox tbSpecie;
         private Button btnEdit;
         private Label lblReasonForArrival;
-        private Label lblReasonForDeparture;
         private Label lblYearOfArrival;
-        private Label lblYearOfDeparture;
         private Label lblBirthdate;
         private TextBox tbReasonForArrival;
-        private TextBox tbReasonForDeparture;
         private TextBox tbYearOfArrival;
-        private TextBox tbYearOfDeparture;
         private TextBox tbBirthdate;
-        private Button btnDelete;
         private ComboBox cbAnimalType;
         private ComboBox cbDiet;
     }

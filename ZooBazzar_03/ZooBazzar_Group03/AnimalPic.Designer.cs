@@ -30,6 +30,7 @@
         {
             this.lblName = new System.Windows.Forms.Label();
             this.pbAnimal = new System.Windows.Forms.PictureBox();
+            this.btnRemoveAnimal = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbAnimal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,11 +58,23 @@
             this.pbAnimal.TabStop = false;
             this.pbAnimal.Click += new System.EventHandler(this.pbAnimal_Click);
             // 
+            // btnRemoveAnimal
+            // 
+            this.btnRemoveAnimal.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.closeSign;
+            this.btnRemoveAnimal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRemoveAnimal.Location = new System.Drawing.Point(114, 0);
+            this.btnRemoveAnimal.Name = "btnRemoveAnimal";
+            this.btnRemoveAnimal.Size = new System.Drawing.Size(36, 34);
+            this.btnRemoveAnimal.TabIndex = 5;
+            this.btnRemoveAnimal.UseVisualStyleBackColor = true;
+            this.btnRemoveAnimal.Click += new System.EventHandler(this.btnRemoveAnimal_Click);
+            // 
             // AnimalPic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.Controls.Add(this.btnRemoveAnimal);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.pbAnimal);
             this.Name = "AnimalPic";
@@ -76,5 +89,6 @@
 
         private Label lblName;
         private PictureBox pbAnimal;
+        private Button btnRemoveAnimal;
     }
 }

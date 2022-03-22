@@ -240,7 +240,7 @@
             this.flpAnimals.AutoScroll = true;
             this.flpAnimals.Location = new System.Drawing.Point(292, 22);
             this.flpAnimals.Name = "flpAnimals";
-            this.flpAnimals.Size = new System.Drawing.Size(460, 322);
+            this.flpAnimals.Size = new System.Drawing.Size(333, 322);
             this.flpAnimals.TabIndex = 5;
             // 
             // btnAddAnimal

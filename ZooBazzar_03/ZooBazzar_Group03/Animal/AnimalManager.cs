@@ -52,14 +52,14 @@ namespace ZooBazzar_Group03
 
         public void DeleteAnimal(Animal animal)
         {
-            animalDB.DeleteAnimalFromDB(animal.Id);
+            animalDB.DeleteAnimalFromDB(animal.Id, animal.ReasonForDeparture);
             UpdateLocalList();
         }
 
         public void DeleteAnimalByID(int id)
         {
-            animalDB.DeleteAnimalFromDB(id);
-            UpdateLocalList();
+            //animalDB.DeleteAnimalFromDB(id);
+            //UpdateLocalList();
         }
 
         public bool HasImage(Animal animal) //check against the animal code in the database directly in the animalpictures table. If true, run a query where animal code is this animal code and get the memory stream

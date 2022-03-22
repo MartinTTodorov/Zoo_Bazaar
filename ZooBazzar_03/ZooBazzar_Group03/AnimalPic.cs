@@ -14,10 +14,12 @@ namespace ZooBazzar_Group03
     {
         private Animal animal;
         private AnimalManager animalManager = new AnimalManager();
-        public AnimalPic(Animal animal)
+        MainManu menu;
+        public AnimalPic(Animal animal, MainManu menu)
         {
             InitializeComponent();
             this.animal = animal;
+            this.menu = menu;
         }
 
         private void AnimalPic_Load(object sender, EventArgs e)
@@ -34,6 +36,12 @@ namespace ZooBazzar_Group03
         {
             AnimalInfo animalInfo = new AnimalInfo(animal);
             animalInfo.Show();
+        }
+
+        private void btnRemoveAnimal_Click(object sender, EventArgs e)
+        {
+            fmDeleteAnimal deleteAnimal = new fmDeleteAnimal(this.animal, menu);
+            deleteAnimal.Show();
         }
     }
 }

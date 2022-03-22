@@ -127,17 +127,26 @@ namespace ZooBazzar_Group03
 
         private void btnShowAllAnimals_Click(object sender, EventArgs e)
         {
+            UpdateAnimals();
+        }
+
+        public void UpdateAnimals()
+        {
             flpAnimals.Controls.Clear();
             for (int i = 0; i < animalManager.animals.Count; i++)
             {
-                AnimalPic animalPic = new AnimalPic(animalManager.animals[i]);
-                flpAnimals.Controls.Add(animalPic);
+                if (animalManager.animals[i].ReasonForDeparture == String.Empty)
+                {
+                    AnimalPic animalPic = new AnimalPic(animalManager.animals[i], this);
+                    flpAnimals.Controls.Add(animalPic);
+                }
             }
         }
 
+
         private void btnAddAnimal_Click(object sender, EventArgs e)
         {
-            FormAddAnimal frmAddAnimal = new FormAddAnimal();
+            FormAddAnimal frmAddAnimal = new FormAddAnimal(this);
             frmAddAnimal.Show();
         }
 
@@ -184,5 +193,7 @@ namespace ZooBazzar_Group03
             loginPage.Show();
             this.Close();
         }
+
+
     }
 }

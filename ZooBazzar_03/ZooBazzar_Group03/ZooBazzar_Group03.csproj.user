@@ -7,6 +7,9 @@
     <Compile Update="AnimalPic.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="fmDeleteAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Schedule\AnimalPicture.cs">
       <SubType>UserControl</SubType>
     </Compile>

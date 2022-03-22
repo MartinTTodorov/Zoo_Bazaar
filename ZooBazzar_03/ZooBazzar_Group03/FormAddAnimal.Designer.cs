@@ -31,14 +31,10 @@
             this.cbDiet = new System.Windows.Forms.ComboBox();
             this.cbAnimalType = new System.Windows.Forms.ComboBox();
             this.tbBirthdate = new System.Windows.Forms.TextBox();
-            this.tbYearOfDeparture = new System.Windows.Forms.TextBox();
             this.tbYearOfArrival = new System.Windows.Forms.TextBox();
-            this.tbReasonForDeparture = new System.Windows.Forms.TextBox();
             this.tbReasonForArrival = new System.Windows.Forms.TextBox();
             this.lblBirthdate = new System.Windows.Forms.Label();
-            this.lblYearOfDeparture = new System.Windows.Forms.Label();
             this.lblYearOfArrival = new System.Windows.Forms.Label();
-            this.lblReasonForDeparture = new System.Windows.Forms.Label();
             this.lblReasonForArrival = new System.Windows.Forms.Label();
             this.tbSpecie = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
@@ -73,31 +69,17 @@
             // 
             // tbBirthdate
             // 
-            this.tbBirthdate.Location = new System.Drawing.Point(542, 304);
+            this.tbBirthdate.Location = new System.Drawing.Point(542, 200);
             this.tbBirthdate.Name = "tbBirthdate";
             this.tbBirthdate.Size = new System.Drawing.Size(125, 27);
             this.tbBirthdate.TabIndex = 51;
             // 
-            // tbYearOfDeparture
-            // 
-            this.tbYearOfDeparture.Location = new System.Drawing.Point(542, 254);
-            this.tbYearOfDeparture.Name = "tbYearOfDeparture";
-            this.tbYearOfDeparture.Size = new System.Drawing.Size(125, 27);
-            this.tbYearOfDeparture.TabIndex = 50;
-            // 
             // tbYearOfArrival
             // 
-            this.tbYearOfArrival.Location = new System.Drawing.Point(542, 200);
+            this.tbYearOfArrival.Location = new System.Drawing.Point(542, 142);
             this.tbYearOfArrival.Name = "tbYearOfArrival";
             this.tbYearOfArrival.Size = new System.Drawing.Size(125, 27);
             this.tbYearOfArrival.TabIndex = 49;
-            // 
-            // tbReasonForDeparture
-            // 
-            this.tbReasonForDeparture.Location = new System.Drawing.Point(542, 146);
-            this.tbReasonForDeparture.Name = "tbReasonForDeparture";
-            this.tbReasonForDeparture.Size = new System.Drawing.Size(125, 27);
-            this.tbReasonForDeparture.TabIndex = 48;
             // 
             // tbReasonForArrival
             // 
@@ -109,38 +91,20 @@
             // lblBirthdate
             // 
             this.lblBirthdate.AutoSize = true;
-            this.lblBirthdate.Location = new System.Drawing.Point(441, 306);
+            this.lblBirthdate.Location = new System.Drawing.Point(441, 202);
             this.lblBirthdate.Name = "lblBirthdate";
             this.lblBirthdate.Size = new System.Drawing.Size(73, 20);
             this.lblBirthdate.TabIndex = 46;
             this.lblBirthdate.Text = "Birthdate:";
             // 
-            // lblYearOfDeparture
-            // 
-            this.lblYearOfDeparture.AutoSize = true;
-            this.lblYearOfDeparture.Location = new System.Drawing.Point(391, 252);
-            this.lblYearOfDeparture.Name = "lblYearOfDeparture";
-            this.lblYearOfDeparture.Size = new System.Drawing.Size(127, 20);
-            this.lblYearOfDeparture.TabIndex = 45;
-            this.lblYearOfDeparture.Text = "Year of departure:";
-            // 
             // lblYearOfArrival
             // 
             this.lblYearOfArrival.AutoSize = true;
-            this.lblYearOfArrival.Location = new System.Drawing.Point(411, 200);
+            this.lblYearOfArrival.Location = new System.Drawing.Point(411, 142);
             this.lblYearOfArrival.Name = "lblYearOfArrival";
             this.lblYearOfArrival.Size = new System.Drawing.Size(103, 20);
             this.lblYearOfArrival.TabIndex = 44;
             this.lblYearOfArrival.Text = "Year of arrival:";
-            // 
-            // lblReasonForDeparture
-            // 
-            this.lblReasonForDeparture.AutoSize = true;
-            this.lblReasonForDeparture.Location = new System.Drawing.Point(366, 149);
-            this.lblReasonForDeparture.Name = "lblReasonForDeparture";
-            this.lblReasonForDeparture.Size = new System.Drawing.Size(152, 20);
-            this.lblReasonForDeparture.TabIndex = 43;
-            this.lblReasonForDeparture.Text = "Reason for departure:";
             // 
             // lblReasonForArrival
             // 
@@ -272,14 +236,10 @@
             this.Controls.Add(this.cbDiet);
             this.Controls.Add(this.cbAnimalType);
             this.Controls.Add(this.tbBirthdate);
-            this.Controls.Add(this.tbYearOfDeparture);
             this.Controls.Add(this.tbYearOfArrival);
-            this.Controls.Add(this.tbReasonForDeparture);
             this.Controls.Add(this.tbReasonForArrival);
             this.Controls.Add(this.lblBirthdate);
-            this.Controls.Add(this.lblYearOfDeparture);
             this.Controls.Add(this.lblYearOfArrival);
-            this.Controls.Add(this.lblReasonForDeparture);
             this.Controls.Add(this.lblReasonForArrival);
             this.Controls.Add(this.tbSpecie);
             this.Controls.Add(this.tbName);
@@ -307,14 +267,10 @@
         private ComboBox cbDiet;
         private ComboBox cbAnimalType;
         private TextBox tbBirthdate;
-        private TextBox tbYearOfDeparture;
         private TextBox tbYearOfArrival;
-        private TextBox tbReasonForDeparture;
         private TextBox tbReasonForArrival;
         private Label lblBirthdate;
-        private Label lblYearOfDeparture;
         private Label lblYearOfArrival;
-        private Label lblReasonForDeparture;
         private Label lblReasonForArrival;
         private TextBox tbSpecie;
         private TextBox tbName;
