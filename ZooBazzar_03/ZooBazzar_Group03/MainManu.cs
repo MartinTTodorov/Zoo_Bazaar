@@ -195,5 +195,12 @@ namespace ZooBazzar_Group03
         {
             accountManager.UpdatePassword(tbUsernameSettings.Text, tbPasswordSettings.Text);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoginPage loginPage = new LoginPage();
+            loginPage.Show();
+            this.Close();
+        }
     }
 }

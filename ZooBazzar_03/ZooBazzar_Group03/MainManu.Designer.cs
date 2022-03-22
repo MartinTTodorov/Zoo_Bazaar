@@ -59,6 +59,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblHello = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpEmployees.SuspendLayout();
             this.gbEmployee.SuspendLayout();
@@ -407,6 +408,19 @@
             this.lblHello.TabIndex = 5;
             this.lblHello.Text = "Hello, ... !";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.SeaGreen;
+            this.button1.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.Ivory;
+            this.button1.Location = new System.Drawing.Point(12, 415);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 32);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Log out";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainManu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -414,6 +428,7 @@
             this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblHello);
             this.Controls.Add(this.tabControl1);
             this.DoubleBuffered = true;
@@ -468,5 +483,6 @@
         private TextBox tbUsernameSettings;
         private Label label2;
         private Label label1;
+        private Button button1;
     }
 }

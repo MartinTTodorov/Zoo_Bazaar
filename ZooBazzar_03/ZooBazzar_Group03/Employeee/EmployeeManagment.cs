@@ -110,6 +110,7 @@ namespace ZooBazzar_Group03
             {
                 db.Update(employees[index].Id, employee);
                 employees[index] = employee;
+                OnChangedEmployee();
             }
         }
     }
