@@ -55,7 +55,7 @@ namespace ZooBazzar_Group03
 
         public virtual string GetWorkingPosition()
         {
-            return null;
+            return " ";
         }
     }
 }

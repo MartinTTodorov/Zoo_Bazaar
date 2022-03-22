@@ -124,7 +124,7 @@ namespace ZooBazzar_Group03
 
         public void Update(int id, Employee obj)
         {
-            string sql = "UPDATE employee SET FirstName = @FirstName,LastName = @Lastname,Address = @Address,Birthdate = @Birthdate,Phone = @Phone,Email = @Email,EmergencyContact = @EmergencyContact,BSN = @BSN,WorkPosition = @WorkingPosition) WHERE ID = @ID ";
+            string sql = "UPDATE employee SET FirstName = @FirstName,LastName = @Lastname,Address = @Address,Birthdate = @Birthdate,Phone = @Phone,Email = @Email,EmergencyContact = @EmergencyContact,BSN = @BSN,WorkPosition = @WorkingPosition WHERE ID = @ID ";
             MySqlConnection conn = new MySqlConnection(con);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
@@ -136,7 +136,10 @@ namespace ZooBazzar_Group03
             cmd.Parameters.Add("@EmergencyContact", MySqlDbType.VarChar).Value = obj.EmargencyContact;
             cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = obj.Email;
             cmd.Parameters.Add("@BSN", MySqlDbType.VarChar).Value = obj.Bsn;
-            cmd.Parameters.Add("@WorkPosition", MySqlDbType.VarChar).Value = obj.GetWorkingPosition();
+            string workingposition = obj.GetWorkingPosition();
+            cmd.Parameters.Add("@WorkingPosition", MySqlDbType.VarChar).Value = workingposition;
+            cmd.Parameters.Add("@ID", MySqlDbType.VarChar).Value = id;
+
             try
             {
                 conn.Open();

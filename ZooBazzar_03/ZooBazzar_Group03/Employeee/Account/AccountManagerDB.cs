@@ -122,12 +122,14 @@ namespace ZooBazzar_Group03
             MySqlConnection conn = new MySqlConnection(con);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = username;
             cmd.Parameters.Add("@Password", MySqlDbType.VarChar).Value = password;
+
             try
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Account password successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Account password updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
