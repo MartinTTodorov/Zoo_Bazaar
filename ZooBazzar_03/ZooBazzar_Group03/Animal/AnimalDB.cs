@@ -139,7 +139,7 @@ namespace ZooBazzar_Group03
             try
             {
                 string sql = "DELETE FROM animal WHERE id=@id;";
-                MySqlCommand cmd = new MySqlCommand();
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@id", id);
                 conn.Open();
                 if (cmd.ExecuteNonQuery() == 1)
@@ -165,8 +165,45 @@ namespace ZooBazzar_Group03
             }
 
         }
+        public bool HasImage(string animalCode)
+        {
+            string sql = "SELECT Picture, ap.AnimalCode FROM animalpictures ap INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE ap.AnimalCode = @animalCode;";
 
-        
+            //string sql = "SELECT Picture FROM animalpictures WHERE EXISTS(SELECT Picture FROM animalpictures ap INNER JOIN animal a on a.AnimalCode=ap.AnimalCode WHERE a.AnimalCode = @animalCode;)"
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            conn.Open();
+            cmd.Parameters.AddWithValue("@animalCode", animalCode);
+            if (cmd.ExecuteScalar()==null)
+            {
+                conn.Close();
+                return false;
+            }
+            else
+            {
+                conn.Close();
+                return true;
+            }
+        }
+
+        public MemoryStream GetMemoryStream(string animalCode)
+        {
+            string sql = "SELECT Picture, ap.AnimalCode FROM animalpictures ap INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE ap.AnimalCode = @animalCode;";
+            MySqlCommand cmd;
+            MySqlDataReader dr;
+
+            cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@animalCode", animalCode);
+
+            conn.Open();
+
+            byte[] img = (byte[])cmd.ExecuteScalar();
+            MemoryStream ms = new MemoryStream(img);
+            conn.Close();
+            return ms;
+
+        }
+
+
 
 
 

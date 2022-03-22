@@ -39,7 +39,7 @@
             this.lblName.BackColor = System.Drawing.Color.PaleGreen;
             this.lblName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblName.ForeColor = System.Drawing.Color.DarkOliveGreen;
-            this.lblName.Location = new System.Drawing.Point(21, 103);
+            this.lblName.Location = new System.Drawing.Point(0, 127);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(53, 23);
             this.lblName.TabIndex = 3;
@@ -47,6 +47,8 @@
             // 
             // pbAnimal
             // 
+            this.pbAnimal.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.NoImageAvailable;
+            this.pbAnimal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pbAnimal.Location = new System.Drawing.Point(12, 15);
             this.pbAnimal.Name = "pbAnimal";
             this.pbAnimal.Size = new System.Drawing.Size(126, 121);

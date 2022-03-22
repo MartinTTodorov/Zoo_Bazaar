@@ -64,7 +64,19 @@ namespace ZooBazzar_Group03
 
         public bool HasImage(Animal animal) //check against the animal code in the database directly in the animalpictures table. If true, run a query where animal code is this animal code and get the memory stream
         {
-            return true;
+            if (animalDB.HasImage(animal.AnimalCode))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public MemoryStream GetMemoryStream(string animalCode)
+        {
+            return animalDB.GetMemoryStream(animalCode);
         }
 
 
