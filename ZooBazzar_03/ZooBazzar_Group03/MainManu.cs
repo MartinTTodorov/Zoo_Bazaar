@@ -15,6 +15,7 @@ namespace ZooBazzar_Group03
     {
         private static EmployeeManagment employeeManagment = new EmployeeManagment();
         AnimalDB animalDB = new AnimalDB();
+        AnimalManager animalManager = new AnimalManager();
         
         public static EmployeeManagment EmployeeManagment { get { return employeeManagment; } }
         public MainManu(Account account)
@@ -137,6 +138,22 @@ namespace ZooBazzar_Group03
         private void btnRemoveEmployee_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnShowAllAnimals_Click(object sender, EventArgs e)
+        {
+            flpAnimals.Controls.Clear();
+            for (int i = 0; i < animalManager.animals.Count; i++)
+            {
+                AnimalPic animalPic = new AnimalPic(animalManager.animals[i]);
+                flpAnimals.Controls.Add(animalPic);
+            }
+        }
+
+        private void btnAddAnimal_Click(object sender, EventArgs e)
+        {
+            FormAddAnimal frmAddAnimal = new FormAddAnimal();
+            frmAddAnimal.Show();
         }
     }
 }

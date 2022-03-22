@@ -40,22 +40,28 @@
             this.cbSpecialization = new System.Windows.Forms.ComboBox();
             this.btnFindBySpecialization = new System.Windows.Forms.Button();
             this.flpEmployees = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tpSchedule = new System.Windows.Forms.TabPage();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
             this.calendar = new System.Windows.Forms.FlowLayoutPanel();
+            this.tpAnimals = new System.Windows.Forms.TabPage();
+            this.flpAnimals = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAddAnimal = new System.Windows.Forms.Button();
+            this.btnShowAllAnimals = new System.Windows.Forms.Button();
             this.lblHello = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tpEmployees.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbEmployee.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tpSchedule.SuspendLayout();
+            this.tpAnimals.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tpEmployees);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tpSchedule);
+            this.tabControl1.Controls.Add(this.tpAnimals);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -196,21 +202,21 @@
             this.flpEmployees.Size = new System.Drawing.Size(366, 355);
             this.flpEmployees.TabIndex = 0;
             // 
-            // tabPage2
+            // tpSchedule
             // 
-            this.tabPage2.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
-            this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tabPage2.Controls.Add(this.btnNext);
-            this.tabPage2.Controls.Add(this.btnPrevious);
-            this.tabPage2.Controls.Add(this.calendar);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(794, 367);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Schedule";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            this.tpSchedule.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
+            this.tpSchedule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tpSchedule.Controls.Add(this.btnNext);
+            this.tpSchedule.Controls.Add(this.btnPrevious);
+            this.tpSchedule.Controls.Add(this.calendar);
+            this.tpSchedule.Location = new System.Drawing.Point(4, 29);
+            this.tpSchedule.Name = "tpSchedule";
+            this.tpSchedule.Padding = new System.Windows.Forms.Padding(3);
+            this.tpSchedule.Size = new System.Drawing.Size(794, 367);
+            this.tpSchedule.TabIndex = 1;
+            this.tpSchedule.Text = "Schedule";
+            this.tpSchedule.UseVisualStyleBackColor = true;
+            this.tpSchedule.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // btnNext
             // 
@@ -239,6 +245,55 @@
             this.calendar.Size = new System.Drawing.Size(676, 280);
             this.calendar.TabIndex = 0;
             // 
+            // tpAnimals
+            // 
+            this.tpAnimals.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
+            this.tpAnimals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tpAnimals.Controls.Add(this.flpAnimals);
+            this.tpAnimals.Controls.Add(this.btnAddAnimal);
+            this.tpAnimals.Controls.Add(this.btnShowAllAnimals);
+            this.tpAnimals.Location = new System.Drawing.Point(4, 29);
+            this.tpAnimals.Name = "tpAnimals";
+            this.tpAnimals.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAnimals.Size = new System.Drawing.Size(794, 367);
+            this.tpAnimals.TabIndex = 2;
+            this.tpAnimals.Text = "Animals";
+            this.tpAnimals.UseVisualStyleBackColor = true;
+            // 
+            // flpAnimals
+            // 
+            this.flpAnimals.AutoScroll = true;
+            this.flpAnimals.Location = new System.Drawing.Point(292, 22);
+            this.flpAnimals.Name = "flpAnimals";
+            this.flpAnimals.Size = new System.Drawing.Size(460, 322);
+            this.flpAnimals.TabIndex = 5;
+            // 
+            // btnAddAnimal
+            // 
+            this.btnAddAnimal.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnAddAnimal.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAddAnimal.ForeColor = System.Drawing.Color.Ivory;
+            this.btnAddAnimal.Location = new System.Drawing.Point(38, 206);
+            this.btnAddAnimal.Name = "btnAddAnimal";
+            this.btnAddAnimal.Size = new System.Drawing.Size(161, 29);
+            this.btnAddAnimal.TabIndex = 4;
+            this.btnAddAnimal.Text = "Add an animal";
+            this.btnAddAnimal.UseVisualStyleBackColor = false;
+            this.btnAddAnimal.Click += new System.EventHandler(this.btnAddAnimal_Click);
+            // 
+            // btnShowAllAnimals
+            // 
+            this.btnShowAllAnimals.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnShowAllAnimals.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnShowAllAnimals.ForeColor = System.Drawing.Color.Ivory;
+            this.btnShowAllAnimals.Location = new System.Drawing.Point(38, 131);
+            this.btnShowAllAnimals.Name = "btnShowAllAnimals";
+            this.btnShowAllAnimals.Size = new System.Drawing.Size(161, 29);
+            this.btnShowAllAnimals.TabIndex = 1;
+            this.btnShowAllAnimals.Text = "Show all animals";
+            this.btnShowAllAnimals.UseVisualStyleBackColor = false;
+            this.btnShowAllAnimals.Click += new System.EventHandler(this.btnShowAllAnimals_Click);
+            // 
             // lblHello
             // 
             this.lblHello.AutoSize = true;
@@ -266,7 +321,8 @@
             this.groupBox1.ResumeLayout(false);
             this.gbEmployee.ResumeLayout(false);
             this.gbEmployee.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.tpSchedule.ResumeLayout(false);
+            this.tpAnimals.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,11 +341,15 @@
         private ComboBox cbSpecialization;
         private Button btnFindBySpecialization;
         private FlowLayoutPanel flpEmployees;
-        private TabPage tabPage2;
+        private TabPage tpSchedule;
         private Button btnShowAll;
         private Label lblHello;
         private FlowLayoutPanel calendar;
         private Button btnNext;
         private Button btnPrevious;
+        private TabPage tpAnimals;
+        private Button btnAddAnimal;
+        private Button btnShowAllAnimals;
+        private FlowLayoutPanel flpAnimals;
     }
 }
