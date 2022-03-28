@@ -26,29 +26,36 @@ namespace ZooBazzar_Group03
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            
-            if(cbPosition.SelectedItem.ToString() == "Caretaker")
+            if (checkInput())
             {
-                Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), cbSpecialization.SelectedItem.ToString());
-                Caretaker caretaker = new Caretaker(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, specialization);
-                managment.AddEmployee(account.Id,caretaker);
-            }
-            else if(cbPosition.SelectedItem.ToString() == "Manager")
-            {
-                Manager manager = new Manager(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
-                managment.AddEmployee(account.Id,manager);
+                if (cbPosition.SelectedItem.ToString() == "Caretaker")
+                {
+                    Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), cbSpecialization.SelectedItem.ToString());
+                    Caretaker caretaker = new Caretaker(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, specialization);
+                    managment.AddEmployee(account.Id, caretaker);
+                }
+                else if (cbPosition.SelectedItem.ToString() == "Manager")
+                {
+                    Manager manager = new Manager(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                    managment.AddEmployee(account.Id, manager);
+                }
+                else
+                {
+                    ResourcePlanner resourcePlanner = new ResourcePlanner(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                    managment.AddEmployee(account.Id, resourcePlanner);
+                }
+
             }
             else
             {
-                ResourcePlanner resourcePlanner = new ResourcePlanner(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
-                managment.AddEmployee(account.Id,resourcePlanner);
+                MessageBox.Show("Please enter all the fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
         }
 
         private void cbPosition_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cbPosition.SelectedItem.ToString() == "Caretaker")
+            if (cbPosition.SelectedItem.ToString() == "Caretaker")
             {
                 cbSpecialization.Visible = true;
 
@@ -57,6 +64,37 @@ namespace ZooBazzar_Group03
             {
                 cbSpecialization.Visible = false;
             }
+        }
+
+        private bool checkInput()
+        {
+            for (int i = 0; i < this.Controls.Count; i++)
+            {
+                if (this.Controls[i] is GroupBox)
+                {
+                    GroupBox groupBox = (GroupBox)this.Controls[i];
+                    for (int j = 0; j < groupBox.Controls.Count; j++)
+                    {
+                        if (groupBox.Controls[j] is TextBox)
+                        {
+                            if (!DataValidation.CheckTextBox((TextBox)groupBox.Controls[j]))
+                            {
+                                return false;
+                            }
+
+                        }
+                        else if(groupBox.Controls[j] is DateTimePicker)
+                        {
+                            if (DataValidation.CheckFutureDate((DateTimePicker)groupBox.Controls[j]))
+                            {
+                                return false;
+                            }
+
+                        }
+                    }
+                }
+            }
+            return true;
         }
     }
 }

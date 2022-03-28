@@ -13,6 +13,7 @@ namespace ZooBazzar_Group03
 {
     public partial class MainManu : Form
     {
+        private Account currentAccount;
         private EmployeeManagment employeeManagment = new EmployeeManagment();
         private AccountManager accountManager = new AccountManager();
         AnimalDB animalDB = new AnimalDB();
@@ -23,7 +24,8 @@ namespace ZooBazzar_Group03
         public MainManu(Account account)
         {
             InitializeComponent();
-            updateEmployeeUI();         
+            updateEmployeeUI();
+            accessability(accountManager.GetWorkPositionByAccount(account.Username));
             lblHello.Text = $"Hello, {account.Username}!";
             employeeManagment.ChangedEmployee += OnChangedEmployee;
             tbUsernameSettings.Text = account.Username;
@@ -31,6 +33,7 @@ namespace ZooBazzar_Group03
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
             updateEmployee();
             sm.GetDate(0, calendar);
+            currentAccount = account;
         }
 
 
@@ -137,7 +140,7 @@ namespace ZooBazzar_Group03
             {
                 if (animalManager.animals[i].ReasonForDeparture == String.Empty)
                 {
-                    AnimalPic animalPic = new AnimalPic(animalManager.animals[i], this);
+                    AnimalPic animalPic = new AnimalPic(animalManager.animals[i], this,accountManager.GetWorkPositionByAccount(currentAccount.Username));
                     flpAnimals.Controls.Add(animalPic);
                 }
             }
@@ -193,7 +196,25 @@ namespace ZooBazzar_Group03
             loginPage.Show();
             this.Close();
         }
+        private void accessability(string workingPosition)
+        {
 
+            if (workingPosition == "Manager")
+            {
+                
+            }
+            else if(workingPosition == "Resourceplanner")
+            {
+                tabControl1.TabPages.Remove(tpEmployeeManagment);              
+                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;               
+            }
+            else
+            {
+                tabControl1.TabPages.Remove(tpEmployeeManagment);
+                tabControl1.TabPages.Remove(tpSchedule);
+                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;
+            }
+        }
 
     }
 }

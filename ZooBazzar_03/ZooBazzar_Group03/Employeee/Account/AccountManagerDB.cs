@@ -141,6 +141,30 @@ namespace ZooBazzar_Group03
                 conn.Close();
             }
         }
+        public string GetEmployeeWorkPositionByAccount(string username)
+        {
+            string sql = "SELECT Workposition FROM `employee` INNER JOIN account On employee.ID = account.AccountID WHERE account.Username = @Username";
+            MySqlConnection conn = new MySqlConnection(con);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = username;
+            string result = " ";
+            try
+            {
+                conn.Open();
+                result = cmd.ExecuteScalar().ToString();
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show("Account dosen't have an employee! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return result;
+        }
     }
 
 }

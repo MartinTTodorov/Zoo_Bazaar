@@ -70,5 +70,9 @@ namespace ZooBazzar_Group03
             db.ChangePassword(username,password);
             RefreshData();
         }
+        public string GetWorkPositionByAccount(string username)
+        {
+            return db.GetEmployeeWorkPositionByAccount(username);
+        }
     }
 }

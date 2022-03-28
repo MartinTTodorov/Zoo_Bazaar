@@ -33,7 +33,7 @@ namespace ZooBazzar_Group03.Employeee
             cbPosition.SelectedText = employee.GetWorkingPosition();
             this.index = index;
 
-            if(employee is Caretaker)
+            if (employee is Caretaker)
             {
                 Caretaker caretaker = (Caretaker)employee;
                 cbSpecialization.Text = caretaker.GetSpecialization().ToString();
@@ -43,6 +43,8 @@ namespace ZooBazzar_Group03.Employeee
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
         {
+            if (checkInput())
+            {
             if (cbPosition.SelectedItem.ToString() == "Caretaker")
             {
                 Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), cbSpecialization.SelectedItem.ToString());
@@ -59,6 +61,44 @@ namespace ZooBazzar_Group03.Employeee
                 ResourcePlanner resourcePlanner = new ResourcePlanner(employee.Account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
                 managment.AddEmployee(index, resourcePlanner);
             }
+
+            }
+            else
+            {
+                MessageBox.Show("You naughty nauhty you teasing meee, you naughty naughty!!!Enter all fields ;)");
+            }
         }
+
+        private bool checkInput()
+        {
+            for (int i = 0; i < this.Controls.Count; i++)
+            {
+                if (this.Controls[i] is GroupBox)
+                {
+                    GroupBox groupBox = (GroupBox)this.Controls[i];
+                    for (int j = 0; j < groupBox.Controls.Count; j++)
+                    {
+                        if (groupBox.Controls[j] is TextBox)
+                        {
+                            if (!DataValidation.CheckTextBox((TextBox)groupBox.Controls[j]))
+                            {
+                                return false;
+                            }
+
+                        }
+                        else if (groupBox.Controls[j] is DateTimePicker)
+                        {
+                            if (DataValidation.CheckFutureDate((DateTimePicker)groupBox.Controls[j]))
+                            {
+                                return false;
+                            }
+
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
     }
 }

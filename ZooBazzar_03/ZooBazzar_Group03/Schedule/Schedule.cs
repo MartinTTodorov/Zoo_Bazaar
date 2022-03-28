@@ -39,40 +39,51 @@ namespace ZooBazzar_Group03
 
         private void cmbTimeSloth_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string time = cmbEmployees.SelectedItem.ToString();
-            if (time == "6:00 - 8:00")
+            if (cmbTimeSloth.SelectedIndex > -1)
             {
-                db.GetAnimals("morning", panelAnimals, this, date, currentDate);
-            }
+                string time = cmbTimeSloth.SelectedItem.ToString();
+                if (time == "6:00 - 8:00")
+                {
+                    db.GetAnimals("morning", panelAnimals, this, date, currentDate);
+                }
 
-            if (time == "12:00 - 14:00")
-            {
-                db.GetAnimals("noon", panelAnimals, this, date, currentDate);
-            }
+                if (time == "12:00 - 14:00")
+                {
+                    db.GetAnimals("noon", panelAnimals, this, date, currentDate);
+                }
 
-            if (time == "20:00 - 22:00")
-            {
-                db.GetAnimals("evening", panelAnimals, this, date, currentDate);
-            }
+                if (time == "20:00 - 22:00")
+                {
+                    db.GetAnimals("evening", panelAnimals, this, date, currentDate);
+                }
 
-            lblAnimalType.Text = "";
-            lblSpecies.Text = "";
-            cmbEmployees.Items.Clear();
+                lblAnimalType.Text = "";
+                lblSpecies.Text = "";
+                cmbEmployees.Items.Clear();
+
+            }
         }
 
-        
+
 
         public void btnAssign_Click(object sender, EventArgs e)
         {
-            if (db.Insert(lblAnimalCode.Text, date, cmbEmployees.SelectedIndex) > 0)
+            if (cmbEmployees.SelectedIndex > -1)
             {
-                MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully assign a caretaker to the animal");
-                btnAssign.Enabled = false;
-                btnEditEmployee.Enabled = true;    
+                if (db.Insert(lblAnimalCode.Text, date, cmbEmployees.SelectedIndex) > 0)
+                {
+                    MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully assign a caretaker to the animal");
+                    btnAssign.Enabled = false;
+                    btnEditEmployee.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Unfortunately, under unknown circumstances you sadly didn't do anythyng useful!!!");
+                }
             }
             else
             {
-                MessageBox.Show("Unfortunately, under unknown circumstances you sadly didn't do anythyng useful!!!");
+                MessageBox.Show("Choose an employee!!!");
             }
         }
 
