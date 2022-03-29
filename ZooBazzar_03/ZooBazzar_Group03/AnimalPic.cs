@@ -42,7 +42,7 @@ namespace ZooBazzar_Group03
         {
             if (workposition == "Manager")
             {
-                AnimalInfo animalInfo = new AnimalInfo(animal);
+                AnimalInfo animalInfo = new AnimalInfo(animal, menu);
                 animalInfo.Show();
 
             }

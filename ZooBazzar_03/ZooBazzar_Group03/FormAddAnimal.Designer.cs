@@ -257,6 +257,7 @@
             this.Name = "FormAddAnimal";
             this.Text = "FormAddAnimal";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormAddAnimal_FormClosing);
+            this.Load += new System.EventHandler(this.FormAddAnimal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

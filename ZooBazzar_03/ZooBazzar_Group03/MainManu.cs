@@ -136,6 +136,7 @@ namespace ZooBazzar_Group03
         public void UpdateAnimals()
         {
             flpAnimals.Controls.Clear();
+            animalManager.UpdateLocalList();
             for (int i = 0; i < animalManager.animals.Count; i++)
             {
                 if (animalManager.animals[i].ReasonForDeparture == String.Empty)

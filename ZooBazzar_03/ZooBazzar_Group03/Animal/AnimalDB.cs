@@ -48,7 +48,7 @@ namespace ZooBazzar_Group03
         {
             try
             {
-                string sql = "INSERT INTO animal (AnimalCode, Name, AnimalType, Species, CageNumber, Birthdate, ReasonForArrival, YearOfArrival, YearOfDeparture, ReasonForDeparture, Diet) VALUES(@animalCode, @name, @animalType, @species, @cageNumber, @birthdate, @reasonForArrival, @yearOfArrival, @yearOfDeparture, @reasonForDeparture, @diet);";
+                string sql = "INSERT INTO animal (AnimalCode, Name, AnimalType, Species, CageNumber, Birthdate, ReasonForArrival, YearOfArrival, YearOfDeparture, ReasonOFDeparture, Diet) VALUES(@animalCode, @name, @animalType, @species, @cageNumber, @birthdate, @reasonForArrival, @yearOfArrival, @yearOfDeparture, @reasonForDeparture, @diet);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@animalCode", animalCode);
                 cmd.Parameters.AddWithValue("@name", name);
@@ -92,7 +92,7 @@ namespace ZooBazzar_Group03
         {
             try
             {
-                string sql = "UPDATE animal set AnimalCode=@animalCode, Name=@name, AnimalType=@animalType, Species=@species, CageNumber=@cageNumber, Birthdate=@birthdate, ReasonForArrival=@reasonForArrival, YearOfArrival = @yearOfArrival, YearOfDeparture=@yearOfDeparture, ReasonForDeparture=@reasonForDeparture, Diet=@diet WHERE id=@id;";
+                string sql = "UPDATE animal set AnimalCode=@animalCode, Name=@name, AnimalType=@animalType, Species=@species, CageNumber=@cageNumber, Birthdate=@birthdate, ReasonForArrival=@reasonForArrival, YearOfArrival = @yearOfArrival, YearOfDeparture=@yearOfDeparture, ReasonOFDeparture=@reasonForDeparture, Diet=@diet WHERE id=@id;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@animalCode", animalCode);
                 cmd.Parameters.AddWithValue("@name", name);
@@ -109,11 +109,11 @@ namespace ZooBazzar_Group03
                 conn.Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
-                    MessageBox.Show("New animal has been added");
+                    MessageBox.Show("The information has been updated");
                 }
                 else
                 {
-                    MessageBox.Show("Failed to add a new animal");
+                    MessageBox.Show("Failed to update the information");
                 }
             }
             catch (MySqlException ex)
@@ -138,7 +138,7 @@ namespace ZooBazzar_Group03
         {
             try
             {
-                string sql = "UPDATE animal SET ReasonForDeparture=@reasonForDeparture WHERE id=@id;";
+                string sql = "UPDATE animal SET ReasonOFDeparture=@reasonForDeparture WHERE id=@id;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@reasonForDeparture", reasonForDeparture);
                 cmd.Parameters.AddWithValue("@id", id);

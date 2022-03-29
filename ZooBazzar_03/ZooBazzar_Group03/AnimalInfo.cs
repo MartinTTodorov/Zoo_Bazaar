@@ -14,10 +14,12 @@ namespace ZooBazzar_Group03
     {
         private Animal animal;
         AnimalManager animalManager = new AnimalManager();
-        public AnimalInfo(Animal animal)
+        MainManu menu;
+        public AnimalInfo(Animal animal, MainManu menu)
         {
             InitializeComponent();
             this.animal = animal;
+            this.menu = menu;
         }
 
         private void AnimalInfo_Load(object sender, EventArgs e)
@@ -50,8 +52,10 @@ namespace ZooBazzar_Group03
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            Animal updatedAnimal = new Animal(tbAnimalCode.Text, Convert.ToInt32(tbID.Text), Convert.ToInt32(tbCageNumber.Text), tbName.Text, tbReasonForArrival.Text, string.Empty, (Diet)cbDiet.SelectedIndex, (AnimalType)cbAnimalType.SelectedIndex, tbSpecie.Text, tbYearOfArrival.Text, string.Empty, tbBirthdate.Text);
+            Animal updatedAnimal = new Animal(tbAnimalCode.Text, Convert.ToInt32(tbID.Text), Convert.ToInt32(tbCageNumber.Text), tbName.Text, tbReasonForArrival.Text, string.Empty, (Diet)cbDiet.SelectedItem, (AnimalType)cbAnimalType.SelectedItem, tbSpecie.Text, tbYearOfArrival.Text, string.Empty, tbBirthdate.Text);
             animalManager.UpdateAnimal(updatedAnimal);
+            menu.UpdateAnimals();
+            
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
