@@ -1,5 +1,11 @@
-﻿
-namespace ZooBazzar_Group03
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Modules
 {
     public enum Specialization
     {

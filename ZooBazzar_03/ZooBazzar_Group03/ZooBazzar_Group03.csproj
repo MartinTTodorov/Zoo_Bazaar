@@ -14,6 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LL\LL.csproj" />
+    <ProjectReference Include="..\Modules\Modules.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\SQL paketa\MySql.Data\MySql.Data.DLL</HintPath>
     </Reference>

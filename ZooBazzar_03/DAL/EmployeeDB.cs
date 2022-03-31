@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Modules;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,16 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooBazzar_Group03
+namespace DAL
 {
     public class EmployeeDB : ICRUD<Employee>
     {
-        private string con = "Server=studmysql01.fhict.local;Uid=dbi481796;Database=dbi481796;Pwd=sql7915;";
+        private ConnectionDB conn;
+
+        public EmployeeDB()
+        {
+            conn = new ConnectionDB();
+        }
         public void Add(int accountid,Employee obj)
         {
             string sql = "INSERT INTO employee (ID,FirstName,LastName,Address,Birthdate,Phone,Email,EmergencyContact,BSN,WorkPosition) VALUES (@ID,@FirstName,@LastName,@Address,@Birthdate,@Phone,@Email,@EmergencyContact,@BSN,@WorkPosition)";
-            MySqlConnection conn = new MySqlConnection(con);
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
             cmd.CommandType = CommandType.Text;
 
             cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = accountid;
@@ -31,7 +36,7 @@ namespace ZooBazzar_Group03
 
             try
             {
-                conn.Open();
+                conn.GetConnection().Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Employee added successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -42,7 +47,7 @@ namespace ZooBazzar_Group03
             }
             finally
             {
-                conn.Close();
+                conn.GetConnection().Close();
             }
         }
 
@@ -54,15 +59,14 @@ namespace ZooBazzar_Group03
         public void Delete(int id)
         {
             string sql = "DELETE FROM employee WHERE ID = @ID";
-            MySqlConnection conn = new MySqlConnection(con);
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
 
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
 
             try
             {
-                conn.Open();
+                conn.GetConnection().Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Employee deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -70,19 +74,18 @@ namespace ZooBazzar_Group03
             {
                 MessageBox.Show($"Can't delete employee{id}! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally { conn.Close(); }
+            finally { conn.GetConnection().Close(); }
         }
 
         public List<Employee> Read()
         {
             string sql = "SELECT username,password,firstname,lastname,address,birthdate,email,phone,emergencycontact,bsn,workposition,id FROM employee INNER JOIN account ON employee.ID = account.AccountID";
             List<Employee> employees = new List<Employee>();
-            MySqlConnection conn = new MySqlConnection(con);
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
 
             try
             {
-                conn.Open();
+                conn.GetConnection().Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -116,7 +119,7 @@ namespace ZooBazzar_Group03
             }
             finally
             {
-                conn.Close();
+                conn.GetConnection().Close();
             }
 
             return employees;
@@ -125,8 +128,7 @@ namespace ZooBazzar_Group03
         public void Update(int id, Employee obj)
         {
             string sql = "UPDATE employee SET FirstName = @FirstName,LastName = @Lastname,Address = @Address,Birthdate = @Birthdate,Phone = @Phone,Email = @Email,EmergencyContact = @EmergencyContact,BSN = @BSN,WorkPosition = @WorkingPosition WHERE ID = @ID ";
-            MySqlConnection conn = new MySqlConnection(con);
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = obj.Name;
             cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = obj.Lastname;
@@ -142,7 +144,7 @@ namespace ZooBazzar_Group03
 
             try
             {
-                conn.Open();
+                conn.GetConnection().Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Employee updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -153,7 +155,7 @@ namespace ZooBazzar_Group03
             }
             finally
             {
-                conn.Close();
+                conn.GetConnection().Close();
             }
 
         }

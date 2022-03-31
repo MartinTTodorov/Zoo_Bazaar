@@ -6,21 +6,27 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Modules;
 
-namespace ZooBazzar_Group03
+namespace DAL
 {
     public class AnimalDB
     {
-        MySqlConnection conn = new MySqlConnection("Server = studmysql01.fhict.local; Uid=dbi481796;Database=dbi481796;Pwd=sql7915");
+        private ConnectionDB conn;
         List<Animal> animals = new List<Animal>();
+
+        public AnimalDB()
+        {
+            conn = new ConnectionDB();
+        }
 
         public List<Animal> GetAnimals()
         {
             try
             {
                 string sql = "SELECT * from animal";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                conn.GetConnection().Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -39,7 +45,7 @@ namespace ZooBazzar_Group03
             finally
             {
 
-                conn.Close();
+                conn.GetConnection().Close();
             }
             return animals;
         }
@@ -49,7 +55,7 @@ namespace ZooBazzar_Group03
             try
             {
                 string sql = "INSERT INTO animal (AnimalCode, Name, AnimalType, Species, CageNumber, Birthdate, ReasonForArrival, YearOfArrival, YearOfDeparture, ReasonOFDeparture, Diet) VALUES(@animalCode, @name, @animalType, @species, @cageNumber, @birthdate, @reasonForArrival, @yearOfArrival, @yearOfDeparture, @reasonForDeparture, @diet);";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
                 cmd.Parameters.AddWithValue("@animalCode", animalCode);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@animalType", animalType);
@@ -61,7 +67,7 @@ namespace ZooBazzar_Group03
                 cmd.Parameters.AddWithValue("@yearOfDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@reasonForDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@diet", diet);
-                conn.Open();
+                conn.GetConnection().Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("New animal has been added");
@@ -82,7 +88,7 @@ namespace ZooBazzar_Group03
             finally
             {
 
-                conn.Close();
+                conn.GetConnection().Close();
             }
 
         }
@@ -93,7 +99,7 @@ namespace ZooBazzar_Group03
             try
             {
                 string sql = "UPDATE animal set AnimalCode=@animalCode, Name=@name, AnimalType=@animalType, Species=@species, CageNumber=@cageNumber, Birthdate=@birthdate, ReasonForArrival=@reasonForArrival, YearOfArrival = @yearOfArrival, YearOfDeparture=@yearOfDeparture, ReasonOFDeparture=@reasonForDeparture, Diet=@diet WHERE id=@id;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
                 cmd.Parameters.AddWithValue("@animalCode", animalCode);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@animalType", animalType);
@@ -106,7 +112,7 @@ namespace ZooBazzar_Group03
                 cmd.Parameters.AddWithValue("@reasonForDeparture", reasonForDeparture);
                 cmd.Parameters.AddWithValue("@diet", diet);
                 cmd.Parameters.AddWithValue("@id", id);
-                conn.Open();
+                conn.GetConnection().Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("The information has been updated");
@@ -127,7 +133,7 @@ namespace ZooBazzar_Group03
             finally
             {
 
-                conn.Close();
+                conn.GetConnection().Close();
             }
         }
 
@@ -139,10 +145,10 @@ namespace ZooBazzar_Group03
             try
             {
                 string sql = "UPDATE animal SET ReasonOFDeparture=@reasonForDeparture WHERE id=@id;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
                 cmd.Parameters.AddWithValue("@reasonForDeparture", reasonForDeparture);
                 cmd.Parameters.AddWithValue("@id", id);
-                conn.Open();
+                conn.GetConnection().Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("Animal has been deleted from the database");
@@ -162,7 +168,7 @@ namespace ZooBazzar_Group03
             }
             finally
             {
-                conn.Close();
+                conn.GetConnection().Close();
             }
 
         }
@@ -171,17 +177,17 @@ namespace ZooBazzar_Group03
             string sql = "SELECT Picture, ap.AnimalCode FROM animalpictures ap INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE ap.AnimalCode = @animalCode;";
 
             //string sql = "SELECT Picture FROM animalpictures WHERE EXISTS(SELECT Picture FROM animalpictures ap INNER JOIN animal a on a.AnimalCode=ap.AnimalCode WHERE a.AnimalCode = @animalCode;)"
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+            conn.GetConnection().Open();
             cmd.Parameters.AddWithValue("@animalCode", animalCode);
             if (cmd.ExecuteScalar() == null)
             {
-                conn.Close();
+                conn.GetConnection().Close();
                 return false;
             }
             else
             {
-                conn.Close();
+                conn.GetConnection().Close();
                 return true;
             }
         }
@@ -192,14 +198,14 @@ namespace ZooBazzar_Group03
             MySqlCommand cmd;
             MySqlDataReader dr;
 
-            cmd = new MySqlCommand(sql, conn);
+            cmd = new MySqlCommand(sql, conn.GetConnection());
             cmd.Parameters.AddWithValue("@animalCode", animalCode);
 
-            conn.Open();
+            conn.GetConnection().Open();
 
             byte[] img = (byte[])cmd.ExecuteScalar();
             MemoryStream ms = new MemoryStream(img);
-            conn.Close();
+            conn.GetConnection().Close();
             return ms;
 
         }
