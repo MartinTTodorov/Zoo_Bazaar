@@ -6,24 +6,18 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
-<<<<<<<< HEAD:ZooBazzar_03/DAL/AnimalDB.cs
-using Modules;
-
-namespace DAL
-========
 using Entities;
 
 namespace DataAccessLayer
->>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/DataAccessLayer/AnimalDB.cs
 {
     public class AnimalDB
     {
-        private ConnectionDB conn;
+        private MySqlConnection conn;
         List<Animal> animals = new List<Animal>();
 
         public AnimalDB()
         {
-            conn = new ConnectionDB();
+            conn = ConnectionDB.GetConnection();
         }
 
         public List<Animal> GetAnimals()
@@ -31,8 +25,8 @@ namespace DataAccessLayer
             try
             {
                 string sql = "SELECT * from animal";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
-                conn.GetConnection().Open();
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -51,7 +45,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
             return animals;
         }
@@ -61,7 +55,7 @@ namespace DataAccessLayer
             try
             {
                 string sql = "INSERT INTO animal (AnimalCode, Name, AnimalType, Species, CageNumber, Birthdate, ReasonForArrival, YearOfArrival, YearOfDeparture, ReasonOFDeparture, Diet) VALUES(@animalCode, @name, @animalType, @species, @cageNumber, @birthdate, @reasonForArrival, @yearOfArrival, @yearOfDeparture, @reasonForDeparture, @diet);";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@animalCode", animalCode);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@animalType", animalType);
@@ -73,7 +67,7 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@yearOfDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@reasonForDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@diet", diet);
-                conn.GetConnection().Open();
+                conn.Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("New animal has been added");
@@ -94,7 +88,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
 
         }
@@ -105,7 +99,7 @@ namespace DataAccessLayer
             try
             {
                 string sql = "UPDATE animal set AnimalCode=@animalCode, Name=@name, AnimalType=@animalType, Species=@species, CageNumber=@cageNumber, Birthdate=@birthdate, ReasonForArrival=@reasonForArrival, YearOfArrival = @yearOfArrival, YearOfDeparture=@yearOfDeparture, ReasonOFDeparture=@reasonForDeparture, Diet=@diet WHERE id=@id;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@animalCode", animalCode);
                 cmd.Parameters.AddWithValue("@name", name);
                 cmd.Parameters.AddWithValue("@animalType", animalType);
@@ -118,7 +112,7 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@reasonForDeparture", reasonForDeparture);
                 cmd.Parameters.AddWithValue("@diet", diet);
                 cmd.Parameters.AddWithValue("@id", id);
-                conn.GetConnection().Open();
+                conn.Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("The information has been updated");
@@ -139,7 +133,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
         }
 
@@ -151,10 +145,10 @@ namespace DataAccessLayer
             try
             {
                 string sql = "UPDATE animal SET ReasonOFDeparture=@reasonForDeparture WHERE id=@id;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@reasonForDeparture", reasonForDeparture);
                 cmd.Parameters.AddWithValue("@id", id);
-                conn.GetConnection().Open();
+                conn.Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("Animal has been deleted from the database");
@@ -174,7 +168,7 @@ namespace DataAccessLayer
             }
             finally
             {
-                conn.GetConnection().Close();
+                conn.Close();
             }
 
         }
@@ -183,17 +177,17 @@ namespace DataAccessLayer
             string sql = "SELECT Picture, ap.AnimalCode FROM animalpictures ap INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE ap.AnimalCode = @animalCode;";
 
             //string sql = "SELECT Picture FROM animalpictures WHERE EXISTS(SELECT Picture FROM animalpictures ap INNER JOIN animal a on a.AnimalCode=ap.AnimalCode WHERE a.AnimalCode = @animalCode;)"
-            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
-            conn.GetConnection().Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            conn.Open();
             cmd.Parameters.AddWithValue("@animalCode", animalCode);
             if (cmd.ExecuteScalar() == null)
             {
-                conn.GetConnection().Close();
+                conn.Close();
                 return false;
             }
             else
             {
-                conn.GetConnection().Close();
+                conn.Close();
                 return true;
             }
         }
@@ -204,14 +198,14 @@ namespace DataAccessLayer
             MySqlCommand cmd;
             MySqlDataReader dr;
 
-            cmd = new MySqlCommand(sql, conn.GetConnection());
+            cmd = new MySqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@animalCode", animalCode);
 
-            conn.GetConnection().Open();
+            conn.Open();
 
             byte[] img = (byte[])cmd.ExecuteScalar();
             MemoryStream ms = new MemoryStream(img);
-            conn.GetConnection().Close();
+            conn.Close();
             return ms;
 
         }

@@ -8,24 +8,18 @@ using MySql.Data.MySqlClient;
 using System.Windows;
 using System.IO;
 using System.Data;
-<<<<<<<< HEAD:ZooBazzar_03/DAL/ScheduleDB.cs
-using Modules;
-
-namespace DAL
-========
 using Entities;
 
 
 namespace DataAccessLayer
->>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/DataAccessLayer/ScheduleDB.cs
 {
     public class ScheduleDB
     {
-        private ConnectionDB conn;
+        private MySqlConnection conn;
 
-        public EmployeeDB()
+        public ScheduleDB()
         {
-            conn = new ConnectionDB();
+            conn = ConnectionDB.GetConnection();
         }
 
         public string GetSpecies(string animalCode)
@@ -34,9 +28,9 @@ namespace DataAccessLayer
             try
             {
                 string sql = "SELECT Species from animal WHERE AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("code", animalCode);
-                conn.GetConnection().Open();
+                conn.Open();
 
                 Object species = cmd.ExecuteScalar();
 
@@ -45,7 +39,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
         }
 
@@ -55,9 +49,9 @@ namespace DataAccessLayer
             try
             {
                 string sql = "SELECT AnimalType from animal WHERE AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("code", animalCode);
-                conn.GetConnection().Open();
+                conn.Open();
 
                 Object type = cmd.ExecuteScalar();
 
@@ -66,7 +60,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
         }
 
@@ -77,9 +71,9 @@ namespace DataAccessLayer
             try
             {
                 string sql = "SELECT Specialist from feedingschedule WHERE AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("code", animalCode);
-                conn.GetConnection().Open();
+                conn.Open();
 
                 Object type = cmd.ExecuteScalar();
 
@@ -88,7 +82,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
         }
 
@@ -98,9 +92,9 @@ namespace DataAccessLayer
             try
             {
                 string sql = "SELECT ID, FirstName from Employee WHERE WorkPosition = @spec";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("spec", GetSpecialisation(animalCode));
-                conn.GetConnection().Open();
+                conn.Open();
 
 
                 List<Specialist> specialists = new List<Specialist>();
@@ -118,7 +112,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
         }
 
@@ -128,13 +122,13 @@ namespace DataAccessLayer
             try
             {
                 string sql = "INSERT INTO daily_feeding_schedule (Date, AnimalCode, EmployeeId) VALUES (@date, @code, @id);";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("code", animalCode);
                 cmd.Parameters.AddWithValue("id", GetSpecialisedEmployees(animalCode)[index].EmployeeId);
 
                 cmd.Parameters.AddWithValue("date", date);
 
-                conn.GetConnection().Open();
+                conn.Open();
 
                 int result = cmd.ExecuteNonQuery();
 
@@ -146,7 +140,7 @@ namespace DataAccessLayer
             }
             finally
             {
-                conn.GetConnection().Close();
+                conn.Close();
             }
             return 0;
         }
@@ -157,10 +151,10 @@ namespace DataAccessLayer
             try
             {
                 string sql = "SELECT COUNT(AnimalCode) from daily_feeding_schedule WHERE Date = @date AND AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("date", date);
                 cmd.Parameters.AddWithValue("code", animalCode);
-                conn.GetConnection().Open();
+                conn.Open();
 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
 
@@ -173,7 +167,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
             return 0;
         }
@@ -184,10 +178,10 @@ namespace DataAccessLayer
             try
             {
                 string sql = "SELECT EmployeeId, FirstName from daily_feeding_schedule fs  INNER JOIN Employee e ON fs.EmployeeId = e.ID WHERE Date = @date AND AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("date", date);
                 cmd.Parameters.AddWithValue("code", animalCode);
-                conn.GetConnection().Open();
+                conn.Open();
 
 
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -200,7 +194,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
             return null;
         }
@@ -212,13 +206,13 @@ namespace DataAccessLayer
             try
             {
                 string sql = "INSERT INTO daily_feeding_schedule (Date, AnimalCode, EmployeeId) VALUES (@date, @code, @id);";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("code", animalCode);
                 cmd.Parameters.AddWithValue("id", GetSpecialisedEmployees(animalCode)[index].EmployeeId);
 
                 cmd.Parameters.AddWithValue("date", date);
 
-                conn.GetConnection().Open();
+                conn.Open();
 
                 int result = cmd.ExecuteNonQuery();
 
@@ -230,7 +224,7 @@ namespace DataAccessLayer
             }
             finally
             {
-                conn.GetConnection().Close();
+                conn.Close();
             }
             return 0;
         }
@@ -242,7 +236,7 @@ namespace DataAccessLayer
 
             string selectQuery = "SELECT Picture, ap.AnimalCode, Name FROM animalpictures ap INNER JOIN feedingschedule fs ON ap.AnimalCode = fs.AnimalCode INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE FeedingTime = @time;";
 
-            command = new MySqlCommand(selectQuery, conn.GetConnection());
+            command = new MySqlCommand(selectQuery, conn);
 
             command.Parameters.AddWithValue("time", time);
 
@@ -289,9 +283,9 @@ namespace DataAccessLayer
             try
             {
                 string sql = "SELECT YearOfDeparture from animal WHERE AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("code", animalCode);
-                conn.GetConnection().Open();
+                conn.Open();
 
                 if (cmd.ExecuteScalar() != null)
                 {
@@ -303,7 +297,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.GetConnection().Close();
+                conn.Close();
             }
             return false;
         }

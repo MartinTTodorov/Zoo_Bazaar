@@ -1,8 +1,4 @@
-<<<<<<<< HEAD:ZooBazzar_03/DAL/EmployeeDB.cs
-﻿using Modules;
-========
 ﻿using Entities;
->>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/DataAccessLayer/EmployeeDB.cs
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -12,24 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Entities;
 
-<<<<<<<< HEAD:ZooBazzar_03/DAL/EmployeeDB.cs
-namespace DAL
-========
 namespace DataAccessLayer
->>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/DataAccessLayer/EmployeeDB.cs
 {
     public class EmployeeDB : ICRUD<Employee>
     {
-        private ConnectionDB conn;
+        private MySqlConnection conn;
 
         public EmployeeDB()
         {
-            conn = new ConnectionDB();
+            conn = ConnectionDB.GetConnection();
         }
         public void Add(int accountid,Employee obj)
         {
             string sql = "INSERT INTO employee (ID,FirstName,LastName,Address,Birthdate,Phone,Email,EmergencyContact,BSN,WorkPosition) VALUES (@ID,@FirstName,@LastName,@Address,@Birthdate,@Phone,@Email,@EmergencyContact,@BSN,@WorkPosition)";
-            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
 
             cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = accountid;
@@ -45,7 +37,7 @@ namespace DataAccessLayer
 
             try
             {
-                conn.GetConnection().Open();
+                conn.Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Employee added successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -56,7 +48,7 @@ namespace DataAccessLayer
             }
             finally
             {
-                conn.GetConnection().Close();
+                conn.Close();
             }
         }
 
@@ -68,14 +60,14 @@ namespace DataAccessLayer
         public void Delete(int id)
         {
             string sql = "DELETE FROM employee WHERE ID = @ID";
-            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
 
             try
             {
-                conn.GetConnection().Open();
+                conn.Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Employee deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -83,18 +75,18 @@ namespace DataAccessLayer
             {
                 MessageBox.Show($"Can't delete employee{id}! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally { conn.GetConnection().Close(); }
+            finally { conn.Close(); }
         }
 
         public List<Employee> Read()
         {
             string sql = "SELECT username,password,firstname,lastname,address,birthdate,email,phone,emergencycontact,bsn,workposition,id FROM employee INNER JOIN account ON employee.ID = account.AccountID";
             List<Employee> employees = new List<Employee>();
-            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             try
             {
-                conn.GetConnection().Open();
+                conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -128,7 +120,7 @@ namespace DataAccessLayer
             }
             finally
             {
-                conn.GetConnection().Close();
+                conn.Close();
             }
 
             return employees;
@@ -137,7 +129,7 @@ namespace DataAccessLayer
         public void Update(int id, Employee obj)
         {
             string sql = "UPDATE employee SET FirstName = @FirstName,LastName = @Lastname,Address = @Address,Birthdate = @Birthdate,Phone = @Phone,Email = @Email,EmergencyContact = @EmergencyContact,BSN = @BSN,WorkPosition = @WorkingPosition WHERE ID = @ID ";
-            MySqlCommand cmd = new MySqlCommand(sql, conn.GetConnection());
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = obj.Name;
             cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = obj.Lastname;
@@ -153,7 +145,7 @@ namespace DataAccessLayer
 
             try
             {
-                conn.GetConnection().Open();
+                conn.Open();
                 cmd.ExecuteNonQuery();
                 MessageBox.Show("Employee updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -164,7 +156,7 @@ namespace DataAccessLayer
             }
             finally
             {
-                conn.GetConnection().Close();
+                conn.Close();
             }
 
         }
