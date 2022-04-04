@@ -34,12 +34,6 @@
     <Compile Update="MainManu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Schedule\AnimalPicture.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Schedule\Date.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Schedule\Schedule.cs">
       <SubType>Form</SubType>
     </Compile>

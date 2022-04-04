@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
+<<<<<<<< HEAD:ZooBazzar_03/DAL/AnimalDB.cs
 using Modules;
 
 namespace DAL
+========
+using Entities;
+
+namespace DataAccessLayer
+>>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/DataAccessLayer/AnimalDB.cs
 {
     public class AnimalDB
     {

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using DataAccessLayer;
+using Entities;
+
 
 
 

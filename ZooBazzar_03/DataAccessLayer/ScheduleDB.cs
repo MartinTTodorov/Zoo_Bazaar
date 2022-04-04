@@ -5,12 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
-using System.Windows.Forms;
+using System.Windows;
 using System.IO;
 using System.Data;
+<<<<<<<< HEAD:ZooBazzar_03/DAL/ScheduleDB.cs
 using Modules;
 
 namespace DAL
+========
+using Entities;
+
+
+namespace DataAccessLayer
+>>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/DataAccessLayer/ScheduleDB.cs
 {
     public class ScheduleDB
     {
@@ -259,9 +266,9 @@ namespace DAL
 
                 if (IsAnimalHere(animalCode))
                 {
-                    AnimalPicture ap = new AnimalPicture(animalCode, form, date, currentDate);
-                    panelAnimals.Controls.Add(ap);
-                    ap.GetPicture(ms, name);
+                    //AnimalPicture ap = new AnimalPicture(animalCode, form, date, currentDate);
+                   // panelAnimals.Controls.Add(ap);
+                    //ap.GetPicture(ms, name);
                 }
 
 

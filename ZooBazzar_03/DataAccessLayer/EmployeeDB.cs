@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:ZooBazzar_03/DAL/EmployeeDB.cs
 ﻿using Modules;
+========
+﻿using Entities;
+>>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/DataAccessLayer/EmployeeDB.cs
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -6,8 +10,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities;
 
+<<<<<<<< HEAD:ZooBazzar_03/DAL/EmployeeDB.cs
 namespace DAL
+========
+namespace DataAccessLayer
+>>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/DataAccessLayer/EmployeeDB.cs
 {
     public class EmployeeDB : ICRUD<Employee>
     {

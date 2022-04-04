@@ -5,9 +5,15 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<<< HEAD:ZooBazzar_03/DAL/AccountManagerDB.cs
 using Modules;
 
 namespace DAL
+========
+using Entities;
+
+namespace DataAccessLayer
+>>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/DataAccessLayer/AccountManagerDB.cs
 {
     public class AccountManagerDB : ICRUD<Account>
     {

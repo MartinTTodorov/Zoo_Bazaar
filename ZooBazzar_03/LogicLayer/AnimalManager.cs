@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<<< HEAD:ZooBazzar_03/LL/AnimalManager.cs
 using Modules;
 using DAL;
 
 namespace LL
+========
+using DataAccessLayer;
+using Entities;
+
+namespace LogicLayer
+>>>>>>>> 1a8f676ad8d75ef9e26ffa274de82d0a6e9ab07d:ZooBazzar_03/LogicLayer/AnimalManager.cs
 {
     public class AnimalManager
     {

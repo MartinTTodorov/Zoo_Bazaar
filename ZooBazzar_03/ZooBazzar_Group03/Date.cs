@@ -6,9 +6,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Windows;
+using ZooBazzar_Group03;
 
-namespace ZooBazzar_Group03
+namespace Entities
 {
     public partial class Date : UserControl
     {

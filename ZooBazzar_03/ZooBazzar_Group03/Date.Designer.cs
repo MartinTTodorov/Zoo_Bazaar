@@ -1,4 +1,4 @@
-﻿namespace ZooBazzar_Group03
+﻿namespace Entities
 {
     partial class Date
     {
