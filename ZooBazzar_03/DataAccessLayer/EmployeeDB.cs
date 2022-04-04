@@ -1,12 +1,14 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Entities;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities;
 
-namespace ZooBazzar_Group03
+namespace DataAccessLayer
 {
     public class EmployeeDB : ICRUD<Employee>
     {

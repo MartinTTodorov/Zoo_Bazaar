@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Data;
+using Entities;
 
-namespace ZooBazzar_Group03
+namespace DataAccessLayer
 {
     public class AnimalDB
     {

@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer;
+using Entities;
 
-namespace ZooBazzar_Group03
+
+namespace LogicLayer
 {
     public class EmployeeManagment
     {

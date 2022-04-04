@@ -1,3 +1,5 @@
+using LogicLayer;
+using Entities;
 namespace ZooBazzar_Group03
 {
     public partial class LoginPage : Form

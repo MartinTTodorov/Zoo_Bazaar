@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccessLayer;
+using Entities;
 
-namespace ZooBazzar_Group03
+
+
+namespace LogicLayer
 {
     public class ScheduleManager
     {
@@ -18,13 +22,13 @@ namespace ZooBazzar_Group03
                 DateTime day = DateTime.Now;
 
                 day = day.AddDays(i + index);
-                Date uc = new Date();
+               // Date uc = new Date();
 
                 string date = $"{day.Day} {day.ToString("MMM")} {day.Year}";
                 string weekday = day.DayOfWeek.ToString();
-                uc.GetDate(weekday, date);
+               // uc.GetDate(weekday, date);
 
-                calendar.Controls.Add(uc);
+                //calendar.Controls.Add(uc);
 
             }
         }

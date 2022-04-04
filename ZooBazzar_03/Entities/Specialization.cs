@@ -1,5 +1,5 @@
 ﻿
-namespace ZooBazzar_Group03
+namespace Entities
 {
     public enum Specialization
     {

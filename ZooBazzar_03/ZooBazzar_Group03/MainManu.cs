@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZooBazzar_Group03.Employeee;
+using LogicLayer;
+using Entities;
 
 namespace ZooBazzar_Group03
 {
@@ -16,11 +18,9 @@ namespace ZooBazzar_Group03
         private Account currentAccount;
         private EmployeeManagment employeeManagment = new EmployeeManagment();
         private AccountManager accountManager = new AccountManager();
-        AnimalDB animalDB = new AnimalDB();
-        AnimalManager animalManager = new AnimalManager();
-        ScheduleManager sm = new ScheduleManager();
+        private AnimalManager animalManager = new AnimalManager();
+        private ScheduleManager sm = new ScheduleManager();
         
-        public EmployeeManagment EmployeeManagment { get { return employeeManagment; } }
         public MainManu(Account account)
         {
             InitializeComponent();
@@ -137,11 +137,20 @@ namespace ZooBazzar_Group03
         {
             flpAnimals.Controls.Clear();
             animalManager.UpdateLocalList();
-            for (int i = 0; i < animalManager.animals.Count; i++)
+            //for (int i = 0; i < animalManager.animals.Count; i++)
+            //{
+            //    if (animalManager.animals[i].ReasonForDeparture == String.Empty)
+            //    {
+            //        AnimalPic animalPic = new AnimalPic(animalManager.animals[i], this,accountManager.GetWorkPositionByAccount(currentAccount.Username));
+            //        flpAnimals.Controls.Add(animalPic);
+            //    }
+            //}
+
+            foreach (Animal animal in animalManager.animals)
             {
-                if (animalManager.animals[i].ReasonForDeparture == String.Empty)
+                if (animal.ReasonForDeparture==String.Empty)
                 {
-                    AnimalPic animalPic = new AnimalPic(animalManager.animals[i], this,accountManager.GetWorkPositionByAccount(currentAccount.Username));
+                    AnimalPic animalPic = new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username));
                     flpAnimals.Controls.Add(animalPic);
                 }
             }

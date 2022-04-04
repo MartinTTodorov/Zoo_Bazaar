@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
+using LogicLayer;
+using Entities;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03
 {

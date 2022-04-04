@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ZooBazzar_Group03.Properties;
+using LogicLayer;
+using Entities;
 
 namespace ZooBazzar_Group03.Employeee
 {

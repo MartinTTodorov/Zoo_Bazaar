@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
-using System.Windows.Forms;
+using System.Windows;
 using System.IO;
 using System.Data;
+using Entities;
 
-namespace ZooBazzar_Group03
+
+namespace DataAccessLayer
 {
     public class ScheduleDB
     {
@@ -260,9 +262,9 @@ namespace ZooBazzar_Group03
 
                 if (IsAnimalHere(animalCode))
                 {
-                    AnimalPicture ap = new AnimalPicture(animalCode, form, date, currentDate);
-                    panelAnimals.Controls.Add(ap);
-                    ap.GetPicture(ms, name);
+                    //AnimalPicture ap = new AnimalPicture(animalCode, form, date, currentDate);
+                   // panelAnimals.Controls.Add(ap);
+                    //ap.GetPicture(ms, name);
                 }
 
 

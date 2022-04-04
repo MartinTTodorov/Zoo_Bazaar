@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ZooBazzar_Group03
+namespace Entities
 {
-    public enum AnimalType
+    public enum Diet
     {
-        Mammal, Bird, Fish, Insect, Reptile, Amphibian
+        Omnivore, Carnivore, Herbivore
     }
 }

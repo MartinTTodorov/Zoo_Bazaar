@@ -5,8 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Entities;
 
-namespace ZooBazzar_Group03
+namespace DataAccessLayer
 {
     public class AccountManagerDB : ICRUD<Account>
     {

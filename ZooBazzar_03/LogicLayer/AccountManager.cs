@@ -1,6 +1,8 @@
-﻿
+﻿using DataAccessLayer;
+using Entities;
 
-namespace ZooBazzar_Group03
+
+namespace LogicLayer
 {
     public class AccountManager
     {
