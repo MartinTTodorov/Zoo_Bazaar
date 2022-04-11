@@ -17,6 +17,7 @@ namespace LogicLayer
 
         private List<Employee> employees = new List<Employee>();
         private EmployeeDB db = new EmployeeDB();
+
         public EmployeeManagment()
         {
             employees = db.Read();

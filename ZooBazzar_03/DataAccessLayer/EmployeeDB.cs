@@ -161,6 +161,61 @@ namespace DataAccessLayer
 
         }
 
-       
+        public Employee GetEmployee(int id)
+        {
+            string sqlStatement = "SELECT * FROM employee where id = @id";
+            MySqlCommand command = new MySqlCommand(sqlStatement, conn);
+            List<Employee> employees = new List<Employee>();
+
+            try
+            {
+                MySqlDataReader reader;
+
+                conn.Open();
+
+                command.Parameters.AddWithValue("@id", id);
+
+                reader = command.ExecuteReader();
+
+              
+
+                while (reader.Read())
+                {
+
+
+                    if (reader[10].ToString() == "Manager")
+                    {
+                        Manager manager = new Manager(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString());
+                        manager.Id = Convert.ToInt32(reader[11]);
+                        employees.Add(manager);
+                    }
+                    else if (reader[10].ToString() == "Resourceplanner")
+                    {
+                        ResourcePlanner resourcePlanner = new ResourcePlanner(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString());
+                        resourcePlanner.Id = Convert.ToInt32(reader[11]);
+                        employees.Add(resourcePlanner);
+                    }
+                    else
+                    {
+                        Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), reader[10].ToString(), true);
+                        Caretaker caretaker = new Caretaker(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), specialization);
+                        caretaker.Id = Convert.ToInt32(reader[11]);
+                        employees.Add((caretaker));
+                    }
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return null;
+        }
+
+
     }
 }
