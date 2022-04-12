@@ -18,20 +18,20 @@ namespace LogicLayer
         public ContractManager()
         {
             cd = new ContractDB();
-            contracts = new List<EmployeeContract>();
+            contracts = cd.GetContracts();
             this.contractDataManagement = cd;
-
         }
 
 
         public void AddContract(EmployeeContract ec)
         {
+            cd.AddContract(ec);
             contracts.Add(ec);
         }
 
         public void DisableContract(EmployeeContract ec)
         {
-            ec.IsValid = false;
+            cd.DisableContract(ec);
         }
 
         public List<EmployeeContract> GetContracts()
