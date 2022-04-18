@@ -22,109 +22,18 @@ namespace DataAccessLayer
             conn = ConnectionDB.GetConnection();
         }
 
-        public string GetSpecies(string animalCode)
+       
+      
+
+        public int Insert(string cageNumber, string date, int index)
         {
 
             try
             {
-                string sql = "SELECT Species from animal WHERE AnimalCode = @code";
+                string sql = "INSERT INTO daily_feeding_schedule (Date, CageNumber, EmployeeId) VALUES (@date, @cage, @id);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("code", animalCode);
-                conn.Open();
-
-                Object species = cmd.ExecuteScalar();
-
-                return species.ToString();
-            }
-            finally
-            {
-
-                conn.Close();
-            }
-        }
-
-        public string GetAnimalType(string animalCode)
-        {
-
-            try
-            {
-                string sql = "SELECT AnimalType from animal WHERE AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("code", animalCode);
-                conn.Open();
-
-                Object type = cmd.ExecuteScalar();
-
-                return type.ToString();
-            }
-            finally
-            {
-
-                conn.Close();
-            }
-        }
-
-
-        public string GetSpecialisation(string animalCode)
-        {
-
-            try
-            {
-                string sql = "SELECT Specialist from feedingschedule WHERE AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("code", animalCode);
-                conn.Open();
-
-                Object type = cmd.ExecuteScalar();
-
-                return type.ToString();
-            }
-            finally
-            {
-
-                conn.Close();
-            }
-        }
-
-        public List<Specialist> GetSpecialisedEmployees(string animalCode)
-        {
-
-            try
-            {
-                string sql = "SELECT ID, FirstName from Employee WHERE WorkPosition = @spec";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("spec", GetSpecialisation(animalCode));
-                conn.Open();
-
-
-                List<Specialist> specialists = new List<Specialist>();
-
-                MySqlDataReader reader = cmd.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    specialists.Add(new Specialist(Convert.ToInt32(reader["ID"]), reader["FirstName"].ToString()));
-                }
-
-
-                return specialists;
-            }
-            finally
-            {
-
-                conn.Close();
-            }
-        }
-
-        public int Insert(string animalCode, string date, int index)
-        {
-
-            try
-            {
-                string sql = "INSERT INTO daily_feeding_schedule (Date, AnimalCode, EmployeeId) VALUES (@date, @code, @id);";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("code", animalCode);
-                cmd.Parameters.AddWithValue("id", GetSpecialisedEmployees(animalCode)[index].EmployeeId);
+                cmd.Parameters.AddWithValue("cage", cageNumber);
+                //cmd.Parameters.AddWithValue("id", );
 
                 cmd.Parameters.AddWithValue("date", date);
 
@@ -145,70 +54,47 @@ namespace DataAccessLayer
             return 0;
         }
 
-        public int IsAnimalFed(string date, string animalCode)
+        public List<DailySchedule> GetSchedules(string date)
         {
-
             try
             {
-                string sql = "SELECT COUNT(AnimalCode) from daily_feeding_schedule WHERE Date = @date AND AnimalCode = @code";
+                string sql = "SELECT * from daily_feeding_schedule WHERE Date = @date";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
+
                 cmd.Parameters.AddWithValue("date", date);
-                cmd.Parameters.AddWithValue("code", animalCode);
+
                 conn.Open();
-
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                if (count > 0)
-                {
-                    return count;
-                }
-
-            }
-            finally
-            {
-
-                conn.Close();
-            }
-            return 0;
-        }
-
-        public Specialist AssignedSpecialist(string date, string animalCode)
-        {
-
-            try
-            {
-                string sql = "SELECT EmployeeId, FirstName from daily_feeding_schedule fs  INNER JOIN Employee e ON fs.EmployeeId = e.ID WHERE Date = @date AND AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("date", date);
-                cmd.Parameters.AddWithValue("code", animalCode);
-                conn.Open();
-
 
                 MySqlDataReader reader = cmd.ExecuteReader();
 
+                List<DailySchedule> list = new List<DailySchedule>();
+
+
                 while (reader.Read())
                 {
-                    return new Specialist(Convert.ToInt32(reader["EmployeeId"]), reader["FirstName"].ToString());
+                    list.Add(new DailySchedule(Convert.ToInt32(reader["CageNumber"]), reader["Date"].ToString(), Convert.ToInt32(reader["EmployeeId"])));
                 }
-            }
-            finally
-            {
 
+                return list;
+            }
+            finally 
+            {
                 conn.Close();
             }
-            return null;
+            
         }
 
 
-        public int EditSpecialist(string animalCode, string date, int index)
+
+        public int EditSpecialist(int cageNr, string date, int index)
         {
 
             try
             {
-                string sql = "INSERT INTO daily_feeding_schedule (Date, AnimalCode, EmployeeId) VALUES (@date, @code, @id);";
+                string sql = "INSERT INTO daily_feeding_schedule (Date, CageNumber, EmployeeId) VALUES (@date, @code, @id);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("code", animalCode);
-                cmd.Parameters.AddWithValue("id", GetSpecialisedEmployees(animalCode)[index].EmployeeId);
+                cmd.Parameters.AddWithValue("code", cageNr);
+                //cmd.Parameters.AddWithValue("id", GetSpecialisedEmployees(animalCode)[index].EmployeeId);
 
                 cmd.Parameters.AddWithValue("date", date);
 
@@ -229,12 +115,12 @@ namespace DataAccessLayer
             return 0;
         }
 
-        public DataTable GetAnimals(string time, Panel panelAnimals, Form form, string date, DateTime currentDate)
+        public DataTable GetAnimals(string time)
         {
             MySqlCommand command;
             MySqlDataAdapter da;
 
-            string selectQuery = "SELECT Picture, ap.AnimalCode, Name FROM animalpictures ap INNER JOIN feedingschedule fs ON ap.AnimalCode = fs.AnimalCode INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE FeedingTime = @time;";
+            string selectQuery = "SELECT Picture, a.CageNumber FROM animalpictures ap INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE FeedingTime = @time GROUP BY a.CageNumber;";
 
             command = new MySqlCommand(selectQuery, conn);
 
@@ -242,65 +128,21 @@ namespace DataAccessLayer
 
             da = new MySqlDataAdapter(command);
 
-
-            DataTable table = new DataTable();
-            da.Fill(table);
-
-            panelAnimals.Controls.Clear();
-
-            for (int i = 0; i < table.Rows.Count; i++)
-            {
-                byte[] img = (byte[])table.Rows[i][0];
-
-                MemoryStream ms = new MemoryStream(img);
-
-                string name = table.Rows[i][2].ToString();
-
-                string animalCode = table.Rows[i][1].ToString();
-
-                if (IsAnimalHere(animalCode))
-                {
-                    //AnimalPicture ap = new AnimalPicture(animalCode, form, date, currentDate);
-                   // panelAnimals.Controls.Add(ap);
-                    //ap.GetPicture(ms, name);
-                }
-
-
-
-
-            }
-
-
-            da.Dispose();
-
-            return table;
-        }
-
-        public bool IsAnimalHere(string animalCode)
-        {
-
-
             try
             {
-                string sql = "SELECT YearOfDeparture from animal WHERE AnimalCode = @code";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("code", animalCode);
-                conn.Open();
+                DataTable table = new DataTable();
+                da.Fill(table);
 
-                if (cmd.ExecuteScalar() != null)
-                {
-                    return true;
-                }
-
-                return true;
+                return table;
             }
-            finally
+            finally 
             {
-
+                da.Dispose();
                 conn.Close();
+
             }
-            return false;
         }
+
 
     }
 }

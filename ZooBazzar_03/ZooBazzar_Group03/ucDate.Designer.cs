@@ -1,6 +1,6 @@
 ﻿namespace Entities
 {
-    partial class Date
+    partial class ucDate
     {
         /// <summary> 
         /// Required designer variable.

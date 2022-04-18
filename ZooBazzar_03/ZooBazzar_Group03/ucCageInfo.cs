@@ -7,34 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using MySql.Data;
-using MySql.Data.MySqlClient;
-using DataAccessLayer;
-using Entities;
 using LogicLayer;
-
-
+using Entities;
 
 
 namespace ZooBazzar_Group03
 {
-    public partial class AnimalPicture : UserControl
+    public partial class ucCageInfo : UserControl
     {
-        public AnimalPicture()
+        public ucCageInfo(int cage, string date, DateTime currentDate)
         {
-            InitializeComponent();
-
-        }
-
-        private Schedule schedule = null;
-        public AnimalPicture(int cage, Form callingForm, string date, DateTime currentDate)
-        {
-            schedule = callingForm as Schedule;
             InitializeComponent();
             this.cageNr = cage;
             this.date = date;
             this.currentDate = currentDate;
+        }
+
+        private Schedule schedule = null;
+        private void ucCageInfo_Load(object sender, EventArgs e)
+        {
+
         }
 
         ScheduleManager sm = new ScheduleManager();
@@ -47,12 +39,11 @@ namespace ZooBazzar_Group03
 
         DateTime currentDate;
 
-
-        private void pbAnimal_Click(object sender, EventArgs e)
+        private void ucCageInfo_Click(object sender, EventArgs e)
         {
             Cage cage = cm.GetCageByCageNr(cageNr);
 
-            
+
             schedule.lblAnimalType.Text = cage.Type.ToString();
             schedule.lblSpecies.Text = cage.Species.ToString();
             schedule.lblCageNumber.Text = cage.ToString();
@@ -77,7 +68,7 @@ namespace ZooBazzar_Group03
                 {
                     schedule.cmbEmployees.Items.Clear();
 
-                    
+
 
                     schedule.cmbEmployees.Text = $"Employee: {em.GetCaretakerById(caretakerId).Name} (ID: {caretakerId})";
                     foreach (Caretaker s in sm.GetCaretakers(cageNr))
@@ -103,14 +94,8 @@ namespace ZooBazzar_Group03
                 }
             }
 
-        }
 
-        public void GetPicture(MemoryStream ms, int cage)
-        {
-            pbAnimal.Image = Image.FromStream(ms);
-            lblName.Text = cage.ToString();
         }
-
 
     }
 }

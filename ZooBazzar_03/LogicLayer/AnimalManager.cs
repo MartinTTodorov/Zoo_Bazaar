@@ -10,8 +10,10 @@ namespace LogicLayer
 {
     public class AnimalManager
     {
-        public List<Animal> animals;
+        private List<Animal> animals;
         AnimalDB animalDB = new AnimalDB();
+
+        public List<Animal> Animals { get { return animals; } } 
 
         public AnimalManager()
         {

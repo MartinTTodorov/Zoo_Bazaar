@@ -22,6 +22,11 @@ namespace LogicLayer
             employees = db.Read();
         }
 
+        public Caretaker GetCaretakerById(int id)
+        {
+            return AllCaretakers().Find(c => c.Id == id);
+        }
+
         
         public bool AddEmployee(int accountid,Employee employee)
         {
