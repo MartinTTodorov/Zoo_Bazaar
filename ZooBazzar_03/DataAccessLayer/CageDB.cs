@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
-using System.Data;
 using Entities;
 
 namespace DataAccessLayer
@@ -26,10 +25,12 @@ namespace DataAccessLayer
             {
                 string sql = "SELECT * from cage";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
+
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    //Error Two SQL Statments
                     cages.Add(new Cage(Convert.ToInt32(reader["CageNumber"]), Convert.ToInt32(reader["Capacity"]), Convert.ToInt32(reader["AnimalsOutside"]), Convert.ToInt32(reader["AnimalsInside"]), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), GetAnimalsInCage(Convert.ToInt32(reader["CageNumber"])), reader["Species"].ToString()));
                 }
             }
@@ -57,7 +58,8 @@ namespace DataAccessLayer
                 string sql = "Select AnimalCode, CageNumber, Diet, AnimalType, Species, WeeklyFeedigIteration, timeSlot FROM animals a INNER JOIN feedingTime ft ON a.AnimalCode = ft.AnimalCode WHERE CageNumber=@cageNumber";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@CageNumber", cageNumber);
-                conn.Open();
+
+               // conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -75,7 +77,7 @@ namespace DataAccessLayer
             finally
             {
 
-                conn.Close();
+               //conn.Close();
             }
             return cageAnimals;
 
