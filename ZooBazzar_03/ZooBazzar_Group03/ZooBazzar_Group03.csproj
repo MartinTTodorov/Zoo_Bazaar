@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Animal\**" />
+    <EmbeddedResource Remove="Animal\**" />
+    <None Remove="Animal\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.28" />
     <PackageReference Include="Renci.SshNet.Async" Version="1.4.0" />
   </ItemGroup>
@@ -43,10 +49,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Animal\" />
   </ItemGroup>
 
 </Project>
