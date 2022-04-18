@@ -54,7 +54,7 @@ namespace ZooBazzar_Group03
 
                 if (time == "12:00 - 14:00")
                 {
-                    GetCages("noon");
+                    GetCages("afternoon");
                 }
 
                 if (time == "20:00 - 22:00")
@@ -86,8 +86,8 @@ namespace ZooBazzar_Group03
 
         //        //if (!sm.EmptyCage(cage))
         //        //{
-        //            ucCageInfo ci = new ucCageInfo(cage, date, currentDate);
-        //            panelAnimals.Controls.Add(ci);
+        //        ucCageInfo ci = new ucCageInfo(cage, date, currentDate);
+        //        panelAnimals.Controls.Add(ci);
         //        //}
         //    }
         //}
@@ -101,7 +101,7 @@ namespace ZooBazzar_Group03
 
             for (int i = 0; i < cages.Count; i++)
             {
-                ucCageInfo ci = new ucCageInfo(cages[i].CageNumber, date, currentDate);
+                ucCageInfo ci = new ucCageInfo(cages[i].CageNumber, date, currentDate, this);
                 panelAnimals.Controls.Add(ci);
             }
         }

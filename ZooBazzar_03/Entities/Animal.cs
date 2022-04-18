@@ -65,14 +65,14 @@ namespace Entities
             this.feedingTime = feedingTime;
         }
 
-        public Animal(string animalCode,int cageNumber,  Diet diet, AnimalType type, string specie, List<string> feedingTimes, int weeklyFeedingIteration)
+        public Animal(string animalCode, int cageNumber, Diet diet, AnimalType type, string specie)//, List<string> feedingTimes)//, int weeklyFeedingIteration)
         {
             this.cageNumber = cageNumber;
             this.diet = diet;
             this.type = type;
             this.specie = specie;
             this.animalCode = animalCode;
-            this.WeeklyFeedingIteration = weeklyFeedingIteration;
+            //this.WeeklyFeedingIteration = weeklyFeedingIteration;
         }
 
         public string GetInfo()

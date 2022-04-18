@@ -10,11 +10,10 @@ namespace LogicLayer
 {
     public class ScheduleManager
     {
-        AnimalManager am = new AnimalManager();
         EmployeeManagment em = new EmployeeManagment();
         CageManager cm = new CageManager();
         ScheduleDB sdb = new ScheduleDB();
-        CageDB cdbm = new CageDB();
+
 
         public bool EmptyCage(int cageNumber)
         {
@@ -73,6 +72,11 @@ namespace LogicLayer
             }
         }
 
+        public void Insert(int cageNumber, string date, int index)
+        {
+            
+            //sdb.Insert()
+        }
 
         public bool CheckDate(DateTime date)
         {
@@ -85,7 +89,7 @@ namespace LogicLayer
 
         public List<Cage> GetCages(string feedingTime)
         {
-            List<Cage> allCages = cdbm.GetCages();
+            List<Cage> allCages = cm.Cages;
 
             return allCages.FindAll(x => x.CageAnimals.Any(x => x.FeedingTimes.Any(x => x == feedingTime)));
         }

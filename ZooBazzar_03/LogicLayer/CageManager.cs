@@ -18,6 +18,7 @@ namespace LogicLayer
         public CageManager()
         {
             cages = db.GetCages();
+            InsertAnimalsInCage();
             
         }
 
@@ -34,6 +35,30 @@ namespace LogicLayer
         {
             return cages.Find(x => x.CageNumber == cageNr);
         }
+
+        public void InsertAnimalsInCage()
+        {
+            //foreach (Cage c in Cages)
+            //{
+            //    c.CageAnimals = db.GetAnimalsInCage(c.CageNumber);
+            //    foreach (Animal a in c.CageAnimals)
+            //    {
+            //        a.FeedingTimes = db.GetFeedingTimes(a.AnimalCode);
+            //    }
+            //}
+
+            for (int i = 0; i < cages.Count; i++)
+            {
+                cages[i].CageAnimals = db.GetAnimalsInCage(cages[i].CageNumber);
+                for (int j = 0; j < cages[i].CageAnimals.Count; j++)
+                {
+                    cages[i].CageAnimals[j].FeedingTimes = db.GetFeedingTimes(cages[i].CageAnimals[j].AnimalCode);
+                }
+            }
+
+
+        }
+
 
         //public bool AddAnimalInCage(Animal animal, Cage cage)
         //{

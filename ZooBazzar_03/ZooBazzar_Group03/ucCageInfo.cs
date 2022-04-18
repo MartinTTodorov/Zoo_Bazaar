@@ -15,23 +15,28 @@ namespace ZooBazzar_Group03
 {
     public partial class ucCageInfo : UserControl
     {
-        public ucCageInfo(int cage, string date, DateTime currentDate)
+
+        private Schedule schedule;
+        public ucCageInfo(int cage, string date, DateTime currentDate, Schedule schedule)
         {
             InitializeComponent();
             this.cageNr = cage;
             this.date = date;
             this.currentDate = currentDate;
+            this.schedule = schedule;
         }
 
-        private Schedule schedule = null;
+
         private void ucCageInfo_Load(object sender, EventArgs e)
         {
-
+            lblCageNr.Text = cageNr.ToString();
+            lblSpecies.Text = cm.GetCageByCageNr(cageNr).Species;
         }
 
         ScheduleManager sm = new ScheduleManager();
         EmployeeManagment em = new EmployeeManagment();
         CageManager cm = new CageManager();
+        
 
         int cageNr;
 
@@ -41,9 +46,9 @@ namespace ZooBazzar_Group03
 
         private void ucCageInfo_Click(object sender, EventArgs e)
         {
+
+
             Cage cage = cm.GetCageByCageNr(cageNr);
-
-
             schedule.lblAnimalType.Text = cage.Type.ToString();
             schedule.lblSpecies.Text = cage.Species.ToString();
             schedule.lblCageNumber.Text = cage.ToString();

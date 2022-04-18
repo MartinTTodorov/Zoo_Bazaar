@@ -13,6 +13,7 @@ namespace DataAccessLayer
     {
         private MySqlConnection conn;
 
+
         public CageDB()
         {
             conn = ConnectionDB.GetConnection();
@@ -31,7 +32,7 @@ namespace DataAccessLayer
                 while (reader.Read())
                 {
                     //Error Two SQL Statments
-                    cages.Add(new Cage(Convert.ToInt32(reader["CageNumber"]), Convert.ToInt32(reader["Capacity"]), Convert.ToInt32(reader["AnimalsOutside"]), Convert.ToInt32(reader["AnimalsInside"]), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), GetAnimalsInCage(Convert.ToInt32(reader["CageNumber"])), reader["Species"].ToString()));
+                    cages.Add(new Cage(Convert.ToInt32(reader["CageNumber"]), Convert.ToInt32(reader["Capacity"]), Convert.ToInt32(reader["AnimalsOutside"]), Convert.ToInt32(reader["AnimalsInside"]), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Species"].ToString()));
                 }
             }
             catch (MySqlException ex)
@@ -50,20 +51,20 @@ namespace DataAccessLayer
             return cages;
         }
 
-        private List<Animal> GetAnimalsInCage(int cageNumber)
+        public List<Animal> GetAnimalsInCage(int cageNumber)
         {
             List<Animal> cageAnimals = new List<Animal>();
             try
             {
-                string sql = "Select AnimalCode, CageNumber, Diet, AnimalType, Species, WeeklyFeedigIteration, timeSlot FROM animals a INNER JOIN feedingTime ft ON a.AnimalCode = ft.AnimalCode WHERE CageNumber=@cageNumber";
+                string sql = "Select a.AnimalCode, CageNumber, Diet, AnimalType, Species, timeSlot FROM animal a INNER JOIN feedingTime ft ON a.AnimalCode = ft.AnimalCode WHERE CageNumber=@cageNumber";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@CageNumber", cageNumber);
 
-               // conn.Open();
+                conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    cageAnimals.Add(new Animal(Convert.ToString(reader["AnimalCode"]), Convert.ToInt32(reader["CageNumber"]), (Diet)Enum.Parse(typeof(Diet), reader["Diet"].ToString()), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Species"].ToString(), GetFeedingTimes(reader["AnimalCode"].ToString()), Convert.ToInt32(reader["weeklyFeedingIteration"])));
+                    cageAnimals.Add(new Animal(Convert.ToString(reader["AnimalCode"]), Convert.ToInt32(reader["CageNumber"]), (Diet)Enum.Parse(typeof(Diet), reader["Diet"].ToString()), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Species"].ToString()));//, GetFeedingTimes(reader["AnimalCode"].ToString())));//, Convert.ToInt32(reader["weeklyFeedingIteration"])));
                 }
             }
             catch (MySqlException ex)
@@ -77,26 +78,26 @@ namespace DataAccessLayer
             finally
             {
 
-               //conn.Close();
+               conn.Close();
             }
             return cageAnimals;
 
         }
 
 
-        private List<string> GetFeedingTimes(string animalCode)
+        public List<string> GetFeedingTimes(string animalCode)
         {
             List<string> feedingTimes = new List<string>();
             try
             {
-                string sql = "Select timeSlot FROM feedingTime WHERE AnimalCide = @code";
+                string sql = "Select timeSlot FROM feedingTime WHERE AnimalCode = @code";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@code", animalCode);
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    feedingTimes.Add(reader["animalSlot"].ToString());
+                    feedingTimes.Add(reader["timeSlot"].ToString());
                 }
             }
             catch (MySqlException ex)
