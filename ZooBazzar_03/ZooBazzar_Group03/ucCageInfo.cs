@@ -17,26 +17,22 @@ namespace ZooBazzar_Group03
     {
 
         private Schedule schedule;
-        public ucCageInfo(int cage, string date, DateTime currentDate, Schedule schedule)
+        public ucCageInfo(int cageNr, string date, DateTime currentDate, Schedule schedule)
         {
             InitializeComponent();
-            this.cageNr = cage;
+            this.cageNr = cageNr;
             this.date = date;
             this.currentDate = currentDate;
             this.schedule = schedule;
+            sm = new ScheduleManager(date);
         }
 
 
-        private void ucCageInfo_Load(object sender, EventArgs e)
-        {
-            lblCageNr.Text = cageNr.ToString();
-            lblSpecies.Text = cm.GetCageByCageNr(cageNr).Species;
-        }
 
-        ScheduleManager sm = new ScheduleManager();
+        ScheduleManager sm;
         EmployeeManagment em = new EmployeeManagment();
         CageManager cm = new CageManager();
-        
+
 
         int cageNr;
 
@@ -46,14 +42,12 @@ namespace ZooBazzar_Group03
 
         private void ucCageInfo_Click(object sender, EventArgs e)
         {
-
-
             Cage cage = cm.GetCageByCageNr(cageNr);
             schedule.lblAnimalType.Text = cage.Type.ToString();
             schedule.lblSpecies.Text = cage.Species.ToString();
-            schedule.lblCageNumber.Text = cage.ToString();
+            schedule.lblCageNumber.Text = cage.CageNumber.ToString();
 
-            int caretakerId = sm.AssignedCaretaker(date, cageNr);
+            int caretakerId = sm.AssignedCaretaker(cageNr);
 
             if (sm.CheckDate(currentDate))
             {
@@ -64,7 +58,7 @@ namespace ZooBazzar_Group03
 
                     foreach (Caretaker s in sm.GetCaretakers(cageNr))
                     {
-                        schedule.cmbEmployees.Items.Add($"Employee: {s.Name} (ID: {s.Id})");
+                        schedule.cmbEmployees.Items.Add(s);
                     }
                     schedule.btnAssign.Enabled = true;
                     schedule.btnEditEmployee.Enabled = false;
@@ -73,12 +67,10 @@ namespace ZooBazzar_Group03
                 {
                     schedule.cmbEmployees.Items.Clear();
 
-
-
-                    schedule.cmbEmployees.Text = $"Employee: {em.GetCaretakerById(caretakerId).Name} (ID: {caretakerId})";
+                    schedule.cmbEmployees.Text = em.GetCaretakerById(caretakerId).ToString();
                     foreach (Caretaker s in sm.GetCaretakers(cageNr))
                     {
-                        schedule.cmbEmployees.Items.Add($"Employee: {s.Name} (ID: {s.Id})");
+                        schedule.cmbEmployees.Items.Add(s);
                     }
                     schedule.btnAssign.Enabled = false;
                     schedule.btnEditEmployee.Enabled = true;
@@ -91,7 +83,7 @@ namespace ZooBazzar_Group03
 
                 if (caretakerId != 0)
                 {
-                    schedule.cmbEmployees.Text = $"Employee: {em.GetCaretakerById(caretakerId).Name} (ID: {caretakerId})";
+                    schedule.cmbEmployees.Text = em.GetCaretakerById(caretakerId).ToString();
                 }
                 else
                 {
@@ -102,5 +94,10 @@ namespace ZooBazzar_Group03
 
         }
 
+        private void ucCageInfo_Load_1(object sender, EventArgs e)
+        {
+            lblCageNr.Text = cageNr.ToString();
+            lblSpecies.Text = cm.GetCageByCageNr(cageNr).Species;
+        }
     }
 }

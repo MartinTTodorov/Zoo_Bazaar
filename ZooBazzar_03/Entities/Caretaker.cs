@@ -30,6 +30,9 @@ namespace Entities
         {
             return $"{this.specialization}: {base.ToString()}";
         }
+
+
+
         public override string GetWorkingPosition()
         {
             return $"{this.specialization}";

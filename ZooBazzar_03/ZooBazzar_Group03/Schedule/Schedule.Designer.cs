@@ -68,7 +68,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(593, 148);
+            this.label7.Location = new System.Drawing.Point(578, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 28);
             this.label7.TabIndex = 13;
@@ -78,9 +78,9 @@
             // 
             this.cmbEmployees.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.cmbEmployees.FormattingEnabled = true;
-            this.cmbEmployees.Location = new System.Drawing.Point(593, 190);
+            this.cmbEmployees.Location = new System.Drawing.Point(578, 190);
             this.cmbEmployees.Name = "cmbEmployees";
-            this.cmbEmployees.Size = new System.Drawing.Size(217, 28);
+            this.cmbEmployees.Size = new System.Drawing.Size(275, 28);
             this.cmbEmployees.TabIndex = 12;
             // 
             // label8

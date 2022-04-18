@@ -14,22 +14,14 @@ namespace LogicLayer
         CageManager cm = new CageManager();
         ScheduleDB sdb = new ScheduleDB();
 
+        List<DailySchedule> dailySchedules = new List<DailySchedule>();
 
-        public bool EmptyCage(int cageNumber)
+        public ScheduleManager(string date)
         {
-            if (cm.Cages.Find(x => x.CageNumber == cageNumber) != null)
-            {
-                if (cm.Cages.Find(x => x.CageNumber == cageNumber).CageAnimals.Count > 0)
-                {
-
-                }
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            dailySchedules = sdb.GetSchedules(date);
         }
+
+
 
         public List<Caretaker> GetCaretakers(int cageNumber)
         {
@@ -60,11 +52,11 @@ namespace LogicLayer
             }
         }
 
-        public int AssignedCaretaker(string date, int cage)
+        public int AssignedCaretaker(int cage)
         {
-            if (sdb.GetSchedules(date).Find(x => x.CageNumber == cage) != null)
+            if (dailySchedules.Find(x => x.CageNumber == cage) != null)
             {
-                return sdb.GetSchedules(date).Find(x => x.CageNumber == cage).EmployeeId;
+                return dailySchedules.Find(x => x.CageNumber == cage).EmployeeId;
             }
             else
             {
@@ -72,10 +64,20 @@ namespace LogicLayer
             }
         }
 
-        public void Insert(int cageNumber, string date, int index)
+        public int Insert(DailySchedule ds)
         {
-            
-            //sdb.Insert()
+            dailySchedules.Add(ds);
+            return sdb.Insert(ds);
+        }
+
+        public int Update(DailySchedule ds)
+        {
+            int index = dailySchedules.FindIndex(x => x.Date == ds.Date && x.CageNumber == ds.CageNumber);
+
+            dailySchedules[index] = ds;
+
+            return sdb.EditSpecialist(ds);
+
         }
 
         public bool CheckDate(DateTime date)

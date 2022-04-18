@@ -25,17 +25,16 @@ namespace DataAccessLayer
        
       
 
-        public int Insert(string cageNumber, string date, int index)
+        public int Insert(DailySchedule ds)
         {
-
             try
             {
                 string sql = "INSERT INTO daily_feeding_schedule (Date, CageNumber, EmployeeId) VALUES (@date, @cage, @id);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("cage", cageNumber);
-                //cmd.Parameters.AddWithValue("id", );
+                cmd.Parameters.AddWithValue("cage", ds.CageNumber);
+                cmd.Parameters.AddWithValue("id", ds.EmployeeId);
 
-                cmd.Parameters.AddWithValue("date", date);
+                cmd.Parameters.AddWithValue("date", ds.Date);
 
                 conn.Open();
 
@@ -86,17 +85,15 @@ namespace DataAccessLayer
 
 
 
-        public int EditSpecialist(int cageNr, string date, int index)
+        public int EditSpecialist(DailySchedule ds)
         {
 
             try
             {
-                string sql = "INSERT INTO daily_feeding_schedule (Date, CageNumber, EmployeeId) VALUES (@date, @code, @id);";
+                string sql = "UPDATE daily_feeding_schedule SET EmployeeId = @id;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("code", cageNr);
-                //cmd.Parameters.AddWithValue("id", GetSpecialisedEmployees(animalCode)[index].EmployeeId);
+                cmd.Parameters.AddWithValue("id", ds.EmployeeId);
 
-                cmd.Parameters.AddWithValue("date", date);
 
                 conn.Open();
 

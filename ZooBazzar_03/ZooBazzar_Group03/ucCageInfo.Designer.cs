@@ -81,7 +81,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ucCageInfo";
             this.Size = new System.Drawing.Size(160, 118);
-            this.Load += new System.EventHandler(this.ucCageInfo_Load);
+            this.Load += new System.EventHandler(this.ucCageInfo_Load_1);
             this.Click += new System.EventHandler(this.ucCageInfo_Click);
             this.ResumeLayout(false);
             this.PerformLayout();

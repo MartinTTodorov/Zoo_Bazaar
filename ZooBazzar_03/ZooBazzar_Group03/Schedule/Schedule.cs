@@ -23,11 +23,11 @@ namespace ZooBazzar_Group03
             InitializeComponent();
             this.date = date;
             this.currentDate = DateTime.ParseExact(date, "dd MMM yyyy", null);
+            sm = new ScheduleManager(date);
         }
         string date;
 
-        ScheduleDB db = new ScheduleDB();
-        ScheduleManager sm = new ScheduleManager(); 
+        ScheduleManager sm; 
 
 
         DateTime currentDate;
@@ -64,33 +64,11 @@ namespace ZooBazzar_Group03
 
                 lblAnimalType.Text = "";
                 lblSpecies.Text = "";
+                lblCageNumber.Text = "";
                 cmbEmployees.Items.Clear();
             }
         }
 
-
-        //private void GetAnimals(string time)
-        //{
-        //    panelAnimals.Controls.Clear();
-
-        //    DataTable table = db.GetAnimals(time);
-
-        //    for (int i = 0; i < table.Rows.Count; i++)
-        //    {
-        //        byte[] img = (byte[])table.Rows[i][0];
-
-        //        MemoryStream ms = new MemoryStream(img);
-
-
-        //        int cage = Convert.ToInt32(table.Rows[i][1]);
-
-        //        //if (!sm.EmptyCage(cage))
-        //        //{
-        //        ucCageInfo ci = new ucCageInfo(cage, date, currentDate);
-        //        panelAnimals.Controls.Add(ci);
-        //        //}
-        //    }
-        //}
 
 
         private void GetCages(string time)
@@ -112,7 +90,9 @@ namespace ZooBazzar_Group03
         {
             if (cmbEmployees.SelectedIndex > -1)
             {
-                if (db.Insert(lblCageNumber.Text, date, cmbEmployees.SelectedIndex) > 0)
+                Caretaker caretaker = (Caretaker)cmbEmployees.SelectedItem;
+
+                if (sm.Insert(new DailySchedule(Convert.ToInt32(lblCageNumber.Text), date, caretaker.Id)) > 0)
                 {
                     MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully assign a caretaker to the animal");
                     btnAssign.Enabled = false;
@@ -131,7 +111,9 @@ namespace ZooBazzar_Group03
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
         {
-            if (db.EditSpecialist(Convert.ToInt32(lblCageNumber.Text), date, cmbEmployees.SelectedIndex) > 0)
+            Caretaker caretaker = (Caretaker)cmbEmployees.SelectedItem;
+
+            if (sm.Update(new DailySchedule(Convert.ToInt32(lblCageNumber.Text), date, caretaker.Id)) > 0)
             {
                 MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully edit the assigned caretaker to the animal");
             }
