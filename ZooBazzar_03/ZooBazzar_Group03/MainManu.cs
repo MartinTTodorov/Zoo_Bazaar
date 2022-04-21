@@ -20,6 +20,7 @@ namespace ZooBazzar_Group03
         private AccountManager accountManager = new AccountManager();
         private AnimalManager animalManager = new AnimalManager();
         private ScheduleManager sm = new ScheduleManager();
+        private ContractManager cm = new ContractManager();
         
         public MainManu(Account account)
         {
@@ -174,7 +175,7 @@ namespace ZooBazzar_Group03
             lbEmployees.Items.Clear();
             foreach (Employee employee in employeeManagment.GetEmployees())
             {
-                lbEmployees.Items.Add(employee.ToString());
+                lbEmployees.Items.Add(employee);
             }
         }
 
@@ -226,5 +227,19 @@ namespace ZooBazzar_Group03
             }
         }
 
+        private void lbEmployees_DoubleClick(object sender, EventArgs e)
+        {
+            //Employee employee = (Employee)lbEmployees.SelectedItem;
+            //foreach (EmployeeContract ec in cm.GetContracts(employee) )
+            //{
+            //    MessageBox.Show(ec.ToString());
+            //}
+
+            Employee employee = (Employee)lbEmployees.SelectedItem;
+            foreach (EmployeeContract ec in employee.Contracts)
+            {
+                MessageBox.Show(ec.ToString());
+            }
+        }
     }
 }

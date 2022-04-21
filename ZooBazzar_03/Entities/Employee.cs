@@ -9,6 +9,7 @@ namespace Entities
 {
     public abstract class Employee
     {
+        
 
         private Account account;
         private string firstname;
@@ -20,6 +21,7 @@ namespace Entities
         private string emergencyContact;
         private string bsn;
         private int id;
+        private List<EmployeeContract> contracts;
 
         public Account Account { get { return account; } }
         public string Name { get { return firstname; } }
@@ -31,10 +33,12 @@ namespace Entities
         public string Bsn { get { return bsn; } }
         public string Email { get { return email; } }
         public int Id { get { return id; } set { id = value; } }
+
+        public List<EmployeeContract> Contracts { get { return this.contracts; } }
         protected Employee(Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn)
         {
             this.account = account;
-            firstname = name;
+            this.firstname = name;
             this.lastname = lastname;
             this.address = address;
             this.birthdate = birthdate;
@@ -42,11 +46,17 @@ namespace Entities
             this.phone = phone;
             this.emergencyContact = emergencyContact;
             this.bsn = bsn;
+            contracts = new List<EmployeeContract>();
         }
 
         protected Employee()
         {
 
+        }
+
+        public void AssignContract(EmployeeContract ec)
+        {
+            contracts.Add(ec);
         }
 
         public override string ToString()

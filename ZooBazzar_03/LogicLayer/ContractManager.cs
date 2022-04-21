@@ -20,12 +20,14 @@ namespace LogicLayer
             cd = new ContractDB();
             contracts = cd.GetContracts();
             this.contractDataManagement = cd;
+            GetContracts();
         }
 
 
-        public void AddContract(EmployeeContract ec)
+        public void AddContract(EmployeeContract ec, Employee employee)
         {
-            cd.AddContract(ec);
+            cd.AddContract(ec, employee);
+            employee.AssignContract(ec);
             contracts.Add(ec);
         }
 
@@ -37,6 +39,16 @@ namespace LogicLayer
         public List<EmployeeContract> GetContracts()
         {
             return contracts;
+        }
+
+        public void GetContracts(Employee e)
+        {
+            List<EmployeeContract> contracts = new List<EmployeeContract>();
+            foreach (EmployeeContract ec in cd.GetContracts(e))
+            {
+                e.AssignContract(ec);
+                contracts.Add(ec);
+            }
         }
 
     }

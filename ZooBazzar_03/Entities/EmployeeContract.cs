@@ -9,17 +9,31 @@ namespace Entities
     public class EmployeeContract
     {
         private int id;
-        private Employee employee;
+        private int employeeId;
         private DateTime startDate;
         private DateTime endDate;
         private double fte;
         private string reason;
         private bool isValid;
 
-        public EmployeeContract(int id, Employee employee, DateTime startDate, DateTime endDate, double fte, string reason, bool isValid)
+
+
+
+
+        public int Id { get { return this.id; } }
+        public int EmployeeId { get { return this.employeeId; } }
+        public DateTime StartDate { get { return this.startDate; } }
+
+        public DateTime EndDate { get { return this.endDate; } }
+
+        public double Fte { get { return this.fte; } }
+        public string Reason { get { return this.reason; } }
+        public bool IsValid { get { return this.isValid; } }
+
+        public EmployeeContract(int id,int employeeId, DateTime startDate, DateTime endDate, double fte, string reason, bool isValid)
         {
             this.id = id;
-            this.employee = employee;
+            this.employeeId = employeeId;
             this.startDate = startDate;
             this.endDate = endDate;
             this.fte = fte;
@@ -33,14 +47,10 @@ namespace Entities
 
         }
 
-        public int Id { get; set; }
-        public Employee Employee { get; set; }
-        public DateTime StartDate { get; set; }
-
-        public DateTime EndDate { get; set; }
-
-        public string Fte { get; set; }
-        public string Reason { get; set; }
-        public bool IsValid { get; set; } }
+        public override string ToString()
+        {
+            return $"{StartDate} {EndDate} {fte} {Reason}";
+        }
     }
+}
 

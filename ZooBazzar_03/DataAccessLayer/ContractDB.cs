@@ -18,13 +18,13 @@ namespace DataAccessLayer
             conn = ConnectionDB.GetConnection();
         }
 
-        public void AddContract(EmployeeContract ec)
+        public void AddContract(EmployeeContract ec, Employee e)
         {
             try
             {
                 string sql = "INSERT INTO contract (employee_id, start_date, end_date, fte, reason, is_valid) VALUES(@employee_id, @start_date, @end_date, @fte, @reason, @is_valid);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@employee_id", ec.Employee.Id);
+                cmd.Parameters.AddWithValue("@employee_id", e.Id);
                 cmd.Parameters.AddWithValue("@start_date", ec.StartDate);
                 cmd.Parameters.AddWithValue("@end_date", ec.EndDate);
                 cmd.Parameters.AddWithValue("@fte", ec.Fte);
@@ -103,18 +103,48 @@ namespace DataAccessLayer
 
                 while (databaseReader.Read())
                 {
-                  
 
-                    ec = new EmployeeContract()
-                    {
-                        Id = databaseReader.GetInt32("id"),
-                        Employee = ed.GetEmployee(databaseReader.GetInt32("employee_id")),
-                        StartDate = databaseReader.GetDateTime("start_date"),
-                        EndDate = databaseReader.GetDateTime("end_date"),
-                        Fte = databaseReader.GetString("fte"),
-                        Reason = databaseReader.GetString("reason"),
-                        IsValid = databaseReader.GetBoolean("is_alid")
-                    };
+
+                    ec = new EmployeeContract(databaseReader.GetInt32("id"), databaseReader.GetInt32("employee_id"), databaseReader.GetDateTime("start_date"), databaseReader.GetDateTime("end_date"), databaseReader.GetDouble("fte"), databaseReader.GetString("reason"), databaseReader.GetBoolean("is_valid"));
+                    contracts.Add(ec);
+                }
+                return contracts;
+            }
+            catch (MySqlException ex)
+            {
+
+                throw ex;
+
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public List<EmployeeContract> GetContracts(Employee e)
+        {
+            string sqlStatement = "SELECT * FROM contract where employee_id=@employee_id ";
+            MySqlCommand command = new MySqlCommand(sqlStatement, conn);
+            List<EmployeeContract> contracts = new List<EmployeeContract>();
+            EmployeeDB ed = new EmployeeDB();
+            try
+            {
+
+                command.Parameters.AddWithValue("@employee_id", e.Id);
+                MySqlDataReader databaseReader;
+
+                conn.Open();
+                databaseReader = command.ExecuteReader();
+
+                EmployeeContract ec;
+
+
+                while (databaseReader.Read())
+                {
+
+
+                    ec = new EmployeeContract(databaseReader.GetInt32("id"), databaseReader.GetInt32("employee_id"), databaseReader.GetDateTime("start_date"), databaseReader.GetDateTime("end_date"), databaseReader.GetDouble("fte"), databaseReader.GetString("reason"), databaseReader.GetBoolean("is_valid"));
                     contracts.Add(ec);
                 }
                 return contracts;

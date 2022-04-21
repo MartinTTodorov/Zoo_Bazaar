@@ -8,10 +8,11 @@ namespace Entities
 {
     public interface IContractDataManagement<EmployeeContract>
     {
-        void AddContract(EmployeeContract ec);
+        void AddContract(EmployeeContract ec, Employee e);
 
         void DisableContract(EmployeeContract ec);
 
         List<EmployeeContract> GetContracts();
+        List<EmployeeContract> GetContracts(Employee e);
     }
 }
