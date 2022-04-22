@@ -49,7 +49,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return $"{StartDate} {EndDate} {fte} {Reason}";
+            return $"Start Date: {StartDate} End Date: {EndDate} FTE: {fte}  Reason: {Reason}";
         }
     }
 }
