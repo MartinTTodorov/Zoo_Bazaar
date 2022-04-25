@@ -35,6 +35,7 @@ namespace ZooBazzar_Group03
             updateEmployee();
             sm.GetDate(0, calendar);
             currentAccount = account;
+            LoadContracts();
         }
 
 
@@ -236,10 +237,35 @@ namespace ZooBazzar_Group03
             //}
 
             Employee employee = (Employee)lbEmployees.SelectedItem;
-            foreach (EmployeeContract ec in employee.Contracts)
+            foreach (EmployeeContract ec in cm.GetContracts(employee))
             {
                 MessageBox.Show(ec.ToString());
             }
+        }
+
+        private void lbEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadContracts()
+        {
+            lbContracts.Items.Clear();
+            foreach (EmployeeContract ec in cm.GetContracts())
+            {
+                lbContracts.Items.Add(ec); 
+            }
+        }
+
+        private void btnDisableContract_Click(object sender, EventArgs e)
+        {
+            if (lbContracts.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select a contract");
+                return;
+            }
+
+            cm.DisableContract((EmployeeContract)lbContracts.SelectedItem);
         }
     }
 }

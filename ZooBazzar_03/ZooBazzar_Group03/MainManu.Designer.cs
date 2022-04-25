@@ -58,8 +58,11 @@
             this.tbUsernameSettings = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.tpContracts = new System.Windows.Forms.TabPage();
+            this.lbContracts = new System.Windows.Forms.ListBox();
             this.lblHello = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnDisableContract = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpEmployees.SuspendLayout();
             this.gbEmployee.SuspendLayout();
@@ -69,6 +72,7 @@
             this.groupBox2.SuspendLayout();
             this.tpSettings.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.tpContracts.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -78,6 +82,7 @@
             this.tabControl1.Controls.Add(this.tpAnimals);
             this.tabControl1.Controls.Add(this.tpEmployeeManagment);
             this.tabControl1.Controls.Add(this.tpSettings);
+            this.tabControl1.Controls.Add(this.tpContracts);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
@@ -354,6 +359,7 @@
             this.lbEmployees.Name = "lbEmployees";
             this.lbEmployees.Size = new System.Drawing.Size(380, 169);
             this.lbEmployees.TabIndex = 0;
+            this.lbEmployees.SelectedIndexChanged += new System.EventHandler(this.lbEmployees_SelectedIndexChanged);
             this.lbEmployees.DoubleClick += new System.EventHandler(this.lbEmployees_DoubleClick);
             // 
             // tpSettings
@@ -430,6 +436,26 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "username:";
             // 
+            // tpContracts
+            // 
+            this.tpContracts.Controls.Add(this.btnDisableContract);
+            this.tpContracts.Controls.Add(this.lbContracts);
+            this.tpContracts.Location = new System.Drawing.Point(4, 24);
+            this.tpContracts.Name = "tpContracts";
+            this.tpContracts.Size = new System.Drawing.Size(694, 272);
+            this.tpContracts.TabIndex = 5;
+            this.tpContracts.Text = "Contracts";
+            this.tpContracts.UseVisualStyleBackColor = true;
+            // 
+            // lbContracts
+            // 
+            this.lbContracts.FormattingEnabled = true;
+            this.lbContracts.ItemHeight = 15;
+            this.lbContracts.Location = new System.Drawing.Point(50, 23);
+            this.lbContracts.Name = "lbContracts";
+            this.lbContracts.Size = new System.Drawing.Size(601, 184);
+            this.lbContracts.TabIndex = 0;
+            // 
             // lblHello
             // 
             this.lblHello.AutoSize = true;
@@ -453,6 +479,16 @@
             this.button1.Text = "Log out";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnDisableContract
+            // 
+            this.btnDisableContract.Location = new System.Drawing.Point(291, 235);
+            this.btnDisableContract.Name = "btnDisableContract";
+            this.btnDisableContract.Size = new System.Drawing.Size(89, 23);
+            this.btnDisableContract.TabIndex = 1;
+            this.btnDisableContract.Text = "Disable";
+            this.btnDisableContract.UseVisualStyleBackColor = true;
+            this.btnDisableContract.Click += new System.EventHandler(this.btnDisableContract_Click);
             // 
             // MainManu
             // 
@@ -479,6 +515,7 @@
             this.tpSettings.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.tpContracts.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -518,5 +555,8 @@
         private Label label2;
         private Label label1;
         private Button button1;
+        private TabPage tpContracts;
+        private ListBox lbContracts;
+        private Button btnDisableContract;
     }
 }

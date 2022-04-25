@@ -78,6 +78,8 @@ namespace DataAccessLayer
             finally { conn.Close(); }
         }
 
+      
+
         public List<Employee> Read()
         {
             string sql = "SELECT username,password,firstname,lastname,address,birthdate,email,phone,emergencycontact,bsn,workposition,id FROM employee INNER JOIN account ON employee.ID = account.AccountID";
@@ -183,7 +185,7 @@ namespace DataAccessLayer
                 {
 
 
-                    if (reader[10].ToString() == "Manager")
+                    if (reader[9].ToString() == "Manager")
                     {
                         Manager manager = new Manager(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString());
                         manager.Id = Convert.ToInt32(reader[11]);

@@ -12,32 +12,28 @@ using Entities;
 
 namespace ZooBazzar_Group03.Employeee
 {
-    public partial class NewAccount : Form
+    public partial class ContractForm : Form
     {
-        public NewAccount()
+        private ContractManager cm;
+        private Employee employee;
+        public ContractForm(Employee employeee)
         {
             InitializeComponent();
+            cm = new ContractManager();
+            this.employee = employeee;
+
         }
-        private AccountManager accountManager = new AccountManager();
-        private void btnAddAccount_Click(object sender, EventArgs e)
+
+        private void btnCreateContract_Click(object sender, EventArgs e)
         {
             if (checkInput())
             {
-                if (accountManager.AddAccount(new Account(accountManager.GetAccountId(),tbUsername.Text, tbPassword.Text)))
-                {
-                    accountManager.RefreshData();
-                    NewEmployee newEmployee = new NewEmployee(accountManager.GetAccountByCredentials(tbUsername.Text, tbPassword.Text));
-                    newEmployee.Show();
-                    this.Hide();
-
-                }
-                else
-                {
-                    MessageBox.Show("Account with the same username exists!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-
+                EmployeeContract employeeContract = new EmployeeContract(employee.Id, dtpStartDate.Value, dtpEndDate.Value, Convert.ToDouble(tbFte.Text), tbReason.Text, true);
+                cm.AddContract(employeeContract);
+                MessageBox.Show("Successful creation of Contract!");
+                this.Close();
             }
+
             else
             {
                 MessageBox.Show("Please enter all the fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -56,6 +52,14 @@ namespace ZooBazzar_Group03.Employeee
                         if (groupBox.Controls[j] is TextBox)
                         {
                             if (!DataValidation.CheckTextBox((TextBox)groupBox.Controls[j]))
+                            {
+                                return false;
+                            }
+
+                        }
+                        else if (groupBox.Controls[j] is DateTimePicker)
+                        {
+                            if (DataValidation.CheckFutureDate((DateTimePicker)groupBox.Controls[j]))
                             {
                                 return false;
                             }

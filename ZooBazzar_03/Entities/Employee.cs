@@ -9,7 +9,7 @@ namespace Entities
 {
     public abstract class Employee
     {
-        
+
 
         private Account account;
         private string firstname;
@@ -49,6 +49,21 @@ namespace Entities
             contracts = new List<EmployeeContract>();
         }
 
+        public Employee(int id, Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn)
+        {
+            this.id = id;
+            this.account = account;
+            this.firstname = name;
+            this.lastname = lastname;
+            this.address = address;
+            this.birthdate = birthdate;
+            this.email = email;
+            this.phone = phone;
+            this.emergencyContact = emergencyContact;
+            this.bsn = bsn;
+            contracts = new List<EmployeeContract>();
+        }
+
         protected Employee()
         {
 
@@ -56,7 +71,10 @@ namespace Entities
 
         public void AssignContract(EmployeeContract ec)
         {
-            contracts.Add(ec);
+            if (ec.EmployeeId == this.id)
+            {
+                contracts.Add(ec);
+            }
         }
 
         public override string ToString()

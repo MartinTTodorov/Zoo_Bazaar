@@ -30,7 +30,7 @@ namespace Entities
         public string Reason { get { return this.reason; } }
         public bool IsValid { get { return this.isValid; } }
 
-        public EmployeeContract(int id,int employeeId, DateTime startDate, DateTime endDate, double fte, string reason, bool isValid)
+        public EmployeeContract(int id, int employeeId, DateTime startDate, DateTime endDate, double fte, string reason, bool isValid)
         {
             this.id = id;
             this.employeeId = employeeId;
@@ -41,6 +41,16 @@ namespace Entities
             this.isValid = isValid;
         }
 
+
+        public EmployeeContract(int employeeId, DateTime startDate, DateTime endDate, double fte, string reason, bool isValid)
+        {
+            this.employeeId = employeeId;
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.fte = fte;
+            this.reason = reason;
+            this.isValid = isValid;
+        }
 
         public EmployeeContract()
         {

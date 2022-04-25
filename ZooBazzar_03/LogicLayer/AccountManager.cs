@@ -33,6 +33,10 @@ namespace LogicLayer
             return true;
         }
 
+        public int GetAccountId()
+        {
+            return db.GetAccountId();
+        }
         public bool RemoveAccount(int index)
         {
             if(accounts[index] != null)

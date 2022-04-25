@@ -18,13 +18,13 @@ namespace DataAccessLayer
             conn = ConnectionDB.GetConnection();
         }
 
-        public void AddContract(EmployeeContract ec, Employee e)
+        public void AddContract(EmployeeContract ec)
         {
             try
             {
                 string sql = "INSERT INTO contract (employee_id, start_date, end_date, fte, reason, is_valid) VALUES(@employee_id, @start_date, @end_date, @fte, @reason, @is_valid);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@employee_id", e.Id);
+                cmd.Parameters.AddWithValue("@employee_id", ec.EmployeeId);
                 cmd.Parameters.AddWithValue("@start_date", ec.StartDate);
                 cmd.Parameters.AddWithValue("@end_date", ec.EndDate);
                 cmd.Parameters.AddWithValue("@fte", ec.Fte);
@@ -42,7 +42,7 @@ namespace DataAccessLayer
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                throw ex;
             }
             catch (Exception ex)
             {
@@ -53,6 +53,11 @@ namespace DataAccessLayer
 
                 conn.Close();
             }
+        }
+
+        public void AddContract(EmployeeContract ec, Employee e)
+        {
+            throw new NotImplementedException();
         }
 
         public void DisableContract(EmployeeContract ec)

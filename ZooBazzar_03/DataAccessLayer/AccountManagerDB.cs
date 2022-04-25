@@ -142,6 +142,35 @@ namespace DataAccessLayer
                 conn.Close();
             }
         }
+
+        public int GetAccountId()
+        {
+            string sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbi481796' AND TABLE_NAME = 'account'";
+
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+
+            try
+            {
+                conn.Open();
+
+
+
+                int result = Convert.ToInt32(cmd.ExecuteScalar());
+
+
+
+                return result;
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
         public string GetEmployeeWorkPositionByAccount(string username)
         {
             string sql = "SELECT Workposition FROM `employee` INNER JOIN account On employee.ID = account.AccountID WHERE account.Username = @Username"; 
