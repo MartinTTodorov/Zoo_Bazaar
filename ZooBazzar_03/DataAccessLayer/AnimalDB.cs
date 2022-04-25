@@ -50,11 +50,17 @@ namespace DataAccessLayer
             return animals;
         }
 
-        public void AddAnimalToDB(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet)
+        public void AddAnimalToDB(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes)
         {
             try
             {
                 string sql = "INSERT INTO animal (AnimalCode, Name, AnimalType, Species, CageNumber, Birthdate, ReasonForArrival, YearOfArrival, YearOfDeparture, ReasonOFDeparture, Diet) VALUES(@animalCode, @name, @animalType, @species, @cageNumber, @birthdate, @reasonForArrival, @yearOfArrival, @yearOfDeparture, @reasonForDeparture, @diet);";
+                for (int i = 0; i < feedingTimes.Count; i++)
+                {
+                    sql += $"INSERT INTO feedingtime (AnimalCode, timeSlot) VALUES (@animalCode, @time{i});";
+                }
+
+
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@animalCode", animalCode);
                 cmd.Parameters.AddWithValue("@name", name);
@@ -67,6 +73,12 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@yearOfDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@reasonForDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@diet", diet);
+
+                for (int i = 0; i < feedingTimes.Count; i++)
+                {
+                    cmd.Parameters.AddWithValue($"@time{i}", feedingTimes[i]);
+                }
+
                 conn.Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
@@ -210,5 +222,5 @@ namespace DataAccessLayer
 
         }
     }
-        
+
 }

@@ -17,13 +17,13 @@ namespace ZooBazzar_Group03
     {
 
         private Schedule schedule;
-        public ucCageInfo(int cageNr, string date, DateTime currentDate, Schedule schedule)
+        public ucCageInfo(int cageNr, string date, DateTime currentDate, Schedule schedule, string timeSlot)
         {
             InitializeComponent();
             this.cageNr = cageNr;
-            this.date = date;
             this.currentDate = currentDate;
             this.schedule = schedule;
+            this.timeSlot = timeSlot;
             sm = new ScheduleManager(date);
         }
 
@@ -36,7 +36,7 @@ namespace ZooBazzar_Group03
 
         int cageNr;
 
-        string date;
+        string timeSlot;
 
         DateTime currentDate;
 
@@ -47,7 +47,7 @@ namespace ZooBazzar_Group03
             schedule.lblSpecies.Text = cage.Species.ToString();
             schedule.lblCageNumber.Text = cage.CageNumber.ToString();
 
-            int caretakerId = sm.AssignedCaretaker(cageNr);
+            int caretakerId = sm.AssignedCaretaker(cageNr, timeSlot);
 
             if (sm.CheckDate(currentDate))
             {

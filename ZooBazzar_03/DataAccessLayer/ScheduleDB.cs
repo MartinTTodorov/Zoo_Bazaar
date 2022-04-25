@@ -22,19 +22,18 @@ namespace DataAccessLayer
             conn = ConnectionDB.GetConnection();
         }
 
-       
       
 
         public int Insert(DailySchedule ds)
         {
             try
             {
-                string sql = "INSERT INTO daily_feeding_schedule (Date, CageNumber, EmployeeId) VALUES (@date, @cage, @id);";
+                string sql = "INSERT INTO daily_feeding_schedule (Date, CageNumber, EmployeeId, TimeSlot) VALUES (@date, @cage, @id, @time);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("cage", ds.CageNumber);
                 cmd.Parameters.AddWithValue("id", ds.EmployeeId);
-
                 cmd.Parameters.AddWithValue("date", ds.Date);
+                cmd.Parameters.AddWithValue("time", ds.TimeSlot);
 
                 conn.Open();
 
@@ -71,7 +70,7 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    list.Add(new DailySchedule(Convert.ToInt32(reader["CageNumber"]), reader["Date"].ToString(), Convert.ToInt32(reader["EmployeeId"])));
+                    list.Add(new DailySchedule(Convert.ToInt32(reader["CageNumber"]), reader["Date"].ToString(), Convert.ToInt32(reader["EmployeeId"]), reader["TimeSlot"].ToString()));
                 }
 
                 return list;
@@ -90,9 +89,11 @@ namespace DataAccessLayer
 
             try
             {
-                string sql = "UPDATE daily_feeding_schedule SET EmployeeId = @id;";
+                string sql = "UPDATE daily_feeding_schedule SET EmployeeId = @id WHERE Date = @date AND TimeSlot = @time;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("id", ds.EmployeeId);
+                cmd.Parameters.AddWithValue("date", ds.Date);
+                cmd.Parameters.AddWithValue("time", ds.TimeSlot);
 
 
                 conn.Open();
@@ -112,33 +113,7 @@ namespace DataAccessLayer
             return 0;
         }
 
-        public DataTable GetAnimals(string time)
-        {
-            MySqlCommand command;
-            MySqlDataAdapter da;
-
-            string selectQuery = "SELECT Picture, a.CageNumber FROM animalpictures ap INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE FeedingTime = @time GROUP BY a.CageNumber;";
-
-            command = new MySqlCommand(selectQuery, conn);
-
-            command.Parameters.AddWithValue("time", time);
-
-            da = new MySqlDataAdapter(command);
-
-            try
-            {
-                DataTable table = new DataTable();
-                da.Fill(table);
-
-                return table;
-            }
-            finally 
-            {
-                da.Dispose();
-                conn.Close();
-
-            }
-        }
+       
 
 
     }

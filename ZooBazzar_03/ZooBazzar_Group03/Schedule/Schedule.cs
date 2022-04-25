@@ -32,6 +32,8 @@ namespace ZooBazzar_Group03
 
         DateTime currentDate;
 
+        string timeSlot;
+
         private void Schedule_Load(object sender, EventArgs e)
         {
             if (currentDate.CompareTo(DateTime.Today) == -1)
@@ -49,18 +51,20 @@ namespace ZooBazzar_Group03
                 string time = cmbTimeSloth.SelectedItem.ToString();
                 if (time == "6:00 - 8:00")
                 {
-                    GetCages("morning");
+                    timeSlot = "morning";
                 }
 
                 if (time == "12:00 - 14:00")
                 {
-                    GetCages("afternoon");
+                    timeSlot = "afternoon";
                 }
 
                 if (time == "20:00 - 22:00")
                 {
-                    GetCages("evening");
+                    timeSlot = "evening";
                 }
+
+                GetCages(timeSlot);
 
                 lblAnimalType.Text = "";
                 lblSpecies.Text = "";
@@ -79,7 +83,7 @@ namespace ZooBazzar_Group03
 
             for (int i = 0; i < cages.Count; i++)
             {
-                ucCageInfo ci = new ucCageInfo(cages[i].CageNumber, date, currentDate, this);
+                ucCageInfo ci = new ucCageInfo(cages[i].CageNumber, date, currentDate, this, timeSlot);
                 panelAnimals.Controls.Add(ci);
             }
         }
@@ -92,7 +96,7 @@ namespace ZooBazzar_Group03
             {
                 Caretaker caretaker = (Caretaker)cmbEmployees.SelectedItem;
 
-                if (sm.Insert(new DailySchedule(Convert.ToInt32(lblCageNumber.Text), date, caretaker.Id)) > 0)
+                if (sm.Insert(new DailySchedule(Convert.ToInt32(lblCageNumber.Text), date, caretaker.Id, timeSlot)) > 0)
                 {
                     MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully assign a caretaker to the animal");
                     btnAssign.Enabled = false;
@@ -113,7 +117,7 @@ namespace ZooBazzar_Group03
         {
             Caretaker caretaker = (Caretaker)cmbEmployees.SelectedItem;
 
-            if (sm.Update(new DailySchedule(Convert.ToInt32(lblCageNumber.Text), date, caretaker.Id)) > 0)
+            if (sm.Update(new DailySchedule(Convert.ToInt32(lblCageNumber.Text), date, caretaker.Id, timeSlot)) > 0)
             {
                 MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully edit the assigned caretaker to the animal");
             }

@@ -52,9 +52,9 @@ namespace LogicLayer
             }
         }
 
-        public int AssignedCaretaker(int cage)
+        public int AssignedCaretaker(int cage, string time)
         {
-            if (dailySchedules.Find(x => x.CageNumber == cage) != null)
+            if (dailySchedules.Find(x => x.CageNumber == cage && x.TimeSlot == time) != null)
             {
                 return dailySchedules.Find(x => x.CageNumber == cage).EmployeeId;
             }
