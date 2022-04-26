@@ -37,14 +37,14 @@ namespace LogicLayer
         }
         public void AddAnimal(Animal animal)
         {
-            animalDB.AddAnimalToDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString());
+            //animalDB.AddAnimalToDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString());
             //UpdateLocalList();
 
         }
 
         public void AddAnimal(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet)
         {
-            animalDB.AddAnimalToDB(animalCode, name, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet);
+            //animalDB.AddAnimalToDB(animalCode, name, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet);
             //UpdateLocalList();
         }
 

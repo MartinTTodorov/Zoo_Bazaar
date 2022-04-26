@@ -27,5 +27,11 @@ namespace Entities
             this.timeSlot = timeSlot;
         }
 
+
+        //Not id save a cage
+        //Not relly on the gui to check if the caretaker is specialized
+        //List of animals in the cage class   --- methods - getCurrentSpecies or smth like that
+
+
     }
 }

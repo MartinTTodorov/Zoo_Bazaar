@@ -16,9 +16,34 @@ namespace LogicLayer
 
         List<DailySchedule> dailySchedules = new List<DailySchedule>();
 
+
+        public List<string> GetCurrentWeek()
+        {
+            List<string> daysInWeek = new List<string>();
+
+            var now = DateTime.Now;
+            var currentDay = now.DayOfWeek;
+            int days = (int)currentDay;
+
+            DateTime sunday = now.AddDays(-days);
+
+            for (int i = 0; i < 7; i++)
+            {
+                DateTime day = sunday.AddDays(i);
+
+
+                string date = $"{day.Day} {day.ToString("MMM")} {day.Year}";
+
+                daysInWeek.Add(date);
+            }
+
+            return daysInWeek;
+        }
+
+
         public ScheduleManager(string date)
         {
-            dailySchedules = sdb.GetSchedules(date);
+            dailySchedules = sdb.Read(GetCurrentWeek());
         }
 
 
@@ -67,7 +92,7 @@ namespace LogicLayer
         public int Insert(DailySchedule ds)
         {
             dailySchedules.Add(ds);
-            return sdb.Insert(ds);
+            return sdb.Add(ds);
         }
 
         public int Update(DailySchedule ds)
@@ -93,9 +118,19 @@ namespace LogicLayer
         {
             List<Cage> allCages = cm.Cages;
 
-            return allCages.FindAll(x => x.CageAnimals.Any(x => x.FeedingTimes.Any(x => x == feedingTime)));
+            return allCages.FindAll(x => x.CageAnimals.Any(x => x.FeedingTimes.Any(x => x == feedingTime) && x.ReasonForDeparture == null));
         }
 
+        public int GetWorkerFTE(int cageNr)
+        {
+            List<Caretaker> caretakers = GetCaretakers(cageNr);
 
+     
+
+            if (caretakers.Any(x => (x.Id * 40) > caretakers.Where(caretaker => caretaker == x).Count))
+            {
+
+            }
+        }
     }
 }

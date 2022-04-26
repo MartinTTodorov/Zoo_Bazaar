@@ -22,9 +22,9 @@ namespace DataAccessLayer
             conn = ConnectionDB.GetConnection();
         }
 
-      
 
-        public int Insert(DailySchedule ds)
+
+        public int Add(DailySchedule ds)
         {
             try
             {
@@ -52,14 +52,18 @@ namespace DataAccessLayer
             return 0;
         }
 
-        public List<DailySchedule> GetSchedules(string date)
+        public List<DailySchedule> Read(List<string> days)
         {
             try
             {
-                string sql = "SELECT * from daily_feeding_schedule WHERE Date = @date";
+                string sql = "SELECT * FROM `daily_feeding_schedule` WHERE Date = @date OR Date = @date OR Date = @date OR Date = @date OR Date = @date OR Date = @date OR Date = @date ";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("date", date);
+                foreach (string date in days)
+                {
+                    cmd.Parameters.AddWithValue("date", date);
+
+                }
 
                 conn.Open();
 
@@ -75,11 +79,11 @@ namespace DataAccessLayer
 
                 return list;
             }
-            finally 
+            finally
             {
                 conn.Close();
             }
-            
+
         }
 
 
@@ -113,7 +117,7 @@ namespace DataAccessLayer
             return 0;
         }
 
-       
+
 
 
     }

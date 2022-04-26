@@ -58,8 +58,13 @@ namespace ZooBazzar_Group03
 
                     foreach (Caretaker s in sm.GetCaretakers(cageNr))
                     {
+                        if (true)
+                        {
+
+                        }
                         schedule.cmbEmployees.Items.Add(s);
                     }
+
                     schedule.btnAssign.Enabled = true;
                     schedule.btnEditEmployee.Enabled = false;
                 }
