@@ -44,9 +44,12 @@ namespace Entities
             this.bsn = bsn;
         }
 
-        protected Employee()
-        {
 
+
+        protected Employee(int id, string name)
+        {
+            this.id = id;
+            this.firstname = name;
         }
 
         public override string ToString()

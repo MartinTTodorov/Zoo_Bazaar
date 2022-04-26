@@ -10,36 +10,42 @@ namespace Entities
     public class Animal
     {
         private int id; //
-        private int cageNumber; //
         private string animalCode; //
         private string name; //
-        private string reasonForArrival;
-        private string reasonForDeparture;
-        private Diet diet; //
+        private string gender;
         private AnimalType type; //
         private string specie; //
+        private int cageNumber; //
+        private string birthDate;
+        private string reasonForArrival;
         private string yearOfArrival;
         private string yearOfDeparture;
-        private string birthDate;
-        private DateTime feedingTime;
+        private string reasonForDeparture;
+        private Diet diet; //
+        int weeklyFeedingIteration;
+        private Specialization specialization;
+        List<string> feedingTimes = new List<string>();
 
         public int Id { get { return id; } }
 
        
-        public int CageNumber { get { return cageNumber; } set { cageNumber = value; } }
-        public string Name { get { return name; } set { name = value; } }
-        public string Specie { get { return specie; } set { specie = value; } }
-        public string AnimalCode { get { return animalCode; } set { animalCode = value; } }
-        public string Birthdate { get { return birthDate; } set { birthDate = value; } }
-        public string ReasonForArrival { get { return reasonForArrival; } set { reasonForArrival = value; } }
-        public string YearOfArrival { get { return yearOfArrival; } set { yearOfArrival = value; } }
-        public string YearOfDeparture { get { return yearOfDeparture; } set { yearOfDeparture = value; } }
-        public string ReasonForDeparture { get { return reasonForDeparture; } set { reasonForDeparture = value; } }
+        public int CageNumber { get { return cageNumber; } }
+        public string Name { get { return name; } }
+        public string Gender { get { return gender; } }
+        public string Specie { get { return specie; } }
+        public string AnimalCode { get { return animalCode; } }
+        public string Birthdate { get { return birthDate; } }
+        public string ReasonForArrival { get { return reasonForArrival; } }
+        public string YearOfArrival { get { return yearOfArrival; } }
+        public string YearOfDeparture { get { return yearOfDeparture; } }
+        public string ReasonForDeparture { get { return reasonForDeparture; } }
+        public List<string> FeedingTimes { get { return feedingTimes; } set { feedingTimes = value; } }
 
         public Diet Diet { get { return diet; } set { diet = value; } }
         public AnimalType AnimalType { get { return type; } set { type = value; } }
+        public int WeeklyFeedingIteration{ get { return weeklyFeedingIteration; } set { weeklyFeedingIteration = value; } }
 
-        public Animal(string animalCode, int id, int cageNumber, string name, string reasonForArrival, string reasonForDeparture, Diet diet, AnimalType type, string specie, string yearOfArrival, string yearOfDeparture, string birthdate)
+        public Animal(string animalCode, int id, int cageNumber, string name, string gender, string reasonForArrival, string reasonForDeparture, Diet diet, AnimalType type, string specie, string yearOfArrival, string yearOfDeparture, string birthdate, Specialization specialization, List<string> feedingTimes)
         {
             this.id = id;
             this.cageNumber = cageNumber;
@@ -53,6 +59,19 @@ namespace Entities
             this.yearOfDeparture = yearOfDeparture;
             this.birthDate = birthdate;
             this.animalCode = animalCode;
+            this.gender = gender;
+            this.specialization = specialization;
+            this.feedingTimes = feedingTimes;
+        }
+
+        public Animal(string animalCode, int cageNumber, Diet diet, AnimalType type, string specie)//, List<string> feedingTimes)//, int weeklyFeedingIteration)
+        {
+            this.cageNumber = cageNumber;
+            this.diet = diet;
+            this.type = type;
+            this.specie = specie;
+            this.animalCode = animalCode;
+            //this.WeeklyFeedingIteration = weeklyFeedingIteration;
         }
 
         public string GetInfo()

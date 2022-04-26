@@ -11,9 +11,9 @@ using ZooBazzar_Group03;
 
 namespace Entities
 {
-    public partial class Date : UserControl
+    public partial class ucDate : UserControl
     {
-        public Date()
+        public ucDate()
         {
             InitializeComponent();
         }

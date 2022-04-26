@@ -49,12 +49,19 @@
             this.lblCageNumber = new System.Windows.Forms.Label();
             this.lblID = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbWeeklyFeedIteration = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbDailyFeeding = new System.Windows.Forms.ComboBox();
+            this.cbEvening = new System.Windows.Forms.CheckBox();
+            this.cbAfternoon = new System.Windows.Forms.CheckBox();
+            this.cbMorning = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // cbDiet
             // 
             this.cbDiet.FormattingEnabled = true;
-            this.cbDiet.Location = new System.Drawing.Point(201, 254);
+            this.cbDiet.Location = new System.Drawing.Point(163, 259);
             this.cbDiet.Name = "cbDiet";
             this.cbDiet.Size = new System.Drawing.Size(125, 28);
             this.cbDiet.TabIndex = 53;
@@ -62,28 +69,28 @@
             // cbAnimalType
             // 
             this.cbAnimalType.FormattingEnabled = true;
-            this.cbAnimalType.Location = new System.Drawing.Point(201, 303);
+            this.cbAnimalType.Location = new System.Drawing.Point(163, 308);
             this.cbAnimalType.Name = "cbAnimalType";
             this.cbAnimalType.Size = new System.Drawing.Size(125, 28);
             this.cbAnimalType.TabIndex = 52;
             // 
             // tbBirthdate
             // 
-            this.tbBirthdate.Location = new System.Drawing.Point(542, 200);
+            this.tbBirthdate.Location = new System.Drawing.Point(510, 212);
             this.tbBirthdate.Name = "tbBirthdate";
             this.tbBirthdate.Size = new System.Drawing.Size(125, 27);
             this.tbBirthdate.TabIndex = 51;
             // 
             // tbYearOfArrival
             // 
-            this.tbYearOfArrival.Location = new System.Drawing.Point(542, 142);
+            this.tbYearOfArrival.Location = new System.Drawing.Point(510, 154);
             this.tbYearOfArrival.Name = "tbYearOfArrival";
             this.tbYearOfArrival.Size = new System.Drawing.Size(125, 27);
             this.tbYearOfArrival.TabIndex = 49;
             // 
             // tbReasonForArrival
             // 
-            this.tbReasonForArrival.Location = new System.Drawing.Point(542, 90);
+            this.tbReasonForArrival.Location = new System.Drawing.Point(510, 102);
             this.tbReasonForArrival.Name = "tbReasonForArrival";
             this.tbReasonForArrival.Size = new System.Drawing.Size(125, 27);
             this.tbReasonForArrival.TabIndex = 47;
@@ -91,7 +98,7 @@
             // lblBirthdate
             // 
             this.lblBirthdate.AutoSize = true;
-            this.lblBirthdate.Location = new System.Drawing.Point(441, 202);
+            this.lblBirthdate.Location = new System.Drawing.Point(409, 214);
             this.lblBirthdate.Name = "lblBirthdate";
             this.lblBirthdate.Size = new System.Drawing.Size(73, 20);
             this.lblBirthdate.TabIndex = 46;
@@ -100,7 +107,7 @@
             // lblYearOfArrival
             // 
             this.lblYearOfArrival.AutoSize = true;
-            this.lblYearOfArrival.Location = new System.Drawing.Point(411, 142);
+            this.lblYearOfArrival.Location = new System.Drawing.Point(379, 154);
             this.lblYearOfArrival.Name = "lblYearOfArrival";
             this.lblYearOfArrival.Size = new System.Drawing.Size(103, 20);
             this.lblYearOfArrival.TabIndex = 44;
@@ -109,7 +116,7 @@
             // lblReasonForArrival
             // 
             this.lblReasonForArrival.AutoSize = true;
-            this.lblReasonForArrival.Location = new System.Drawing.Point(390, 89);
+            this.lblReasonForArrival.Location = new System.Drawing.Point(358, 101);
             this.lblReasonForArrival.Name = "lblReasonForArrival";
             this.lblReasonForArrival.Size = new System.Drawing.Size(128, 20);
             this.lblReasonForArrival.TabIndex = 42;
@@ -117,28 +124,28 @@
             // 
             // tbSpecie
             // 
-            this.tbSpecie.Location = new System.Drawing.Point(542, 35);
+            this.tbSpecie.Location = new System.Drawing.Point(510, 47);
             this.tbSpecie.Name = "tbSpecie";
             this.tbSpecie.Size = new System.Drawing.Size(125, 27);
             this.tbSpecie.TabIndex = 41;
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(201, 200);
+            this.tbName.Location = new System.Drawing.Point(163, 205);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(125, 27);
             this.tbName.TabIndex = 40;
             // 
             // tbAnimalCode
             // 
-            this.tbAnimalCode.Location = new System.Drawing.Point(201, 149);
+            this.tbAnimalCode.Location = new System.Drawing.Point(163, 154);
             this.tbAnimalCode.Name = "tbAnimalCode";
             this.tbAnimalCode.Size = new System.Drawing.Size(125, 27);
             this.tbAnimalCode.TabIndex = 39;
             // 
             // tbCageNumber
             // 
-            this.tbCageNumber.Location = new System.Drawing.Point(201, 97);
+            this.tbCageNumber.Location = new System.Drawing.Point(163, 102);
             this.tbCageNumber.Name = "tbCageNumber";
             this.tbCageNumber.Size = new System.Drawing.Size(125, 27);
             this.tbCageNumber.TabIndex = 38;
@@ -146,7 +153,7 @@
             // tbID
             // 
             this.tbID.Enabled = false;
-            this.tbID.Location = new System.Drawing.Point(201, 38);
+            this.tbID.Location = new System.Drawing.Point(163, 43);
             this.tbID.Name = "tbID";
             this.tbID.ReadOnly = true;
             this.tbID.Size = new System.Drawing.Size(125, 27);
@@ -155,7 +162,7 @@
             // lblSpecie
             // 
             this.lblSpecie.AutoSize = true;
-            this.lblSpecie.Location = new System.Drawing.Point(462, 31);
+            this.lblSpecie.Location = new System.Drawing.Point(430, 43);
             this.lblSpecie.Name = "lblSpecie";
             this.lblSpecie.Size = new System.Drawing.Size(56, 20);
             this.lblSpecie.TabIndex = 36;
@@ -164,7 +171,7 @@
             // lblAnimalType
             // 
             this.lblAnimalType.AutoSize = true;
-            this.lblAnimalType.Location = new System.Drawing.Point(77, 307);
+            this.lblAnimalType.Location = new System.Drawing.Point(39, 312);
             this.lblAnimalType.Name = "lblAnimalType";
             this.lblAnimalType.Size = new System.Drawing.Size(92, 20);
             this.lblAnimalType.TabIndex = 35;
@@ -173,7 +180,7 @@
             // lblDiet
             // 
             this.lblDiet.AutoSize = true;
-            this.lblDiet.Location = new System.Drawing.Point(129, 261);
+            this.lblDiet.Location = new System.Drawing.Point(91, 266);
             this.lblDiet.Name = "lblDiet";
             this.lblDiet.Size = new System.Drawing.Size(40, 20);
             this.lblDiet.TabIndex = 34;
@@ -182,7 +189,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(117, 207);
+            this.lblName.Location = new System.Drawing.Point(79, 212);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(52, 20);
             this.lblName.TabIndex = 33;
@@ -191,7 +198,7 @@
             // lblAnimalCode
             // 
             this.lblAnimalCode.AutoSize = true;
-            this.lblAnimalCode.Location = new System.Drawing.Point(82, 149);
+            this.lblAnimalCode.Location = new System.Drawing.Point(44, 154);
             this.lblAnimalCode.Name = "lblAnimalCode";
             this.lblAnimalCode.Size = new System.Drawing.Size(96, 20);
             this.lblAnimalCode.TabIndex = 32;
@@ -200,7 +207,7 @@
             // lblCageNumber
             // 
             this.lblCageNumber.AutoSize = true;
-            this.lblCageNumber.Location = new System.Drawing.Point(77, 97);
+            this.lblCageNumber.Location = new System.Drawing.Point(39, 102);
             this.lblCageNumber.Name = "lblCageNumber";
             this.lblCageNumber.Size = new System.Drawing.Size(101, 20);
             this.lblCageNumber.TabIndex = 31;
@@ -209,7 +216,7 @@
             // lblID
             // 
             this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(142, 38);
+            this.lblID.Location = new System.Drawing.Point(104, 43);
             this.lblID.Name = "lblID";
             this.lblID.Size = new System.Drawing.Size(27, 20);
             this.lblID.TabIndex = 30;
@@ -217,13 +224,80 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(234, 371);
+            this.btnAdd.Location = new System.Drawing.Point(256, 371);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(320, 67);
             this.btnAdd.TabIndex = 54;
             this.btnAdd.Text = "Add animal";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(315, 266);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(171, 20);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "Weekly feeding iteration";
+            // 
+            // tbWeeklyFeedIteration
+            // 
+            this.tbWeeklyFeedIteration.Location = new System.Drawing.Point(510, 263);
+            this.tbWeeklyFeedIteration.Name = "tbWeeklyFeedIteration";
+            this.tbWeeklyFeedIteration.Size = new System.Drawing.Size(125, 27);
+            this.tbWeeklyFeedIteration.TabIndex = 56;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(328, 316);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(158, 20);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "Daily feeding iteration";
+            // 
+            // cbDailyFeeding
+            // 
+            this.cbDailyFeeding.FormattingEnabled = true;
+            this.cbDailyFeeding.Location = new System.Drawing.Point(510, 312);
+            this.cbDailyFeeding.Name = "cbDailyFeeding";
+            this.cbDailyFeeding.Size = new System.Drawing.Size(125, 28);
+            this.cbDailyFeeding.TabIndex = 58;
+            this.cbDailyFeeding.SelectedIndexChanged += new System.EventHandler(this.cbDailyFeeding_SelectedIndexChanged);
+            // 
+            // cbEvening
+            // 
+            this.cbEvening.AutoSize = true;
+            this.cbEvening.Location = new System.Drawing.Point(669, 396);
+            this.cbEvening.Name = "cbEvening";
+            this.cbEvening.Size = new System.Drawing.Size(83, 24);
+            this.cbEvening.TabIndex = 64;
+            this.cbEvening.Text = "Evening";
+            this.cbEvening.UseVisualStyleBackColor = true;
+            this.cbEvening.Visible = false;
+            // 
+            // cbAfternoon
+            // 
+            this.cbAfternoon.AutoSize = true;
+            this.cbAfternoon.Location = new System.Drawing.Point(669, 366);
+            this.cbAfternoon.Name = "cbAfternoon";
+            this.cbAfternoon.Size = new System.Drawing.Size(98, 24);
+            this.cbAfternoon.TabIndex = 63;
+            this.cbAfternoon.Text = "Afternoon";
+            this.cbAfternoon.UseVisualStyleBackColor = true;
+            this.cbAfternoon.Visible = false;
+            // 
+            // cbMorning
+            // 
+            this.cbMorning.AutoSize = true;
+            this.cbMorning.Location = new System.Drawing.Point(669, 336);
+            this.cbMorning.Name = "cbMorning";
+            this.cbMorning.Size = new System.Drawing.Size(87, 24);
+            this.cbMorning.TabIndex = 62;
+            this.cbMorning.Text = "Morning";
+            this.cbMorning.UseVisualStyleBackColor = true;
+            this.cbMorning.Visible = false;
             // 
             // FormAddAnimal
             // 
@@ -232,6 +306,13 @@
             this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbEvening);
+            this.Controls.Add(this.cbAfternoon);
+            this.Controls.Add(this.cbMorning);
+            this.Controls.Add(this.cbDailyFeeding);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.tbWeeklyFeedIteration);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cbDiet);
             this.Controls.Add(this.cbAnimalType);
@@ -286,5 +367,12 @@
         private Label lblCageNumber;
         private Label lblID;
         private Button btnAdd;
+        private Label label1;
+        private TextBox tbWeeklyFeedIteration;
+        private Label label2;
+        private ComboBox cbDailyFeeding;
+        private CheckBox cbEvening;
+        private CheckBox cbAfternoon;
+        private CheckBox cbMorning;
     }
 }

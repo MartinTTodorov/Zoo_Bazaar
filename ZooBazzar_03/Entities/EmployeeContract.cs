@@ -13,7 +13,7 @@ namespace Entities
         private DateTime startDate;
         private DateTime endDate;
         private double fte;
-        private string reason;
+        public string reason;
         private bool isValid;
 
         public EmployeeContract(int id, Employee employee, DateTime startDate, DateTime endDate, double fte, string reason, bool isValid)
@@ -39,8 +39,8 @@ namespace Entities
 
         public DateTime EndDate { get; set; }
 
-        public string Fte { get; set; }
+        public double Fte { get; set; }
         public string Reason { get; set; }
-        public bool IsValid { get; set; } }
+        public bool IsValid { get { return isValid; } }
     }
-
+}

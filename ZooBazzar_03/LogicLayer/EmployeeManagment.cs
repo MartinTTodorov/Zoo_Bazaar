@@ -17,10 +17,14 @@ namespace LogicLayer
 
         private List<Employee> employees = new List<Employee>();
         private EmployeeDB db = new EmployeeDB();
-
         public EmployeeManagment()
         {
             employees = db.Read();
+        }
+
+        public Caretaker GetCaretakerById(int id)
+        {
+            return AllCaretakers().Find(c => c.Id == id);
         }
 
         

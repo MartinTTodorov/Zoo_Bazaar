@@ -19,8 +19,8 @@ namespace ZooBazzar_Group03
         private EmployeeManagment employeeManagment = new EmployeeManagment();
         private AccountManager accountManager = new AccountManager();
         private AnimalManager animalManager = new AnimalManager();
-        private ScheduleManager sm = new ScheduleManager();
         
+
         public MainManu(Account account)
         {
             InitializeComponent();
@@ -32,25 +32,43 @@ namespace ZooBazzar_Group03
             tbPasswordSettings.Text = account.Password;
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
             updateEmployee();
-            sm.GetDate(0, calendar);
+            
+            GetSchedule(0);
             currentAccount = account;
         }
 
 
         int index = 0;
 
+        private void GetSchedule(int index)
+        {
+            calendar.Controls.Clear();
 
+            for (int i = 0; i < 7; i++)
+            {
+                DateTime day = DateTime.Now;
+
+                day = day.AddDays(i + index);
+                ucDate uc = new ucDate();
+
+                string date = $"{day.Day} {day.ToString("MMM")} {day.Year}";
+                string weekday = day.DayOfWeek.ToString();
+                uc.GetDate(weekday, date);
+
+                calendar.Controls.Add(uc);
+            }
+        }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             index -= 7;
-            sm.GetDate(index, calendar);
+            GetSchedule(index);
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
             index += 7;
-            sm.GetDate(index, calendar);
+            GetSchedule(index);
         }
 
 
@@ -66,20 +84,20 @@ namespace ZooBazzar_Group03
 
         private void updateEmployeeUI()
         {
-           List<Employee> employees = employeeManagment.GetEmployees();
+            List<Employee> employees = employeeManagment.GetEmployees();
 
-           flpEmployees.Controls.Clear();
-           foreach(Employee e in employees)
+            flpEmployees.Controls.Clear();
+            foreach (Employee e in employees)
             {
                 flpEmployees.Controls.Add(new ucEmployee(e));
 
-            }           
+            }
         }
         private void updateEmployeeUIbySpecialization(Specialization specialization)
         {
             List<Caretaker> caretakers = employeeManagment.CaretakersBySpecialization(specialization);
             flpEmployees.Controls.Clear();
-            foreach (Caretaker c in caretakers )
+            foreach (Caretaker c in caretakers)
             {
                 flpEmployees.Controls.Add(new ucEmployee(c));
             }
@@ -92,14 +110,14 @@ namespace ZooBazzar_Group03
             flpEmployees.Controls.Clear();
             foreach (Employee e in employees)
             {
-                if(string.Equals(e.Name,name,StringComparison.OrdinalIgnoreCase) || e.Name.Contains(name,StringComparison.OrdinalIgnoreCase))
-                {                
+                if (string.Equals(e.Name, name, StringComparison.OrdinalIgnoreCase) || e.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
+                {
                     flpEmployees.Controls.Add(new ucEmployee(e));
                 }
 
             }
         }
-        
+
 
         private void btnFindByFirstName_Click(object sender, EventArgs e)
         {
@@ -108,7 +126,7 @@ namespace ZooBazzar_Group03
 
         private void btnNewEmployee_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         public void OnChangedEmployee()
@@ -146,14 +164,14 @@ namespace ZooBazzar_Group03
             //    }
             //}
 
-            foreach (Animal animal in animalManager.animals)
-            {
-                if (animal.ReasonForDeparture==String.Empty)
-                {
-                    AnimalPic animalPic = new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username));
-                    flpAnimals.Controls.Add(animalPic);
-                }
-            }
+            //foreach (Animal animal in animalManager.animals)
+            //{
+            //    if (animal.ReasonForDeparture == String.Empty)
+            //    {
+            //        AnimalPic animalPic = new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username));
+            //        flpAnimals.Controls.Add(animalPic);
+            //    }
+            //}
         }
 
 
@@ -180,7 +198,7 @@ namespace ZooBazzar_Group03
 
         private void btnUpdateEmployee_Click(object sender, EventArgs e)
         {
-            if(lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
+            if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
             {
                 EditEmployee editEmployee = new EditEmployee(lbEmployees.SelectedIndex);
                 editEmployee.Show();
@@ -189,7 +207,7 @@ namespace ZooBazzar_Group03
 
         private void btnRemoveEmployee_Click_1(object sender, EventArgs e)
         {
-            if(lbEmployees.SelectedIndex>=0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
+            if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
             {
                 employeeManagment.RemoveEmployee(lbEmployees.SelectedIndex);
             }
@@ -211,12 +229,12 @@ namespace ZooBazzar_Group03
 
             if (workingPosition == "Manager")
             {
-                
+
             }
-            else if(workingPosition == "Resourceplanner")
+            else if (workingPosition == "Resourceplanner")
             {
-                tabControl1.TabPages.Remove(tpEmployeeManagment);              
-                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;               
+                tabControl1.TabPages.Remove(tpEmployeeManagment);
+                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;
             }
             else
             {

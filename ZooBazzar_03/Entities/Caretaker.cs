@@ -15,6 +15,12 @@ namespace Entities
             this.specialization = specialization;
         }
 
+        public Caretaker(int id, string name, Specialization specialization)
+            :base(id, name)
+        {
+            this.specialization = specialization;
+        }
+
         public Specialization GetSpecialization()
         {
             return specialization;
@@ -24,6 +30,9 @@ namespace Entities
         {
             return $"{this.specialization}: {base.ToString()}";
         }
+
+
+
         public override string GetWorkingPosition()
         {
             return $"{this.specialization}";

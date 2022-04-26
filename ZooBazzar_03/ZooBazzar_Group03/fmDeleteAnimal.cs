@@ -32,7 +32,7 @@ namespace ZooBazzar_Group03
             }
             else
             {
-                animal.ReasonForDeparture = tbReasonForDeparture.Text;
+                //animal.ReasonForDeparture = tbReasonForDeparture.Text;
                 animalManager.DeleteAnimal(animal);
                 menu.UpdateAnimals();
             }

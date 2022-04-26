@@ -10,12 +10,15 @@ namespace LogicLayer
 {
     public class AnimalManager
     {
-        public List<Animal> animals;
+        private List<Animal> animals;
         AnimalDB animalDB = new AnimalDB();
+
+        public List<Animal> Animals { get { return animals; } } 
 
         public AnimalManager()
         {
             animals = animalDB.GetAnimals();
+            AssignFeedingTimes();
         }
 
 
@@ -27,6 +30,7 @@ namespace LogicLayer
                 animals.Clear();
             }
             animals = animalDB.GetAnimals();
+            AssignFeedingTimes();
         }
 
         public void UpdateLocalList()
@@ -35,14 +39,14 @@ namespace LogicLayer
         }
         public void AddAnimal(Animal animal)
         {
-            animalDB.AddAnimalToDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString());
+            animalDB.AddAnimalToDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.FeedingTimes);
             //UpdateLocalList();
 
         }
 
-        public void AddAnimal(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet)
+        public void AddAnimal(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes)
         {
-            animalDB.AddAnimalToDB(animalCode, name, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet);
+            animalDB.AddAnimalToDB(animalCode, name, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet, feedingTimes);
             //UpdateLocalList();
         }
 
@@ -79,6 +83,14 @@ namespace LogicLayer
         public MemoryStream GetMemoryStream(string animalCode)
         {
             return animalDB.GetMemoryStream(animalCode);
+        }
+
+        public void AssignFeedingTimes()
+        {
+            for (int i = 0; i < animals.Count; i++)
+            {
+                animals[i].FeedingTimes = animalDB.GetFeeding(animals[i]);
+            }
         }
 
 

@@ -29,9 +29,13 @@ namespace DataAccessLayer
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
 
+                List<string> time = new List<string>();
+
+
                 while (reader.Read())
                 {
-                    animals.Add(new Animal(Convert.ToString(reader["AnimalCode"]), Convert.ToInt32(reader["id"]), Convert.ToInt32(reader["CageNumber"]), reader["Name"].ToString(), reader["ReasonForArrival"].ToString(), reader["ReasonOFDeparture"].ToString(), (Diet)Enum.Parse(typeof(Diet), reader["Diet"].ToString()), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Species"].ToString(), reader["YearOfArrival"].ToString(), reader["YearOfDeparture"].ToString(), reader["Birthdate"].ToString()));
+                    animals.Add(new Animal(Convert.ToString(reader["AnimalCode"]), Convert.ToInt32(reader["id"]), Convert.ToInt32(reader["CageNumber"]), reader["Name"].ToString(), reader["Gender"].ToString(), reader["ReasonForArrival"].ToString(), reader["ReasonOFDeparture"].ToString(), (Diet)Enum.Parse(typeof(Diet), reader["Diet"].ToString()), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Species"].ToString(), reader["YearOfArrival"].ToString(), reader["YearOfDeparture"].ToString(), reader["Birthdate"].ToString(), (Specialization)Enum.Parse(typeof(Specialization), reader["Specialist"].ToString()), null));
+
                 }
             }
             catch (MySqlException ex)
@@ -50,11 +54,17 @@ namespace DataAccessLayer
             return animals;
         }
 
-        public void AddAnimalToDB(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet)
+        public void AddAnimalToDB(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes)
         {
             try
             {
                 string sql = "INSERT INTO animal (AnimalCode, Name, AnimalType, Species, CageNumber, Birthdate, ReasonForArrival, YearOfArrival, YearOfDeparture, ReasonOFDeparture, Diet) VALUES(@animalCode, @name, @animalType, @species, @cageNumber, @birthdate, @reasonForArrival, @yearOfArrival, @yearOfDeparture, @reasonForDeparture, @diet);";
+                for (int i = 0; i < feedingTimes.Count; i++)
+                {
+                    sql += $"INSERT INTO feedingtime (AnimalCode, timeSlot) VALUES (@animalCode, @time{i});";
+                }
+
+
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@animalCode", animalCode);
                 cmd.Parameters.AddWithValue("@name", name);
@@ -67,6 +77,12 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@yearOfDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@reasonForDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@diet", diet);
+
+                for (int i = 0; i < feedingTimes.Count; i++)
+                {
+                    cmd.Parameters.AddWithValue($"@time{i}", feedingTimes[i]);
+                }
+
                 conn.Open();
                 if (cmd.ExecuteNonQuery() == 1)
                 {
@@ -209,6 +225,37 @@ namespace DataAccessLayer
             return ms;
 
         }
+
+        public List<string> GetFeeding(Animal animal)
+        {
+            List<string> feedingTimes = new List<string>();
+            try
+            {
+                string sql = "SELECT timeSlot FROM feedingtime f INNER JOIN animal a on f.AnimalCode = a.AnimalCode where f.AnimalCode = @animalCode";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                cmd.Parameters.AddWithValue("@animalCode", animal.AnimalCode);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    feedingTimes.Add(dr["timeSlot"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+
+                conn.Close();
+            }
+            return feedingTimes;
+        }
     }
-        
+
 }

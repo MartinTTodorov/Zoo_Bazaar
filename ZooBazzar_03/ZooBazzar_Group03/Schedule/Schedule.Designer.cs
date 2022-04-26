@@ -38,7 +38,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmbTimeSloth = new System.Windows.Forms.ComboBox();
             this.btnAssign = new System.Windows.Forms.Button();
-            this.lblAnimalCode = new System.Windows.Forms.Label();
+            this.lblCageNumber = new System.Windows.Forms.Label();
             this.lbl9 = new System.Windows.Forms.Label();
             this.btnEditEmployee = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -68,7 +68,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(593, 148);
+            this.label7.Location = new System.Drawing.Point(578, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 28);
             this.label7.TabIndex = 13;
@@ -78,9 +78,9 @@
             // 
             this.cmbEmployees.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.cmbEmployees.FormattingEnabled = true;
-            this.cmbEmployees.Location = new System.Drawing.Point(593, 190);
+            this.cmbEmployees.Location = new System.Drawing.Point(578, 190);
             this.cmbEmployees.Name = "cmbEmployees";
-            this.cmbEmployees.Size = new System.Drawing.Size(217, 28);
+            this.cmbEmployees.Size = new System.Drawing.Size(275, 28);
             this.cmbEmployees.TabIndex = 12;
             // 
             // label8
@@ -148,14 +148,14 @@
             this.btnAssign.UseVisualStyleBackColor = true;
             this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
-            // lblAnimalCode
+            // lblCageNumber
             // 
-            this.lblAnimalCode.AutoSize = true;
-            this.lblAnimalCode.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.lblAnimalCode.Location = new System.Drawing.Point(411, 400);
-            this.lblAnimalCode.Name = "lblAnimalCode";
-            this.lblAnimalCode.Size = new System.Drawing.Size(0, 20);
-            this.lblAnimalCode.TabIndex = 20;
+            this.lblCageNumber.AutoSize = true;
+            this.lblCageNumber.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.lblCageNumber.Location = new System.Drawing.Point(411, 400);
+            this.lblCageNumber.Name = "lblCageNumber";
+            this.lblCageNumber.Size = new System.Drawing.Size(0, 20);
+            this.lblCageNumber.TabIndex = 20;
             // 
             // lbl9
             // 
@@ -164,9 +164,9 @@
             this.lbl9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbl9.Location = new System.Drawing.Point(405, 359);
             this.lbl9.Name = "lbl9";
-            this.lbl9.Size = new System.Drawing.Size(125, 28);
+            this.lbl9.Size = new System.Drawing.Size(133, 28);
             this.lbl9.TabIndex = 19;
-            this.lbl9.Text = "Animal code:";
+            this.lbl9.Text = "Cage number:";
             // 
             // btnEditEmployee
             // 
@@ -185,7 +185,7 @@
             this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Background;
             this.ClientSize = new System.Drawing.Size(865, 515);
             this.Controls.Add(this.btnEditEmployee);
-            this.Controls.Add(this.lblAnimalCode);
+            this.Controls.Add(this.lblCageNumber);
             this.Controls.Add(this.lbl9);
             this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.cmbTimeSloth);
@@ -216,7 +216,7 @@
         public ComboBox cmbEmployees;
         public Button btnAssign;
         private Label lbl9;
-        public Label lblAnimalCode;
+        public Label lblCageNumber;
         public Button btnEditEmployee;
         public Label lblAnimalType;
         public Label lblSpecies;
