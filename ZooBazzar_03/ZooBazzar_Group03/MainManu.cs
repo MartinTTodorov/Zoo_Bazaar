@@ -265,7 +265,10 @@ namespace ZooBazzar_Group03
                 return;
             }
 
-            cm.DisableContract((EmployeeContract)lbContracts.SelectedItem);
+            EmployeeContract ec = (EmployeeContract)lbContracts.SelectedItem;
+
+            cm.DisableContract(ec);
+            MessageBox.Show($"Successful disabling the conract with id : {ec.Id}");
         }
     }
 }

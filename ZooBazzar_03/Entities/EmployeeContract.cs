@@ -8,6 +8,7 @@ namespace Entities
 {
     public class EmployeeContract
     {
+       
         private int id;
         private int employeeId;
         private DateTime startDate;
