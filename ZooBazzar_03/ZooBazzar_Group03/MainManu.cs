@@ -19,8 +19,8 @@ namespace ZooBazzar_Group03
         private EmployeeManagment employeeManagment = new EmployeeManagment();
         private AccountManager accountManager = new AccountManager();
         private AnimalManager animalManager = new AnimalManager();
+        private ContractManager cm = new ContractManager();
         
-
         public MainManu(Account account)
         {
             InitializeComponent();
@@ -32,9 +32,9 @@ namespace ZooBazzar_Group03
             tbPasswordSettings.Text = account.Password;
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
             updateEmployee();
-            
             GetSchedule(0);
             currentAccount = account;
+            LoadContracts();
         }
 
 
@@ -84,20 +84,20 @@ namespace ZooBazzar_Group03
 
         private void updateEmployeeUI()
         {
-            List<Employee> employees = employeeManagment.GetEmployees();
+           List<Employee> employees = employeeManagment.GetEmployees();
 
-            flpEmployees.Controls.Clear();
-            foreach (Employee e in employees)
+           flpEmployees.Controls.Clear();
+           foreach(Employee e in employees)
             {
                 flpEmployees.Controls.Add(new ucEmployee(e));
 
-            }
+            }           
         }
         private void updateEmployeeUIbySpecialization(Specialization specialization)
         {
             List<Caretaker> caretakers = employeeManagment.CaretakersBySpecialization(specialization);
             flpEmployees.Controls.Clear();
-            foreach (Caretaker c in caretakers)
+            foreach (Caretaker c in caretakers )
             {
                 flpEmployees.Controls.Add(new ucEmployee(c));
             }
@@ -110,14 +110,14 @@ namespace ZooBazzar_Group03
             flpEmployees.Controls.Clear();
             foreach (Employee e in employees)
             {
-                if (string.Equals(e.Name, name, StringComparison.OrdinalIgnoreCase) || e.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
-                {
+                if(string.Equals(e.Name,name,StringComparison.OrdinalIgnoreCase) || e.Name.Contains(name,StringComparison.OrdinalIgnoreCase))
+                {                
                     flpEmployees.Controls.Add(new ucEmployee(e));
                 }
 
             }
         }
-
+        
 
         private void btnFindByFirstName_Click(object sender, EventArgs e)
         {
@@ -126,7 +126,7 @@ namespace ZooBazzar_Group03
 
         private void btnNewEmployee_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         public void OnChangedEmployee()
@@ -164,14 +164,14 @@ namespace ZooBazzar_Group03
             //    }
             //}
 
-            //foreach (Animal animal in animalManager.animals)
-            //{
-            //    if (animal.ReasonForDeparture == String.Empty)
-            //    {
-            //        AnimalPic animalPic = new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username));
-            //        flpAnimals.Controls.Add(animalPic);
-            //    }
-            //}
+            foreach (Animal animal in animalManager.Animals)
+            {
+                if (animal.ReasonForDeparture==String.Empty)
+                {
+                    AnimalPic animalPic = new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username));
+                    flpAnimals.Controls.Add(animalPic);
+                }
+            }
         }
 
 
@@ -192,13 +192,13 @@ namespace ZooBazzar_Group03
             lbEmployees.Items.Clear();
             foreach (Employee employee in employeeManagment.GetEmployees())
             {
-                lbEmployees.Items.Add(employee.ToString());
+                lbEmployees.Items.Add(employee);
             }
         }
 
         private void btnUpdateEmployee_Click(object sender, EventArgs e)
         {
-            if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
+            if(lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
             {
                 EditEmployee editEmployee = new EditEmployee(lbEmployees.SelectedIndex);
                 editEmployee.Show();
@@ -207,7 +207,7 @@ namespace ZooBazzar_Group03
 
         private void btnRemoveEmployee_Click_1(object sender, EventArgs e)
         {
-            if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
+            if(lbEmployees.SelectedIndex>=0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
             {
                 employeeManagment.RemoveEmployee(lbEmployees.SelectedIndex);
             }
@@ -229,12 +229,12 @@ namespace ZooBazzar_Group03
 
             if (workingPosition == "Manager")
             {
-
+                
             }
-            else if (workingPosition == "Resourceplanner")
+            else if(workingPosition == "Resourceplanner")
             {
-                tabControl1.TabPages.Remove(tpEmployeeManagment);
-                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;
+                tabControl1.TabPages.Remove(tpEmployeeManagment);              
+                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;               
             }
             else
             {
@@ -244,5 +244,47 @@ namespace ZooBazzar_Group03
             }
         }
 
+        private void lbEmployees_DoubleClick(object sender, EventArgs e)
+        {
+            //Employee employee = (Employee)lbEmployees.SelectedItem;
+            //foreach (EmployeeContract ec in cm.GetContracts(employee) )
+            //{
+            //    MessageBox.Show(ec.ToString());
+            //}
+
+            Employee employee = (Employee)lbEmployees.SelectedItem;
+            foreach (EmployeeContract ec in cm.GetContracts(employee))
+            {
+                MessageBox.Show(ec.ToString());
+            }
+        }
+
+        private void lbEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoadContracts()
+        {
+            //lbContracts.Items.Clear();
+            //foreach (EmployeeContract ec in cm.GetContracts())
+            //{
+            //    lbContracts.Items.Add(ec); 
+            //}
+        }
+
+        private void btnDisableContract_Click(object sender, EventArgs e)
+        {
+            if (lbContracts.SelectedIndex < 0)
+            {
+                MessageBox.Show("Please select a contract");
+                return;
+            }
+
+            EmployeeContract ec = (EmployeeContract)lbContracts.SelectedItem;
+
+            cm.DisableContract(ec);
+            MessageBox.Show($"Successful disabling the conract with id : {ec.Id}");
+        }
     }
 }

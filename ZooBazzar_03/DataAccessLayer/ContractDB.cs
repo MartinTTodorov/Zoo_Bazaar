@@ -105,7 +105,13 @@ namespace DataAccessLayer
                 {
 
 
-                    ec = new EmployeeContract(databaseReader.GetInt32("id"), databaseReader.GetInt32("employee_id"), databaseReader.GetDateTime("start_date"), databaseReader.GetDateTime("end_date"), databaseReader.GetDouble("fte"), databaseReader.GetString("reason"), databaseReader.GetBoolean("is_valid"));
+                    ec = new EmployeeContract(databaseReader.GetInt32("id"),
+                        databaseReader.GetInt32("employee_id"),
+                        databaseReader.GetDateTime("start_date"),
+                        databaseReader.GetDateTime("end_date"),
+                        databaseReader.GetDouble("fte"),
+                        databaseReader.GetString("reason"),
+                        databaseReader.GetBoolean("is_valid"));
                     contracts.Add(ec);
                 }
                 return contracts;

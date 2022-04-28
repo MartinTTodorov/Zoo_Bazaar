@@ -56,13 +56,12 @@ namespace DataAccessLayer
         {
             try
             {
-                string sql = "SELECT * FROM `daily_feeding_schedule` WHERE Date = @date OR Date = @date OR Date = @date OR Date = @date OR Date = @date OR Date = @date OR Date = @date ";
+                string sql = $"SELECT * FROM `daily_feeding_schedule` WHERE Date = @date{0} OR Date = @date{1} OR Date = @date{2} OR Date = @date{3} OR Date = @date{4} OR Date = @date{5} OR Date = @date{6} ";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                foreach (string date in days)
+                for (int i = 0; i < days.Count; i++)
                 {
-                    cmd.Parameters.AddWithValue("date", date);
-
+                    cmd.Parameters.AddWithValue("date", days + "i");
                 }
 
                 conn.Open();
