@@ -17,24 +17,18 @@ namespace ZooBazzar_Group03
     {
 
         private Schedule schedule;
-        public ucCageInfo(int cageNr, string date, DateTime currentDate, Schedule schedule, string timeSlot)
+        public ucCageInfo(Cage cage, string date, DateTime currentDate, Schedule schedule, string timeSlot)
         {
             InitializeComponent();
-            this.cageNr = cageNr;
+            this.cage = cage;
             this.currentDate = currentDate;
             this.schedule = schedule;
             this.timeSlot = timeSlot;
-            sm = new ScheduleManager(date);
         }
 
+        ScheduleManager sm = new ScheduleManager();
 
-
-        ScheduleManager sm;
-        EmployeeManagment em = new EmployeeManagment();
-        CageManager cm = new CageManager();
-
-
-        int cageNr;
+        Cage cage;
 
         string timeSlot;
 
@@ -42,26 +36,23 @@ namespace ZooBazzar_Group03
 
         private void ucCageInfo_Click(object sender, EventArgs e)
         {
-            Cage cage = cm.GetCageByCageNr(cageNr);
+            
+
             schedule.lblAnimalType.Text = cage.Type.ToString();
             schedule.lblSpecies.Text = cage.Species.ToString();
             schedule.lblCageNumber.Text = cage.CageNumber.ToString();
 
-            int caretakerId = sm.AssignedCaretaker(cageNr, timeSlot);
+            Caretaker caretakerId = sm.AssignedCaretaker(cage, timeSlot);
 
             if (sm.CheckDate(currentDate))
             {
-                if (caretakerId == 0)
+                if (caretakerId == null)
                 {
                     schedule.cmbEmployees.Text = "";
                     schedule.cmbEmployees.Items.Clear();
 
-                    foreach (Caretaker s in sm.GetCaretakers(cageNr))
+                    foreach (Caretaker s in sm.GetCaretaker(cage))
                     {
-                        if (true)
-                        {
-
-                        }
                         schedule.cmbEmployees.Items.Add(s);
                     }
 
@@ -72,8 +63,8 @@ namespace ZooBazzar_Group03
                 {
                     schedule.cmbEmployees.Items.Clear();
 
-                    schedule.cmbEmployees.Text = em.GetCaretakerById(caretakerId).ToString();
-                    foreach (Caretaker s in sm.GetCaretakers(cageNr))
+                    schedule.cmbEmployees.Text = caretakerId.ToString();
+                    foreach (Caretaker s in sm.GetCaretaker(cage))
                     {
                         schedule.cmbEmployees.Items.Add(s);
                     }
@@ -86,9 +77,9 @@ namespace ZooBazzar_Group03
                 schedule.cmbEmployees.Enabled = false;
                 schedule.cmbEmployees.Text = "";
 
-                if (caretakerId != 0)
+                if (caretakerId != null)
                 {
-                    schedule.cmbEmployees.Text = em.GetCaretakerById(caretakerId).ToString();
+                    schedule.cmbEmployees.Text = caretakerId.ToString();
                 }
                 else
                 {
@@ -101,8 +92,8 @@ namespace ZooBazzar_Group03
 
         private void ucCageInfo_Load_1(object sender, EventArgs e)
         {
-            lblCageNr.Text = cageNr.ToString();
-            lblSpecies.Text = cm.GetCageByCageNr(cageNr).Species;
+            lblCageNr.Text = cage.ToString();
+            lblSpecies.Text = cage.CageNumber.ToString();
         }
     }
 }

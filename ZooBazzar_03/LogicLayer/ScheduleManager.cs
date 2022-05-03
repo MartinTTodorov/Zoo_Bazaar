@@ -13,15 +13,16 @@ namespace LogicLayer
         EmployeeManagment em = new EmployeeManagment();
         CageManager cm = new CageManager();
         ScheduleDB sdb = new ScheduleDB();
+        ContractManager cmngr = new ContractManager();
 
         List<DailySchedule> dailySchedules = new List<DailySchedule>();
 
 
-        public List<string> GetCurrentWeek()
+        public List<string> GetCurrentWeek(DateTime pickDate)
         {
             List<string> daysInWeek = new List<string>();
 
-            var now = DateTime.Now;
+            var now = pickDate;
             var currentDay = now.DayOfWeek;
             int days = (int)currentDay;
 
@@ -41,16 +42,18 @@ namespace LogicLayer
         }
 
 
-        public ScheduleManager(string date)
+
+        public void GetWeeklySchedule(DateTime date)
         {
-            dailySchedules = sdb.Read(GetCurrentWeek());
+            dailySchedules = sdb.Read(GetCurrentWeek(date));
+            cm.GetCageAnimals(dailySchedules);
         }
 
 
 
-        public List<Caretaker> GetCaretakers(int cageNumber)
+        public List<Caretaker> GetCaretakers(Cage Cage)
         {
-            Cage cage = cm.Cages.Find(x => x.CageNumber == cageNumber);
+            Cage cage = cm.Cages.Find(x => x.CageNumber == Cage.CageNumber);
 
             switch (cage.Type)
             {
@@ -77,15 +80,15 @@ namespace LogicLayer
             }
         }
 
-        public int AssignedCaretaker(int cage, string time)
+        public Caretaker AssignedCaretaker(Cage cage, string time)
         {
-            if (dailySchedules.Find(x => x.CageNumber == cage && x.TimeSlot == time) != null)
+            if (dailySchedules.Find(x => x.Cage.CageNumber == cage.CageNumber && x.TimeSlot == time) != null)
             {
-                return dailySchedules.Find(x => x.CageNumber == cage).EmployeeId;
+                return (Caretaker)dailySchedules.Find(x => x.Cage.CageNumber == cage.CageNumber).Employee;
             }
             else
             {
-                return 0;
+                return null;
             }
         }
 
@@ -97,7 +100,7 @@ namespace LogicLayer
 
         public int Update(DailySchedule ds)
         {
-            int index = dailySchedules.FindIndex(x => x.Date == ds.Date && x.CageNumber == ds.CageNumber);
+            int index = dailySchedules.FindIndex(x => x.Date == ds.Date && x.Cage.CageNumber == ds.Cage.CageNumber);
 
             dailySchedules[index] = ds;
 
@@ -121,16 +124,31 @@ namespace LogicLayer
             return allCages.FindAll(x => x.CageAnimals.Any(x => x.FeedingTimes.Any(x => x == feedingTime) && x.ReasonForDeparture == null));
         }
 
-        //public int GetWorkerFTE(int cageNr)
-        //{
-        //    List<Caretaker> caretakers = GetCaretakers(cageNr);
+        public int GetCagesForShift(Caretaker caretaker)
+        {
+            if (dailySchedules.FindAll(ds => ds.Employee == caretaker).Count() == 5)
+            {
+                return 5;
+            }
+            return 0;
+        }
 
-     
+        public List<Caretaker> GetCaretaker(Cage cage)
+        {
+            List<Caretaker> caretakers = GetCaretakers(cage);
 
-        //    if (caretakers.Any(x => (x.Id * 40) > caretakers.Where(caretaker => caretaker == x).Count))
-        //    {
+            List<Caretaker> freeCaretakers = new List<Caretaker>();
 
-        //    }
-        //}
+            foreach (Caretaker caretaker in caretakers)
+            {
+                cmngr.GetContracts(caretaker);
+                
+                if ((caretaker.Contracts.Find(c => c.IsValid == true).Fte * 40) >= ((GetCagesForShift(caretaker) * 6) + 6))
+                {
+                    freeCaretakers.Add(caretaker);
+                }
+            }
+            return freeCaretakers;
+        }
     }
 }

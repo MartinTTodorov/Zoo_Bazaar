@@ -30,8 +30,8 @@ namespace DataAccessLayer
             {
                 string sql = "INSERT INTO daily_feeding_schedule (Date, CageNumber, EmployeeId, TimeSlot) VALUES (@date, @cage, @id, @time);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("cage", ds.CageNumber);
-                cmd.Parameters.AddWithValue("id", ds.EmployeeId);
+                cmd.Parameters.AddWithValue("cage", ds.Cage.CageNumber);
+                cmd.Parameters.AddWithValue("id", ds.Employee.Id);
                 cmd.Parameters.AddWithValue("date", ds.Date);
                 cmd.Parameters.AddWithValue("time", ds.TimeSlot);
 
@@ -56,12 +56,12 @@ namespace DataAccessLayer
         {
             try
             {
-                string sql = $"SELECT * FROM `daily_feeding_schedule` WHERE Date = @date{0} OR Date = @date{1} OR Date = @date{2} OR Date = @date{3} OR Date = @date{4} OR Date = @date{5} OR Date = @date{6} ";
+                string sql = $"SELECT * FROM `daily_feeding_schedule` WHERE Date = @date0 OR Date = @date1 OR Date = @date2 OR Date = @date3 OR Date = @date4 OR Date = @date5 OR Date = @date6 ";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
                 for (int i = 0; i < days.Count; i++)
                 {
-                    cmd.Parameters.AddWithValue("date", days + "i");
+                    cmd.Parameters.AddWithValue(("date" + $"{i}"), days );
                 }
 
                 conn.Open();
@@ -73,7 +73,7 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    list.Add(new DailySchedule(Convert.ToInt32(reader["CageNumber"]), reader["Date"].ToString(), Convert.ToInt32(reader["EmployeeId"]), reader["TimeSlot"].ToString()));
+                    list.Add(new DailySchedule(new Cage(Convert.ToInt32(reader["CageNumber"])), reader["Date"].ToString(), new Caretaker(Convert.ToInt32(reader["EmployeeId"]), reader["FirstName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization), reader["Specialization"].ToString())), reader["TimeSlot"].ToString()));
                 }
 
                 return list;
@@ -89,12 +89,11 @@ namespace DataAccessLayer
 
         public int EditSpecialist(DailySchedule ds)
         {
-
             try
             {
                 string sql = "UPDATE daily_feeding_schedule SET EmployeeId = @id WHERE Date = @date AND TimeSlot = @time;";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("id", ds.EmployeeId);
+                cmd.Parameters.AddWithValue("id", ds.Employee.Id);
                 cmd.Parameters.AddWithValue("date", ds.Date);
                 cmd.Parameters.AddWithValue("time", ds.TimeSlot);
 

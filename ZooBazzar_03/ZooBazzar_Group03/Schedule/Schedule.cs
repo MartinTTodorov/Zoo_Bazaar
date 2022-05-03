@@ -22,13 +22,13 @@ namespace ZooBazzar_Group03
         {
             InitializeComponent();
             this.date = date;
-            this.currentDate = DateTime.ParseExact(date, "dd MMM yyyy", null);
-            sm = new ScheduleManager(date);
+            this.currentDate = DateTime.ParseExact(date, "d MMM yyyy", null);
+            sm.GetWeeklySchedule(currentDate);
         }
         string date;
 
-        ScheduleManager sm; 
-
+        CageManager cm = new CageManager();
+        ScheduleManager sm = new ScheduleManager();
 
         DateTime currentDate;
 
@@ -83,7 +83,7 @@ namespace ZooBazzar_Group03
 
             for (int i = 0; i < cages.Count; i++)
             {
-                ucCageInfo ci = new ucCageInfo(cages[i].CageNumber, date, currentDate, this, timeSlot);
+                ucCageInfo ci = new ucCageInfo(cages[i], date, currentDate, this, timeSlot);
                 panelAnimals.Controls.Add(ci);
             }
         }
@@ -92,11 +92,13 @@ namespace ZooBazzar_Group03
 
         public void btnAssign_Click(object sender, EventArgs e)
         {
+            object cage = Convert.ToInt32(lblCageNumber.Text);
+
             if (cmbEmployees.SelectedIndex > -1)
             {
                 Caretaker caretaker = (Caretaker)cmbEmployees.SelectedItem;
 
-                if (sm.Insert(new DailySchedule(Convert.ToInt32(lblCageNumber.Text), date, caretaker.Id, timeSlot)) > 0)
+                if (sm.Insert(new DailySchedule((Cage)cage, date, caretaker, timeSlot)) > 0)
                 {
                     MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully assign a caretaker to the animal");
                     btnAssign.Enabled = false;
@@ -117,7 +119,7 @@ namespace ZooBazzar_Group03
         {
             Caretaker caretaker = (Caretaker)cmbEmployees.SelectedItem;
 
-            if (sm.Update(new DailySchedule(Convert.ToInt32(lblCageNumber.Text), date, caretaker.Id, timeSlot)) > 0)
+            if (sm.Update(new DailySchedule(cm.GetCageByCageNr(Convert.ToInt32(lblCageNumber.Text)), date, caretaker, timeSlot)) > 0)
             {
                 MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully edit the assigned caretaker to the animal");
             }

@@ -55,6 +55,7 @@ namespace Entities
         {
             this.id = id;
             this.firstname = name;
+            contracts = new List<EmployeeContract>();
         }
 
         public void AssignContract(EmployeeContract ec)

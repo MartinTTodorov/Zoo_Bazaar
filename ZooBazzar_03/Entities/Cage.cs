@@ -36,5 +36,10 @@ namespace Entities
             this.type = type;
             this.species = species;
         }
+
+        public Cage(int cageNr)
+        {
+            this.cageNumber = cageNr;
+        }
     }
 }
