@@ -17,6 +17,7 @@ namespace ZooBazzar_Group03
     {
         private Account currentAccount;
         private EmployeeManagment employeeManagment = new EmployeeManagment();
+        private ScheduleManager scheduleManager = new ScheduleManager();
         private AccountManager accountManager = new AccountManager();
         private AnimalManager animalManager = new AnimalManager();
         private ContractManager cm = new ContractManager();
@@ -44,7 +45,7 @@ namespace ZooBazzar_Group03
         {
             calendar.Controls.Clear();
 
-            List<string> days = GetCurrentWeek(index);
+            List<string> days = scheduleManager.GetWeek(DateTime.Now, index);
 
 
             for (int i = 0; i < days.Count; i++)
@@ -53,29 +54,6 @@ namespace ZooBazzar_Group03
                 uc.GetDate(days[i]);
                 calendar.Controls.Add(uc);
             }
-        }
-
-        public List<string> GetCurrentWeek(int index)
-        {
-            List<string> daysInWeek = new List<string>();
-
-            var now = DateTime.Now;
-            var currentDay = now.DayOfWeek;
-            int days = (int)currentDay;
-
-            DateTime sunday = now.AddDays(-days);
-
-            for (int i = 0; i < 7; i++)
-            {
-                DateTime day = sunday.AddDays(i + index);
-
-
-                string date = $"{day.Day} {day.ToString("MMM")} {day.Year}";
-
-                daysInWeek.Add(date);
-            }
-
-            return daysInWeek;
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)

@@ -27,11 +27,10 @@ namespace ZooBazzar_Group03
         }
         string date;
 
-        CageManager cm = new CageManager();
         ScheduleManager sm = new ScheduleManager();
 
         DateTime currentDate;
-
+        AnimalType currentType;
         string timeSlot;
 
         private void Schedule_Load(object sender, EventArgs e)
@@ -63,28 +62,122 @@ namespace ZooBazzar_Group03
                 {
                     timeSlot = "evening";
                 }
-
-                GetCages(timeSlot);
-
-                lblAnimalType.Text = "";
-                lblSpecies.Text = "";
-                lblCageNumber.Text = "";
-                cmbEmployees.Items.Clear();
+                GetCaretakers(currentType);
+                GetCages();
             }
         }
 
 
-
-        private void GetCages(string time)
+        private bool AssignedCaretaker()
         {
-            panelAnimals.Controls.Clear();
+            cmbFirstCaretaker.Text = "";
+            cmbFirstCaretaker.SelectedIndex = -1;
+            cmbSecondCaretaker.Text = "";
+            cmbSecondCaretaker.SelectedIndex = -1;
+            cmbHelperCaretaker.Text = "";
 
-            List<Cage> cages = sm.GetCages(time);
+            DailySchedule ds = sm.AssignedCaretaker(timeSlot, date, currentType);
+
+            if (ds != null)
+            {
+                cmbFirstCaretaker.SelectedItem = ds.MainCaretakerFir.ToString();
+                cmbFirstCaretaker.Text = ds.MainCaretakerFir.ToString();
+                cmbSecondCaretaker.SelectedItem = ds.MainCaretakerSec.ToString();
+                cmbSecondCaretaker.Text = ds.MainCaretakerSec.ToString();
+
+                if (ds.HelpCaretaker != null)
+                {
+                    cmbHelperCaretaker.Text = ds.HelpCaretaker.ToString();
+                }
+
+                btnAssign.Enabled = false;
+                btnEditEmployee.Enabled = true;
+
+                return true;
+            }
+            else
+            {
+                btnAssign.Enabled = true;
+                btnEditEmployee.Enabled = false;
+
+                return false;
+            }
+        }
+
+
+        private void cmbAnimalType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch ((AnimalType)Enum.Parse(typeof(AnimalType), cmbAnimalType.SelectedItem.ToString()))
+            {
+                case AnimalType.Mammal:
+                    currentType = AnimalType.Mammal;
+                    break;
+                case AnimalType.Insect:
+                    currentType = AnimalType.Insect;
+                    break;
+                case AnimalType.Reptile:
+                    currentType = AnimalType.Reptile;
+                    break;
+                case AnimalType.Fish:
+                    currentType = AnimalType.Fish;
+                    break;
+                case AnimalType.Amphibian:
+                    currentType = AnimalType.Amphibian;
+                    break;
+                case AnimalType.Bird:
+                    currentType = AnimalType.Bird;
+                    break;
+            }
+
+
+
+        }
+
+
+        public void GetCaretakers(AnimalType type)
+        {
+            List<Caretaker> fullShift = sm.GetFullShiftCaretaker(type, date, timeSlot);
+            List<Caretaker> halfShift = sm.GetHalfShiftCaretaker(type, date, timeSlot);
+
+            AssignedCaretaker();
+
+            cmbFirstCaretaker.Items.Clear();
+            cmbSecondCaretaker.Items.Clear();
+            cmbHelperCaretaker.Items.Clear();
+
+
+
+            for (int i = 0; i < fullShift.Count; i++)
+            {
+                cmbFirstCaretaker.Items.Add(fullShift[i]);
+                cmbSecondCaretaker.Items.Add(fullShift[i]);
+            }
+
+            for (int i = 0; i < halfShift.Count; i++)
+            {
+                cmbHelperCaretaker.Items.Add(halfShift[i]);
+            }
+        }
+
+
+        public bool ChosenCaretaker()
+        {
+            if (cmbFirstCaretaker.SelectedItem != cmbSecondCaretaker.SelectedItem && cmbSecondCaretaker.SelectedItem != cmbHelperCaretaker.SelectedItem && cmbHelperCaretaker.SelectedItem != cmbFirstCaretaker.SelectedItem)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void GetCages()
+        {
+            lbCages.Items.Clear();
+
+            List<Cage> cages = sm.GetCages(timeSlot, currentType);
 
             for (int i = 0; i < cages.Count; i++)
             {
-                ucCageInfo ci = new ucCageInfo(cages[i], date, currentDate, this, timeSlot);
-                panelAnimals.Controls.Add(ci);
+                lbCages.Items.Add(cages[i]);
             }
         }
 
@@ -92,13 +185,22 @@ namespace ZooBazzar_Group03
 
         public void btnAssign_Click(object sender, EventArgs e)
         {
-            object cage = Convert.ToInt32(lblCageNumber.Text);
-
-            if (cmbEmployees.SelectedIndex > -1)
+            if (ChosenCaretaker())
             {
-                Caretaker caretaker = (Caretaker)cmbEmployees.SelectedItem;
+                Caretaker caretaker1 = (Caretaker)cmbFirstCaretaker.SelectedItem;
+                Caretaker caretaker2 = (Caretaker)cmbSecondCaretaker.SelectedItem;
+                Caretaker caretaker3;
 
-                if (sm.Insert(new DailySchedule((Cage)cage, date, caretaker, timeSlot)) > 0)
+                if (cmbHelperCaretaker.SelectedIndex > -1)
+                {
+                    caretaker3 = (Caretaker)cmbHelperCaretaker.SelectedItem;
+                }
+                else
+                {
+                    caretaker3 = null;
+                }
+
+                if (sm.Insert(new DailySchedule((AnimalType)Enum.Parse(typeof(AnimalType), cmbAnimalType.SelectedItem.ToString()), date, caretaker1, caretaker2, caretaker3, timeSlot)))
                 {
                     MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully assign a caretaker to the animal");
                     btnAssign.Enabled = false;
@@ -111,15 +213,27 @@ namespace ZooBazzar_Group03
             }
             else
             {
-                MessageBox.Show("Choose an employee!!!");
+                MessageBox.Show("U chose the same employee");
             }
         }
 
         private void btnEditEmployee_Click(object sender, EventArgs e)
         {
-            Caretaker caretaker = (Caretaker)cmbEmployees.SelectedItem;
+            Caretaker caretaker1 = (Caretaker)cmbFirstCaretaker.SelectedItem;
+            Caretaker caretaker2 = (Caretaker)cmbSecondCaretaker.SelectedItem;
+            Caretaker caretaker3;
 
-            if (sm.Update(new DailySchedule(cm.GetCageByCageNr(Convert.ToInt32(lblCageNumber.Text)), date, caretaker, timeSlot)) > 0)
+            if (cmbHelperCaretaker.SelectedIndex > -1)
+            {
+                caretaker3 = (Caretaker)cmbHelperCaretaker.SelectedItem;
+            }
+            else
+            {
+                caretaker3 = null;
+            }
+
+
+            if (sm.Update(new DailySchedule(currentType, date, caretaker1, caretaker2, caretaker3, timeSlot)))
             {
                 MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully edit the assigned caretaker to the animal");
             }
@@ -128,5 +242,7 @@ namespace ZooBazzar_Group03
                 MessageBox.Show("Unfortunately, under unknown circumstances you sadly didn't do anythyng useful!!!");
             }
         }
+
+
     }
 }

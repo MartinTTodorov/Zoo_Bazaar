@@ -8,22 +8,28 @@ namespace Entities
 {
     public class DailySchedule
     {
-        private Cage cage;
         private string date;
-        private Employee employee;
+        private Caretaker mainCaretakerFir;
+        private Caretaker mainCaretakerSec;
+        private Caretaker helpCaretaker;
         private string timeSlot;
+        private AnimalType type;
 
-        public Cage Cage { get { return cage; } }
         public string Date { get { return date; } }
         public string TimeSlot { get { return timeSlot; } }
-        public Employee Employee { get { return employee; } }
+        public Caretaker MainCaretakerFir { get { return mainCaretakerFir; } }
+        public Caretaker MainCaretakerSec { get { return mainCaretakerSec; } }
+        public Caretaker HelpCaretaker { get { return helpCaretaker; } }
+        public AnimalType Type { get { return type; } }
 
 
-        public DailySchedule(Cage cage, string date, Employee employee, string timeSlot)
+        public DailySchedule(AnimalType type, string date, Caretaker mainFirst, Caretaker mainSecond, Caretaker helpCaretaker, string timeSlot)
         {
-            this.cage = cage;
+            this.type = type;
             this.date = date;
-            this.employee = employee;
+            this.mainCaretakerFir = mainFirst;
+            this.mainCaretakerSec = mainSecond;
+            this.helpCaretaker = helpCaretaker;
             this.timeSlot = timeSlot;
         }
 

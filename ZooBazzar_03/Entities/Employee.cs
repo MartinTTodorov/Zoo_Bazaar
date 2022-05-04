@@ -65,7 +65,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return $"{Name} {Lastname} Id:{Id}";
+            return $"{Name} Id:{Id}";
         }
 
         public virtual string GetWorkingPosition()
