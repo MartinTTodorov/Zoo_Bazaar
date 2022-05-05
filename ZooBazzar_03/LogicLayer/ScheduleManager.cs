@@ -15,10 +15,13 @@ namespace LogicLayer
         ScheduleDB sdb = new ScheduleDB();
         ContractManager cmngr = new ContractManager();
 
-        List<DailySchedule> dailySchedules = new List<DailySchedule>();
+        static List<DailySchedule> dailySchedules;
+        static List<DailySchedule> caretakerSchedule;
+
 
         int fullShiftHours = 6;
         int halfShiftHours = 3;
+
 
         public List<string> GetWeek(DateTime pickDate, int index)
         {
@@ -45,10 +48,20 @@ namespace LogicLayer
 
 
 
-        public void GetWeeklySchedule(DateTime date)
+        public void GetWeeklySchedule(DateTime date, int index)
         {
-            dailySchedules = sdb.Read(GetWeek(date, 0));
-            //cm.GetCageAnimals(dailySchedules);
+            bool match = false;
+
+            if (dailySchedules != null)
+            {
+                match = dailySchedules.Any(ds => GetWeek(date, index).Any(days => days == ds.Date));
+            }
+
+            if (!match)
+            {
+                dailySchedules.AddRange(sdb.Read(GetWeek(date, index)));
+            }
+
         }
 
 
@@ -206,6 +219,18 @@ namespace LogicLayer
             }
 
             return freeCaretakers;
+        }
+
+        
+
+        public List<DailySchedule> GetCaretakerSchedule(Caretaker caretaker, DateTime date, int index)
+        {
+            GetWeeklySchedule(date, index);
+
+            caretakerSchedule = dailySchedules.FindAll(s => s.MainCaretakerFir.Id == caretaker.Id || s.MainCaretakerSec.Id == caretaker.Id);
+            caretakerSchedule.AddRange( dailySchedules.FindAll(x => x.HelpCaretaker != null).FindAll(x => x.HelpCaretaker.Id == caretaker.Id));
+
+            return caretakerSchedule;
         }
     }
 }

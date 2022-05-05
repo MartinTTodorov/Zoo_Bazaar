@@ -11,6 +11,5 @@ namespace ZooBazzar_Group03
         private static ContractManager contractManager = new ContractManager();
         private static AnimalManager animalManager = new AnimalManager();
         private static CageManager cageManager = new CageManager();
-        private static ScheduleManager scheduleManager = new ScheduleManager()
     }
 }
