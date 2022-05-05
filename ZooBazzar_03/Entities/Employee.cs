@@ -55,6 +55,7 @@ namespace Entities
         {
             this.id = id;
             this.firstname = name;
+            contracts = new List<EmployeeContract>();
         }
 
         public void AssignContract(EmployeeContract ec)
@@ -64,7 +65,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return $"{Name} {Lastname} Id:{Id}";
+            return $"{Name} Id:{Id}";
         }
 
         public virtual string GetWorkingPosition()

@@ -59,6 +59,28 @@ namespace LogicLayer
 
         }
 
+        public AnimalType? GetCurrentType(Cage cage)
+        {
+            if (cage.CageAnimals.Count > 0)
+            {
+                return cage.CageAnimals[0].AnimalType;
+            }
+
+            return null;
+        }
+
+        //public void GetCageAnimals(List<DailySchedule> schedules)
+        //{
+        //    for (int i = 0; i < schedules.Count; i++)
+        //    {
+        //        schedules[i].Cage.CageAnimals = db.GetAnimalsInCage(schedules[i].Cage.CageNumber);
+        //        for (int j = 0; j < schedules[i].Cage.CageAnimals.Count; j++)
+        //        {
+        //            schedules[i].Cage.CageAnimals[j].FeedingTimes = db.GetFeedingTimes(schedules[i].Cage.CageAnimals[j].AnimalCode);
+        //        }
+        //    }
+        //}
+
 
         //public bool AddAnimalInCage(Animal animal, Cage cage)
         //{

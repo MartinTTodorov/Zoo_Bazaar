@@ -17,24 +17,18 @@ namespace ZooBazzar_Group03
     {
 
         private Schedule schedule;
-        public ucCageInfo(int cageNr, string date, DateTime currentDate, Schedule schedule, string timeSlot)
+        public ucCageInfo(Cage cage, string date, DateTime currentDate, Schedule schedule, string timeSlot)
         {
             InitializeComponent();
-            this.cageNr = cageNr;
+            this.cage = cage;
             this.currentDate = currentDate;
             this.schedule = schedule;
             this.timeSlot = timeSlot;
-            sm = new ScheduleManager(date);
         }
 
+        ScheduleManager sm = new ScheduleManager();
 
-
-        ScheduleManager sm;
-        EmployeeManagment em = new EmployeeManagment();
-        CageManager cm = new CageManager();
-
-
-        int cageNr;
+        Cage cage;
 
         string timeSlot;
 
@@ -42,67 +36,63 @@ namespace ZooBazzar_Group03
 
         private void ucCageInfo_Click(object sender, EventArgs e)
         {
-            Cage cage = cm.GetCageByCageNr(cageNr);
-            schedule.lblAnimalType.Text = cage.Type.ToString();
-            schedule.lblSpecies.Text = cage.Species.ToString();
-            schedule.lblCageNumber.Text = cage.CageNumber.ToString();
 
-            int caretakerId = sm.AssignedCaretaker(cageNr, timeSlot);
+            //schedule.lblAnimalType.Text = cage.Type.ToString();
+            //schedule.lblSpecies.Text = cage.Species.ToString();
+            //schedule.lblCageNumber.Text = cage.CageNumber.ToString();
 
-            if (sm.CheckDate(currentDate))
-            {
-                if (caretakerId == 0)
-                {
-                    schedule.cmbEmployees.Text = "";
-                    schedule.cmbEmployees.Items.Clear();
+           // Caretaker caretakerId = sm.AssignedCaretaker(cage, timeSlot);
 
-                    foreach (Caretaker s in sm.GetCaretakers(cageNr))
-                    {
-                        if (true)
-                        {
+            //if (sm.CheckDate(currentDate))
+            //{
+            //    if (caretakerId == null)
+            //    {
+            //        schedule.cmbFirstCaretaker.Text = "";
+            //        schedule.cmbFirstCaretaker.Items.Clear();
 
-                        }
-                        schedule.cmbEmployees.Items.Add(s);
-                    }
+            //        //foreach (Caretaker s in sm.GetCaretaker(cage))
+            //        //{
+            //        //    schedule.cmbFirstCaretaker.Items.Add(s);
+            //        //}
 
-                    schedule.btnAssign.Enabled = true;
-                    schedule.btnEditEmployee.Enabled = false;
-                }
-                else
-                {
-                    schedule.cmbEmployees.Items.Clear();
+            //        schedule.btnAssign.Enabled = true;
+            //        schedule.btnEditEmployee.Enabled = false;
+            //    }
+            //    else
+            //    {
+            //        schedule.cmbFirstCaretaker.Items.Clear();
 
-                    schedule.cmbEmployees.Text = em.GetCaretakerById(caretakerId).ToString();
-                    foreach (Caretaker s in sm.GetCaretakers(cageNr))
-                    {
-                        schedule.cmbEmployees.Items.Add(s);
-                    }
-                    schedule.btnAssign.Enabled = false;
-                    schedule.btnEditEmployee.Enabled = true;
-                }
-            }
-            else
-            {
-                schedule.cmbEmployees.Enabled = false;
-                schedule.cmbEmployees.Text = "";
+            //        schedule.cmbFirstCaretaker.Text = caretakerId.ToString();
+            //        //foreach (Caretaker s in sm.GetCaretaker(cage))
+            //        //{
+            //        //    schedule.cmbFirstCaretaker.Items.Add(s);
+            //        //}
+            //        schedule.btnAssign.Enabled = false;
+            //        schedule.btnEditEmployee.Enabled = true;
+            //    }
+            //}
+            //else
+            //{
+            //    schedule.cmbFirstCaretaker.Enabled = false;
+            //    schedule.cmbFirstCaretaker.Text = "";
 
-                if (caretakerId != 0)
-                {
-                    schedule.cmbEmployees.Text = em.GetCaretakerById(caretakerId).ToString();
-                }
-                else
-                {
-                    schedule.cmbEmployees.Text = "No one fed the poor animal!";
-                }
-            }
+            //    if (caretakerId != null)
+            //    {
+            //        schedule.cmbFirstCaretaker.Text = caretakerId.ToString();
+            //    }
+            //    else
+            //    {
+            //        schedule.cmbFirstCaretaker.Text = "No one fed the poor animal!";
+            //    }
+            //}
 
 
         }
 
         private void ucCageInfo_Load_1(object sender, EventArgs e)
         {
-            lblCageNr.Text = cageNr.ToString();
-            lblSpecies.Text = cm.GetCageByCageNr(cageNr).Species;
+            lblCageNr.Text = cage.ToString();
+            lblSpecies.Text = cage.CageNumber.ToString();
         }
     }
 }

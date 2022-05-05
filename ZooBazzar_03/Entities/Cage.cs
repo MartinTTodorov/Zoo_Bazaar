@@ -36,5 +36,15 @@ namespace Entities
             this.type = type;
             this.species = species;
         }
+
+        public Cage(int cageNr)
+        {
+            this.cageNumber = cageNr;
+        }
+
+        public override string ToString()
+        {
+            return $"Cage number: {this.CageNumber}\tSpecies: {this.CageAnimals[0].Specie}";
+        }
     }
 }
