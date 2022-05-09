@@ -9,7 +9,7 @@ using Entities;
 
 namespace DataAccessLayer
 {
-    public class CageDB
+    public class CageDB: ICageDB<Cage>
     {
         private MySqlConnection conn;
 

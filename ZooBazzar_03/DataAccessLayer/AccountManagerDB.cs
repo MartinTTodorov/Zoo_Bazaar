@@ -165,6 +165,11 @@ namespace DataAccessLayer
             }
             return result;
         }
+
+        public void ChangeCredentials(Account obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

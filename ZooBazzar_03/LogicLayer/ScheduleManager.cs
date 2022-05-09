@@ -4,16 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
-using DataAccessLayer;
 
 namespace LogicLayer
 {
     public class ScheduleManager
     {
-        EmployeeManagment em = new EmployeeManagment();
-        CageManager cm = new CageManager();
-        ScheduleDB sdb = new ScheduleDB();
-        ContractManager cmngr = new ContractManager();
+        private EmployeeManagment em;
+        private CageManager cm;
+        private ContractManager cmngr;
 
         static List<DailySchedule> dailySchedules;
         static List<DailySchedule> caretakerSchedule;
@@ -21,6 +19,15 @@ namespace LogicLayer
 
         int fullShiftHours = 6;
         int halfShiftHours = 3;
+
+        IScheduleDB<DailySchedule> crud;
+        public ScheduleManager(IScheduleDB<DailySchedule> crud, ICRUD<Employee> employeeData, ICageDB<Cage> cageData, IContractDataManagement<EmployeeContract> contractData)
+        {
+            this.crud = crud;
+            em = new EmployeeManagment(employeeData);
+            cm = new CageManager(cageData);
+            cmngr = new ContractManager(contractData);
+        }
 
 
         public List<string> GetWeek(DateTime pickDate, int index)
@@ -59,7 +66,7 @@ namespace LogicLayer
 
             if (!match)
             {
-                dailySchedules.AddRange(sdb.Read(GetWeek(date, index)));
+                dailySchedules.AddRange(crud.Read(GetWeek(date, index)));
             }
 
         }
@@ -107,7 +114,7 @@ namespace LogicLayer
 
         public bool Insert(DailySchedule ds)
         {
-            if (sdb.Add(ds))
+            if (crud.Add(ds))
             {
                 dailySchedules.Add(ds);
                 return true;
@@ -117,7 +124,7 @@ namespace LogicLayer
 
         public bool Update(DailySchedule ds)
         {
-            if (sdb.EditSpecialist(ds))
+            if (crud.Update(ds))
             {
                 int index = dailySchedules.FindIndex(x => x.Date == ds.Date && x.Type == ds.Type && x.TimeSlot == x.TimeSlot);
 

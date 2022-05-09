@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLayer;
 using Entities;
 
 namespace LogicLayer
@@ -11,13 +10,13 @@ namespace LogicLayer
     public class AnimalManager
     {
         private List<Animal> animals;
-        AnimalDB animalDB = new AnimalDB();
 
-        public List<Animal> Animals { get { return animals; } } 
-
-        public AnimalManager()
+        public List<Animal> Animals { get { return animals; } }
+        IAnimalDB<Animal> crud;
+        public AnimalManager(IAnimalDB<Animal> crud)
         {
-            animals = animalDB.GetAnimals();
+            this.crud = crud;
+            animals = crud.GetAnimals();
             AssignFeedingTimes();
         }
 
@@ -29,7 +28,7 @@ namespace LogicLayer
             {
                 animals.Clear();
             }
-            animals = animalDB.GetAnimals();
+            animals = crud.GetAnimals();
             AssignFeedingTimes();
         }
 
@@ -39,26 +38,26 @@ namespace LogicLayer
         }
         public void AddAnimal(Animal animal)
         {
-            animalDB.AddAnimalToDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.FeedingTimes);
+            crud.AddAnimalToDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.FeedingTimes);
             //UpdateLocalList();
 
         }
 
         public void AddAnimal(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes)
         {
-            animalDB.AddAnimalToDB(animalCode, name, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet, feedingTimes);
+            crud.AddAnimalToDB(animalCode, name, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet, feedingTimes);
             //UpdateLocalList();
         }
 
         public void UpdateAnimal(Animal animal)
         {
-            animalDB.UpdateAnimalInDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.Id);
+            crud.UpdateAnimalInDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.Id);
             //UpdateLocalList();
         }
 
         public void DeleteAnimal(Animal animal)
         {
-            animalDB.DeleteAnimalFromDB(animal.Id, animal.ReasonForDeparture);
+            crud.DeleteAnimalFromDB(animal.Id, animal.ReasonForDeparture);
             //UpdateLocalList();
         }
 
@@ -70,7 +69,7 @@ namespace LogicLayer
 
         public bool HasImage(Animal animal) //check against the animal code in the database directly in the animalpictures table. If true, run a query where animal code is this animal code and get the memory stream
         {
-            if (animalDB.HasImage(animal.AnimalCode))
+            if (crud.HasImage(animal.AnimalCode))
             {
                 return true;
             }
@@ -82,14 +81,14 @@ namespace LogicLayer
 
         public MemoryStream GetMemoryStream(string animalCode)
         {
-            return animalDB.GetMemoryStream(animalCode);
+            return crud.GetMemoryStream(animalCode);
         }
 
         public void AssignFeedingTimes()
         {
             for (int i = 0; i < animals.Count; i++)
             {
-                animals[i].FeedingTimes = animalDB.GetFeeding(animals[i]);
+                animals[i].FeedingTimes = crud.GetFeeding(animals[i]);
             }
         }
 

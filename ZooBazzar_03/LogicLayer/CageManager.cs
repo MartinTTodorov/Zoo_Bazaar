@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLayer;
 using Entities;
 
 namespace LogicLayer
@@ -11,13 +10,13 @@ namespace LogicLayer
     public class CageManager
     {
         private List<Cage> cages;
-        private CageDB db = new CageDB();
 
         public List<Cage> Cages { get { return cages; } }
-
-        public CageManager()
+        ICageDB<Cage> crud;
+        public CageManager(ICageDB<Cage> crud)
         {
-            cages = db.GetCages();
+            this.crud = crud;
+            cages = crud.GetCages();
             InsertAnimalsInCage();
             
         }
@@ -28,7 +27,7 @@ namespace LogicLayer
             {
                 cages.Clear();
             }
-            cages = db.GetCages();
+            cages = crud.GetCages();
         }
 
         public Cage GetCageByCageNr(int cageNr)
@@ -49,10 +48,10 @@ namespace LogicLayer
 
             for (int i = 0; i < cages.Count; i++)
             {
-                cages[i].CageAnimals = db.GetAnimalsInCage(cages[i].CageNumber);
+                cages[i].CageAnimals = crud.GetAnimalsInCage(cages[i].CageNumber);
                 for (int j = 0; j < cages[i].CageAnimals.Count; j++)
                 {
-                    cages[i].CageAnimals[j].FeedingTimes = db.GetFeedingTimes(cages[i].CageAnimals[j].AnimalCode);
+                    cages[i].CageAnimals[j].FeedingTimes = crud.GetFeedingTimes(cages[i].CageAnimals[j].AnimalCode);
                 }
             }
 

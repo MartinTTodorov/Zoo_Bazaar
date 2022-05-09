@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicLayer;
 using Entities;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03.Employeee
 {
@@ -19,7 +20,7 @@ namespace ZooBazzar_Group03.Employeee
         public ContractForm(Employee employeee)
         {
             InitializeComponent();
-            cm = new ContractManager();
+            cm = new ContractManager(new ContractDB());
             this.employee = employeee;
 
         }

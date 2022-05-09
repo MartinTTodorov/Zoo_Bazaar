@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-﻿using DataAccessLayer;
 using Entities;
 
 
@@ -11,12 +10,14 @@ namespace LogicLayer
 {
     public class AccountManager
     {
-        AccountManagerDB db = new AccountManagerDB();
         List<Account> accounts = new List<Account>();
         public List<Account> Accounts { get { return accounts; } }
-        public AccountManager()
+
+        ICRUD<Account> crud;
+        public AccountManager(ICRUD<Account> crud)
         {
-            accounts = db.Read();
+            this.crud = crud;
+            accounts = crud.Read();
         }
 
         public bool AddAccount(Account newAccount)
@@ -28,7 +29,7 @@ namespace LogicLayer
                     return false;
                 }
             }
-            db.Add(newAccount);
+            crud.Add(newAccount);
             accounts.Add(newAccount);
             return true;
         }
@@ -37,7 +38,7 @@ namespace LogicLayer
         {
             if(accounts[index] != null)
             {
-                db.Delete(accounts[index].Id);
+                crud.Delete(accounts[index].Id);
                 accounts.RemoveAt(index);
                 return true;
             }
@@ -69,17 +70,17 @@ namespace LogicLayer
         }
         public void RefreshData()
         {
-            accounts = db.Read();
+            accounts = crud.Read();
         }
 
         public void UpdatePassword(string username,string password)
         {
-            db.ChangePassword(username,password);
+            crud.ChangePassword(username,password);
             RefreshData();
         }
         public string GetWorkPositionByAccount(string username)
         {
-            return db.GetEmployeeWorkPositionByAccount(username);
+            return crud.GetEmployeeWorkPositionByAccount(username);
         }
     }
 }

@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicLayer;
 using Entities;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03
 {
     public partial class FormAddAnimal : Form
     {
-        private AnimalManager animalManager = new AnimalManager();
+        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
         MainManu menu;
         List<string> feedingTimes = new List<string>();
         public FormAddAnimal(MainManu menu)

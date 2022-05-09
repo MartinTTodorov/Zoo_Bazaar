@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccessLayer;
 using Entities;
 using LogicLayer;
 
@@ -15,7 +16,7 @@ namespace ZooBazzar_Group03
     public partial class AnimalPic : UserControl
     {
         private Animal animal;
-        private AnimalManager animalManager = new AnimalManager();
+        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
         MainManu menu;
         string workposition;
         public AnimalPic(Animal animal, MainManu menu, string workposition)

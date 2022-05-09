@@ -10,18 +10,19 @@ using System.Windows.Forms;
 using ZooBazzar_Group03.Employeee;
 using LogicLayer;
 using Entities;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03
 {
     public partial class MainManu : Form
     {
         private Account currentAccount;
-        private EmployeeManagment employeeManagment = new EmployeeManagment();
-        private ScheduleManager scheduleManager = new ScheduleManager();
-        private AccountManager accountManager = new AccountManager();
-        private AnimalManager animalManager = new AnimalManager();
-        private ContractManager cm = new ContractManager();
-        
+        private EmployeeManagment employeeManagment = new EmployeeManagment(new EmployeeDB());
+        private ScheduleManager scheduleManager = new ScheduleManager(new ScheduleDB(), new EmployeeDB(), new CageDB(), new ContractDB());
+        private AccountManager accountManager = new AccountManager(new AccountManagerDB());
+        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
+        private ContractManager cm = new ContractManager(new ContractDB());
+
         public MainManu(Account account)
         {
             InitializeComponent();
@@ -81,20 +82,20 @@ namespace ZooBazzar_Group03
 
         private void updateEmployeeUI()
         {
-           List<Employee> employees = employeeManagment.GetEmployees();
+            List<Employee> employees = employeeManagment.GetEmployees();
 
-           flpEmployees.Controls.Clear();
-           foreach(Employee e in employees)
+            flpEmployees.Controls.Clear();
+            foreach (Employee e in employees)
             {
                 flpEmployees.Controls.Add(new ucEmployee(e));
 
-            }           
+            }
         }
         private void updateEmployeeUIbySpecialization(Specialization specialization)
         {
             List<Caretaker> caretakers = employeeManagment.CaretakersBySpecialization(specialization);
             flpEmployees.Controls.Clear();
-            foreach (Caretaker c in caretakers )
+            foreach (Caretaker c in caretakers)
             {
                 flpEmployees.Controls.Add(new ucEmployee(c));
             }
@@ -107,14 +108,14 @@ namespace ZooBazzar_Group03
             flpEmployees.Controls.Clear();
             foreach (Employee e in employees)
             {
-                if(string.Equals(e.Name,name,StringComparison.OrdinalIgnoreCase) || e.Name.Contains(name,StringComparison.OrdinalIgnoreCase))
-                {                
+                if (string.Equals(e.Name, name, StringComparison.OrdinalIgnoreCase) || e.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
+                {
                     flpEmployees.Controls.Add(new ucEmployee(e));
                 }
 
             }
         }
-        
+
 
         private void btnFindByFirstName_Click(object sender, EventArgs e)
         {
@@ -123,7 +124,7 @@ namespace ZooBazzar_Group03
 
         private void btnNewEmployee_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         public void OnChangedEmployee()
@@ -163,7 +164,7 @@ namespace ZooBazzar_Group03
 
             foreach (Animal animal in animalManager.Animals)
             {
-                if (animal.ReasonForDeparture==String.Empty)
+                if (animal.ReasonForDeparture == String.Empty)
                 {
                     AnimalPic animalPic = new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username));
                     flpAnimals.Controls.Add(animalPic);
@@ -195,7 +196,7 @@ namespace ZooBazzar_Group03
 
         private void btnUpdateEmployee_Click(object sender, EventArgs e)
         {
-            if(lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
+            if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
             {
                 EditEmployee editEmployee = new EditEmployee(lbEmployees.SelectedIndex);
                 editEmployee.Show();
@@ -204,7 +205,7 @@ namespace ZooBazzar_Group03
 
         private void btnRemoveEmployee_Click_1(object sender, EventArgs e)
         {
-            if(lbEmployees.SelectedIndex>=0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
+            if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
             {
                 employeeManagment.RemoveEmployee(lbEmployees.SelectedIndex);
             }
@@ -226,12 +227,12 @@ namespace ZooBazzar_Group03
 
             if (workingPosition == "Manager")
             {
-                
+
             }
-            else if(workingPosition == "Resourceplanner")
+            else if (workingPosition == "Resourceplanner")
             {
-                tabControl1.TabPages.Remove(tpEmployeeManagment);              
-                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;               
+                tabControl1.TabPages.Remove(tpEmployeeManagment);
+                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;
             }
             else
             {
@@ -263,11 +264,11 @@ namespace ZooBazzar_Group03
 
         private void LoadContracts()
         {
-            //lbContracts.Items.Clear();
-            //foreach (EmployeeContract ec in cm.GetContracts())
-            //{
-            //    lbContracts.Items.Add(ec); 
-            //}
+            lbContracts.Items.Clear();
+            foreach (EmployeeContract ec in cm.GetContracts())
+            {
+                lbContracts.Items.Add(ec);
+            }
         }
 
         private void btnDisableContract_Click(object sender, EventArgs e)
@@ -282,6 +283,29 @@ namespace ZooBazzar_Group03
 
             cm.DisableContract(ec);
             MessageBox.Show($"Successful disabling the conract with id : {ec.Id}");
+        }
+
+        private void btnAccept_Click(object sender, EventArgs e)
+        {
+            if (lbEmployeesWithNewCredentials.SelectedIndex <= -1)
+            {
+                MessageBox.Show("Please, select the employee!");
+                return;
+            }
+            else
+            {
+                employeeManagment.ChangeCredentials((Employee)lbEmployeesWithNewCredentials.SelectedItem);
+                MessageBox.Show("Employee's been changed!");
+                lbEmployeesWithNewCredentials.Items.Remove((Employee)lbEmployeesWithNewCredentials.SelectedItem);
+                return;
+            }
+
+        }
+
+        private void btnDecline_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Employee's not been changed!");
+            lbEmployeesWithNewCredentials.Items.Remove((Employee)lbEmployeesWithNewCredentials.SelectedItem);
         }
     }
 }

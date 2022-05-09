@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccessLayer;
 using Entities;
 
 
@@ -16,10 +15,11 @@ namespace LogicLayer
 
 
         private List<Employee> employees = new List<Employee>();
-        private EmployeeDB db = new EmployeeDB();
-        public EmployeeManagment()
+        ICRUD<Employee> crud;
+        public EmployeeManagment(ICRUD<Employee> crud)
         {
-            employees = db.Read();
+            this.crud = crud;
+            employees = crud.Read();
         }
 
         public Caretaker GetCaretakerById(int id)
@@ -28,11 +28,11 @@ namespace LogicLayer
         }
 
         
-        public bool AddEmployee(int accountid,Employee employee)
+        public bool AddEmployee(Employee employee)
         {
             if (!employees.Contains(employee))
             {
-                db.Add(accountid,employee);
+                crud.Add(employee);
                 employees.Add(employee);
                 OnChangedEmployee();
                 return true;
@@ -45,7 +45,7 @@ namespace LogicLayer
                 if (index >=0)
                 {
                     DataRefresh();
-                    db.Delete(employees[index].Id);
+                crud.Delete(employees[index].Id);
                     employees.RemoveAt(index);
                     OnChangedEmployee();
                     return true ;
@@ -109,17 +109,22 @@ namespace LogicLayer
         }
         public void DataRefresh()
         {
-            employees = db.Read();
+            employees = crud.Read();
         }
 
         public void UpdateEmployee(int index,Employee employee)
         {
             if(index >= 0)
             {
-                db.Update(employees[index].Id, employee);
+                crud.Update(employees[index].Id, employee);
                 employees[index] = employee;
                 OnChangedEmployee();
             }
+        }
+
+        public void ChangeCredentials(Employee e)
+        {
+            crud.ChangeCredentials(e);
         }
     }
 }

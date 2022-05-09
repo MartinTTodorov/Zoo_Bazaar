@@ -59,10 +59,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tpContracts = new System.Windows.Forms.TabPage();
+            this.btnDisableContract = new System.Windows.Forms.Button();
             this.lbContracts = new System.Windows.Forms.ListBox();
             this.lblHello = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnDisableContract = new System.Windows.Forms.Button();
+            this.tpEmployeeCredentials = new System.Windows.Forms.TabPage();
+            this.lbEmployeesWithNewCredentials = new System.Windows.Forms.ListBox();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.btnDecline = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpEmployees.SuspendLayout();
             this.gbEmployee.SuspendLayout();
@@ -73,6 +77,7 @@
             this.tpSettings.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tpContracts.SuspendLayout();
+            this.tpEmployeeCredentials.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -83,6 +88,7 @@
             this.tabControl1.Controls.Add(this.tpEmployeeManagment);
             this.tabControl1.Controls.Add(this.tpSettings);
             this.tabControl1.Controls.Add(this.tpContracts);
+            this.tabControl1.Controls.Add(this.tpEmployeeCredentials);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl1.Name = "tabControl1";
@@ -447,6 +453,16 @@
             this.tpContracts.Text = "Contracts";
             this.tpContracts.UseVisualStyleBackColor = true;
             // 
+            // btnDisableContract
+            // 
+            this.btnDisableContract.Location = new System.Drawing.Point(291, 235);
+            this.btnDisableContract.Name = "btnDisableContract";
+            this.btnDisableContract.Size = new System.Drawing.Size(89, 23);
+            this.btnDisableContract.TabIndex = 1;
+            this.btnDisableContract.Text = "Disable";
+            this.btnDisableContract.UseVisualStyleBackColor = true;
+            this.btnDisableContract.Click += new System.EventHandler(this.btnDisableContract_Click);
+            // 
             // lbContracts
             // 
             this.lbContracts.FormattingEnabled = true;
@@ -480,15 +496,46 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnDisableContract
+            // tpEmployeeCredentials
             // 
-            this.btnDisableContract.Location = new System.Drawing.Point(291, 235);
-            this.btnDisableContract.Name = "btnDisableContract";
-            this.btnDisableContract.Size = new System.Drawing.Size(89, 23);
-            this.btnDisableContract.TabIndex = 1;
-            this.btnDisableContract.Text = "Disable";
-            this.btnDisableContract.UseVisualStyleBackColor = true;
-            this.btnDisableContract.Click += new System.EventHandler(this.btnDisableContract_Click);
+            this.tpEmployeeCredentials.Controls.Add(this.btnDecline);
+            this.tpEmployeeCredentials.Controls.Add(this.btnAccept);
+            this.tpEmployeeCredentials.Controls.Add(this.lbEmployeesWithNewCredentials);
+            this.tpEmployeeCredentials.Location = new System.Drawing.Point(4, 24);
+            this.tpEmployeeCredentials.Name = "tpEmployeeCredentials";
+            this.tpEmployeeCredentials.Size = new System.Drawing.Size(694, 272);
+            this.tpEmployeeCredentials.TabIndex = 6;
+            this.tpEmployeeCredentials.Text = "Employee Credentials";
+            this.tpEmployeeCredentials.UseVisualStyleBackColor = true;
+            // 
+            // lbEmployeesWithNewCredentials
+            // 
+            this.lbEmployeesWithNewCredentials.FormattingEnabled = true;
+            this.lbEmployeesWithNewCredentials.ItemHeight = 15;
+            this.lbEmployeesWithNewCredentials.Location = new System.Drawing.Point(107, 30);
+            this.lbEmployeesWithNewCredentials.Name = "lbEmployeesWithNewCredentials";
+            this.lbEmployeesWithNewCredentials.Size = new System.Drawing.Size(501, 154);
+            this.lbEmployeesWithNewCredentials.TabIndex = 0;
+            // 
+            // btnAccept
+            // 
+            this.btnAccept.Location = new System.Drawing.Point(175, 223);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(75, 23);
+            this.btnAccept.TabIndex = 1;
+            this.btnAccept.Text = "Accept";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            // 
+            // btnDecline
+            // 
+            this.btnDecline.Location = new System.Drawing.Point(442, 224);
+            this.btnDecline.Name = "btnDecline";
+            this.btnDecline.Size = new System.Drawing.Size(75, 23);
+            this.btnDecline.TabIndex = 2;
+            this.btnDecline.Text = "Decline";
+            this.btnDecline.UseVisualStyleBackColor = true;
+            this.btnDecline.Click += new System.EventHandler(this.btnDecline_Click);
             // 
             // MainManu
             // 
@@ -516,6 +563,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tpContracts.ResumeLayout(false);
+            this.tpEmployeeCredentials.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -558,5 +606,9 @@
         private TabPage tpContracts;
         private ListBox lbContracts;
         private Button btnDisableContract;
+        private TabPage tpEmployeeCredentials;
+        private Button btnDecline;
+        private Button btnAccept;
+        private ListBox lbEmployeesWithNewCredentials;
     }
 }

@@ -10,7 +10,7 @@ using Entities;
 
 namespace DataAccessLayer
 {
-    public class AnimalDB
+    public class AnimalDB: IAnimalDB<Animal>
     {
         private MySqlConnection conn;
         List<Animal> animals = new List<Animal>();

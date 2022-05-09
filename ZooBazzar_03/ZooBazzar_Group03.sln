@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{D3B96B9A-628B-47CD-BAEE-1CE70AF77542}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZooBazzarWebApp", "ZooBazzarWebApp\ZooBazzarWebApp.csproj", "{342D3E24-EB6E-474C-AE2B-3D970FADC852}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooBazzarWebApp", "ZooBazzarWebApp\ZooBazzarWebApp.csproj", "{342D3E24-EB6E-474C-AE2B-3D970FADC852}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicLayer;
 using Entities;
-
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03
 {
@@ -26,7 +26,7 @@ namespace ZooBazzar_Group03
             this.timeSlot = timeSlot;
         }
 
-        ScheduleManager sm = new ScheduleManager();
+        ScheduleManager sm = new ScheduleManager(new ScheduleDB(), new EmployeeDB(), new CageDB(), new ContractDB());
 
         Cage cage;
 

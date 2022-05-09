@@ -13,7 +13,7 @@ using Entities;
 
 namespace DataAccessLayer
 {
-    public class ScheduleDB
+    public class ScheduleDB : IScheduleDB<DailySchedule>
     {
         private MySqlConnection conn;
 
@@ -110,7 +110,7 @@ namespace DataAccessLayer
 
 
 
-        public bool EditSpecialist(DailySchedule ds)
+        public bool Update(DailySchedule ds)
         {
             try
             {

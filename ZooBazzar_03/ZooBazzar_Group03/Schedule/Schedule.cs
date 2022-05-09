@@ -27,7 +27,7 @@ namespace ZooBazzar_Group03
         }
         string date;
 
-        ScheduleManager sm = new ScheduleManager();
+        ScheduleManager sm = new ScheduleManager(new ScheduleDB(), new EmployeeDB(), new CageDB(), new ContractDB());
 
         DateTime currentDate;
         AnimalType currentType;

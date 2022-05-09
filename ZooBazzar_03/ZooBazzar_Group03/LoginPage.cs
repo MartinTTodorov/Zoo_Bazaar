@@ -1,10 +1,12 @@
 using LogicLayer;
 using Entities;
+using DataAccessLayer;
+
 namespace ZooBazzar_Group03
 {
     public partial class LoginPage : Form
     {
-        public AccountManager _accountManager = new AccountManager();
+        public AccountManager _accountManager = new AccountManager(new AccountManagerDB());
         public LoginPage()
         {
             InitializeComponent();            

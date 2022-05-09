@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicLayer;
 using Entities;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03
 {
     public partial class fmDeleteAnimal : Form
     {
         Animal animal;
-        AnimalManager animalManager = new AnimalManager();
+        AnimalManager animalManager = new AnimalManager(new AnimalDB());
         MainManu menu;
         public fmDeleteAnimal(Animal animal, MainManu menu)
         {
