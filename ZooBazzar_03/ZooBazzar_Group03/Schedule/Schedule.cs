@@ -124,8 +124,7 @@ namespace ZooBazzar_Group03
 
         public void GetCaretakers(AnimalType type)
         {
-            List<Caretaker> fullShift = sm.GetFullShiftCaretaker(type, date, timeSlot);
-            List<Caretaker> halfShift = sm.GetHalfShiftCaretaker(type, date, timeSlot);
+            List<Caretaker> fullShift = sm.GetFreeCaretakers(type, date, timeSlot);
 
             AssignedCaretaker();
 
@@ -140,11 +139,7 @@ namespace ZooBazzar_Group03
                 cmbFirstCaretaker.Items.Add(fullShift[i]);
                 //List<DailySchedule> ds = sm.GetCaretakerSchedule(fullShift[i], currentDate, 0);
                 cmbSecondCaretaker.Items.Add(fullShift[i]);
-            }
-
-            for (int i = 0; i < halfShift.Count; i++)
-            {
-                cmbHelperCaretaker.Items.Add(halfShift[i]);
+                cmbHelperCaretaker.Items.Add(fullShift[i]);
             }
         }
 
@@ -162,7 +157,7 @@ namespace ZooBazzar_Group03
         {
             lbCages.Items.Clear();
 
-            List<Cage> cages = sm.GetCages(timeSlot, currentType);
+            List<Cage> cages = sm.GetCages(timeSlot, currentType, currentDate);
 
             for (int i = 0; i < cages.Count; i++)
             {
