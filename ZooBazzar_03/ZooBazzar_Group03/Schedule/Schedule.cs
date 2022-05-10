@@ -10,7 +10,7 @@ namespace ZooBazzar_Group03
             InitializeComponent();
             this.date = date;
             this.currentDate = DateTime.ParseExact(date, "d MMM yyyy", null);
-            sm.GetWeeklySchedule(currentDate);
+            sm.GetWeeklySchedule(currentDate, 0);
         }
         string date;
 
@@ -137,6 +137,7 @@ namespace ZooBazzar_Group03
             for (int i = 0; i < fullShift.Count; i++)
             {
                 cmbFirstCaretaker.Items.Add(fullShift[i]);
+                //List<DailySchedule> ds = sm.GetCaretakerSchedule(fullShift[i], currentDate, 0);
                 cmbSecondCaretaker.Items.Add(fullShift[i]);
             }
 
@@ -230,6 +231,6 @@ namespace ZooBazzar_Group03
             }
         }
 
-
+        
     }
 }
