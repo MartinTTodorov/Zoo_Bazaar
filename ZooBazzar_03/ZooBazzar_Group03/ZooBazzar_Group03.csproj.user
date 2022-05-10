@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\ZooBazzar_Group03\Properties\PublishProfiles\FolderProfile1.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="AnimalInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AnimalPic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Employeee\Account\NewAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Employeee\ContractForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Employeee\EditEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Employeee\NewEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Employeee\ucEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="fmDeleteAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAddAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="LoginPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="MainManu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Schedule\Schedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ucCageInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
