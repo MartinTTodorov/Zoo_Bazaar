@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-﻿using DataAccessLayer;
 using Entities;
 
 
@@ -11,18 +10,21 @@ namespace LogicLayer
 {
     public class AccountManager
     {
-        private AccountManagerDB db = new AccountManagerDB();
+        private ICRUD<Account> db;
+        private IAutoIncrementable auto;
         private List<Account> accounts = new List<Account>();
         public List<Account> Accounts { get { return accounts; } }
-        public AccountManager()
+        public AccountManager(ICRUD<Account> db,IAutoIncrementable a)
         {
-            accounts = db.Read();
+            this.db = db;
+            auto = a;
+            accounts = this.db.Read();
         }
 
         public bool AddAccount(Account newAccount)
         {
             string[] hashedPassword = HashedPassword(newAccount.Password);
-            Account temp = new Account(newAccount.Username, hashedPassword[0],hashedPassword[1],db.GetNextID());
+            Account temp = new Account(newAccount.Username, hashedPassword[0],hashedPassword[1],auto.GetNextID());
 
             for (int i = 0; i < accounts.Count; i++)
             {

@@ -6,7 +6,7 @@ namespace ZooBazzar_Group03
 {
     public partial class LoginPage : Form
     {
-        public AccountManager _accountManager = new AccountManager(new AccountManagerDB());
+        public AccountManager _accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
         public LoginPage()
         {
             InitializeComponent();            

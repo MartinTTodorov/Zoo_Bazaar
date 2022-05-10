@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ZooBazzar_Group03.Employeee;
+﻿using ZooBazzar_Group03.Employeee;
 using LogicLayer;
 using Entities;
 using DataAccessLayer;
@@ -19,7 +10,7 @@ namespace ZooBazzar_Group03
         private Account currentAccount;
         private EmployeeManagment employeeManagment = new EmployeeManagment(new EmployeeDB());
         private ScheduleManager scheduleManager = new ScheduleManager(new ScheduleDB(), new EmployeeDB(), new CageDB(), new ContractDB());
-        private AccountManager accountManager = new AccountManager(new AccountManagerDB());
+        private AccountManager accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
         private AnimalManager animalManager = new AnimalManager(new AnimalDB());
         private ContractManager cm = new ContractManager(new ContractDB());
 

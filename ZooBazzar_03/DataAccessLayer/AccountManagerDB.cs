@@ -4,7 +4,7 @@ using Entities;
 
 namespace DataAccessLayer
 {
-    public class AccountManagerDB : ICRUD<Account>
+    public class AccountManagerDB : ICRUD<Account>, IAutoIncrementable
     {
         private MySqlConnection conn;
 
@@ -182,6 +182,8 @@ namespace DataAccessLayer
                 conn.Close();
             }
         }
+
+       
     }
 
 }

@@ -1,5 +1,6 @@
 ﻿using LogicLayer;
 using Entities;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03
 {

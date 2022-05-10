@@ -1,3 +1,4 @@
+using DataAccessLayer;
 using Entities;
 using LogicLayer;
 using Microsoft.AspNetCore.Authentication;
@@ -10,7 +11,7 @@ namespace ZooBazzarWebApp.Pages
 {
     public class LoginModel : PageModel
     {
-        private AccountManager accountManager = new AccountManager();
+        private AccountManager accountManager = new AccountManager(new AccountManagerDB(),new AccountManagerDB());
 
         [BindProperty]
         public AccountDTO Account { get; set; }

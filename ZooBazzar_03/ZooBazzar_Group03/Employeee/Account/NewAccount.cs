@@ -19,7 +19,7 @@ namespace ZooBazzar_Group03.Employeee
         {
             InitializeComponent();
         }
-        private AccountManager accountManager = new AccountManager(new AccountManagerDB());
+        private AccountManager accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
         private void btnAddAccount_Click(object sender, EventArgs e)
         {
             if (checkInput())
