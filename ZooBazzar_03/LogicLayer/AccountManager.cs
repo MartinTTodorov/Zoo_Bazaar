@@ -11,8 +11,8 @@ namespace LogicLayer
 {
     public class AccountManager
     {
-        AccountManagerDB db = new AccountManagerDB();
-        List<Account> accounts = new List<Account>();
+        private AccountManagerDB db = new AccountManagerDB();
+        private List<Account> accounts = new List<Account>();
         public List<Account> Accounts { get { return accounts; } }
         public AccountManager()
         {
@@ -21,15 +21,18 @@ namespace LogicLayer
 
         public bool AddAccount(Account newAccount)
         {
+            string[] hashedPassword = HashedPassword(newAccount.Password);
+            Account temp = new Account(newAccount.Username, hashedPassword[0],hashedPassword[1],db.GetNextID());
+
             for (int i = 0; i < accounts.Count; i++)
             {
-                if(accounts[i].Username == newAccount.Username)
+                if(accounts[i].Username == temp.Username)
                 {
                     return false;
                 }
             }
-            db.Add(newAccount);
-            accounts.Add(newAccount);
+            db.Add(temp);
+            accounts.Add(temp);
             return true;
         }
 
@@ -72,14 +75,22 @@ namespace LogicLayer
             accounts = db.Read();
         }
 
-        public void UpdatePassword(string username,string password)
+        public void UpdatePassword(Account account)
         {
-            db.ChangePassword(username,password);
+            string[] hashedPassword = HashedPassword(account.Password);
+            Account temp = new Account(account.Username, hashedPassword[0], hashedPassword[1],account.Id);
+            db.Update(temp.Id, temp);
             RefreshData();
         }
         public string GetWorkPositionByAccount(string username)
         {
             return db.GetEmployeeWorkPositionByAccount(username);
+        }
+        public string[] HashedPassword(string password)
+        {
+            string salt = Guid.NewGuid().ToString();
+
+            return new string[] { PasswordHasher.HashPassword(password + salt), salt };
         }
     }
 }

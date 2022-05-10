@@ -10,21 +10,18 @@ namespace ZooBazzar_Group03
             InitializeComponent();            
         }
 
-        private void LoginPage_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if(_accountManager.Login(tbUsername.Text, tbPassword.Text))
+            Account temp = _accountManager.Accounts.Find(a => a.Username == tbUsername.Text);
+            
+            if(temp != null && temp.Password == PasswordHasher.HashPassword(tbPassword.Text + temp.Salt))
             {
                 this.Hide();
-                MainManu mainManu = new MainManu(_accountManager.GetAccountByCredentials(tbUsername.Text, tbPassword.Text));
+                MainManu mainManu = new MainManu(temp);
                 mainManu.Show();
                 tbPassword.Text = string.Empty;
                 tbUsername.Text = string.Empty;

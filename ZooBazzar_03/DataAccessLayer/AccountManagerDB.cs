@@ -1,10 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Entities;
 
 namespace DataAccessLayer
@@ -20,12 +15,13 @@ namespace DataAccessLayer
 
         public void Add(Account obj)
         {
-            string sql = "INSERT INTO account (Username,Password) VALUES (@Username,@Password)";
+            string sql = "INSERT INTO account (Username,Password,Salt) VALUES (@Username,@Password,@Salt)";
             MySqlCommand cmd = new MySqlCommand(sql,conn);
             cmd.CommandType = CommandType.Text;
 
             cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = obj.Username;
             cmd.Parameters.Add("@Password", MySqlDbType.VarChar).Value = obj.Password;
+            cmd.Parameters.Add("@Salt", MySqlDbType.VarChar).Value = obj.Salt;
 
             try
             {
@@ -67,7 +63,7 @@ namespace DataAccessLayer
 
         public List<Account> Read()
         {
-            string sql = "SELECT username,password, AccountID FROM account";
+            string sql = "SELECT username,password,salt,AccountID FROM account INNER JOIN contract On contract.employee_id = account.AccountID WHERE contract.is_valid = true";
             List<Account> accounts = new List<Account>(); 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -78,8 +74,7 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    Account account = new Account(reader[0].ToString(), reader[1].ToString());
-                    account.Id = Convert.ToInt32(reader[2]);
+                    Account account = new Account(reader[0].ToString(), reader[1].ToString(),reader[2].ToString(),Convert.ToInt32(reader[3]));                    
                     accounts.Add(account);
                 }
             }
@@ -98,13 +93,14 @@ namespace DataAccessLayer
 
         public void Update(int id, Account obj)
         {
-            string sql = "UPDATE account SET Username = @Username, Password = @Password WHERE AccountID = @ID"; 
+            string sql = "UPDATE account SET Username = @Username, Password = @Password, Salt = @Salt WHERE AccountID = @ID"; 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
             cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = obj.Username;
             cmd.Parameters.Add("@Password", MySqlDbType.VarChar).Value = obj.Password;
+            cmd.Parameters.Add("@Salt", MySqlDbType.VarChar).Value = obj.Salt;
 
             try
             {
@@ -164,6 +160,27 @@ namespace DataAccessLayer
                 conn.Close();
             }
             return result;
+        }
+
+        public int GetNextID()
+        {
+            string sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbi481796' AND TABLE_NAME = 'account';";
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();              
+                return Convert.ToInt32(cmd.ExecuteScalar());
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 

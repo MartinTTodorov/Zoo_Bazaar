@@ -11,15 +11,37 @@ namespace Entities
         private int id;
         private string username;
         private string password;
-        public string Username { get { return username; } private set { username = value; } }
-        public string Password { get { return password; }  set { password = value; } }
-        public int Id { get { return id; } set { id = value; } }
+        private string salt;
+
+        public int Id { get { return id; }}
+        public string Username { get { return username; } }
+        public string Password { get { return password; }}
+        public string Salt { get { return salt; } }
 
         public Account(string username, string password)
         {
             this.username = username;
             this.password = password;
         }
-       
+        public Account (string username,string password,int id)
+        {
+            this.username = username;
+            this.password = password;
+            this.id = id;
+        }
+        public Account(string username, string password,string salt,int id)
+        {
+            this.username = username;
+            this.password = password;
+            this.salt = salt;
+            this.id= id;
+        }
+        public Account(string username, string password, string salt)
+        {
+            this.username = username;
+            this.password = password;
+            this.salt = salt;
+          
+        }
     }
 }
