@@ -213,7 +213,7 @@ namespace ZooBazzar_Group03
 
         private void btnSavePassword_Click(object sender, EventArgs e)
         {
-            accountManager.UpdatePassword(tbUsernameSettings.Text, tbPasswordSettings.Text);
+            accountManager.UpdatePassword(new Account(currentAccount.Username, tbPasswordSettings.Text,currentAccount.Id));
         }
 
         private void button1_Click(object sender, EventArgs e)
