@@ -13,11 +13,12 @@ namespace LogicLayer
         private CageManager cm;
         private ContractManager cmngr;
 
-        static List<DailySchedule> dailySchedules = new List<DailySchedule>();
-        static List<DailySchedule> caretakerSchedule = new List<DailySchedule>();
+        static List<DailySchedule> dailySchedules;
+        static List<DailySchedule> caretakerSchedule;
 
 
         int fullShiftHours = 6;
+        int halfShiftHours = 3;
 
         IScheduleDB<DailySchedule> crud;
         public ScheduleManager(IScheduleDB<DailySchedule> crud, ICRUD<Employee> employeeData, ICageDB<Cage> cageData, IContractDataManagement<EmployeeContract> contractData)
@@ -145,25 +146,23 @@ namespace LogicLayer
             return false;
         }
 
-        public List<Cage> GetCages(string feedingTime, AnimalType type, DateTime date)
+        public List<Cage> GetCages(string feedingTime, AnimalType type)
         {
             List<Cage> allCages = cm.Cages;
 
-            int day = date.Day;
-
-           return allCages.FindAll(x => x.CageAnimals.Any(x => x.FeedingTimes.Any(x => x == feedingTime) && x.ReasonForDeparture == null && x.AnimalType == type/* && x.WeeklyFeedingIteration <= day*/) );
+            return allCages.FindAll(x => x.CageAnimals.Any(x => x.FeedingTimes.Any(x => x == feedingTime) && x.ReasonForDeparture == null) && x.CageAnimals.All(animal => animal.AnimalType == type));
         }
 
         public int GetWorkedHours(Caretaker caretaker)
         {
             int fullShifts = dailySchedules.FindAll(ds => ds.MainCaretakerFir.Id == caretaker.Id || ds.MainCaretakerSec.Id == caretaker.Id).Count * fullShiftHours;
 
-            fullShifts = dailySchedules.FindAll(ds => ds.HelpCaretaker != null).FindAll(ds => ds.HelpCaretaker.Id == caretaker.Id).Count * fullShiftHours;
+            int halfShift = dailySchedules.FindAll(ds => ds.HelpCaretaker != null).FindAll(ds => ds.HelpCaretaker.Id == caretaker.Id).Count * halfShiftHours;
 
-            return fullShifts;
+            return fullShifts + halfShift;
         }
 
-        public List<Caretaker> GetFreeCaretakers(AnimalType type, string date, string timeSlot)
+        public List<Caretaker> GetFullShiftCaretaker(AnimalType type, string date, string timeSlot)
         {
             List<Caretaker> caretakers = GetCaretakers(type);
 
@@ -191,16 +190,44 @@ namespace LogicLayer
                 {
                     freeCaretakers.Add(ds.MainCaretakerSec);
                 }
-                if (!freeCaretakers.Any(x => x.Id == ds.HelpCaretaker.Id))
+            }
+
+            return freeCaretakers;
+        }
+
+        public List<Caretaker> GetHalfShiftCaretaker(AnimalType type, string date, string timeSlot)
+        {
+            List<Caretaker> caretakers = GetCaretakers(type);
+
+            List<Caretaker> freeCaretakers = new List<Caretaker>();
+
+            foreach (Caretaker caretaker in caretakers)
+            {
+                cmngr.GetContracts(caretaker);
+
+                if ((caretaker.Contracts.Find(c => c.IsValid == true).Fte * 40) >= (GetWorkedHours(caretaker) + halfShiftHours))
                 {
-                    freeCaretakers.Add(ds.HelpCaretaker);
+                    freeCaretakers.Add(caretaker);
+                }
+            }
+
+            DailySchedule ds = AssignedCaretaker(timeSlot, date, type);
+
+            if (ds != null)
+            {
+                
+                if (ds.HelpCaretaker != null)
+                {
+                    if (!freeCaretakers.Any(x => x.Id == ds.HelpCaretaker.Id))
+                    {
+                        freeCaretakers.Add(ds.HelpCaretaker);
+                    }
                 }
             }
 
             return freeCaretakers;
         }
 
-        
         
 
         public List<DailySchedule> GetCaretakerSchedule(Caretaker caretaker, DateTime date, int index)
