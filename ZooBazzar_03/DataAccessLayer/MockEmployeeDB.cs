@@ -11,7 +11,7 @@ namespace DataAccessLayer
 
         public List<Employee> Read()
         {
-            return null;
+            return new List<Employee>();
         }
 
         public void Update(int id, Employee obj)
