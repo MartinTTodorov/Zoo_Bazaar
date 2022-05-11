@@ -35,7 +35,15 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("type", ds.Type.ToString());
                 cmd.Parameters.AddWithValue("main1", ds.MainCaretakerFir.Id);
                 cmd.Parameters.AddWithValue("main2", ds.MainCaretakerSec.Id);
-                cmd.Parameters.AddWithValue("helper", ds.HelpCaretaker.Id);
+                if (ds.HelpCaretaker != null)
+                {
+                    cmd.Parameters.AddWithValue("helper", ds.HelpCaretaker.Id);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("helper", DBNull.Value);
+                }
+               
                 cmd.Parameters.AddWithValue("time", ds.TimeSlot);
 
                 conn.Open();

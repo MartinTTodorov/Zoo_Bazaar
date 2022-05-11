@@ -22,6 +22,9 @@ namespace ZooBazzar_Group03
         {
             InitializeComponent();
             this.menu = menu;
+            cbGender.Items.Add("Male");
+            cbGender.Items.Add("Female");
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -38,7 +41,7 @@ namespace ZooBazzar_Group03
             {
                 feedingTimes.Add("evening");
             }
-            animalManager.AddAnimal(tbAnimalCode.Text, tbName.Text, cbAnimalType.SelectedItem.ToString(), tbSpecie.Text, Convert.ToInt32(tbCageNumber.Text), tbBirthdate.Text, tbReasonForArrival.Text, tbYearOfArrival.Text, string.Empty, string.Empty, cbDiet.SelectedItem.ToString(), feedingTimes);
+            animalManager.AddAnimal(tbAnimalCode.Text, tbName.Text, cbGender.SelectedItem.ToString(), cbAnimalType.SelectedItem.ToString(), tbSpecie.Text, Convert.ToInt32(tbCageNumber.Text), tbBirthdate.Text, tbReasonForArrival.Text, tbYearOfArrival.Text, string.Empty, string.Empty, cbDiet.SelectedItem.ToString(), feedingTimes, cbSpecialist.SelectedItem.ToString(), Convert.ToInt32(tbWeeklyFeedIteration.Text));
             menu.UpdateAnimals();
         }
 
@@ -58,30 +61,12 @@ namespace ZooBazzar_Group03
             {
                 cbDiet.Items.Add(item);
             }
+            foreach (var item in Enum.GetValues(typeof(Specialization)))
+            {
+                cbSpecialist.Items.Add(item);
+            }
         }
 
-        private void cbDailyFeeding_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbDailyFeeding.SelectedItem == "1")
-            {
-                feedingTimes.Clear();
-                cbMorning.Visible = false;
-                cbAfternoon.Visible = false;
-                cbEvening.Visible = false;
-            }
-            else if (cbDailyFeeding.SelectedItem == "2")
-            {
-                feedingTimes.Clear();
-                cbMorning.Visible = false;
-                cbAfternoon.Visible = false;
-                cbEvening.Visible = false;
-            }
-            else
-            {
-                feedingTimes.Add("morning");
-                feedingTimes.Add("afternoon");
-                feedingTimes.Add("evening");
-            }
-        }
+        
     }
 }

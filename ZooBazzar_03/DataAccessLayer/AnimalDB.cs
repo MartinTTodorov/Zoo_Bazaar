@@ -54,11 +54,11 @@ namespace DataAccessLayer
             return animals;
         }
 
-        public void AddAnimalToDB(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes)
+        public void AddAnimalToDB(string animalCode, string name, string gender, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes, string specialist, int weeklyFeedingIteration)
         {
             try
             {
-                string sql = "INSERT INTO animal (AnimalCode, Name, AnimalType, Species, CageNumber, Birthdate, ReasonForArrival, YearOfArrival, YearOfDeparture, ReasonOFDeparture, Diet) VALUES(@animalCode, @name, @animalType, @species, @cageNumber, @birthdate, @reasonForArrival, @yearOfArrival, @yearOfDeparture, @reasonForDeparture, @diet);";
+                string sql = "INSERT INTO animal (AnimalCode, Name, Gender, AnimalType, Species, CageNumber, Birthdate, ReasonForArrival, YearOfArrival, YearOfDeparture, ReasonOFDeparture, Diet, Specialist, WeeklyFeedingIteration) VALUES(@animalCode, @name, @gender, @animalType, @species, @cageNumber, @birthdate, @reasonForArrival, @yearOfArrival, @yearOfDeparture, @reasonForDeparture, @diet, @specialist, @weeklyFeedingIteration);";
                 for (int i = 0; i < feedingTimes.Count; i++)
                 {
                     sql += $"INSERT INTO feedingtime (AnimalCode, timeSlot) VALUES (@animalCode, @time{i});";
@@ -68,6 +68,7 @@ namespace DataAccessLayer
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@animalCode", animalCode);
                 cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@gender", gender);
                 cmd.Parameters.AddWithValue("@animalType", animalType);
                 cmd.Parameters.AddWithValue("@species", species);
                 cmd.Parameters.AddWithValue("@cageNumber", cageNumber);
@@ -77,6 +78,8 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@yearOfDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@reasonForDeparture", string.Empty);
                 cmd.Parameters.AddWithValue("@diet", diet);
+                cmd.Parameters.AddWithValue("@specialist", specialist);
+                cmd.Parameters.AddWithValue("@weeklyFeedingIteration", weeklyFeedingIteration);
 
                 for (int i = 0; i < feedingTimes.Count; i++)
                 {
@@ -84,7 +87,7 @@ namespace DataAccessLayer
                 }
 
                 conn.Open();
-                if (cmd.ExecuteNonQuery() == 1)
+                if (cmd.ExecuteNonQuery() >= 1)
                 {
                     MessageBox.Show("New animal has been added");
                 }
@@ -256,6 +259,8 @@ namespace DataAccessLayer
             }
             return feedingTimes;
         }
+
+        
     }
 
 }

@@ -38,14 +38,14 @@ namespace LogicLayer
         }
         public void AddAnimal(Animal animal)
         {
-            crud.AddAnimalToDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.FeedingTimes);
+            //crud.AddAnimalToDB(animal.AnimalCode, animal.Name, animal.Gender, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.FeedingTimes);
             //UpdateLocalList();
 
         }
 
-        public void AddAnimal(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes)
+        public void AddAnimal(string animalCode, string name, string gender, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes, string specialist, int weeklyFeedingIteration)
         {
-            crud.AddAnimalToDB(animalCode, name, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet, feedingTimes);
+            crud.AddAnimalToDB(animalCode, name, gender, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet, feedingTimes, specialist, weeklyFeedingIteration);
             //UpdateLocalList();
         }
 

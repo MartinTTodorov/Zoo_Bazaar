@@ -10,27 +10,31 @@ namespace LogicLayer
 {
     public class AccountManager
     {
-        List<Account> accounts = new List<Account>();
+        private ICRUD<Account> db;
+        private IAutoIncrementable auto;
+        private List<Account> accounts = new List<Account>();
         public List<Account> Accounts { get { return accounts; } }
-
-        ICRUD<Account> crud;
-        public AccountManager(ICRUD<Account> crud)
+        public AccountManager(ICRUD<Account> db,IAutoIncrementable a)
         {
-            this.crud = crud;
-            accounts = crud.Read();
+            this.db = db;
+            auto = a;
+            accounts = this.db.Read();
         }
 
         public bool AddAccount(Account newAccount)
         {
+            string[] hashedPassword = HashedPassword(newAccount.Password);
+            Account temp = new Account(newAccount.Username, hashedPassword[0],hashedPassword[1],auto.GetNextID());
+
             for (int i = 0; i < accounts.Count; i++)
             {
-                if(accounts[i].Username == newAccount.Username)
+                if(accounts[i].Username == temp.Username)
                 {
                     return false;
                 }
             }
-            crud.Add(newAccount);
-            accounts.Add(newAccount);
+            db.Add(temp);
+            accounts.Add(temp);
             return true;
         }
 
@@ -38,7 +42,7 @@ namespace LogicLayer
         {
             if(accounts[index] != null)
             {
-                crud.Delete(accounts[index].Id);
+                db.Delete(accounts[index].Id);
                 accounts.RemoveAt(index);
                 return true;
             }
@@ -70,17 +74,25 @@ namespace LogicLayer
         }
         public void RefreshData()
         {
-            accounts = crud.Read();
+            accounts = db.Read();
         }
 
-        public void UpdatePassword(string username,string password)
+        public void UpdatePassword(Account account)
         {
-            crud.ChangePassword(username,password);
+            string[] hashedPassword = HashedPassword(account.Password);
+            Account temp = new Account(account.Username, hashedPassword[0], hashedPassword[1],account.Id);
+            db.Update(temp.Id, temp);
             RefreshData();
         }
         public string GetWorkPositionByAccount(string username)
         {
-            return crud.GetEmployeeWorkPositionByAccount(username);
+            return db.GetEmployeeWorkPositionByAccount(username);
+        }
+        public string[] HashedPassword(string password)
+        {
+            string salt = Guid.NewGuid().ToString();
+
+            return new string[] { PasswordHasher.HashPassword(password + salt), salt };
         }
     }
 }
