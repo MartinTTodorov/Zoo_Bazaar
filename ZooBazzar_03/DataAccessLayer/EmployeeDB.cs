@@ -52,38 +52,6 @@ namespace DataAccessLayer
             }
         }
 
-
-        public void ChangePassword(string username, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            string sql = "DELETE FROM employee WHERE ID = @ID";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
-
-            try
-            {
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Employee deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show($"Can't delete employee{id}! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally { conn.Close(); }
-        }
-
-        public string GetEmployeeWorkPositionByAccount(string username)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Employee> Read()
         {
             string sql = "SELECT username,password,firstname,lastname,address,birthdate,email,phone,emergencycontact,bsn,workposition,id FROM employee INNER JOIN account ON employee.ID = account.AccountID";
@@ -165,13 +133,6 @@ namespace DataAccessLayer
                 conn.Close();
             }
 
-        }
-
-       
-
-        public void ChangeCredentials(Employee obj)
-        {
-            throw new NotImplementedException();
-        }
+        }      
     }
 }

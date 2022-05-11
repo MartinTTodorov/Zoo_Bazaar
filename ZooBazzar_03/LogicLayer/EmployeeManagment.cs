@@ -25,6 +25,9 @@ namespace LogicLayer
         
         public bool AddEmployee(Employee employee)
         {
+            if(employees == null)
+                employees = new List<Employee>();
+
             if (!employees.Contains(employee))
             {
                 crud.Add(employee);

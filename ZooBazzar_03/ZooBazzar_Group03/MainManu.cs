@@ -199,7 +199,7 @@ namespace ZooBazzar_Group03
         {
             if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
             {
-                employeeManagment.RemoveEmployee(lbEmployees.SelectedIndex);
+               
             }
         }
 
