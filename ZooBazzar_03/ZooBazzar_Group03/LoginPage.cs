@@ -6,7 +6,7 @@ namespace ZooBazzar_Group03
 {
     public partial class LoginPage : Form
     {
-        public AccountManager _accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
+        private AccountManager accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
         public LoginPage()
         {
             InitializeComponent();            
@@ -18,7 +18,7 @@ namespace ZooBazzar_Group03
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Account temp = _accountManager.Accounts.Find(a => a.Username == tbUsername.Text);
+            Account temp = accountManager.GetAccountByUsername(tbUsername.Text);
             
             if(temp != null && temp.Password == PasswordHasher.HashPassword(tbPassword.Text + temp.Salt))
             {
