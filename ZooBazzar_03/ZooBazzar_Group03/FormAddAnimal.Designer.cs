@@ -52,10 +52,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbWeeklyFeedIteration = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbDailyFeeding = new System.Windows.Forms.ComboBox();
             this.cbEvening = new System.Windows.Forms.CheckBox();
             this.cbAfternoon = new System.Windows.Forms.CheckBox();
             this.cbMorning = new System.Windows.Forms.CheckBox();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.cbGender = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbSpecialist = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cbDiet
@@ -224,9 +227,9 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(256, 371);
+            this.btnAdd.Location = new System.Drawing.Point(328, 402);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(320, 67);
+            this.btnAdd.Size = new System.Drawing.Size(320, 36);
             this.btnAdd.TabIndex = 54;
             this.btnAdd.Text = "Add animal";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -257,47 +260,69 @@
             this.label2.TabIndex = 57;
             this.label2.Text = "Daily feeding iteration";
             // 
-            // cbDailyFeeding
-            // 
-            this.cbDailyFeeding.FormattingEnabled = true;
-            this.cbDailyFeeding.Location = new System.Drawing.Point(510, 312);
-            this.cbDailyFeeding.Name = "cbDailyFeeding";
-            this.cbDailyFeeding.Size = new System.Drawing.Size(125, 28);
-            this.cbDailyFeeding.TabIndex = 58;
-            this.cbDailyFeeding.SelectedIndexChanged += new System.EventHandler(this.cbDailyFeeding_SelectedIndexChanged);
-            // 
             // cbEvening
             // 
             this.cbEvening.AutoSize = true;
-            this.cbEvening.Location = new System.Drawing.Point(669, 396);
+            this.cbEvening.Location = new System.Drawing.Point(510, 352);
             this.cbEvening.Name = "cbEvening";
             this.cbEvening.Size = new System.Drawing.Size(83, 24);
             this.cbEvening.TabIndex = 64;
             this.cbEvening.Text = "Evening";
             this.cbEvening.UseVisualStyleBackColor = true;
-            this.cbEvening.Visible = false;
             // 
             // cbAfternoon
             // 
             this.cbAfternoon.AutoSize = true;
-            this.cbAfternoon.Location = new System.Drawing.Point(669, 366);
+            this.cbAfternoon.Location = new System.Drawing.Point(617, 308);
             this.cbAfternoon.Name = "cbAfternoon";
             this.cbAfternoon.Size = new System.Drawing.Size(98, 24);
             this.cbAfternoon.TabIndex = 63;
             this.cbAfternoon.Text = "Afternoon";
             this.cbAfternoon.UseVisualStyleBackColor = true;
-            this.cbAfternoon.Visible = false;
             // 
             // cbMorning
             // 
             this.cbMorning.AutoSize = true;
-            this.cbMorning.Location = new System.Drawing.Point(669, 336);
+            this.cbMorning.Location = new System.Drawing.Point(510, 308);
             this.cbMorning.Name = "cbMorning";
             this.cbMorning.Size = new System.Drawing.Size(87, 24);
             this.cbMorning.TabIndex = 62;
             this.cbMorning.Text = "Morning";
             this.cbMorning.UseVisualStyleBackColor = true;
-            this.cbMorning.Visible = false;
+            // 
+            // lblGender
+            // 
+            this.lblGender.AutoSize = true;
+            this.lblGender.Location = new System.Drawing.Point(71, 360);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(60, 20);
+            this.lblGender.TabIndex = 65;
+            this.lblGender.Text = "Gender:";
+            // 
+            // cbGender
+            // 
+            this.cbGender.FormattingEnabled = true;
+            this.cbGender.Location = new System.Drawing.Point(163, 352);
+            this.cbGender.Name = "cbGender";
+            this.cbGender.Size = new System.Drawing.Size(125, 28);
+            this.cbGender.TabIndex = 66;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(71, 402);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 20);
+            this.label4.TabIndex = 67;
+            this.label4.Text = "Specialist:";
+            // 
+            // cbSpecialist
+            // 
+            this.cbSpecialist.FormattingEnabled = true;
+            this.cbSpecialist.Location = new System.Drawing.Point(163, 394);
+            this.cbSpecialist.Name = "cbSpecialist";
+            this.cbSpecialist.Size = new System.Drawing.Size(125, 28);
+            this.cbSpecialist.TabIndex = 68;
             // 
             // FormAddAnimal
             // 
@@ -305,11 +330,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(900, 450);
+            this.Controls.Add(this.cbSpecialist);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbGender);
+            this.Controls.Add(this.lblGender);
             this.Controls.Add(this.cbEvening);
             this.Controls.Add(this.cbAfternoon);
             this.Controls.Add(this.cbMorning);
-            this.Controls.Add(this.cbDailyFeeding);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbWeeklyFeedIteration);
             this.Controls.Add(this.label1);
@@ -370,9 +398,12 @@
         private Label label1;
         private TextBox tbWeeklyFeedIteration;
         private Label label2;
-        private ComboBox cbDailyFeeding;
         private CheckBox cbEvening;
         private CheckBox cbAfternoon;
         private CheckBox cbMorning;
+        private Label lblGender;
+        private ComboBox cbGender;
+        private Label label4;
+        private ComboBox cbSpecialist;
     }
 }
