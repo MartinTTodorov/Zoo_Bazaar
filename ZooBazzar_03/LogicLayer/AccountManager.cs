@@ -11,10 +11,10 @@ namespace LogicLayer
     public class AccountManager
     {
         private ICRUD<Account> db;
-        private IAutoIncrementable auto;
+        private IAccount auto;
         private List<Account> accounts = new List<Account>();
         public List<Account> Accounts { get { return accounts; } }
-        public AccountManager(ICRUD<Account> db,IAutoIncrementable a)
+        public AccountManager(ICRUD<Account> db,IAccount a)
         {
             this.db = db;
             auto = a;
@@ -42,7 +42,7 @@ namespace LogicLayer
         {
             if(accounts[index] != null)
             {
-                db.Delete(accounts[index].Id);
+                auto.Delete(accounts[index].Id);
                 accounts.RemoveAt(index);
                 return true;
             }
@@ -86,13 +86,17 @@ namespace LogicLayer
         }
         public string GetWorkPositionByAccount(string username)
         {
-            return db.GetEmployeeWorkPositionByAccount(username);
+            return auto.GetEmployeeWorkPositionByAccount(username);
         }
         public string[] HashedPassword(string password)
         {
             string salt = Guid.NewGuid().ToString();
 
             return new string[] { PasswordHasher.HashPassword(password + salt), salt };
+        }
+        public Account GetAccountByUsername(string username)
+        {
+            return auto.GetAccountByUsername(username);
         }
     }
 }
