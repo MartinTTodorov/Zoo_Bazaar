@@ -21,8 +21,7 @@ namespace ZooBazzar_Group03
             accessability(accountManager.GetWorkPositionByAccount(account.Username));
             lblHello.Text = $"Hello, {account.Username}!";
             employeeManagment.ChangedEmployee += OnChangedEmployee;
-            tbUsernameSettings.Text = account.Username;
-            tbPasswordSettings.Text = account.Password;
+            tbUsernameSettings.Text = account.Username;           
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
             updateEmployee();
             GetSchedule(0);
@@ -312,5 +311,7 @@ namespace ZooBazzar_Group03
             RequestedEmployee re = (RequestedEmployee)lbEmployeesWithNewCredentials.SelectedItem;
             rm.Delete(re);
         }
+
+       
     }
 }

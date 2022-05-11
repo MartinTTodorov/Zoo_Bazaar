@@ -9,5 +9,6 @@ namespace ZooBazzarWebApp
 
         [Required(ErrorMessage = "You need to fill your password to login.")]
         public string Password { get; set; }
+
     }
 }
