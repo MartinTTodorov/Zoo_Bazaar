@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Entities
 {
-    public abstract class Employee
+    public class RequestedEmployee
     {
-        
-
-        private Account account;
         private string firstname;
         private string lastname;
         private string address;
@@ -21,9 +17,7 @@ namespace Entities
         private string emergencyContact;
         private string bsn;
         private int id;
-        private List<EmployeeContract> contracts;
 
-        public Account Account { get { return account; } }
         public string Name { get { return firstname; } }
         public string Lastname { get { return lastname; } }
         public string Address { get { return address; } }
@@ -34,10 +28,9 @@ namespace Entities
         public string Email { get { return email; } }
         public int Id { get { return id; } set { id = value; } }
 
-        public List<EmployeeContract> Contracts { get { return this.contracts; } }
-        protected Employee(Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn)
+        public RequestedEmployee(int id, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn)
         {
-            this.account = account;
+            this.id = id;
             this.firstname = name;
             this.lastname = lastname;
             this.address = address;
@@ -46,36 +39,19 @@ namespace Entities
             this.phone = phone;
             this.emergencyContact = emergencyContact;
             this.bsn = bsn;
-            contracts = new List<EmployeeContract>();
         }
 
 
 
-        protected Employee(int id, string name)
+        public RequestedEmployee(int id, string name)
         {
             this.id = id;
             this.firstname = name;
-            contracts = new List<EmployeeContract>();
-        }
-
-         public Employee()
-        {
-
-        }
-
-        public void AssignContract(EmployeeContract ec)
-        {
-            contracts.Add(ec);
         }
 
         public override string ToString()
         {
             return $"{Name} Id:{Id}";
-        }
-
-        public virtual string GetWorkingPosition()
-        {
-            return " ";
         }
     }
 }

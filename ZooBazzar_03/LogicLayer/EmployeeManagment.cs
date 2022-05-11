@@ -122,9 +122,6 @@ namespace LogicLayer
             }
         }
 
-        public void ChangeCredentials(Employee e)
-        {
-            crud.ChangeCredentials(e);
-        }
+        
     }
 }

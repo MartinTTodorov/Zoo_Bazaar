@@ -22,6 +22,7 @@ namespace ZooBazzar_Group03
         private AccountManager accountManager = new AccountManager(new AccountManagerDB());
         private AnimalManager animalManager = new AnimalManager(new AnimalDB());
         private ContractManager cm = new ContractManager(new ContractDB());
+        private RequestManager rm = new RequestManager(new RequestedEmployeeDB());
 
         public MainManu(Account account)
         {
@@ -37,6 +38,7 @@ namespace ZooBazzar_Group03
             GetSchedule(0);
             currentAccount = account;
             LoadContracts();
+            LoadRequests();
         }
 
 
@@ -285,6 +287,15 @@ namespace ZooBazzar_Group03
             MessageBox.Show($"Successful disabling the conract with id : {ec.Id}");
         }
 
+        private void LoadRequests()
+        {
+            lbEmployeesWithNewCredentials.Items.Clear();
+            foreach (RequestedEmployee re in rm.Read())
+            {
+                lbEmployeesWithNewCredentials.Items.Add(re);
+            }
+        }
+
         private void btnAccept_Click(object sender, EventArgs e)
         {
             if (lbEmployeesWithNewCredentials.SelectedIndex <= -1)
@@ -294,9 +305,12 @@ namespace ZooBazzar_Group03
             }
             else
             {
-                employeeManagment.ChangeCredentials((Employee)lbEmployeesWithNewCredentials.SelectedItem);
+                RequestedEmployee re = (RequestedEmployee)lbEmployeesWithNewCredentials.SelectedItem;
+                rm.ChangeCredentials(re);
+                rm.Delete(re);
                 MessageBox.Show("Employee's been changed!");
-                lbEmployeesWithNewCredentials.Items.Remove((Employee)lbEmployeesWithNewCredentials.SelectedItem);
+                lbEmployeesWithNewCredentials.Items.Remove(re);
+                LoadRequests();
                 return;
             }
 
@@ -305,7 +319,8 @@ namespace ZooBazzar_Group03
         private void btnDecline_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Employee's not been changed!");
-            lbEmployeesWithNewCredentials.Items.Remove((Employee)lbEmployeesWithNewCredentials.SelectedItem);
+            RequestedEmployee re = (RequestedEmployee)lbEmployeesWithNewCredentials.SelectedItem;
+            rm.Delete(re);
         }
     }
 }

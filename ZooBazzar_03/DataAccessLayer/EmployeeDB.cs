@@ -18,13 +18,13 @@ namespace DataAccessLayer
         {
             conn = ConnectionDB.GetConnection();
         }
-        public void Add(int accountid, Employee obj)
+        public void Add( Employee obj)
         {
             string sql = "INSERT INTO employee (ID,FirstName,LastName,Address,Birthdate,Phone,Email,EmergencyContact,BSN,WorkPosition) VALUES (@ID,@FirstName,@LastName,@Address,@Birthdate,@Phone,@Email,@EmergencyContact,@BSN,@WorkPosition)";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
 
-            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = accountid;
+            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = obj.Id;
             cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = obj.Name;
             cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = obj.Lastname;
             cmd.Parameters.Add("@Address", MySqlDbType.VarChar).Value = obj.Address;
@@ -52,10 +52,6 @@ namespace DataAccessLayer
             }
         }
 
-        public void Add(Employee obj)
-        {
-            throw new NotImplementedException();
-        }
 
         public void ChangePassword(string username, string password)
         {
@@ -171,40 +167,11 @@ namespace DataAccessLayer
 
         }
 
+       
+
         public void ChangeCredentials(Employee obj)
         {
-            string sql = "UPDATE employee SET FirstName = @FirstName,LastName = @Lastname,Address = @Address,Birthdate = @Birthdate,Phone = @Phone,EmergencyContact = @EmergencyContact WHERE ID = @ID ";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-            try
-            {
-                cmd.CommandType = CommandType.Text;
-                cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = obj.Name;
-                cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = obj.Lastname;
-                cmd.Parameters.Add("@Address", MySqlDbType.VarChar).Value = obj.Address;
-                cmd.Parameters.Add("@BirthDate", MySqlDbType.DateTime).Value = obj.Birthdate;
-                cmd.Parameters.Add("@Phone", MySqlDbType.VarChar).Value = obj.Phone;
-                cmd.Parameters.Add("@EmergencyContact", MySqlDbType.VarChar).Value = obj.EmargencyContact;
-                cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = obj.Email;
-                cmd.Parameters.Add("@BSN", MySqlDbType.VarChar).Value = obj.Bsn;
-                string workingposition = obj.GetWorkingPosition();
-                cmd.Parameters.Add("@WorkingPosition", MySqlDbType.VarChar).Value = workingposition;
-                cmd.Parameters.Add("@ID", MySqlDbType.VarChar).Value = obj.Id;
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Employee updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (MySqlException ex)
-            {
-
-                MessageBox.Show("Employee is not updated! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                conn.Close();
-            }
+            throw new NotImplementedException();
         }
-
-
     }
 }
