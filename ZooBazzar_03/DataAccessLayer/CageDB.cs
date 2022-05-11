@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Entities;
 
 namespace DataAccessLayer
 {
-    public class CageDB: ICageDB<Cage>
+    public class CageDB : ICageDB<Cage>
     {
         private MySqlConnection conn;
 
