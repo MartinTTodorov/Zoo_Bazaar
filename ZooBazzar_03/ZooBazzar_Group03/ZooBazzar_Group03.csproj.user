@@ -40,8 +40,5 @@
     <Compile Update="Schedule\Schedule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ucCageInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
   </ItemGroup>
 </Project>
