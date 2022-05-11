@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entities;
+﻿using Entities;
 
 
 namespace LogicLayer
@@ -38,20 +33,7 @@ namespace LogicLayer
                 return true;
             }
             return false;
-        }
-
-        public bool RemoveEmployee(int index)
-        {                        
-                if (index >=0)
-                {
-                    DataRefresh();
-                    //crud.Delete(employees[index].Id);
-                    employees.RemoveAt(index);
-                    OnChangedEmployee();
-                    return true ;
-               }
-               return false;                   
-        }
+        }       
         public List<Employee> GetEmployees()
         {
             return employees;
