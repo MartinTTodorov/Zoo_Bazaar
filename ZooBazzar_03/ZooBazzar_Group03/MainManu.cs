@@ -36,6 +36,7 @@ namespace ZooBazzar_Group03
         private void GetSchedule(int index)
         {
             calendar.Controls.Clear();
+            calendar2.Controls.Clear(); 
 
             List<string> days = ScheduleManager.GetWeek(DateTime.Now, index);
 
@@ -44,7 +45,15 @@ namespace ZooBazzar_Group03
             {
                 ucDate uc = new ucDate();
                 uc.GetDate(days[i]);
-                calendar.Controls.Add(uc);
+
+                if (i < 4)
+                {
+                    calendar.Controls.Add(uc);
+                }
+                else
+                {
+                    calendar2.Controls.Add(uc);
+                }
             }
         }
 

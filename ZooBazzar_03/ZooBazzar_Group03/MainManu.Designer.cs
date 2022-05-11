@@ -67,6 +67,14 @@
             this.lbEmployeesWithNewCredentials = new System.Windows.Forms.ListBox();
             this.lblHello = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.calendar2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tpEmployees.SuspendLayout();
             this.gbEmployee.SuspendLayout();
@@ -92,19 +100,19 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(802, 409);
+            this.tabControl1.Size = new System.Drawing.Size(802, 400);
             this.tabControl1.TabIndex = 0;
             // 
             // tpEmployees
             // 
-            this.tpEmployees.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.LandingPage;
+            this.tpEmployees.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
             this.tpEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpEmployees.Controls.Add(this.gbEmployee);
             this.tpEmployees.Controls.Add(this.flpEmployees);
             this.tpEmployees.Location = new System.Drawing.Point(4, 29);
             this.tpEmployees.Name = "tpEmployees";
-            this.tpEmployees.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEmployees.Size = new System.Drawing.Size(794, 376);
+            this.tpEmployees.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpEmployees.Size = new System.Drawing.Size(794, 367);
             this.tpEmployees.TabIndex = 0;
             this.tpEmployees.Text = "Employees";
             this.tpEmployees.UseVisualStyleBackColor = true;
@@ -119,7 +127,7 @@
             this.gbEmployee.Controls.Add(this.btnFindBySpecialization);
             this.gbEmployee.Font = new System.Drawing.Font("Footlight MT Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.gbEmployee.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.gbEmployee.Location = new System.Drawing.Point(8, 94);
+            this.gbEmployee.Location = new System.Drawing.Point(8, 104);
             this.gbEmployee.Name = "gbEmployee";
             this.gbEmployee.Size = new System.Drawing.Size(399, 156);
             this.gbEmployee.TabIndex = 0;
@@ -190,15 +198,23 @@
             // 
             // tpSchedule
             // 
-            this.tpSchedule.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundTimetables;
+            this.tpSchedule.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
             this.tpSchedule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tpSchedule.Controls.Add(this.label9);
+            this.tpSchedule.Controls.Add(this.label8);
+            this.tpSchedule.Controls.Add(this.label7);
+            this.tpSchedule.Controls.Add(this.label6);
+            this.tpSchedule.Controls.Add(this.label5);
+            this.tpSchedule.Controls.Add(this.label4);
+            this.tpSchedule.Controls.Add(this.label3);
+            this.tpSchedule.Controls.Add(this.calendar2);
             this.tpSchedule.Controls.Add(this.btnNext);
             this.tpSchedule.Controls.Add(this.btnPrevious);
             this.tpSchedule.Controls.Add(this.calendar);
             this.tpSchedule.Location = new System.Drawing.Point(4, 29);
             this.tpSchedule.Name = "tpSchedule";
-            this.tpSchedule.Padding = new System.Windows.Forms.Padding(3);
-            this.tpSchedule.Size = new System.Drawing.Size(794, 376);
+            this.tpSchedule.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpSchedule.Size = new System.Drawing.Size(794, 367);
             this.tpSchedule.TabIndex = 1;
             this.tpSchedule.Text = "Schedule";
             this.tpSchedule.UseVisualStyleBackColor = true;
@@ -226,22 +242,22 @@
             // 
             // calendar
             // 
-            this.calendar.Location = new System.Drawing.Point(21, 39);
+            this.calendar.Location = new System.Drawing.Point(21, 44);
             this.calendar.Name = "calendar";
-            this.calendar.Size = new System.Drawing.Size(677, 280);
+            this.calendar.Size = new System.Drawing.Size(677, 102);
             this.calendar.TabIndex = 0;
             // 
             // tpAnimals
             // 
-            this.tpAnimals.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.rhinoceros_g4cd4a45ea_1920;
+            this.tpAnimals.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
             this.tpAnimals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpAnimals.Controls.Add(this.flpAnimals);
             this.tpAnimals.Controls.Add(this.btnAddAnimal);
             this.tpAnimals.Controls.Add(this.btnShowAllAnimals);
             this.tpAnimals.Location = new System.Drawing.Point(4, 29);
             this.tpAnimals.Name = "tpAnimals";
-            this.tpAnimals.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAnimals.Size = new System.Drawing.Size(794, 376);
+            this.tpAnimals.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpAnimals.Size = new System.Drawing.Size(794, 367);
             this.tpAnimals.TabIndex = 2;
             this.tpAnimals.Text = "Animals";
             this.tpAnimals.UseVisualStyleBackColor = true;
@@ -282,13 +298,11 @@
             // 
             // tpEmployeeManagment
             // 
-            this.tpEmployeeManagment.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.EmployeeManagmentBackground;
-            this.tpEmployeeManagment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpEmployeeManagment.Controls.Add(this.groupBox2);
             this.tpEmployeeManagment.Controls.Add(this.lbEmployees);
             this.tpEmployeeManagment.Location = new System.Drawing.Point(4, 29);
             this.tpEmployeeManagment.Name = "tpEmployeeManagment";
-            this.tpEmployeeManagment.Size = new System.Drawing.Size(794, 376);
+            this.tpEmployeeManagment.Size = new System.Drawing.Size(794, 367);
             this.tpEmployeeManagment.TabIndex = 3;
             this.tpEmployeeManagment.Text = "Employee Managment";
             this.tpEmployeeManagment.UseVisualStyleBackColor = true;
@@ -298,7 +312,7 @@
             this.groupBox2.Controls.Add(this.btnRemoveEmployee);
             this.groupBox2.Controls.Add(this.btnUpdateEmployee);
             this.groupBox2.Controls.Add(this.btnAddEmployee);
-            this.groupBox2.Location = new System.Drawing.Point(502, 52);
+            this.groupBox2.Location = new System.Drawing.Point(21, 60);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(250, 227);
             this.groupBox2.TabIndex = 4;
@@ -338,21 +352,19 @@
             // 
             this.lbEmployees.FormattingEnabled = true;
             this.lbEmployees.ItemHeight = 20;
-            this.lbEmployees.Location = new System.Drawing.Point(7, 52);
+            this.lbEmployees.Location = new System.Drawing.Point(350, 63);
             this.lbEmployees.Name = "lbEmployees";
-            this.lbEmployees.Size = new System.Drawing.Size(386, 224);
+            this.lbEmployees.Size = new System.Drawing.Size(434, 224);
             this.lbEmployees.TabIndex = 0;
             this.lbEmployees.SelectedIndexChanged += new System.EventHandler(this.lbEmployees_SelectedIndexChanged);
             this.lbEmployees.DoubleClick += new System.EventHandler(this.lbEmployees_DoubleClick);
             // 
             // tpSettings
             // 
-            this.tpSettings.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.SettingsBackground;
-            this.tpSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpSettings.Controls.Add(this.groupBox3);
             this.tpSettings.Location = new System.Drawing.Point(4, 29);
             this.tpSettings.Name = "tpSettings";
-            this.tpSettings.Size = new System.Drawing.Size(794, 376);
+            this.tpSettings.Size = new System.Drawing.Size(794, 367);
             this.tpSettings.TabIndex = 4;
             this.tpSettings.Text = "Settings";
             this.tpSettings.UseVisualStyleBackColor = true;
@@ -417,14 +429,12 @@
             // 
             // tpContracts
             // 
-            this.tpContracts.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.cows_g2d73e9cad_1920;
-            this.tpContracts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpContracts.Controls.Add(this.btnDisableContract);
             this.tpContracts.Controls.Add(this.lbContracts);
             this.tpContracts.Location = new System.Drawing.Point(4, 29);
             this.tpContracts.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tpContracts.Name = "tpContracts";
-            this.tpContracts.Size = new System.Drawing.Size(794, 376);
+            this.tpContracts.Size = new System.Drawing.Size(794, 367);
             this.tpContracts.TabIndex = 5;
             this.tpContracts.Text = "Contracts";
             this.tpContracts.UseVisualStyleBackColor = true;
@@ -452,15 +462,13 @@
             // 
             // tpEmployeeCredentials
             // 
-            this.tpEmployeeCredentials.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.penguin_g6eb030e6d_1280;
-            this.tpEmployeeCredentials.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpEmployeeCredentials.Controls.Add(this.btnDecline);
             this.tpEmployeeCredentials.Controls.Add(this.btnAccept);
             this.tpEmployeeCredentials.Controls.Add(this.lbEmployeesWithNewCredentials);
             this.tpEmployeeCredentials.Location = new System.Drawing.Point(4, 29);
             this.tpEmployeeCredentials.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tpEmployeeCredentials.Name = "tpEmployeeCredentials";
-            this.tpEmployeeCredentials.Size = new System.Drawing.Size(794, 376);
+            this.tpEmployeeCredentials.Size = new System.Drawing.Size(794, 367);
             this.tpEmployeeCredentials.TabIndex = 6;
             this.tpEmployeeCredentials.Text = "Employee Credentials";
             this.tpEmployeeCredentials.UseVisualStyleBackColor = true;
@@ -520,11 +528,88 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label3.Location = new System.Drawing.Point(67, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "SUNDAY";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label4.Location = new System.Drawing.Point(208, 21);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 20);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "MONDAY";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label5.Location = new System.Drawing.Point(357, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 20);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "TUESDAY";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label6.Location = new System.Drawing.Point(496, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 20);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "WEDNESDAY";
+            // 
+            // calendar2
+            // 
+            this.calendar2.Location = new System.Drawing.Point(21, 182);
+            this.calendar2.Name = "calendar2";
+            this.calendar2.Size = new System.Drawing.Size(677, 102);
+            this.calendar2.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label7.Location = new System.Drawing.Point(67, 162);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 20);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "THURSDAY";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label8.Location = new System.Drawing.Point(208, 162);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 20);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "FRIDAY";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.label9.Location = new System.Drawing.Point(357, 162);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(81, 20);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "SATURDAY";
+            // 
             // MainManu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
+            this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 451);
             this.Controls.Add(this.button1);
@@ -538,6 +623,7 @@
             this.gbEmployee.ResumeLayout(false);
             this.gbEmployee.PerformLayout();
             this.tpSchedule.ResumeLayout(false);
+            this.tpSchedule.PerformLayout();
             this.tpAnimals.ResumeLayout(false);
             this.tpEmployeeManagment.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -592,5 +678,13 @@
         private Button btnDecline;
         private Button btnAccept;
         private ListBox lbEmployeesWithNewCredentials;
+        private Label label4;
+        private Label label3;
+        private Label label6;
+        private Label label5;
+        private Label label9;
+        private Label label8;
+        private Label label7;
+        private FlowLayoutPanel calendar2;
     }
 }

@@ -30,21 +30,23 @@ namespace DataAccessLayer
 
         public List<string> GetFeeding(Animal animal)
         {
-            if (animal.Id == 1)
-            {
-                animal.FeedingTimes.Add("Morning");
-                animal.FeedingTimes.Add("Afternoon");
-            }
-            else if (animal.Id == 2)
-            {
-                animal.FeedingTimes.Add("Morning");
-            }
-            else if (animal.Id == 3)
-            {
-                animal.FeedingTimes.Add("Morning");
-                animal.FeedingTimes.Add("Evening");
-            }
-            return animal.FeedingTimes;
+            //if (animal.Id == 1)
+            //{
+            //    animal.FeedingTimes.Add("Morning");
+            //    animal.FeedingTimes.Add("Afternoon");
+            //}
+            //else if (animal.Id == 2)
+            //{
+            //    animal.FeedingTimes.Add("Morning");
+            //}
+            //else if (animal.Id == 3)
+            //{
+            //    animal.FeedingTimes.Add("Morning");
+            //    animal.FeedingTimes.Add("Evening");
+            //}
+            //return animal.FeedingTimes;
+
+            return new List<string>();
         }
 
         public MemoryStream GetMemoryStream(string animalCode)
