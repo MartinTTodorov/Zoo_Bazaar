@@ -14,11 +14,12 @@ namespace ZooBazzarWebApp.Pages
         [Required]
         public string NewPassword { get; set; }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             Account account =accounManager.GetAccountByUsername(User.Identity.Name);
             Account newAccount = new Account(account.Username, NewPassword,account.Salt,account.Id);
             accounManager.UpdatePassword(newAccount);
+            return new PageResult();
         }
     }
 }

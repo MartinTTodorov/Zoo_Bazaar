@@ -105,7 +105,7 @@
             // 
             // tpEmployees
             // 
-            this.tpEmployees.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
+            this.tpEmployees.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.LandingPage;
             this.tpEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpEmployees.Controls.Add(this.gbEmployee);
             this.tpEmployees.Controls.Add(this.flpEmployees);
@@ -198,7 +198,7 @@
             // 
             // tpSchedule
             // 
-            this.tpSchedule.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
+            this.tpSchedule.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundTimetables;
             this.tpSchedule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpSchedule.Controls.Add(this.label9);
             this.tpSchedule.Controls.Add(this.label8);
@@ -249,7 +249,7 @@
             // 
             // tpAnimals
             // 
-            this.tpAnimals.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
+            this.tpAnimals.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.rhinoceros_g4cd4a45ea_1920;
             this.tpAnimals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpAnimals.Controls.Add(this.flpAnimals);
             this.tpAnimals.Controls.Add(this.btnAddAnimal);
@@ -298,6 +298,8 @@
             // 
             // tpEmployeeManagment
             // 
+            this.tpEmployeeManagment.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.EmployeeManagmentBackground;
+            this.tpEmployeeManagment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpEmployeeManagment.Controls.Add(this.groupBox2);
             this.tpEmployeeManagment.Controls.Add(this.lbEmployees);
             this.tpEmployeeManagment.Location = new System.Drawing.Point(4, 29);
@@ -361,6 +363,8 @@
             // 
             // tpSettings
             // 
+            this.tpSettings.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.SettingsBackground;
+            this.tpSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpSettings.Controls.Add(this.groupBox3);
             this.tpSettings.Location = new System.Drawing.Point(4, 29);
             this.tpSettings.Name = "tpSettings";
@@ -429,6 +433,8 @@
             // 
             // tpContracts
             // 
+            this.tpContracts.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.cows_g2d73e9cad_1920;
+            this.tpContracts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tpContracts.Controls.Add(this.btnDisableContract);
             this.tpContracts.Controls.Add(this.lbContracts);
             this.tpContracts.Location = new System.Drawing.Point(4, 29);
@@ -609,7 +615,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Background;
+            this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 451);
             this.Controls.Add(this.button1);
