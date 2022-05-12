@@ -22,5 +22,8 @@ namespace Entities
         MemoryStream GetMemoryStream(string animalCode);
 
         List<string> GetFeeding(Animal animal);
+        List<string> GetNotes(Animal animal);
+        void AddNote(int id, string note);
+
     }
 }

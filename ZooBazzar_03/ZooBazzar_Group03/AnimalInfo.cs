@@ -65,5 +65,18 @@ namespace ZooBazzar_Group03
         {
             //animalManager.DeleteAnimalByID(animal.Id);
         }
+
+        private void btnShowNotes_Click(object sender, EventArgs e)
+        {
+            animalManager.AssignNotes(animal);
+            fmAnimalNotes animalNotes = new fmAnimalNotes(animal.Notes);
+            animalNotes.Show();
+        }
+
+        private void btnAddNote_Click(object sender, EventArgs e)
+        {
+            fmAddNote fmAddNote = new fmAddNote(animal.Id);
+            fmAddNote.Show();
+        }
     }
 }

@@ -14,6 +14,11 @@ namespace DataAccessLayer
 
         }
 
+        public void AddNote(int id, string note)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteAnimalFromDB(int id, string reasonForDeparture)
         {
             throw new NotImplementedException();
@@ -50,6 +55,11 @@ namespace DataAccessLayer
         }
 
         public MemoryStream GetMemoryStream(string animalCode)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> GetNotes(Animal animal)
         {
             throw new NotImplementedException();
         }

@@ -34,7 +34,7 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    animals.Add(new Animal(Convert.ToString(reader["AnimalCode"]), Convert.ToInt32(reader["id"]), Convert.ToInt32(reader["CageNumber"]), reader["Name"].ToString(), reader["Gender"].ToString(), reader["ReasonForArrival"].ToString(), reader["ReasonOFDeparture"].ToString(), (Diet)Enum.Parse(typeof(Diet), reader["Diet"].ToString()), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Species"].ToString(), reader["YearOfArrival"].ToString(), reader["YearOfDeparture"].ToString(), reader["Birthdate"].ToString(), (Specialization)Enum.Parse(typeof(Specialization), reader["Specialist"].ToString()), null, Convert.ToInt32(reader["WeeklyFeedingIteration"])));
+                    animals.Add(new Animal(Convert.ToString(reader["AnimalCode"]), Convert.ToInt32(reader["id"]), Convert.ToInt32(reader["CageNumber"]), reader["Name"].ToString(), reader["Gender"].ToString(), reader["ReasonForArrival"].ToString(), reader["ReasonOFDeparture"].ToString(), (Diet)Enum.Parse(typeof(Diet), reader["Diet"].ToString()), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Species"].ToString(), reader["YearOfArrival"].ToString(), reader["YearOfDeparture"].ToString(), reader["Birthdate"].ToString(), (Specialization)Enum.Parse(typeof(Specialization), reader["Specialist"].ToString()), null, Convert.ToInt32(reader["WeeklyFeedingIteration"]), null));
 
                 }
             }
@@ -260,7 +260,75 @@ namespace DataAccessLayer
             return feedingTimes;
         }
 
-        
+        public List<string> GetNotes(Animal animal)
+        {
+            List<string> notes = new List<string>();
+            try
+            {
+                string sql = "SELECT Note from animalnotes an INNER JOIN animal a on a.id=an.ID WHERE an.ID=@id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                cmd.Parameters.AddWithValue("@ID", animal.Id);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    notes.Add(dr["Note"].ToString());
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+
+                conn.Close();
+            }
+            return notes;
+        }
+
+        public void AddNote(int id, string note)
+        {
+            try
+            {
+                string sql = "INSERT INTO animalnotes (ID, Note) VALUES(@id, @note);";
+                
+
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@note", note);
+
+                conn.Open();
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Note added");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add a note");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+
+                conn.Close();
+            }
+        }
+
+
     }
 
 }

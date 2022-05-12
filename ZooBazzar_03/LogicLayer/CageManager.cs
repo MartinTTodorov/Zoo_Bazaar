@@ -9,7 +9,7 @@ namespace LogicLayer
 {
     public class CageManager
     {
-        private List<Cage> cages;
+        private static List<Cage> cages;
 
         public List<Cage> Cages { get { return cages; } }
         ICageDB<Cage> crud;

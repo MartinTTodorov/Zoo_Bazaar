@@ -25,6 +25,12 @@
     <Compile Update="Employeee\ucEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="fmAddNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fmAnimalNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="fmDeleteAnimal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -39,6 +45,9 @@
     </Compile>
     <Compile Update="Schedule\Schedule.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ucAnimalNotes.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ namespace LogicLayer
         public event ChangedEmployeeEventHandler ChangedEmployee;
 
 
-        private List<Employee> employees = new List<Employee>();
+        private static List<Employee> employees = new List<Employee>();
         ICRUD<Employee> crud;
         public EmployeeManagment(ICRUD<Employee> crud)
         {

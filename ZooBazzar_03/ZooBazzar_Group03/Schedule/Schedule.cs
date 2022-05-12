@@ -30,7 +30,7 @@ namespace ZooBazzar_Group03
                 btnAssign.Enabled = false;
                 btnEditEmployee.Enabled = false;
             }
-
+            lblDate.Text = date;  
         }
 
         private void cmbTimeSloth_SelectedIndexChanged(object sender, EventArgs e)

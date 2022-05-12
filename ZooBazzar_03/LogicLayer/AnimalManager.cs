@@ -17,7 +17,6 @@ namespace LogicLayer
         {
             this.crud = crud;
             animals = crud.GetAnimals();
-            //AssignFeedingTimes();
         }
 
 
@@ -29,7 +28,6 @@ namespace LogicLayer
                 animals.Clear();
             }
             animals = crud.GetAnimals();
-            //AssignFeedingTimes();
         }
 
         public void UpdateLocalList()
@@ -90,6 +88,19 @@ namespace LogicLayer
             {
                 animals[i].FeedingTimes = crud.GetFeeding(animals[i]);
             }
+        }
+
+        public void AssignNotes(Animal animal)
+        {
+            for (int i = 0; i < animals.Count; i++)
+            {
+                animal.Notes = crud.GetNotes(animal);
+            }
+        }
+
+        public void AddNote(int id, string note)
+        {
+            crud.AddNote(id, note);
         }
 
 

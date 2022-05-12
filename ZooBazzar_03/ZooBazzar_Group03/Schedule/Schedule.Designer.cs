@@ -41,6 +41,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbHelperCaretaker = new System.Windows.Forms.ComboBox();
             this.lbCages = new System.Windows.Forms.ListBox();
+            this.lblDate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTimeSloth
@@ -186,12 +187,23 @@
             this.lbCages.Size = new System.Drawing.Size(450, 224);
             this.lbCages.TabIndex = 28;
             // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.lblDate.Location = new System.Drawing.Point(360, 47);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(13, 20);
+            this.lblDate.TabIndex = 29;
+            this.lblDate.Text = "!";
+            // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Background;
             this.ClientSize = new System.Drawing.Size(865, 478);
+            this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lbCages);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbHelperCaretaker);
@@ -228,5 +240,6 @@
         private Label label3;
         public ComboBox cmbHelperCaretaker;
         private ListBox lbCages;
+        private Label lblDate;
     }
 }
