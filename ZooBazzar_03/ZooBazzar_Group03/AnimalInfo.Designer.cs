@@ -245,6 +245,7 @@
             this.btnAddNote.TabIndex = 31;
             this.btnAddNote.Text = "Add note";
             this.btnAddNote.UseVisualStyleBackColor = true;
+            this.btnAddNote.Click += new System.EventHandler(this.btnAddNote_Click);
             // 
             // AnimalInfo
             // 

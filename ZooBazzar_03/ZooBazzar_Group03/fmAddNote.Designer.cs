@@ -1,13 +1,13 @@
 ﻿namespace ZooBazzar_Group03
 {
-    partial class ucAnimalNotes
+    partial class fmAddNote
     {
-        /// <summary> 
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,47 +20,45 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
+        /// <summary>
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             this.tbNote = new System.Windows.Forms.TextBox();
-            this.btnDeleteNote = new System.Windows.Forms.Button();
+            this.btnAddNote = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbNote
             // 
-            this.tbNote.Location = new System.Drawing.Point(15, 14);
+            this.tbNote.Location = new System.Drawing.Point(12, 12);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
-            this.tbNote.ReadOnly = true;
-            this.tbNote.Size = new System.Drawing.Size(309, 104);
+            this.tbNote.Size = new System.Drawing.Size(275, 137);
             this.tbNote.TabIndex = 0;
             // 
-            // btnDeleteNote
+            // btnAddNote
             // 
-            this.btnDeleteNote.Location = new System.Drawing.Point(15, 143);
-            this.btnDeleteNote.Name = "btnDeleteNote";
-            this.btnDeleteNote.Size = new System.Drawing.Size(94, 29);
-            this.btnDeleteNote.TabIndex = 1;
-            this.btnDeleteNote.Text = "Remove";
-            this.btnDeleteNote.UseVisualStyleBackColor = true;
-            this.btnDeleteNote.Click += new System.EventHandler(this.btnDeleteNote_Click);
+            this.btnAddNote.Location = new System.Drawing.Point(12, 171);
+            this.btnAddNote.Name = "btnAddNote";
+            this.btnAddNote.Size = new System.Drawing.Size(94, 29);
+            this.btnAddNote.TabIndex = 1;
+            this.btnAddNote.Text = "Add";
+            this.btnAddNote.UseVisualStyleBackColor = true;
+            this.btnAddNote.Click += new System.EventHandler(this.btnAddNote_Click);
             // 
-            // ucAnimalNotes
+            // fmAddNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.Controls.Add(this.btnDeleteNote);
+            this.ClientSize = new System.Drawing.Size(339, 221);
+            this.Controls.Add(this.btnAddNote);
             this.Controls.Add(this.tbNote);
-            this.Name = "ucAnimalNotes";
-            this.Size = new System.Drawing.Size(343, 196);
-            this.Load += new System.EventHandler(this.ucAnimalNotes_Load);
+            this.Name = "fmAddNote";
+            this.Text = "fmAddNote";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -69,6 +67,6 @@
         #endregion
 
         private TextBox tbNote;
-        private Button btnDeleteNote;
+        private Button btnAddNote;
     }
 }

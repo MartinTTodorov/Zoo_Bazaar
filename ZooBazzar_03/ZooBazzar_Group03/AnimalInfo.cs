@@ -72,5 +72,11 @@ namespace ZooBazzar_Group03
             fmAnimalNotes animalNotes = new fmAnimalNotes(animal.Notes);
             animalNotes.Show();
         }
+
+        private void btnAddNote_Click(object sender, EventArgs e)
+        {
+            fmAddNote fmAddNote = new fmAddNote(animal.Id);
+            fmAddNote.Show();
+        }
     }
 }

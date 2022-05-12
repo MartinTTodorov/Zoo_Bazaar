@@ -21,8 +21,12 @@ namespace ZooBazzar_Group03
 
         private void btnDeleteNote_Click(object sender, EventArgs e)
         {
-            tbNote.Text = note;
 
+        }
+
+        private void ucAnimalNotes_Load(object sender, EventArgs e)
+        {
+            tbNote.Text = note;
         }
     }
 }

@@ -291,6 +291,43 @@ namespace DataAccessLayer
             return notes;
         }
 
+        public void AddNote(int id, string note)
+        {
+            try
+            {
+                string sql = "INSERT INTO animalnotes (ID, Note) VALUES(@id, @note);";
+                
+
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@note", note);
+
+                conn.Open();
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Note added");
+                }
+                else
+                {
+                    MessageBox.Show("Failed to add a note");
+                }
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+
+                conn.Close();
+            }
+        }
+
 
     }
 

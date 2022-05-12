@@ -153,14 +153,6 @@ namespace ZooBazzar_Group03
         {
             flpAnimals.Controls.Clear();
             animalManager.UpdateLocalList();
-            //for (int i = 0; i < animalManager.animals.Count; i++)
-            //{
-            //    if (animalManager.animals[i].ReasonForDeparture == String.Empty)
-            //    {
-            //        AnimalPic animalPic = new AnimalPic(animalManager.animals[i], this,accountManager.GetWorkPositionByAccount(currentAccount.Username));
-            //        flpAnimals.Controls.Add(animalPic);
-            //    }
-            //}
 
             foreach (Animal animal in animalManager.Animals)
             {

@@ -14,6 +14,11 @@ namespace DataAccessLayer
 
         }
 
+        public void AddNote(int id, string note)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DeleteAnimalFromDB(int id, string reasonForDeparture)
         {
             throw new NotImplementedException();

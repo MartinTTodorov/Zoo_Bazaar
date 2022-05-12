@@ -33,6 +33,8 @@
             // 
             // flpNotes
             // 
+            this.flpNotes.AutoScroll = true;
+            this.flpNotes.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpNotes.Location = new System.Drawing.Point(14, 22);
             this.flpNotes.Name = "flpNotes";
             this.flpNotes.Size = new System.Drawing.Size(614, 282);
