@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.changeCredentials {
+    text-align: center;
+    margin-top: 4rem;
+    margin-left: 4rem;
+    margin-bottom: 5rem;
+    justify-content: space-between;
+}
