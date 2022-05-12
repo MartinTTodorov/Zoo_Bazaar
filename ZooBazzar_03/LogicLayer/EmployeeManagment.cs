@@ -107,5 +107,10 @@ namespace LogicLayer
             }
         }
 
+        public Employee GetEmployee(string EmployeeName)
+        {
+            return employees.Find(x => x.Name == EmployeeName);
+        }
+
     }
 }

@@ -12,7 +12,11 @@ namespace ZooBazzarWebApp.Pages
         [BindProperty]
         public RequestedEmployeeDTO Employee { get; set; }
 
+        public EmployeeManagment em = new EmployeeManagment(new EmployeeDB());
+
         public RequestManager rm = new RequestManager(new RequestedEmployeeDB());
+
+
         public void OnGet()
         {
         }
@@ -21,8 +25,10 @@ namespace ZooBazzarWebApp.Pages
         {
             if (ModelState.IsValid)
             {
-                //RequestedEmployee re = new RequestedEmployee(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.).Value, Employee.Name, Employee.Lastname, Employee.Address, Employee.Birthdate, Employee.Email, Employee.Phone, Employee.EmargencyContact, Employee.Bsn);
-                //rm.Add(re);
+                Employee currentEmployee = (new EmployeeManagment(new EmployeeDB())).GetEmployees().Find(e => e.Id == Convert.ToInt32(User.FindFirst("ID").Value));
+                RequestedEmployee re = new RequestedEmployee(currentEmployee.Id, Employee.Name, Employee.Lastname, Employee.Address, Employee.Birthdate, Employee.Email, Employee.Phone, Employee.EmargencyContact, Employee.Bsn);
+                rm.Add(re);
+                return RedirectToPage("Index");
             }
             return Page();
         }

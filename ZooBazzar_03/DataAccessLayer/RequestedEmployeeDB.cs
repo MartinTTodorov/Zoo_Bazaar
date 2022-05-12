@@ -19,14 +19,14 @@ namespace DataAccessLayer
         }
         public void Add(RequestedEmployee obj)
         {
-            string sql = "INSERT INTO requested_employee (ID,FirstName,LastName,Address,Birthdate,Phone,Email,EmergencyContact,BSN,WorkPosition) VALUES (@ID,@FirstName,@LastName,@Address,@Birthdate,@Phone,@Email,@EmergencyContact,@BSN,@WorkPosition)";
+            string sql = "INSERT INTO requested_employee (ID,FirstName,LastName,Adress,Birthdate,Phone,Email,EmergencyContact,BSN) VALUES (@ID,@FirstName,@LastName,@Adress,@Birthdate,@Phone,@Email,@EmergencyContact,@BSN)";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
 
             cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = obj.Id;
             cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = obj.Name;
             cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = obj.Lastname;
-            cmd.Parameters.Add("@Address", MySqlDbType.VarChar).Value = obj.Address;
+            cmd.Parameters.Add("@Adress", MySqlDbType.VarChar).Value = obj.Address;
             cmd.Parameters.Add("@BirthDate", MySqlDbType.DateTime).Value = obj.Birthdate;
             cmd.Parameters.Add("@Phone", MySqlDbType.VarChar).Value = obj.Phone;
             cmd.Parameters.Add("@EmergencyContact", MySqlDbType.VarChar).Value = obj.EmargencyContact;
