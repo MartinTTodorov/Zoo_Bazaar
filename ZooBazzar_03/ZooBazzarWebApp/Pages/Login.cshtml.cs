@@ -20,7 +20,7 @@ namespace ZooBazzarWebApp.Pages
         {
             if (ModelState.IsValid)
             {
-                Account temp = accountManager.Accounts.Find(a => a.Username == Account.Username);
+                Account temp = accountManager.GetAccountByUsername(Account.Username);
 
                 if (temp != null && temp.Password == PasswordHasher.HashPassword(Account.Password + temp.Salt))
                 {
@@ -35,9 +35,10 @@ namespace ZooBazzarWebApp.Pages
             ClaimsIdentity identity = new ClaimsIdentity(new Claim[]
             {
                         new Claim(ClaimTypes.Name, Account.Username),
-                        new Claim(ClaimTypes.Role, accountManager.GetWorkPositionByAccount(Account.Username))
+                        new Claim(ClaimTypes.Role, accountManager.GetWorkPositionByAccount(Account.Username)),
+                        new Claim("ID",accountManager.GetAccountByUsername(Account.Username).Id.ToString())
 
-            }, CookieAuthenticationDefaults.AuthenticationScheme);
+            }, CookieAuthenticationDefaults.AuthenticationScheme);;
 
             HttpContext.SignInAsync(new ClaimsPrincipal(identity));
             return new RedirectToPageResult("Index");

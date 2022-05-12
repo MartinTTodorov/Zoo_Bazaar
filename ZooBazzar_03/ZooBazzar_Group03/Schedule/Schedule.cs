@@ -21,9 +21,11 @@ namespace ZooBazzar_Group03
         AnimalType currentType;
         string timeSlot;
 
+        
+
         private void Schedule_Load(object sender, EventArgs e)
         {
-            if (currentDate.CompareTo(DateTime.Today) == -1)
+            if (currentDate.CompareTo(DateTime.Today) < 1)
             {
                 btnAssign.Enabled = false;
                 btnEditEmployee.Enabled = false;
@@ -64,7 +66,7 @@ namespace ZooBazzar_Group03
             cmbSecondCaretaker.SelectedIndex = -1;
             cmbHelperCaretaker.Text = "";
 
-            DailySchedule ds = sm.AssignedCaretaker(timeSlot, date, currentType);
+            DailySchedule ds = sm.AssignedCaretakers(timeSlot, date, currentType);
 
             if (ds != null)
             {
@@ -78,15 +80,23 @@ namespace ZooBazzar_Group03
                     cmbHelperCaretaker.Text = ds.HelpCaretaker.ToString();
                 }
 
-                btnAssign.Enabled = false;
-                btnEditEmployee.Enabled = true;
+                if (currentDate.CompareTo(DateTime.Today) > 0)
+                {
+                    btnAssign.Enabled = false;
+                    btnEditEmployee.Enabled = true;
+                }
 
                 return true;
             }
             else
             {
-                btnAssign.Enabled = true;
-                btnEditEmployee.Enabled = false;
+
+                if (currentDate.CompareTo(DateTime.Today) > 0)
+                {
+                    btnAssign.Enabled = true;
+                    btnEditEmployee.Enabled = false;
+                }
+                
 
                 return false;
             }
@@ -116,17 +126,18 @@ namespace ZooBazzar_Group03
                     currentType = AnimalType.Bird;
                     break;
             }
-
-
-
         }
 
 
         public void GetCaretakers(AnimalType type)
         {
-            List<Caretaker> fullShift = sm.GetFreeCaretakers(type, date, timeSlot);
 
             AssignedCaretaker();
+
+
+            List<Caretaker> fullShift = sm.GetFreeCaretakers(type, date, timeSlot);
+
+
 
             cmbFirstCaretaker.Items.Clear();
             cmbSecondCaretaker.Items.Clear();
@@ -137,10 +148,11 @@ namespace ZooBazzar_Group03
             for (int i = 0; i < fullShift.Count; i++)
             {
                 cmbFirstCaretaker.Items.Add(fullShift[i]);
-                //List<DailySchedule> ds = sm.GetCaretakerSchedule(fullShift[i], currentDate, 0);
                 cmbSecondCaretaker.Items.Add(fullShift[i]);
                 cmbHelperCaretaker.Items.Add(fullShift[i]);
             }
+
+
         }
 
 
@@ -216,26 +228,34 @@ namespace ZooBazzar_Group03
             Caretaker caretaker2 = (Caretaker)cmbSecondCaretaker.SelectedItem;
             Caretaker caretaker3;
 
-            if (cmbHelperCaretaker.SelectedIndex > -1)
+            if (ChosenCaretaker())
             {
-                caretaker3 = (Caretaker)cmbHelperCaretaker.SelectedItem;
+                if (cmbHelperCaretaker.SelectedIndex > -1)
+                {
+                    caretaker3 = (Caretaker)cmbHelperCaretaker.SelectedItem;
+                }
+                else
+                {
+                    caretaker3 = null;
+                }
+
+
+                if (sm.Update(new DailySchedule(currentType, date, caretaker1, caretaker2, caretaker3, timeSlot)))
+                {
+                    MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully edit the assigned caretaker to the animal");
+                }
+                else
+                {
+                    MessageBox.Show("Unfortunately, under unknown circumstances you sadly didn't do anythyng useful!!!");
+                }
             }
             else
             {
-                caretaker3 = null;
+                MessageBox.Show("You chose the same employee!");
             }
-
-
-            if (sm.Update(new DailySchedule(currentType, date, caretaker1, caretaker2, caretaker3, timeSlot)))
-            {
-                MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully edit the assigned caretaker to the animal");
-            }
-            else
-            {
-                MessageBox.Show("Unfortunately, under unknown circumstances you sadly didn't do anythyng useful!!!");
-            }
+            
         }
 
-        
+
     }
 }

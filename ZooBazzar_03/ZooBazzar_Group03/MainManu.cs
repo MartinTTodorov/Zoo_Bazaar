@@ -21,8 +21,7 @@ namespace ZooBazzar_Group03
             accessability(accountManager.GetWorkPositionByAccount(account.Username));
             lblHello.Text = $"Hello, {account.Username}!";
             employeeManagment.ChangedEmployee += OnChangedEmployee;
-            tbUsernameSettings.Text = account.Username;
-            tbPasswordSettings.Text = account.Password;
+            tbUsernameSettings.Text = account.Username;           
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
             updateEmployee();
             GetSchedule(0);
@@ -37,6 +36,7 @@ namespace ZooBazzar_Group03
         private void GetSchedule(int index)
         {
             calendar.Controls.Clear();
+            calendar2.Controls.Clear(); 
 
             List<string> days = ScheduleManager.GetWeek(DateTime.Now, index);
 
@@ -45,7 +45,15 @@ namespace ZooBazzar_Group03
             {
                 ucDate uc = new ucDate();
                 uc.GetDate(days[i]);
-                calendar.Controls.Add(uc);
+
+                if (i < 4)
+                {
+                    calendar.Controls.Add(uc);
+                }
+                else
+                {
+                    calendar2.Controls.Add(uc);
+                }
             }
         }
 
@@ -199,7 +207,7 @@ namespace ZooBazzar_Group03
         {
             if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
             {
-                employeeManagment.RemoveEmployee(lbEmployees.SelectedIndex);
+               
             }
         }
 
@@ -312,5 +320,7 @@ namespace ZooBazzar_Group03
             RequestedEmployee re = (RequestedEmployee)lbEmployeesWithNewCredentials.SelectedItem;
             rm.Delete(re);
         }
+
+       
     }
 }

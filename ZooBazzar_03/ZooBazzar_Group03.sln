@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entiti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZooBazzarWebApp", "ZooBazzarWebApp\ZooBazzarWebApp.csproj", "{342D3E24-EB6E-474C-AE2B-3D970FADC852}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTesting", "UnitTesting\UnitTesting.csproj", "{459E0ED4-327E-482F-B7CC-19D3BD4852A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{342D3E24-EB6E-474C-AE2B-3D970FADC852}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{342D3E24-EB6E-474C-AE2B-3D970FADC852}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{342D3E24-EB6E-474C-AE2B-3D970FADC852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{459E0ED4-327E-482F-B7CC-19D3BD4852A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{459E0ED4-327E-482F-B7CC-19D3BD4852A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{459E0ED4-327E-482F-B7CC-19D3BD4852A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{459E0ED4-327E-482F-B7CC-19D3BD4852A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

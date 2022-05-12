@@ -121,11 +121,23 @@
   <data name="Lion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Lion.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SettingsBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SettingsBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="button_login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\button_login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="chamelion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\chamelion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="RemoveEmployeeBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\RemoveEmployeeBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="EmployeeManagmentBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\EmployeeManagmentBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cows-g2d73e9cad_1920" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cows-g2d73e9cad_1920.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="closeSign" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\closeSign2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="schedule" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\schedule.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,19 +166,28 @@
   <data name="leaf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\leaf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="manager" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\manager.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="RemoveEmployeeBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RemoveEmployeeBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackgroundTimetables" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackgroundTimetables.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="butterfly" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\butterfly.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="button_login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\button_login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="BackgroundEmployee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroundEmployee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="closeSign" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\closeSign2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="rhinoceros-g4cd4a45ea_1920" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rhinoceros-g4cd4a45ea_1920.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LandingPage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LandingPage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="manager" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\manager.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="penguin-g6eb030e6d_1280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\penguin-g6eb030e6d_1280.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
