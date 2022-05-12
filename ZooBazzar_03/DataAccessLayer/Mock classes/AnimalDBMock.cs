@@ -54,6 +54,11 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
+        public List<string> GetNotes(Animal animal)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool HasImage(string animalCode)
         {
             throw new NotImplementedException();
