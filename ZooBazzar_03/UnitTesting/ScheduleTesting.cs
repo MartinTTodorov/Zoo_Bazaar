@@ -66,6 +66,15 @@ namespace UnitTesting
             return schedules;
         }
 
+        public void GetTestEmployees()
+        {
+            em.AddEmployee(new Caretaker(1, "Radolona", Specialization.Mammalogist));
+            em.AddEmployee(new Caretaker(2, "Cecka", Specialization.Ornithologist));
+            em.AddEmployee(new Caretaker(3, "Peza", Specialization.Mammalogist));
+            em.AddEmployee(new Caretaker(4, "Stoil", Specialization.Entomologist));
+            em.AddEmployee(new Caretaker(5, "Marto", Specialization.Entomologist));
+        }
+
 
         [TestMethod]
         public void TestInsertDailySchedule()
@@ -109,59 +118,72 @@ namespace UnitTesting
 
         }
 
-        //[TestMethod]
-        //public void TestGetWeeklySchedule()
-        //{
-        //    //Getting the mock data with 3 daily schedules
-        //    List<DailySchedule> schedules = GetTestSchedule();
+        [TestMethod]
+        public void TestGetWeeklySchedule()
+        {
+            //Getting the mock data with 3 daily schedules
+            GetTestSchedule();
 
-        //    //Reading the data 
-        //    manager.GetWeeklySchedule(DateTime.ParseExact("17 May 2022", "d MMM yyyy", null), 0);
-
+            //Reading the data 
             
-        //}
+            sm.GetWeeklySchedule(DateTime.ParseExact("12 May 2022", "d MMM yyyy", null), 0);
+            Assert.AreEqual(3, sm.DailySchedules.Count);
+            sm.GetWeeklySchedule(DateTime.ParseExact("17 May 2022", "d MMM yyyy", null), 0);
+            Assert.AreEqual(0, sm.DailySchedules.Count);
+        }
 
-        //[TestMethod]
-        //public void TestGetCaretakers()
-        //{
-        //    em.AddEmployee(new Caretaker(1, "Radolona", Specialization.Mammalogist));
-        //    em.AddEmployee(new Caretaker(2, "Cecka", Specialization.Ornithologist));
-        //    em.AddEmployee(new Caretaker(3, "Peza", Specialization.Mammalogist));
-        //    em.AddEmployee(new Caretaker(4, "Stoil", Specialization.Entomologist));
-        //    em.AddEmployee(new Caretaker(5, "Marto", Specialization.Entomologist));
+        [TestMethod]
+        public void TestGetCaretakers()
+        {
+           
+            GetTestEmployees();
+
+            Assert.AreEqual(2, sm.GetCaretakers(AnimalType.Mammal).Count);
+            Assert.AreEqual(1, sm.GetCaretakers(AnimalType.Bird).Count);
+            Assert.AreEqual(2, sm.GetCaretakers(AnimalType.Insect).Count);
+        }
+
+        [TestMethod]
+        public void TestGetCages()
+        {
+            Animal animal1 = new Animal("1", 1, Diet.Carnivore, AnimalType.Mammal, "Tiger", 4);
+            Animal animal2 = new Animal("2", 1, Diet.Carnivore, AnimalType.Mammal, "Tiger", 4);
+            Animal animal3 = new Animal("3", 1, Diet.Carnivore, AnimalType.Mammal, "Tiger", 4);
+
+            animal1.FeedingTimes.Add("evening");
+            animal2.FeedingTimes.Add("evening");
+            animal3.FeedingTimes.Add("evening");
+
+            Cage tigerCage = new Cage(1);
+
+            tigerCage.CageAnimals.Add(animal1);
+            tigerCage.CageAnimals.Add(animal2);
+            tigerCage.CageAnimals.Add(animal3);
+
+            cm.Cages.Add(tigerCage);
+
+            List<Cage> cages = sm.GetCages("evening", AnimalType.Mammal, DateTime.ParseExact("17 May 2022", "d MMM yyyy", null));
+
+            Assert.AreEqual(1, cages.Count);
+
+            cages = sm.GetCages("evening", AnimalType.Mammal, DateTime.ParseExact("21 May 2022", "d MMM yyyy", null));
+
+            Assert.AreEqual(0, cages.Count);
+        }
 
 
-        //    Assert.AreEqual(2, sm.GetCaretakers(AnimalType.Mammal).Count);
-        //    Assert.AreEqual(1, sm.GetCaretakers(AnimalType.Bird).Count);
-        //    Assert.AreEqual(2, sm.GetCaretakers(AnimalType.Insect).Count);  
-        //}
+        [TestMethod]
+        public void TestGetWorkedHours()
+        {
+            GetTestEmployees();
+            GetTestSchedule();
 
-        //[TestMethod]
-        //public void TestGetCages()
-        //{
-        //    Animal animal1 = new Animal("1", 1, Diet.Carnivore, AnimalType.Mammal, "Tiger", 4);
-        //    Animal animal2 = new Animal("2", 1, Diet.Carnivore, AnimalType.Mammal, "Tiger", 4);
-        //    Animal animal3 = new Animal("3", 1, Diet.Carnivore, AnimalType.Mammal, "Tiger", 4);
+            for (int i = 0; i < sm.GetCaretakers(AnimalType.Mammal).Count; i++)
+            {
+                sm.GetCaretakers(AnimalType.Mammal)[i].Contracts.Add(new EmployeeContract(i, DateTime.Now, DateTime.Now, 0.5, "why not", true));
+            }
 
-        //    animal1.FeedingTimes.Add("evening");
-        //    animal2.FeedingTimes.Add("evening");
-        //    animal3.FeedingTimes.Add("evening");
 
-        //    Cage tigerCage = new Cage(1);
-
-        //    tigerCage.CageAnimals.Add(animal1);
-        //    tigerCage.CageAnimals.Add(animal2);
-        //    tigerCage.CageAnimals.Add(animal3);
-
-        //    cm.Cages.Add(tigerCage);
-
-        //    List<Cage> cages = sm.GetCages("evening", AnimalType.Mammal, DateTime.ParseExact("17 May 2022", "d MMM yyyy", null));
-
-        //    Assert.AreEqual(1, cages.Count);
-
-        //    cages = sm.GetCages("evening", AnimalType.Mammal, DateTime.ParseExact("21 May 2022", "d MMM yyyy", null));
-
-        //    Assert.AreEqual(0, cages.Count);
-        //}
+        }
     }
 }

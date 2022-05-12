@@ -67,6 +67,7 @@ namespace LogicLayer
 
             if (!match)
             {
+                dailySchedules.Clear();
                 dailySchedules.AddRange(crud.Read(GetWeek(date, index)));
             }
 
@@ -148,7 +149,7 @@ namespace LogicLayer
             return allCages.FindAll(x => x.CageAnimals.Any(x => x.FeedingTimes.Any(x => x == feedingTime) && x.ReasonForDeparture == null && x.AnimalType == type && x.WeeklyFeedingIteration > day));
         }
 
-        private int GetWorkedHours(Caretaker caretaker)
+        public int GetWorkedHours(Caretaker caretaker)
         {
             int fullShifts = dailySchedules.FindAll(ds => ds.MainCaretakerFir.Id == caretaker.Id || ds.MainCaretakerSec.Id == caretaker.Id).Count * fullShiftHours;
 
