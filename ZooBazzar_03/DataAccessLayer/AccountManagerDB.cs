@@ -4,7 +4,7 @@ using Entities;
 
 namespace DataAccessLayer
 {
-    public class AccountManagerDB : ICRUD<Account>, IAutoIncrementable
+    public class AccountManagerDB : ICRUD<Account>, IAccount
     {
         private MySqlConnection conn;
 
@@ -183,6 +183,37 @@ namespace DataAccessLayer
             }
         }
 
+        public Account GetAccountByUsername(string username)
+        {
+            string sql = "SELECT username,password,salt,AccountID FROM account INNER JOIN contract On contract.employee_id = account.AccountID WHERE contract.is_valid = true AND username = @Username";
+            Account account = null;
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = username;
+
+            try
+            {
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    account = new Account(reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), Convert.ToInt32(reader[3]));                    
+                }
+            }
+            catch (MySqlException ex)
+            {
+
+                MessageBox.Show("Error during reading the data in accounts! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return account;
+        }
        
     }
 

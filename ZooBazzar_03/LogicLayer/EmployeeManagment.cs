@@ -45,7 +45,7 @@ namespace LogicLayer
                 if (index >=0)
                 {
                     DataRefresh();
-                crud.Delete(employees[index].Id);
+                    //crud.Delete(employees[index].Id);
                     employees.RemoveAt(index);
                     OnChangedEmployee();
                     return true ;

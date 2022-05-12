@@ -9,7 +9,6 @@ namespace ZooBazzar_Group03
     {
         private Account currentAccount;
         private EmployeeManagment employeeManagment = new EmployeeManagment(new EmployeeDB());
-        private ScheduleManager scheduleManager = new ScheduleManager(new ScheduleDB(), new EmployeeDB(), new CageDB(), new ContractDB());
         private AccountManager accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
         private AnimalManager animalManager = new AnimalManager(new AnimalDB());
         private ContractManager cm = new ContractManager(new ContractDB());
@@ -39,7 +38,7 @@ namespace ZooBazzar_Group03
         {
             calendar.Controls.Clear();
 
-            List<string> days = scheduleManager.GetWeek(DateTime.Now, index);
+            List<string> days = ScheduleManager.GetWeek(DateTime.Now, index);
 
 
             for (int i = 0; i < days.Count; i++)

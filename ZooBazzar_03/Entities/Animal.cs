@@ -43,9 +43,9 @@ namespace Entities
 
         public Diet Diet { get { return diet; } set { diet = value; } }
         public AnimalType AnimalType { get { return type; } set { type = value; } }
-        public int WeeklyFeedingIteration{ get { return weeklyFeedingIteration; } set { weeklyFeedingIteration = value; } }
+        public int WeeklyFeedingIteration{ get { return weeklyFeedingIteration; } }
 
-        public Animal(string animalCode, int id, int cageNumber, string name, string gender, string reasonForArrival, string reasonForDeparture, Diet diet, AnimalType type, string specie, string yearOfArrival, string yearOfDeparture, string birthdate, Specialization specialization, List<string> feedingTimes)
+        public Animal(string animalCode, int id, int cageNumber, string name, string gender, string reasonForArrival, string reasonForDeparture, Diet diet, AnimalType type, string specie, string yearOfArrival, string yearOfDeparture, string birthdate, Specialization specialization, List<string> feedingTimes, int weeklyFeeding)
         {
             this.id = id;
             this.cageNumber = cageNumber;
@@ -62,16 +62,17 @@ namespace Entities
             this.gender = gender;
             this.specialization = specialization;
             this.feedingTimes = feedingTimes;
+            this.weeklyFeedingIteration = weeklyFeeding;   
         }
 
-        public Animal(string animalCode, int cageNumber, Diet diet, AnimalType type, string specie)//, List<string> feedingTimes)//, int weeklyFeedingIteration)
+        public Animal(string animalCode, int cageNumber, Diet diet, AnimalType type, string specie, int weeklyFeedingIteration)
         {
             this.cageNumber = cageNumber;
             this.diet = diet;
             this.type = type;
             this.specie = specie;
             this.animalCode = animalCode;
-            //this.WeeklyFeedingIteration = weeklyFeedingIteration;
+            this.weeklyFeedingIteration = weeklyFeedingIteration;
         }
 
         public string GetInfo()
