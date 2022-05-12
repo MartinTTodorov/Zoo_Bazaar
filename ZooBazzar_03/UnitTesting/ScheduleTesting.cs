@@ -43,14 +43,16 @@ namespace UnitTesting
         public List<DailySchedule> GetTestSchedule()
         {
             sm.DailySchedules.Clear();
+            //em.GetEmployees().Clear();  
 
-            Caretaker c1 = new Caretaker(1, "Radka", Specialization.Mammalogist);
-            Caretaker c2 = new Caretaker(2, "Pandu", Specialization.Mammalogist);
-            Caretaker c3 = new Caretaker(3, "Peza", Specialization.Mammalogist);
+            GetTestEmployees();
 
-            DailySchedule ds1 = new DailySchedule(AnimalType.Mammal, "10 May 2022", c1, c2, c3, "evening");
-            DailySchedule ds2 = new DailySchedule(AnimalType.Mammal, "11 May 2022", c1, c2, c3, "evening");
-            DailySchedule ds3 = new DailySchedule(AnimalType.Mammal, "10 May 2022", c1, c2, null, "morning");
+            List<Caretaker> employees = em.AllCaretakers();    
+
+
+            DailySchedule ds1 = new DailySchedule(AnimalType.Mammal, "10 May 2022", employees[0], employees[3], employees[2], "evening");
+            DailySchedule ds2 = new DailySchedule(AnimalType.Mammal, "11 May 2022", employees[0], employees[3], employees[2], "evening");
+            DailySchedule ds3 = new DailySchedule(AnimalType.Mammal, "10 May 2022", employees[0], employees[2], null, "morning");
 
             //Creating list with all the daily initialised daily schedules^
             List<DailySchedule> schedules = new List<DailySchedule>();
@@ -68,11 +70,16 @@ namespace UnitTesting
 
         public void GetTestEmployees()
         {
-            em.AddEmployee(new Caretaker(1, "Radolona", Specialization.Mammalogist));
-            em.AddEmployee(new Caretaker(2, "Cecka", Specialization.Ornithologist));
+            em.AddEmployee(new Caretaker(1, "Radka", Specialization.Mammalogist));
+            em.AddEmployee(new Caretaker(2, "Pandu", Specialization.Ornithologist));
             em.AddEmployee(new Caretaker(3, "Peza", Specialization.Mammalogist));
-            em.AddEmployee(new Caretaker(4, "Stoil", Specialization.Entomologist));
+            em.AddEmployee(new Caretaker(4, "Stoil", Specialization.Mammalogist));
             em.AddEmployee(new Caretaker(5, "Marto", Specialization.Entomologist));
+
+            for (int i = 0; i < em.AllCaretakers().Count; i++)
+            {
+                em.AllCaretakers()[i].Contracts.Add(new EmployeeContract(i, DateTime.Now, DateTime.Now, 0.5, "why not", true));
+            }
         }
 
 
@@ -135,12 +142,11 @@ namespace UnitTesting
         [TestMethod]
         public void TestGetCaretakers()
         {
-           
-            GetTestEmployees();
+            GetTestSchedule();
 
-            Assert.AreEqual(2, sm.GetCaretakers(AnimalType.Mammal).Count);
+            Assert.AreEqual(3, sm.GetCaretakers(AnimalType.Mammal).Count);
             Assert.AreEqual(1, sm.GetCaretakers(AnimalType.Bird).Count);
-            Assert.AreEqual(2, sm.GetCaretakers(AnimalType.Insect).Count);
+            Assert.AreEqual(1, sm.GetCaretakers(AnimalType.Insect).Count);
         }
 
         [TestMethod]
@@ -175,15 +181,36 @@ namespace UnitTesting
         [TestMethod]
         public void TestGetWorkedHours()
         {
-            GetTestEmployees();
             GetTestSchedule();
 
-            for (int i = 0; i < sm.GetCaretakers(AnimalType.Mammal).Count; i++)
-            {
-                sm.GetCaretakers(AnimalType.Mammal)[i].Contracts.Add(new EmployeeContract(i, DateTime.Now, DateTime.Now, 0.5, "why not", true));
-            }
+            Assert.AreEqual(18, sm.GetWorkedHours(em.GetCaretakerById(1)));
+            Assert.AreEqual(12, sm.GetWorkedHours(em.GetCaretakerById(4)));
+            Assert.AreEqual(0, sm.GetWorkedHours(em.GetCaretakerById(5)));
+        }
 
+        [TestMethod]
+        public void TestGetFreeCaretakers()
+        {
+            GetTestSchedule();
 
+            //Checking for available employees(who have not worked their weekly hours)
+            Assert.AreEqual(1, sm.GetFreeCaretakers(AnimalType.Mammal, "12 May 2022", "morning").Count);
+
+            //Checking for available employees(if they have assigned shifts the same day, but they have worked their weekly hours, they still appear as available)
+            Assert.AreEqual(3, sm.GetFreeCaretakers(AnimalType.Mammal, "10 May 2022", "evening").Count);
+
+            //Checking for available employees the next work week
+            sm.GetWeeklySchedule(DateTime.ParseExact("19 May 2022", "d MMM yyyy", null), 0);
+            Assert.AreEqual(3, sm.GetFreeCaretakers(AnimalType.Mammal, "19 May 2022", "evening").Count);
+        }
+
+        [TestMethod]
+        public void TestGetCaretakerSchedule()
+        {
+            GetTestSchedule();
+
+            //Checking the working days for a given caretaker by given day of a certain work week
+            Assert.AreEqual(2, sm.GetCaretakerSchedule(em.GetCaretakerById(4), DateTime.ParseExact("12 May 2022", "d MMM yyyy", null), 0).Count);
         }
     }
 }
