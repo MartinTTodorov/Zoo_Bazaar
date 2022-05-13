@@ -41,7 +41,7 @@ namespace Entities
         public string ReasonForArrival { get { return reasonForArrival; } }
         public string YearOfArrival { get { return yearOfArrival; } }
         public string YearOfDeparture { get { return yearOfDeparture; } }
-        public string ReasonForDeparture { get { return reasonForDeparture; } }
+        public string ReasonForDeparture { get { return reasonForDeparture; } set { reasonForDeparture = value; } }
         public List<string> FeedingTimes { get { return feedingTimes; } set { feedingTimes = value; } }
         public List<string> Notes { get { return notes; } set { notes = value; } }
 
