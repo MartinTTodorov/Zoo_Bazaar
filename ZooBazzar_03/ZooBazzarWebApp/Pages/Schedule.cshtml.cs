@@ -18,6 +18,11 @@ namespace ZooBazzarWebApp.Pages
             currentEmployee = (new EmployeeManagment(new EmployeeDB())).GetEmployees().Find(e => e.Id == Convert.ToInt32(User.FindFirst("ID").Value));
             schedules = ScheduleManager.GetCaretakerSchedule((Caretaker)currentEmployee, DateTime.Now, 0);
         }
+
+        public List<Cage> getCages(DailySchedule ds)
+        {
+            return ScheduleManager.GetCages(ds.TimeSlot, ds.Type, DateTime.ParseExact(ds.Date, "d MMM yyyy", null));
+        }
         
     }
 }

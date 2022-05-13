@@ -208,7 +208,11 @@ namespace LogicLayer
             caretakerSchedule = dailySchedules.FindAll(s => s.MainCaretakerFir.Id == caretaker.Id || s.MainCaretakerSec.Id == caretaker.Id);
             caretakerSchedule.AddRange(dailySchedules.FindAll(x => x.HelpCaretaker != null).FindAll(x => x.HelpCaretaker.Id == caretaker.Id));
 
+            caretakerSchedule.Sort((x, y) => DateTime.ParseExact(x.Date, "d MMM yyyy", null).CompareTo(DateTime.ParseExact(y.Date, "d MMM yyyy", null))); 
+
             return caretakerSchedule;
         }
+
+
     }
 }
