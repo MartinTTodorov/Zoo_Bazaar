@@ -20,8 +20,40 @@ body {
 
 .changeCredentials {
     text-align: center;
-    margin-top: 4rem;
-    margin-left: 4rem;
+    margin-top: 5rem;
+    margin-left: 7rem;
     margin-bottom: 5rem;
     justify-content: space-between;
+}
+
+span {
+    color: red;
+}
+
+
+
+.changeCredentials input,
+.changeCredentials label,
+.changeCredentials textarea {
+    display: block;
+    font-size: 2.4rem;
+}
+
+.changeCredentials input,
+.changeCredentials textarea {
+    margin: 1rem auto;
+    width: 40%;
+}
+
+.changeCredentials label {
+    margin-bottom: 2.5rem;
+}
+
+.changeCredentials button {
+    margin-bottom: 10rem;
+    padding: 1rem 4rem;
+    background: rgb(24, 143, 212);
+    border: none;
+    color: white;
+    width: 40%;
 }

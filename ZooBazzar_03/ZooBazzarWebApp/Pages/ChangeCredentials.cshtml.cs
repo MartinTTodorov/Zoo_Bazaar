@@ -16,9 +16,12 @@ namespace ZooBazzarWebApp.Pages
 
         public RequestManager rm = new RequestManager(new RequestedEmployeeDB());
 
+        public Employee employee;
+
 
         public void OnGet()
         {
+            employee = (new EmployeeManagment(new EmployeeDB())).GetEmployees().Find(e => e.Id == Convert.ToInt32(User.FindFirst("ID").Value));
         }
 
         public IActionResult OnPost()

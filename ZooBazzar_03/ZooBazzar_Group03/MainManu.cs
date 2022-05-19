@@ -28,11 +28,21 @@ namespace ZooBazzar_Group03
             currentAccount = account;
             LoadContracts();
             LoadRequests();
+            FillCombobox();
         }
 
 
         int index = 0;
 
+
+        private void FillCombobox()
+        {
+            cbEmployee.Items.Clear();
+            foreach (Employee employee in employeeManagment.GetEmployees())
+            {
+                cbEmployee.Items.Add(employee.Account.Username);
+            }
+        }
         private void GetSchedule(int index)
         {
             calendar.Controls.Clear();
@@ -313,6 +323,17 @@ namespace ZooBazzar_Group03
             rm.Delete(re);
         }
 
-       
+        private void btnCreateContract_Click(object sender, EventArgs e)
+        {
+            Employee employee = employeeManagment.GetEmployeeByUsername(cbEmployee.SelectedItem.ToString());
+            EmployeeContract ec = new EmployeeContract(employee.Id, dtpStartDate.Value, dtpEndDate.Value, Convert.ToDouble(tbFte.Text),tbReason.Text, true);
+            cm.AddContract(ec,employee );
+        }
+
+
+        private void lbContracts_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show($"{(EmployeeContract)lbContracts.SelectedItem}");
+        }
     }
 }

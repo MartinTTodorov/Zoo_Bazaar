@@ -77,5 +77,10 @@ namespace Entities
         {
             return " ";
         }
+
+        public string GetNames()
+        {
+            return $"{Name} {Lastname}";
+        }
     }
 }

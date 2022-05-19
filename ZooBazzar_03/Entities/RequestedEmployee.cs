@@ -51,7 +51,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return $"{Name} Id:{Id}";
+            return $"Name: {Name} Last Name: {Lastname} Email: {Email} Adress: {Address} Birth Date: {Birthdate} Phone: {Phone} EC: {EmargencyContact} BSN: {Bsn}";
         }
     }
 }

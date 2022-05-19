@@ -40,8 +40,7 @@ namespace DataAccessLayer
             }
             catch (MySqlException ex)
             {
-
-                MessageBox.Show("Employee is not inserted! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
             }
             finally
             {
@@ -63,11 +62,10 @@ namespace DataAccessLayer
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Employee deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show($"Can't delete employee{id}! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
             }
             finally { conn.Close(); }
         }
@@ -138,7 +136,7 @@ namespace DataAccessLayer
             catch (MySqlException ex)
             {
 
-                MessageBox.Show("Employee is not updated! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
             }
             finally
             {
