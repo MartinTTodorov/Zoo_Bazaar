@@ -49,7 +49,26 @@ namespace LogicLayer
 
         public void UpdateAnimal(Animal animal)
         {
+            if (System.Enum.IsDefined(typeof(AnimalType), animal.AnimalType))
+            {
+               
+            }
             crud.UpdateAnimalInDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.Id);
+            //UpdateLocalList();
+        }
+
+
+        public bool UpdateAnimals(Animal animal)
+        {
+            if (System.Enum.IsDefined(typeof(AnimalType), animal.AnimalType))
+            {
+                return false;
+            }
+            else
+            {
+                crud.UpdateAnimalInDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.Id);
+                return true;
+            }
             //UpdateLocalList();
         }
 
@@ -101,6 +120,20 @@ namespace LogicLayer
         public void AddNote(int id, string note)
         {
             crud.AddNote(id, note);
+        }
+
+
+        public List<Animal> GetAnimalsByType(AnimalType type)
+        {
+            List<Animal> typeAnimals = new List<Animal>();
+            foreach (Animal animal in Animals)
+            {
+                if (animal.AnimalType==type)
+                {
+                    typeAnimals.Add(animal);
+                }
+            }
+            return typeAnimals;
         }
 
 

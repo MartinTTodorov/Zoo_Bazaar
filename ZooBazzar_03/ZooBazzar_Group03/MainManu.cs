@@ -23,6 +23,7 @@ namespace ZooBazzar_Group03
             employeeManagment.ChangedEmployee += OnChangedEmployee;
             tbUsernameSettings.Text = account.Username;           
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
+            cbAnimalType.DataSource = Enum.GetValues(typeof(AnimalType));
             updateEmployee();
             GetSchedule(0);
             currentAccount = account;
@@ -334,6 +335,33 @@ namespace ZooBazzar_Group03
         private void lbContracts_DoubleClick(object sender, EventArgs e)
         {
             MessageBox.Show($"{(EmployeeContract)lbContracts.SelectedItem}");
+        }
+
+        private void btnAnimalName_Click(object sender, EventArgs e)
+        {
+            flpAnimals.Controls.Clear();
+            animalManager.UpdateLocalList();
+            foreach (Animal animal in animalManager.Animals)
+            {
+                if (string.Equals(animal.Name, tbAnimalName.Text, StringComparison.OrdinalIgnoreCase) || animal.Name.Contains(tbAnimalName.Text, StringComparison.OrdinalIgnoreCase))
+                {
+                    flpAnimals.Controls.Add(new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username)));
+                }
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            List<Animal> typeAnimals = new List<Animal>();
+            flpAnimals.Controls.Clear();
+            animalManager.UpdateLocalList();
+            typeAnimals = animalManager.GetAnimalsByType((AnimalType)cbAnimalType.SelectedItem);
+
+            foreach (Animal animal in typeAnimals)
+            {
+                flpAnimals.Controls.Add(new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username)));
+            }
         }
     }
 }

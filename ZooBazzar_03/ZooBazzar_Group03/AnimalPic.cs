@@ -34,11 +34,11 @@ namespace ZooBazzar_Group03
         private void AnimalPic_Load(object sender, EventArgs e)
         {
             lblName.Text = animal.Name;
-            if (animalManager.HasImage(animal))
-            {
-                MemoryStream ms = animalManager.GetMemoryStream(animal.AnimalCode);
-                pbAnimal.Image = Image.FromStream(ms);
-            }
+            //if (animalManager.HasImage(animal))
+            //{
+            //    MemoryStream ms = animalManager.GetMemoryStream(animal.AnimalCode);
+            //    pbAnimal.Image = Image.FromStream(ms);
+            //}
         }
 
         private void pbAnimal_Click(object sender, EventArgs e)
