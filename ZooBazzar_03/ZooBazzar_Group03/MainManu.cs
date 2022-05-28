@@ -29,6 +29,7 @@ namespace ZooBazzar_Group03
             currentAccount = account;
             LoadContracts();
             LoadRequests();
+            LoadOldUser();
             FillCombobox();
         }
 
@@ -296,6 +297,17 @@ namespace ZooBazzar_Group03
                 lbEmployeesWithNewCredentials.Items.Add(re);
             }
         }
+        private void LoadOldUser()
+        {
+            lbEmployeesWithOldCredentials.Items.Clear();
+            foreach (RequestedEmployee re in rm.Read())
+            {
+                Employee employee = employeeManagment.GetEmployeeById(re.Id);
+                lbEmployeesWithOldCredentials.Items.Add(employee);
+            }
+        }
+
+
 
         private void btnAccept_Click(object sender, EventArgs e)
         {
@@ -312,6 +324,7 @@ namespace ZooBazzar_Group03
                 MessageBox.Show("Employee's been changed!");
                 lbEmployeesWithNewCredentials.Items.Remove(re);
                 LoadRequests();
+                LoadOldUser();
                 return;
             }
 
@@ -319,9 +332,18 @@ namespace ZooBazzar_Group03
 
         private void btnDecline_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Employee's not been changed!");
+            if (lbEmployeesWithNewCredentials.SelectedIndex<0)
+            {
+                MessageBox.Show("Please first select the request!");
+                return;
+            }
+
             RequestedEmployee re = (RequestedEmployee)lbEmployeesWithNewCredentials.SelectedItem;
+            Employee employee = (Employee)lbEmployeesWithOldCredentials.SelectedItem;
+            MessageBox.Show("Employee's not been changed!");
             rm.Delete(re);
+            LoadRequests();
+            LoadOldUser();
         }
 
         private void btnCreateContract_Click(object sender, EventArgs e)
