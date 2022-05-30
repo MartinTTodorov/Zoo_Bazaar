@@ -63,6 +63,16 @@ namespace ZooBazzar_Group03.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap approved_request {
+            get {
+                object obj = ResourceManager.GetObject("approved_request", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Background {
             get {
                 object obj = ResourceManager.GetObject("Background", resourceCulture);
@@ -223,6 +233,16 @@ namespace ZooBazzar_Group03.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logo_zooBazzar {
+            get {
+                object obj = ResourceManager.GetObject("logo_zooBazzar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap manager {
             get {
                 object obj = ResourceManager.GetObject("manager", resourceCulture);
@@ -256,6 +276,16 @@ namespace ZooBazzar_Group03.Properties {
         internal static System.Drawing.Bitmap penguin_g6eb030e6d_1280 {
             get {
                 object obj = ResourceManager.GetObject("penguin-g6eb030e6d_1280", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reject_request {
+            get {
+                object obj = ResourceManager.GetObject("reject_request", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

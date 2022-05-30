@@ -28,943 +28,291 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tpEmployees = new System.Windows.Forms.TabPage();
-            this.gbEmployee = new System.Windows.Forms.GroupBox();
-            this.btnShowAll = new System.Windows.Forms.Button();
-            this.btnFindByFirstName = new System.Windows.Forms.Button();
-            this.tbFirstName = new System.Windows.Forms.TextBox();
-            this.cbSpecialization = new System.Windows.Forms.ComboBox();
-            this.btnFindBySpecialization = new System.Windows.Forms.Button();
-            this.flpEmployees = new System.Windows.Forms.FlowLayoutPanel();
-            this.tpSchedule = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.calendar2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPrevious = new System.Windows.Forms.Button();
-            this.calendar = new System.Windows.Forms.FlowLayoutPanel();
-            this.tpAnimals = new System.Windows.Forms.TabPage();
-            this.cbAnimalType = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.flpAnimals = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAnimalName = new System.Windows.Forms.Button();
-            this.tbAnimalName = new System.Windows.Forms.TextBox();
-            this.btnAddAnimal = new System.Windows.Forms.Button();
-            this.btnShowAllAnimals = new System.Windows.Forms.Button();
-            this.tpEmployeeManagment = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnRemoveEmployee = new System.Windows.Forms.Button();
-            this.btnUpdateEmployee = new System.Windows.Forms.Button();
-            this.btnAddEmployee = new System.Windows.Forms.Button();
-            this.lbEmployees = new System.Windows.Forms.ListBox();
-            this.tpSettings = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnSavePassword = new System.Windows.Forms.Button();
-            this.tbPasswordSettings = new System.Windows.Forms.TextBox();
-            this.tbUsernameSettings = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tpContracts = new System.Windows.Forms.TabPage();
-            this.cbEmployee = new System.Windows.Forms.ComboBox();
-            this.lblReason = new System.Windows.Forms.Label();
-            this.lblFTE = new System.Windows.Forms.Label();
-            this.lblEndDate = new System.Windows.Forms.Label();
-            this.lblStartDate = new System.Windows.Forms.Label();
-            this.tbReason = new System.Windows.Forms.TextBox();
-            this.tbFte = new System.Windows.Forms.TextBox();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.btnCreateContract = new System.Windows.Forms.Button();
-            this.lblHello = new System.Windows.Forms.Label();
+            this.pButtons = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lblGreeting = new System.Windows.Forms.Label();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnRequest = new System.Windows.Forms.Button();
+            this.btnContracts = new System.Windows.Forms.Button();
+            this.btnEmployees = new System.Windows.Forms.Button();
+            this.btnSchedule = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnDisableContract = new System.Windows.Forms.Button();
-            this.lbContracts = new System.Windows.Forms.ListBox();
-            this.tpEmployeeCredentials = new System.Windows.Forms.TabPage();
-            this.btnDecline = new System.Windows.Forms.Button();
-            this.btnAccept = new System.Windows.Forms.Button();
-            this.lbEmployeesWithNewCredentials = new System.Windows.Forms.ListBox();
-            this.lbEmployeesWithOldCredentials = new System.Windows.Forms.ListBox();
-            this.lblEmployeesWithNew = new System.Windows.Forms.Label();
-            this.lblEmployeesWithOld = new System.Windows.Forms.Label();
-            this.tabControl1.SuspendLayout();
-            this.tpEmployees.SuspendLayout();
-            this.gbEmployee.SuspendLayout();
-            this.tpSchedule.SuspendLayout();
-            this.tpAnimals.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tpEmployeeManagment.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.tpSettings.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.tpContracts.SuspendLayout();
-            this.tpEmployeeCredentials.SuspendLayout();
+            this.btnHome = new System.Windows.Forms.Button();
+            this.pLogo = new System.Windows.Forms.Panel();
+            this.lblLogo = new System.Windows.Forms.Label();
+            this.pTitle = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.pButtons.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.pLogo.SuspendLayout();
+            this.pTitle.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tpEmployees);
-            this.tabControl1.Controls.Add(this.tpSchedule);
-            this.tabControl1.Controls.Add(this.tpAnimals);
-            this.tabControl1.Controls.Add(this.tpEmployeeManagment);
-            this.tabControl1.Controls.Add(this.tpSettings);
-            this.tabControl1.Controls.Add(this.tpContracts);
-            this.tabControl1.Controls.Add(this.tpEmployeeCredentials);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(852, 446);
-            this.tabControl1.TabIndex = 0;
-            // 
-            // tpEmployees
-            // 
-            this.tpEmployees.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.LandingPage;
-            this.tpEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tpEmployees.Controls.Add(this.gbEmployee);
-            this.tpEmployees.Controls.Add(this.flpEmployees);
-            this.tpEmployees.Location = new System.Drawing.Point(4, 24);
-            this.tpEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpEmployees.Name = "tpEmployees";
-            this.tpEmployees.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpEmployees.Size = new System.Drawing.Size(844, 418);
-            this.tpEmployees.TabIndex = 0;
-            this.tpEmployees.Text = "Employees";
-            this.tpEmployees.UseVisualStyleBackColor = true;
-            // 
-            // gbEmployee
-            // 
-            this.gbEmployee.BackColor = System.Drawing.Color.DarkGreen;
-            this.gbEmployee.Controls.Add(this.btnShowAll);
-            this.gbEmployee.Controls.Add(this.btnFindByFirstName);
-            this.gbEmployee.Controls.Add(this.tbFirstName);
-            this.gbEmployee.Controls.Add(this.cbSpecialization);
-            this.gbEmployee.Controls.Add(this.btnFindBySpecialization);
-            this.gbEmployee.Font = new System.Drawing.Font("Footlight MT Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.gbEmployee.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.gbEmployee.Location = new System.Drawing.Point(7, 78);
-            this.gbEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbEmployee.Name = "gbEmployee";
-            this.gbEmployee.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gbEmployee.Size = new System.Drawing.Size(349, 117);
-            this.gbEmployee.TabIndex = 0;
-            this.gbEmployee.TabStop = false;
-            this.gbEmployee.Text = "Find";
-            // 
-            // btnShowAll
-            // 
-            this.btnShowAll.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnShowAll.Location = new System.Drawing.Point(20, 84);
-            this.btnShowAll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShowAll.Name = "btnShowAll";
-            this.btnShowAll.Size = new System.Drawing.Size(309, 22);
-            this.btnShowAll.TabIndex = 4;
-            this.btnShowAll.Text = "All";
-            this.btnShowAll.UseVisualStyleBackColor = false;
-            this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
-            // 
-            // btnFindByFirstName
-            // 
-            this.btnFindByFirstName.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnFindByFirstName.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnFindByFirstName.ForeColor = System.Drawing.Color.Ivory;
-            this.btnFindByFirstName.Location = new System.Drawing.Point(188, 51);
-            this.btnFindByFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFindByFirstName.Name = "btnFindByFirstName";
-            this.btnFindByFirstName.Size = new System.Drawing.Size(141, 22);
-            this.btnFindByFirstName.TabIndex = 3;
-            this.btnFindByFirstName.Text = "By first name";
-            this.btnFindByFirstName.UseVisualStyleBackColor = false;
-            this.btnFindByFirstName.Click += new System.EventHandler(this.btnFindByFirstName_Click);
-            // 
-            // tbFirstName
-            // 
-            this.tbFirstName.BackColor = System.Drawing.Color.Ivory;
-            this.tbFirstName.Location = new System.Drawing.Point(20, 52);
-            this.tbFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbFirstName.Name = "tbFirstName";
-            this.tbFirstName.Size = new System.Drawing.Size(163, 24);
-            this.tbFirstName.TabIndex = 2;
-            // 
-            // cbSpecialization
-            // 
-            this.cbSpecialization.BackColor = System.Drawing.Color.Ivory;
-            this.cbSpecialization.FormattingEnabled = true;
-            this.cbSpecialization.Location = new System.Drawing.Point(20, 20);
-            this.cbSpecialization.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbSpecialization.Name = "cbSpecialization";
-            this.cbSpecialization.Size = new System.Drawing.Size(163, 26);
-            this.cbSpecialization.TabIndex = 1;
-            // 
-            // btnFindBySpecialization
-            // 
-            this.btnFindBySpecialization.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnFindBySpecialization.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnFindBySpecialization.ForeColor = System.Drawing.Color.Ivory;
-            this.btnFindBySpecialization.Location = new System.Drawing.Point(188, 20);
-            this.btnFindBySpecialization.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnFindBySpecialization.Name = "btnFindBySpecialization";
-            this.btnFindBySpecialization.Size = new System.Drawing.Size(141, 22);
-            this.btnFindBySpecialization.TabIndex = 0;
-            this.btnFindBySpecialization.Text = "By specialization";
-            this.btnFindBySpecialization.UseVisualStyleBackColor = false;
-            this.btnFindBySpecialization.Click += new System.EventHandler(this.btnFindBySpecialization_Click);
-            // 
-            // flpEmployees
-            // 
-            this.flpEmployees.AutoScroll = true;
-            this.flpEmployees.Location = new System.Drawing.Point(372, 4);
-            this.flpEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.flpEmployees.Name = "flpEmployees";
-            this.flpEmployees.Size = new System.Drawing.Size(320, 266);
-            this.flpEmployees.TabIndex = 0;
-            // 
-            // tpSchedule
-            // 
-            this.tpSchedule.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundTimetables;
-            this.tpSchedule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tpSchedule.Controls.Add(this.label9);
-            this.tpSchedule.Controls.Add(this.label8);
-            this.tpSchedule.Controls.Add(this.label7);
-            this.tpSchedule.Controls.Add(this.label6);
-            this.tpSchedule.Controls.Add(this.label5);
-            this.tpSchedule.Controls.Add(this.label4);
-            this.tpSchedule.Controls.Add(this.label3);
-            this.tpSchedule.Controls.Add(this.calendar2);
-            this.tpSchedule.Controls.Add(this.btnNext);
-            this.tpSchedule.Controls.Add(this.btnPrevious);
-            this.tpSchedule.Controls.Add(this.calendar);
-            this.tpSchedule.Location = new System.Drawing.Point(4, 24);
-            this.tpSchedule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpSchedule.Name = "tpSchedule";
-            this.tpSchedule.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpSchedule.Size = new System.Drawing.Size(844, 418);
-            this.tpSchedule.TabIndex = 1;
-            this.tpSchedule.Text = "Schedule";
-            this.tpSchedule.UseVisualStyleBackColor = true;
-            this.tpSchedule.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.label9.Location = new System.Drawing.Point(312, 122);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 15);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "SATURDAY";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.label8.Location = new System.Drawing.Point(182, 122);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 15);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "FRIDAY";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.label7.Location = new System.Drawing.Point(59, 122);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 15);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "THURSDAY";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.label6.Location = new System.Drawing.Point(434, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 15);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "WEDNESDAY";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.label5.Location = new System.Drawing.Point(312, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 15);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "TUESDAY";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.label4.Location = new System.Drawing.Point(182, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 15);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "MONDAY";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.label3.Location = new System.Drawing.Point(59, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 15);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "SUNDAY";
-            // 
-            // calendar2
-            // 
-            this.calendar2.Location = new System.Drawing.Point(18, 136);
-            this.calendar2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.calendar2.Name = "calendar2";
-            this.calendar2.Size = new System.Drawing.Size(592, 76);
-            this.calendar2.TabIndex = 4;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(512, 249);
-            this.btnNext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(82, 22);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Location = new System.Drawing.Point(410, 249);
-            this.btnPrevious.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(82, 22);
-            this.btnPrevious.TabIndex = 1;
-            this.btnPrevious.Text = "Previous";
-            this.btnPrevious.UseVisualStyleBackColor = true;
-            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
-            // 
-            // calendar
-            // 
-            this.calendar.Location = new System.Drawing.Point(18, 33);
-            this.calendar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.calendar.Name = "calendar";
-            this.calendar.Size = new System.Drawing.Size(592, 76);
-            this.calendar.TabIndex = 0;
-            // 
-            // tpAnimals
-            // 
-            this.tpAnimals.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.rhinoceros_g4cd4a45ea_1920;
-            this.tpAnimals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tpAnimals.Controls.Add(this.cbAnimalType);
-            this.tpAnimals.Controls.Add(this.button2);
-            this.tpAnimals.Controls.Add(this.groupBox1);
-            this.tpAnimals.Controls.Add(this.btnAnimalName);
-            this.tpAnimals.Controls.Add(this.tbAnimalName);
-            this.tpAnimals.Controls.Add(this.btnAddAnimal);
-            this.tpAnimals.Controls.Add(this.btnShowAllAnimals);
-            this.tpAnimals.Location = new System.Drawing.Point(4, 24);
-            this.tpAnimals.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpAnimals.Name = "tpAnimals";
-            this.tpAnimals.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpAnimals.Size = new System.Drawing.Size(844, 418);
-            this.tpAnimals.TabIndex = 2;
-            this.tpAnimals.Text = "Animals";
-            this.tpAnimals.UseVisualStyleBackColor = true;
-            // 
-            // cbAnimalType
-            // 
-            this.cbAnimalType.BackColor = System.Drawing.Color.Ivory;
-            this.cbAnimalType.FormattingEnabled = true;
-            this.cbAnimalType.Location = new System.Drawing.Point(38, 176);
-            this.cbAnimalType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbAnimalType.Name = "cbAnimalType";
-            this.cbAnimalType.Size = new System.Drawing.Size(141, 23);
-            this.cbAnimalType.TabIndex = 10;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.SeaGreen;
-            this.button2.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.Ivory;
-            this.button2.Location = new System.Drawing.Point(184, 175);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(141, 22);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "By type";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.BackColor = System.Drawing.Color.DarkGreen;
-            this.groupBox1.Controls.Add(this.flpAnimals);
-            this.groupBox1.Font = new System.Drawing.Font("Footlight MT Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox1.Location = new System.Drawing.Point(380, 4);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(438, 383);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Animals";
-            // 
-            // flpAnimals
-            // 
-            this.flpAnimals.AutoScroll = true;
-            this.flpAnimals.Location = new System.Drawing.Point(5, 21);
-            this.flpAnimals.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.flpAnimals.Name = "flpAnimals";
-            this.flpAnimals.Size = new System.Drawing.Size(413, 349);
-            this.flpAnimals.TabIndex = 5;
-            // 
-            // btnAnimalName
-            // 
-            this.btnAnimalName.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnAnimalName.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAnimalName.ForeColor = System.Drawing.Color.Ivory;
-            this.btnAnimalName.Location = new System.Drawing.Point(184, 136);
-            this.btnAnimalName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAnimalName.Name = "btnAnimalName";
-            this.btnAnimalName.Size = new System.Drawing.Size(144, 22);
-            this.btnAnimalName.TabIndex = 7;
-            this.btnAnimalName.Text = "Search by name";
-            this.btnAnimalName.UseVisualStyleBackColor = false;
-            this.btnAnimalName.Click += new System.EventHandler(this.btnAnimalName_Click);
-            // 
-            // tbAnimalName
-            // 
-            this.tbAnimalName.BackColor = System.Drawing.Color.Ivory;
-            this.tbAnimalName.Location = new System.Drawing.Point(38, 138);
-            this.tbAnimalName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbAnimalName.Name = "tbAnimalName";
-            this.tbAnimalName.Size = new System.Drawing.Size(141, 23);
-            this.tbAnimalName.TabIndex = 6;
-            // 
-            // btnAddAnimal
-            // 
-            this.btnAddAnimal.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnAddAnimal.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAddAnimal.ForeColor = System.Drawing.Color.Ivory;
-            this.btnAddAnimal.Location = new System.Drawing.Point(184, 98);
-            this.btnAddAnimal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddAnimal.Name = "btnAddAnimal";
-            this.btnAddAnimal.Size = new System.Drawing.Size(141, 22);
-            this.btnAddAnimal.TabIndex = 4;
-            this.btnAddAnimal.Text = "Add an animal";
-            this.btnAddAnimal.UseVisualStyleBackColor = false;
-            this.btnAddAnimal.Click += new System.EventHandler(this.btnAddAnimal_Click);
-            // 
-            // btnShowAllAnimals
-            // 
-            this.btnShowAllAnimals.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnShowAllAnimals.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnShowAllAnimals.ForeColor = System.Drawing.Color.Ivory;
-            this.btnShowAllAnimals.Location = new System.Drawing.Point(33, 98);
-            this.btnShowAllAnimals.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnShowAllAnimals.Name = "btnShowAllAnimals";
-            this.btnShowAllAnimals.Size = new System.Drawing.Size(145, 22);
-            this.btnShowAllAnimals.TabIndex = 1;
-            this.btnShowAllAnimals.Text = "Show all animals";
-            this.btnShowAllAnimals.UseVisualStyleBackColor = false;
-            this.btnShowAllAnimals.Click += new System.EventHandler(this.btnShowAllAnimals_Click);
-            // 
-            // tpEmployeeManagment
-            // 
-            this.tpEmployeeManagment.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.EmployeeManagmentBackground;
-            this.tpEmployeeManagment.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tpEmployeeManagment.Controls.Add(this.groupBox2);
-            this.tpEmployeeManagment.Controls.Add(this.lbEmployees);
-            this.tpEmployeeManagment.Location = new System.Drawing.Point(4, 24);
-            this.tpEmployeeManagment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpEmployeeManagment.Name = "tpEmployeeManagment";
-            this.tpEmployeeManagment.Size = new System.Drawing.Size(844, 418);
-            this.tpEmployeeManagment.TabIndex = 3;
-            this.tpEmployeeManagment.Text = "Employee Managment";
-            this.tpEmployeeManagment.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.btnRemoveEmployee);
-            this.groupBox2.Controls.Add(this.btnUpdateEmployee);
-            this.groupBox2.Controls.Add(this.btnAddEmployee);
-            this.groupBox2.Location = new System.Drawing.Point(18, 45);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(219, 170);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            // 
-            // btnRemoveEmployee
-            // 
-            this.btnRemoveEmployee.Location = new System.Drawing.Point(46, 71);
-            this.btnRemoveEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnRemoveEmployee.Name = "btnRemoveEmployee";
-            this.btnRemoveEmployee.Size = new System.Drawing.Size(123, 34);
-            this.btnRemoveEmployee.TabIndex = 2;
-            this.btnRemoveEmployee.Text = "Remove";
-            this.btnRemoveEmployee.UseVisualStyleBackColor = true;
-            this.btnRemoveEmployee.Click += new System.EventHandler(this.btnRemoveEmployee_Click_1);
-            // 
-            // btnUpdateEmployee
-            // 
-            this.btnUpdateEmployee.Location = new System.Drawing.Point(46, 110);
-            this.btnUpdateEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUpdateEmployee.Name = "btnUpdateEmployee";
-            this.btnUpdateEmployee.Size = new System.Drawing.Size(123, 34);
-            this.btnUpdateEmployee.TabIndex = 3;
-            this.btnUpdateEmployee.Text = "Update";
-            this.btnUpdateEmployee.UseVisualStyleBackColor = true;
-            this.btnUpdateEmployee.Click += new System.EventHandler(this.btnUpdateEmployee_Click);
-            // 
-            // btnAddEmployee
-            // 
-            this.btnAddEmployee.Location = new System.Drawing.Point(46, 36);
-            this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddEmployee.Name = "btnAddEmployee";
-            this.btnAddEmployee.Size = new System.Drawing.Size(123, 31);
-            this.btnAddEmployee.TabIndex = 1;
-            this.btnAddEmployee.Text = "Add";
-            this.btnAddEmployee.UseVisualStyleBackColor = true;
-            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
-            // 
-            // lbEmployees
-            // 
-            this.lbEmployees.FormattingEnabled = true;
-            this.lbEmployees.ItemHeight = 15;
-            this.lbEmployees.Location = new System.Drawing.Point(306, 47);
-            this.lbEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.lbEmployees.Name = "lbEmployees";
-            this.lbEmployees.Size = new System.Drawing.Size(380, 169);
-            this.lbEmployees.TabIndex = 0;
-            this.lbEmployees.SelectedIndexChanged += new System.EventHandler(this.lbEmployees_SelectedIndexChanged);
-            this.lbEmployees.DoubleClick += new System.EventHandler(this.lbEmployees_DoubleClick);
-            // 
-            // tpSettings
-            // 
-            this.tpSettings.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.SettingsBackground;
-            this.tpSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tpSettings.Controls.Add(this.groupBox3);
-            this.tpSettings.Location = new System.Drawing.Point(4, 24);
-            this.tpSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tpSettings.Name = "tpSettings";
-            this.tpSettings.Size = new System.Drawing.Size(844, 418);
-            this.tpSettings.TabIndex = 4;
-            this.tpSettings.Text = "Settings";
-            this.tpSettings.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.btnSavePassword);
-            this.groupBox3.Controls.Add(this.tbPasswordSettings);
-            this.groupBox3.Controls.Add(this.tbUsernameSettings);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(7, 6);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(306, 267);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Settings";
-            // 
-            // btnSavePassword
-            // 
-            this.btnSavePassword.BackColor = System.Drawing.Color.SeaGreen;
-            this.btnSavePassword.Location = new System.Drawing.Point(114, 166);
-            this.btnSavePassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSavePassword.Name = "btnSavePassword";
-            this.btnSavePassword.Size = new System.Drawing.Size(144, 25);
-            this.btnSavePassword.TabIndex = 5;
-            this.btnSavePassword.Text = "Save";
-            this.btnSavePassword.UseVisualStyleBackColor = false;
-            this.btnSavePassword.Click += new System.EventHandler(this.btnSavePassword_Click);
-            // 
-            // tbPasswordSettings
-            // 
-            this.tbPasswordSettings.Location = new System.Drawing.Point(38, 122);
-            this.tbPasswordSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbPasswordSettings.Name = "tbPasswordSettings";
-            this.tbPasswordSettings.Size = new System.Drawing.Size(220, 23);
-            this.tbPasswordSettings.TabIndex = 3;
-            // 
-            // tbUsernameSettings
-            // 
-            this.tbUsernameSettings.Location = new System.Drawing.Point(38, 58);
-            this.tbUsernameSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbUsernameSettings.Name = "tbUsernameSettings";
-            this.tbUsernameSettings.ReadOnly = true;
-            this.tbUsernameSettings.Size = new System.Drawing.Size(220, 23);
-            this.tbUsernameSettings.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "password:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "username:";
-            // 
-            // tpContracts
-            // 
-            this.tpContracts.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.cows_g2d73e9cad_1920;
-            this.tpContracts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tpContracts.Controls.Add(this.cbEmployee);
-            this.tpContracts.Controls.Add(this.lblReason);
-            this.tpContracts.Controls.Add(this.lblFTE);
-            this.tpContracts.Controls.Add(this.lblEndDate);
-            this.tpContracts.Controls.Add(this.lblStartDate);
-            this.tpContracts.Controls.Add(this.tbReason);
-            this.tpContracts.Controls.Add(this.tbFte);
-            this.tpContracts.Controls.Add(this.dtpEndDate);
-            this.tpContracts.Controls.Add(this.dtpStartDate);
-            this.tpContracts.Controls.Add(this.btnCreateContract);
-            this.tpContracts.Controls.Add(this.lblHello);
-            this.tpContracts.Controls.Add(this.button1);
-            this.tpContracts.Controls.Add(this.btnDisableContract);
-            this.tpContracts.Controls.Add(this.lbContracts);
-            this.tpContracts.Location = new System.Drawing.Point(4, 24);
-            this.tpContracts.Name = "tpContracts";
-            this.tpContracts.Size = new System.Drawing.Size(844, 418);
-            this.tpContracts.TabIndex = 5;
-            this.tpContracts.Text = "Contracts";
-            this.tpContracts.UseVisualStyleBackColor = true;
-            // 
-            // cbEmployee
-            // 
-            this.cbEmployee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbEmployee.FormattingEnabled = true;
-            this.cbEmployee.Location = new System.Drawing.Point(255, 189);
-            this.cbEmployee.Name = "cbEmployee";
-            this.cbEmployee.Size = new System.Drawing.Size(161, 23);
-            this.cbEmployee.TabIndex = 23;
-            // 
-            // lblReason
-            // 
-            this.lblReason.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblReason.AutoSize = true;
-            this.lblReason.Location = new System.Drawing.Point(306, 45);
-            this.lblReason.Name = "lblReason";
-            this.lblReason.Size = new System.Drawing.Size(48, 15);
-            this.lblReason.TabIndex = 22;
-            this.lblReason.Text = "Reason:";
-            // 
-            // lblFTE
-            // 
-            this.lblFTE.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFTE.AutoSize = true;
-            this.lblFTE.Location = new System.Drawing.Point(76, 178);
-            this.lblFTE.Name = "lblFTE";
-            this.lblFTE.Size = new System.Drawing.Size(30, 15);
-            this.lblFTE.TabIndex = 21;
-            this.lblFTE.Text = "FTEs";
-            // 
-            // lblEndDate
-            // 
-            this.lblEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblEndDate.AutoSize = true;
-            this.lblEndDate.Location = new System.Drawing.Point(76, 115);
-            this.lblEndDate.Name = "lblEndDate";
-            this.lblEndDate.Size = new System.Drawing.Size(54, 15);
-            this.lblEndDate.TabIndex = 20;
-            this.lblEndDate.Text = "End Date";
-            // 
-            // lblStartDate
-            // 
-            this.lblStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(76, 42);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(58, 15);
-            this.lblStartDate.TabIndex = 19;
-            this.lblStartDate.Text = "Start Date";
-            // 
-            // tbReason
-            // 
-            this.tbReason.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbReason.Location = new System.Drawing.Point(255, 63);
-            this.tbReason.Multiline = true;
-            this.tbReason.Name = "tbReason";
-            this.tbReason.Size = new System.Drawing.Size(161, 81);
-            this.tbReason.TabIndex = 18;
-            // 
-            // tbFte
-            // 
-            this.tbFte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbFte.Location = new System.Drawing.Point(25, 196);
-            this.tbFte.Name = "tbFte";
-            this.tbFte.Size = new System.Drawing.Size(161, 23);
-            this.tbFte.TabIndex = 17;
-            // 
-            // dtpEndDate
-            // 
-            this.dtpEndDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpEndDate.Location = new System.Drawing.Point(8, 133);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(200, 23);
-            this.dtpEndDate.TabIndex = 16;
-            // 
-            // dtpStartDate
-            // 
-            this.dtpStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpStartDate.Location = new System.Drawing.Point(8, 60);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(200, 23);
-            this.dtpStartDate.TabIndex = 15;
-            // 
-            // btnCreateContract
-            // 
-            this.btnCreateContract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateContract.Location = new System.Drawing.Point(130, 261);
-            this.btnCreateContract.Name = "btnCreateContract";
-            this.btnCreateContract.Size = new System.Drawing.Size(111, 33);
-            this.btnCreateContract.TabIndex = 14;
-            this.btnCreateContract.Text = "Create Contract";
-            this.btnCreateContract.UseVisualStyleBackColor = true;
-            this.btnCreateContract.Click += new System.EventHandler(this.btnCreateContract_Click);
-            // 
-            // lblHello
-            // 
-            this.lblHello.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblHello.AutoSize = true;
-            this.lblHello.BackColor = System.Drawing.Color.Transparent;
-            this.lblHello.Location = new System.Drawing.Point(746, 388);
-            this.lblHello.Name = "lblHello";
-            this.lblHello.Size = new System.Drawing.Size(56, 15);
-            this.lblHello.TabIndex = 5;
-            this.lblHello.Text = "Hello, ... !";
+            // pButtons
+            // 
+            this.pButtons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.pButtons.Controls.Add(this.panel1);
+            this.pButtons.Controls.Add(this.btnSettings);
+            this.pButtons.Controls.Add(this.btnRequest);
+            this.pButtons.Controls.Add(this.btnContracts);
+            this.pButtons.Controls.Add(this.btnEmployees);
+            this.pButtons.Controls.Add(this.btnSchedule);
+            this.pButtons.Controls.Add(this.button1);
+            this.pButtons.Controls.Add(this.btnHome);
+            this.pButtons.Controls.Add(this.pLogo);
+            this.pButtons.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pButtons.Location = new System.Drawing.Point(0, 0);
+            this.pButtons.Name = "pButtons";
+            this.pButtons.Size = new System.Drawing.Size(247, 681);
+            this.pButtons.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblTime);
+            this.panel1.Controls.Add(this.lblGreeting);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 542);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(247, 139);
+            this.panel1.TabIndex = 2;
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTime.AutoSize = true;
+            this.lblTime.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTime.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblTime.Location = new System.Drawing.Point(12, 109);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(110, 20);
+            this.lblTime.TabIndex = 3;
+            this.lblTime.Text = "10:47 o\'clock";
+            // 
+            // lblGreeting
+            // 
+            this.lblGreeting.AutoSize = true;
+            this.lblGreeting.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblGreeting.ForeColor = System.Drawing.Color.Gainsboro;
+            this.lblGreeting.Location = new System.Drawing.Point(12, 71);
+            this.lblGreeting.Name = "lblGreeting";
+            this.lblGreeting.Size = new System.Drawing.Size(84, 20);
+            this.lblGreeting.TabIndex = 2;
+            this.lblGreeting.Text = "Hello, ... !";
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSettings.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.Location = new System.Drawing.Point(0, 410);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(247, 60);
+            this.btnSettings.TabIndex = 7;
+            this.btnSettings.Text = "   Settings";
+            this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            // 
+            // btnRequest
+            // 
+            this.btnRequest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRequest.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRequest.FlatAppearance.BorderSize = 0;
+            this.btnRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRequest.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnRequest.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRequest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRequest.Location = new System.Drawing.Point(0, 350);
+            this.btnRequest.Name = "btnRequest";
+            this.btnRequest.Size = new System.Drawing.Size(247, 60);
+            this.btnRequest.TabIndex = 6;
+            this.btnRequest.Text = "   Requests";
+            this.btnRequest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRequest.UseVisualStyleBackColor = true;
+            // 
+            // btnContracts
+            // 
+            this.btnContracts.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnContracts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnContracts.FlatAppearance.BorderSize = 0;
+            this.btnContracts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContracts.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnContracts.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnContracts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnContracts.Location = new System.Drawing.Point(0, 290);
+            this.btnContracts.Name = "btnContracts";
+            this.btnContracts.Size = new System.Drawing.Size(247, 60);
+            this.btnContracts.TabIndex = 5;
+            this.btnContracts.Text = "   Contracts";
+            this.btnContracts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnContracts.UseVisualStyleBackColor = true;
+            // 
+            // btnEmployees
+            // 
+            this.btnEmployees.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEmployees.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEmployees.FlatAppearance.BorderSize = 0;
+            this.btnEmployees.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmployees.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnEmployees.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnEmployees.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEmployees.Location = new System.Drawing.Point(0, 230);
+            this.btnEmployees.Name = "btnEmployees";
+            this.btnEmployees.Size = new System.Drawing.Size(247, 60);
+            this.btnEmployees.TabIndex = 4;
+            this.btnEmployees.Text = "   Employees";
+            this.btnEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEmployees.UseVisualStyleBackColor = true;
+            // 
+            // btnSchedule
+            // 
+            this.btnSchedule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSchedule.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSchedule.FlatAppearance.BorderSize = 0;
+            this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSchedule.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSchedule.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSchedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSchedule.Location = new System.Drawing.Point(0, 170);
+            this.btnSchedule.Name = "btnSchedule";
+            this.btnSchedule.Size = new System.Drawing.Size(247, 60);
+            this.btnSchedule.TabIndex = 3;
+            this.btnSchedule.Text = "   Schedule";
+            this.btnSchedule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSchedule.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.SeaGreen;
-            this.button1.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Ivory;
-            this.button1.Location = new System.Drawing.Point(8, 388);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.Gainsboro;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 170);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 24);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Log out";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Size = new System.Drawing.Size(247, 60);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "   Home";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnDisableContract
+            // btnHome
             // 
-            this.btnDisableContract.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDisableContract.Location = new System.Drawing.Point(578, 287);
-            this.btnDisableContract.Name = "btnDisableContract";
-            this.btnDisableContract.Size = new System.Drawing.Size(89, 23);
-            this.btnDisableContract.TabIndex = 1;
-            this.btnDisableContract.Text = "Disable";
-            this.btnDisableContract.UseVisualStyleBackColor = true;
-            this.btnDisableContract.Click += new System.EventHandler(this.btnDisableContract_Click);
+            this.btnHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnHome.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHome.FlatAppearance.BorderSize = 0;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnHome.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnHome.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHome.Location = new System.Drawing.Point(0, 110);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(247, 60);
+            this.btnHome.TabIndex = 1;
+            this.btnHome.Text = "   Home";
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnHome.UseVisualStyleBackColor = true;
             // 
-            // lbContracts
+            // pLogo
             // 
-            this.lbContracts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbContracts.FormattingEnabled = true;
-            this.lbContracts.ItemHeight = 15;
-            this.lbContracts.Location = new System.Drawing.Point(483, 45);
-            this.lbContracts.Name = "lbContracts";
-            this.lbContracts.Size = new System.Drawing.Size(332, 184);
-            this.lbContracts.TabIndex = 0;
-            this.lbContracts.DoubleClick += new System.EventHandler(this.lbContracts_DoubleClick);
+            this.pLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.pLogo.Controls.Add(this.lblLogo);
+            this.pLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pLogo.Location = new System.Drawing.Point(0, 0);
+            this.pLogo.Name = "pLogo";
+            this.pLogo.Size = new System.Drawing.Size(247, 110);
+            this.pLogo.TabIndex = 0;
             // 
-            // tpEmployeeCredentials
+            // lblLogo
             // 
-            this.tpEmployeeCredentials.Controls.Add(this.lblEmployeesWithOld);
-            this.tpEmployeeCredentials.Controls.Add(this.lblEmployeesWithNew);
-            this.tpEmployeeCredentials.Controls.Add(this.lbEmployeesWithOldCredentials);
-            this.tpEmployeeCredentials.Controls.Add(this.btnDecline);
-            this.tpEmployeeCredentials.Controls.Add(this.btnAccept);
-            this.tpEmployeeCredentials.Controls.Add(this.lbEmployeesWithNewCredentials);
-            this.tpEmployeeCredentials.Location = new System.Drawing.Point(4, 24);
-            this.tpEmployeeCredentials.Name = "tpEmployeeCredentials";
-            this.tpEmployeeCredentials.Size = new System.Drawing.Size(844, 418);
-            this.tpEmployeeCredentials.TabIndex = 6;
-            this.tpEmployeeCredentials.Text = "Employee Credentials";
-            this.tpEmployeeCredentials.UseVisualStyleBackColor = true;
+            this.lblLogo.AutoSize = true;
+            this.lblLogo.Font = new System.Drawing.Font("Impact", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblLogo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblLogo.Location = new System.Drawing.Point(68, 40);
+            this.lblLogo.Name = "lblLogo";
+            this.lblLogo.Size = new System.Drawing.Size(128, 35);
+            this.lblLogo.TabIndex = 0;
+            this.lblLogo.Text = "ZooBazzar";
             // 
-            // btnDecline
+            // pTitle
             // 
-            this.btnDecline.Location = new System.Drawing.Point(474, 258);
-            this.btnDecline.Name = "btnDecline";
-            this.btnDecline.Size = new System.Drawing.Size(66, 31);
-            this.btnDecline.TabIndex = 2;
-            this.btnDecline.Text = "Decline";
-            this.btnDecline.UseVisualStyleBackColor = true;
-            this.btnDecline.Click += new System.EventHandler(this.btnDecline_Click);
+            this.pTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.pTitle.Controls.Add(this.lblTitle);
+            this.pTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pTitle.Location = new System.Drawing.Point(247, 0);
+            this.pTitle.Name = "pTitle";
+            this.pTitle.Size = new System.Drawing.Size(980, 110);
+            this.pTitle.TabIndex = 1;
             // 
-            // btnAccept
+            // lblTitle
             // 
-            this.btnAccept.Location = new System.Drawing.Point(251, 258);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(66, 31);
-            this.btnAccept.TabIndex = 1;
-            this.btnAccept.Text = "Accept";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Impact", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblTitle.Location = new System.Drawing.Point(443, 40);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(0, 35);
+            this.lblTitle.TabIndex = 1;
             // 
-            // lbEmployeesWithNewCredentials
+            // panel2
             // 
-            this.lbEmployeesWithNewCredentials.FormattingEnabled = true;
-            this.lbEmployeesWithNewCredentials.ItemHeight = 15;
-            this.lbEmployeesWithNewCredentials.Location = new System.Drawing.Point(67, 48);
-            this.lbEmployeesWithNewCredentials.Name = "lbEmployeesWithNewCredentials";
-            this.lbEmployeesWithNewCredentials.Size = new System.Drawing.Size(303, 184);
-            this.lbEmployeesWithNewCredentials.TabIndex = 0;
-            // 
-            // lbEmployeesWithOldCredentials
-            // 
-            this.lbEmployeesWithOldCredentials.FormattingEnabled = true;
-            this.lbEmployeesWithOldCredentials.ItemHeight = 15;
-            this.lbEmployeesWithOldCredentials.Location = new System.Drawing.Point(450, 48);
-            this.lbEmployeesWithOldCredentials.Name = "lbEmployeesWithOldCredentials";
-            this.lbEmployeesWithOldCredentials.Size = new System.Drawing.Size(303, 184);
-            this.lbEmployeesWithOldCredentials.TabIndex = 3;
-            // 
-            // lblEmployeesWithNew
-            // 
-            this.lblEmployeesWithNew.AutoSize = true;
-            this.lblEmployeesWithNew.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblEmployeesWithNew.Location = new System.Drawing.Point(102, 23);
-            this.lblEmployeesWithNew.Name = "lblEmployeesWithNew";
-            this.lblEmployeesWithNew.Size = new System.Drawing.Size(208, 17);
-            this.lblEmployeesWithNew.TabIndex = 4;
-            this.lblEmployeesWithNew.Text = "Employees with new Information";
-            // 
-            // lblEmployeesWithOld
-            // 
-            this.lblEmployeesWithOld.AutoSize = true;
-            this.lblEmployeesWithOld.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblEmployeesWithOld.Location = new System.Drawing.Point(498, 23);
-            this.lblEmployeesWithOld.Name = "lblEmployeesWithOld";
-            this.lblEmployeesWithOld.Size = new System.Drawing.Size(202, 17);
-            this.lblEmployeesWithOld.TabIndex = 5;
-            this.lblEmployeesWithOld.Text = "Employees with old Information";
+            this.panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.panel2.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.logo_zooBazzar;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(247, 110);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(980, 571);
+            this.panel2.TabIndex = 2;
             // 
             // MainManu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.BackgroundEmployee;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(852, 446);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(1227, 681);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pTitle);
+            this.Controls.Add(this.pButtons);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MainManu";
             this.Text = "MainManu";
-            this.tabControl1.ResumeLayout(false);
-            this.tpEmployees.ResumeLayout(false);
-            this.gbEmployee.ResumeLayout(false);
-            this.gbEmployee.PerformLayout();
-            this.tpSchedule.ResumeLayout(false);
-            this.tpSchedule.PerformLayout();
-            this.tpAnimals.ResumeLayout(false);
-            this.tpAnimals.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.tpEmployeeManagment.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.tpSettings.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.tpContracts.ResumeLayout(false);
-            this.tpContracts.PerformLayout();
-            this.tpEmployeeCredentials.ResumeLayout(false);
-            this.tpEmployeeCredentials.PerformLayout();
+            this.pButtons.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.pLogo.ResumeLayout(false);
+            this.pLogo.PerformLayout();
+            this.pTitle.ResumeLayout(false);
+            this.pTitle.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private TabControl tabControl1;
-        private TabPage tpEmployees;
-        private GroupBox gbEmployee;
-        private Button btnFindByFirstName;
-        private TextBox tbFirstName;
-        private ComboBox cbSpecialization;
-        private Button btnFindBySpecialization;
-        private FlowLayoutPanel flpEmployees;
-        private TabPage tpSchedule;
-        private Button btnShowAll;
-        private Label lblHello;
-        private FlowLayoutPanel calendar;
-        private Button btnNext;
-        private Button btnPrevious;
-        private TabPage tpAnimals;
-        private Button btnAddAnimal;
-        private Button btnShowAllAnimals;
-        private FlowLayoutPanel flpAnimals;
-        private TabPage tpEmployeeManagment;
-        private GroupBox groupBox2;
-        private Button btnRemoveEmployee;
-        private Button btnUpdateEmployee;
-        private Button btnAddEmployee;
-        private ListBox lbEmployees;
-        private TabPage tpSettings;
-        private GroupBox groupBox3;
-        private Button btnSavePassword;
-        private TextBox tbPasswordSettings;
-        private TextBox tbUsernameSettings;
-        private Label label2;
-        private Label label1;
+        private Panel pButtons;
+        private Panel pLogo;
+        private Label lblLogo;
+        private Panel pTitle;
+        private Label lblTitle;
+        private Panel panel1;
+        private Label lblGreeting;
+        private Button btnSettings;
+        private Button btnRequest;
+        private Button btnContracts;
+        private Button btnEmployees;
+        private Button btnSchedule;
         private Button button1;
-        private TabPage tpContracts;
-        private ListBox lbContracts;
-        private Button btnDisableContract;
-        private TabPage tpEmployeeCredentials;
-        private Button btnDecline;
-        private Button btnAccept;
-        private ListBox lbEmployeesWithNewCredentials;
-        private Label label4;
-        private Label label3;
-        private Label label6;
-        private Label label5;
-        private Label label9;
-        private Label label8;
-        private Label label7;
-        private FlowLayoutPanel calendar2;
-        private ComboBox cbEmployee;
-        private Label lblReason;
-        private Label lblFTE;
-        private Label lblEndDate;
-        private Label lblStartDate;
-        private TextBox tbReason;
-        private TextBox tbFte;
-        private DateTimePicker dtpEndDate;
-        private DateTimePicker dtpStartDate;
-        private Button btnCreateContract;
-        private Button btnAnimalName;
-        private TextBox tbAnimalName;
-        private GroupBox groupBox1;
-        private ComboBox cbAnimalType;
-        private Button button2;
-        private Label lblEmployeesWithOld;
-        private Label lblEmployeesWithNew;
-        private ListBox lbEmployeesWithOldCredentials;
+        private Button btnHome;
+        private Label lblTime;
+        private Panel panel2;
     }
 }

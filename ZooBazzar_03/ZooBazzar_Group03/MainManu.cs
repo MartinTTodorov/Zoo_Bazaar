@@ -385,5 +385,7 @@ namespace ZooBazzar_Group03
                 flpAnimals.Controls.Add(new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username)));
             }
         }
+
+        
     }
 }
