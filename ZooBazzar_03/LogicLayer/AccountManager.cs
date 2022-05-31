@@ -26,7 +26,7 @@ namespace LogicLayer
             string[] hashedPassword = HashedPassword(newAccount.Password);
             Account temp = new Account(newAccount.Username, hashedPassword[0], hashedPassword[1], auto.GetNextID());
 
-            if (isExisting(temp))
+            if (!isExisting(temp))
             {
                 db.Add(temp);
                 accounts.Add(temp);
@@ -105,7 +105,7 @@ namespace LogicLayer
             if (accounts == null)
             {
                 accounts = new List<Account>();
-                return true;
+                return false;
             }
             else
             {
@@ -115,14 +115,14 @@ namespace LogicLayer
                     {
                         if (accounts[i].Username == account.Username)
                         {
-                            return false;
+                            return true;
                         }
                     }
-                    return true;
+                    return false;
                 }
                 else
                 {
-                    return false;
+                    return true;
                 }
             }
         }

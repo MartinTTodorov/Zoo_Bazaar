@@ -139,6 +139,7 @@
             this.btnCreateContract.TabIndex = 26;
             this.btnCreateContract.Text = "Create Contract";
             this.btnCreateContract.UseVisualStyleBackColor = true;
+            this.btnCreateContract.Click += new System.EventHandler(this.btnCreateContract_Click);
             // 
             // btnDisableContract
             // 
@@ -150,6 +151,7 @@
             this.btnDisableContract.TabIndex = 25;
             this.btnDisableContract.Text = "Disable";
             this.btnDisableContract.UseVisualStyleBackColor = true;
+            this.btnDisableContract.Click += new System.EventHandler(this.btnDisableContract_Click);
             // 
             // lbContracts
             // 
@@ -161,6 +163,8 @@
             this.lbContracts.Name = "lbContracts";
             this.lbContracts.Size = new System.Drawing.Size(379, 304);
             this.lbContracts.TabIndex = 24;
+            this.lbContracts.SelectedIndexChanged += new System.EventHandler(this.lbContracts_SelectedIndexChanged);
+            this.lbContracts.DoubleClick += new System.EventHandler(this.lbContracts_DoubleClick);
             // 
             // Contracts
             // 

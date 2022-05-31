@@ -35,10 +35,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.calendar2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pCalendar2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
-            this.calendar = new System.Windows.Forms.FlowLayoutPanel();
+            this.pCalendar = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // label9
@@ -111,12 +111,12 @@
             this.label3.TabIndex = 13;
             this.label3.Text = "SUNDAY";
             // 
-            // calendar2
+            // pCalendar2
             // 
-            this.calendar2.Location = new System.Drawing.Point(134, 228);
-            this.calendar2.Name = "calendar2";
-            this.calendar2.Size = new System.Drawing.Size(677, 101);
-            this.calendar2.TabIndex = 15;
+            this.pCalendar2.Location = new System.Drawing.Point(134, 228);
+            this.pCalendar2.Name = "pCalendar2";
+            this.pCalendar2.Size = new System.Drawing.Size(677, 101);
+            this.pCalendar2.TabIndex = 15;
             // 
             // btnNext
             // 
@@ -126,6 +126,7 @@
             this.btnNext.TabIndex = 12;
             this.btnNext.Text = "Next";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
@@ -135,13 +136,14 @@
             this.btnPrevious.TabIndex = 11;
             this.btnPrevious.Text = "Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
-            // calendar
+            // pCalendar
             // 
-            this.calendar.Location = new System.Drawing.Point(134, 91);
-            this.calendar.Name = "calendar";
-            this.calendar.Size = new System.Drawing.Size(677, 101);
-            this.calendar.TabIndex = 10;
+            this.pCalendar.Location = new System.Drawing.Point(134, 91);
+            this.pCalendar.Name = "pCalendar";
+            this.pCalendar.Size = new System.Drawing.Size(677, 101);
+            this.pCalendar.TabIndex = 10;
             // 
             // ScheduleForm
             // 
@@ -155,10 +157,10 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.calendar2);
+            this.Controls.Add(this.pCalendar2);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
-            this.Controls.Add(this.calendar);
+            this.Controls.Add(this.pCalendar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ScheduleForm";
             this.Text = "ScheduleForm";
@@ -176,9 +178,9 @@
         private Label label5;
         private Label label4;
         private Label label3;
-        private FlowLayoutPanel calendar2;
+        private FlowLayoutPanel pCalendar2;
         private Button btnNext;
         private Button btnPrevious;
-        private FlowLayoutPanel calendar;
+        private FlowLayoutPanel pCalendar;
     }
 }

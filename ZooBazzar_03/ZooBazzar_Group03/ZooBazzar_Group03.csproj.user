@@ -37,13 +37,22 @@
     <Compile Update="FormAddAnimal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Animals.cs">
+    <Compile Update="Forms\AddAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddContract.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\AnimalsPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Contracts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Employees.cs">
+    <Compile Update="Forms\EmployeesPage.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\HomePage.cs">
@@ -56,6 +65,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\UpdateEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="LoginPage.cs">

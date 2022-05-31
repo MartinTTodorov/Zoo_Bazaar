@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DataAccessLayer;
+using Entities;
+using LogicLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,44 @@ namespace ZooBazzar_Group03.Forms
 {
     public partial class Settings : Form
     {
-        public Settings()
+        private AccountManager accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
+        private Account account;
+        public Settings(Account account)
         {
             InitializeComponent();
+
+            this.account = account;
+            tbUsernameSettings.Text = account.Username;
+            LoadTheame();
+        }
+
+        private void btnSavePassword_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbPasswordSettings.Text))
+            {
+                accountManager.UpdatePassword(new Account(account.Username, tbPasswordSettings.Text, account.Salt, account.Id));
+            }
+        }
+        private void LoadTheame()
+        {
+
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = ColorThemeHandler.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = ColorThemeHandler.SecondaryColor;
+                }
+                else if (btns.GetType() == typeof(Label))
+                {
+                    btns.BackColor = ColorThemeHandler.PrimaryColor;
+                    btns.ForeColor = Color.White;
+                }
+
+            }
+
         }
     }
 }

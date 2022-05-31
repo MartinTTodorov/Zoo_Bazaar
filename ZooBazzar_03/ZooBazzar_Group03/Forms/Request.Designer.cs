@@ -76,6 +76,7 @@
             this.btnDecline.Size = new System.Drawing.Size(59, 46);
             this.btnDecline.TabIndex = 8;
             this.btnDecline.UseVisualStyleBackColor = true;
+            this.btnDecline.Click += new System.EventHandler(this.btnDecline_Click);
             // 
             // btnAccept
             // 
@@ -87,6 +88,7 @@
             this.btnAccept.Size = new System.Drawing.Size(59, 46);
             this.btnAccept.TabIndex = 7;
             this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // lbEmployeesWithNewCredentials
             // 

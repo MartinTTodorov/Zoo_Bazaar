@@ -243,6 +243,16 @@ namespace ZooBazzar_Group03.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logout_pic {
+            get {
+                object obj = ResourceManager.GetObject("logout_pic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap manager {
             get {
                 object obj = ResourceManager.GetObject("manager", resourceCulture);

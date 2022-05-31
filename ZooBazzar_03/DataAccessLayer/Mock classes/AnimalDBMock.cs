@@ -14,6 +14,11 @@ namespace DataAccessLayer
 
         }
 
+        public void AddAnimalToDB(Animal animal, Specialization specialization)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddNote(int id, string note)
         {
             throw new NotImplementedException();
@@ -70,6 +75,11 @@ namespace DataAccessLayer
         }
 
         public void UpdateAnimalInDB(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateAnimalInDB(Animal animal, int id)
         {
             throw new NotImplementedException();
         }

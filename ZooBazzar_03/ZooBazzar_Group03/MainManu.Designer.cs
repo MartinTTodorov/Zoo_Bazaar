@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pButtons = new System.Windows.Forms.Panel();
+            this.pMenu = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblGreeting = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -43,33 +44,34 @@
             this.lblLogo = new System.Windows.Forms.Label();
             this.pTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pButtons.SuspendLayout();
+            this.pContent = new System.Windows.Forms.Panel();
+            this.pMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pLogo.SuspendLayout();
             this.pTitle.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pButtons
+            // pMenu
             // 
-            this.pButtons.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
-            this.pButtons.Controls.Add(this.panel1);
-            this.pButtons.Controls.Add(this.btnSettings);
-            this.pButtons.Controls.Add(this.btnRequest);
-            this.pButtons.Controls.Add(this.btnContracts);
-            this.pButtons.Controls.Add(this.btnEmployees);
-            this.pButtons.Controls.Add(this.btnSchedule);
-            this.pButtons.Controls.Add(this.button1);
-            this.pButtons.Controls.Add(this.btnHome);
-            this.pButtons.Controls.Add(this.pLogo);
-            this.pButtons.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pButtons.Location = new System.Drawing.Point(0, 0);
-            this.pButtons.Name = "pButtons";
-            this.pButtons.Size = new System.Drawing.Size(247, 681);
-            this.pButtons.TabIndex = 0;
+            this.pMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.pMenu.Controls.Add(this.panel1);
+            this.pMenu.Controls.Add(this.btnSettings);
+            this.pMenu.Controls.Add(this.btnRequest);
+            this.pMenu.Controls.Add(this.btnContracts);
+            this.pMenu.Controls.Add(this.btnEmployees);
+            this.pMenu.Controls.Add(this.btnSchedule);
+            this.pMenu.Controls.Add(this.button1);
+            this.pMenu.Controls.Add(this.btnHome);
+            this.pMenu.Controls.Add(this.pLogo);
+            this.pMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pMenu.Location = new System.Drawing.Point(0, 0);
+            this.pMenu.Name = "pMenu";
+            this.pMenu.Size = new System.Drawing.Size(247, 681);
+            this.pMenu.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.lblTime);
             this.panel1.Controls.Add(this.lblGreeting);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -77,6 +79,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(247, 139);
             this.panel1.TabIndex = 2;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.logout_pic;
+            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnLogout.Location = new System.Drawing.Point(201, 93);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(40, 36);
+            this.btnLogout.TabIndex = 0;
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lblTime
             // 
@@ -117,6 +130,7 @@
             this.btnSettings.Text = "   Settings";
             this.btnSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnRequest
             // 
@@ -134,6 +148,7 @@
             this.btnRequest.Text = "   Requests";
             this.btnRequest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRequest.UseVisualStyleBackColor = true;
+            this.btnRequest.Click += new System.EventHandler(this.btnRequest_Click);
             // 
             // btnContracts
             // 
@@ -151,6 +166,7 @@
             this.btnContracts.Text = "   Contracts";
             this.btnContracts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnContracts.UseVisualStyleBackColor = true;
+            this.btnContracts.Click += new System.EventHandler(this.btnContracts_Click);
             // 
             // btnEmployees
             // 
@@ -168,6 +184,7 @@
             this.btnEmployees.Text = "   Employees";
             this.btnEmployees.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmployees.UseVisualStyleBackColor = true;
+            this.btnEmployees.Click += new System.EventHandler(this.btnEmployees_Click);
             // 
             // btnSchedule
             // 
@@ -185,6 +202,7 @@
             this.btnSchedule.Text = "   Schedule";
             this.btnSchedule.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSchedule.UseVisualStyleBackColor = true;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // button1
             // 
@@ -218,6 +236,7 @@
             this.btnHome.Text = "   Home";
             this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // pLogo
             // 
@@ -261,16 +280,16 @@
             this.lblTitle.Size = new System.Drawing.Size(0, 35);
             this.lblTitle.TabIndex = 1;
             // 
-            // panel2
+            // pContent
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.panel2.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.logo_zooBazzar;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(247, 110);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(980, 571);
-            this.panel2.TabIndex = 2;
+            this.pContent.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.pContent.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.logo_zooBazzar;
+            this.pContent.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pContent.Location = new System.Drawing.Point(247, 110);
+            this.pContent.Name = "pContent";
+            this.pContent.Size = new System.Drawing.Size(980, 571);
+            this.pContent.TabIndex = 2;
             // 
             // MainManu
             // 
@@ -278,14 +297,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1227, 681);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.pContent);
             this.Controls.Add(this.pTitle);
-            this.Controls.Add(this.pButtons);
+            this.Controls.Add(this.pMenu);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Name = "MainManu";
             this.Text = "MainManu";
-            this.pButtons.ResumeLayout(false);
+            this.pMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pLogo.ResumeLayout(false);
@@ -298,7 +317,7 @@
 
         #endregion
 
-        private Panel pButtons;
+        private Panel pMenu;
         private Panel pLogo;
         private Label lblLogo;
         private Panel pTitle;
@@ -313,6 +332,7 @@
         private Button button1;
         private Button btnHome;
         private Label lblTime;
-        private Panel panel2;
+        private Panel pContent;
+        private Button btnLogout;
     }
 }

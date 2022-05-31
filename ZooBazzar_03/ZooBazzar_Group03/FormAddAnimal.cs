@@ -16,15 +16,17 @@ namespace ZooBazzar_Group03
     public partial class FormAddAnimal : Form
     {
         private AnimalManager animalManager = new AnimalManager(new AnimalDB());
-        MainManu menu;
-        List<string> feedingTimes = new List<string>();
-        public FormAddAnimal(MainManu menu)
+        private List<string> feedingTimes;
+
+        private FlowLayoutPanel panel;
+        public FormAddAnimal(FlowLayoutPanel panel)
         {
             InitializeComponent();
-            this.menu = menu;
-            cbGender.Items.Add("Male");
-            cbGender.Items.Add("Female");
-            
+
+            this.panel = panel;            
+            this.feedingTimes = new List<string>();
+            this.cbGender.DataSource = new string[] { "Male", "Female" };
+                       
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -41,8 +43,9 @@ namespace ZooBazzar_Group03
             {
                 feedingTimes.Add("evening");
             }
+            
             animalManager.AddAnimal(tbAnimalCode.Text, tbName.Text, cbGender.SelectedItem.ToString(), cbAnimalType.SelectedItem.ToString(), tbSpecie.Text, Convert.ToInt32(tbCageNumber.Text), tbBirthdate.Text, tbReasonForArrival.Text, tbYearOfArrival.Text, string.Empty, string.Empty, cbDiet.SelectedItem.ToString(), feedingTimes, cbSpecialist.SelectedItem.ToString(), Convert.ToInt32(tbWeeklyFeedIteration.Text));
-            menu.UpdateAnimals();
+            //panel.Controls.Add(new AnimalPic())
         }
 
         private void FormAddAnimal_FormClosing(object sender, FormClosingEventArgs e)

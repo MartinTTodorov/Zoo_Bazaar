@@ -40,10 +40,11 @@
             this.btnSavePassword.BackColor = System.Drawing.Color.SeaGreen;
             this.btnSavePassword.Location = new System.Drawing.Point(309, 306);
             this.btnSavePassword.Name = "btnSavePassword";
-            this.btnSavePassword.Size = new System.Drawing.Size(312, 33);
+            this.btnSavePassword.Size = new System.Drawing.Size(312, 48);
             this.btnSavePassword.TabIndex = 10;
             this.btnSavePassword.Text = "Save";
             this.btnSavePassword.UseVisualStyleBackColor = false;
+            this.btnSavePassword.Click += new System.EventHandler(this.btnSavePassword_Click);
             // 
             // tbPasswordSettings
             // 

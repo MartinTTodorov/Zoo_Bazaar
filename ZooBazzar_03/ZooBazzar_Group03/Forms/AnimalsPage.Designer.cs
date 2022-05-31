@@ -1,6 +1,6 @@
 ﻿namespace ZooBazzar_Group03.Forms
 {
-    partial class Animals
+    partial class AnimalsPage
     {
         /// <summary>
         /// Required designer variable.
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.cbAnimalType = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnFilterByType = new System.Windows.Forms.Button();
             this.btnAnimalName = new System.Windows.Forms.Button();
             this.tbAnimalName = new System.Windows.Forms.TextBox();
             this.btnAddAnimal = new System.Windows.Forms.Button();
             this.btnShowAllAnimals = new System.Windows.Forms.Button();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpAnimals = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // cbAnimalType
@@ -46,17 +46,18 @@
             this.cbAnimalType.Size = new System.Drawing.Size(161, 28);
             this.cbAnimalType.TabIndex = 17;
             // 
-            // button2
+            // btnFilterByType
             // 
-            this.button2.BackColor = System.Drawing.Color.SeaGreen;
-            this.button2.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.ForeColor = System.Drawing.Color.Ivory;
-            this.button2.Location = new System.Drawing.Point(216, 169);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(161, 29);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "By type";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnFilterByType.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnFilterByType.Font = new System.Drawing.Font("Footlight MT Light", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnFilterByType.ForeColor = System.Drawing.Color.Ivory;
+            this.btnFilterByType.Location = new System.Drawing.Point(216, 169);
+            this.btnFilterByType.Name = "btnFilterByType";
+            this.btnFilterByType.Size = new System.Drawing.Size(161, 29);
+            this.btnFilterByType.TabIndex = 16;
+            this.btnFilterByType.Text = "By type";
+            this.btnFilterByType.UseVisualStyleBackColor = false;
+            this.btnFilterByType.Click += new System.EventHandler(this.btnFilterByType_Click);
             // 
             // btnAnimalName
             // 
@@ -69,6 +70,7 @@
             this.btnAnimalName.TabIndex = 14;
             this.btnAnimalName.Text = "Search by name";
             this.btnAnimalName.UseVisualStyleBackColor = false;
+            this.btnAnimalName.Click += new System.EventHandler(this.btnAnimalName_Click);
             // 
             // tbAnimalName
             // 
@@ -89,6 +91,7 @@
             this.btnAddAnimal.TabIndex = 12;
             this.btnAddAnimal.Text = "Add an animal";
             this.btnAddAnimal.UseVisualStyleBackColor = false;
+            this.btnAddAnimal.Click += new System.EventHandler(this.btnAddAnimal_Click);
             // 
             // btnShowAllAnimals
             // 
@@ -101,29 +104,30 @@
             this.btnShowAllAnimals.TabIndex = 11;
             this.btnShowAllAnimals.Text = "Show all animals";
             this.btnShowAllAnimals.UseVisualStyleBackColor = false;
+            this.btnShowAllAnimals.Click += new System.EventHandler(this.btnShowAllAnimals_Click);
             // 
-            // flowLayoutPanel1
+            // flpAnimals
             // 
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(457, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(469, 430);
-            this.flowLayoutPanel1.TabIndex = 18;
+            this.flpAnimals.Dock = System.Windows.Forms.DockStyle.Right;
+            this.flpAnimals.Location = new System.Drawing.Point(457, 0);
+            this.flpAnimals.Name = "flpAnimals";
+            this.flpAnimals.Size = new System.Drawing.Size(469, 430);
+            this.flpAnimals.TabIndex = 18;
             // 
-            // Animals
+            // AnimalsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 430);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flpAnimals);
             this.Controls.Add(this.cbAnimalType);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnFilterByType);
             this.Controls.Add(this.btnAnimalName);
             this.Controls.Add(this.tbAnimalName);
             this.Controls.Add(this.btnAddAnimal);
             this.Controls.Add(this.btnShowAllAnimals);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Animals";
+            this.Name = "AnimalsPage";
             this.Text = "Animals";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -133,11 +137,11 @@
         #endregion
 
         private ComboBox cbAnimalType;
-        private Button button2;
+        private Button btnFilterByType;
         private Button btnAnimalName;
         private TextBox tbAnimalName;
         private Button btnAddAnimal;
         private Button btnShowAllAnimals;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flpAnimals;
     }
 }

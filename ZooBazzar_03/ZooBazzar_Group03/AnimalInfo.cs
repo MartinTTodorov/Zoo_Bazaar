@@ -15,14 +15,16 @@ namespace ZooBazzar_Group03
 {
     public partial class AnimalInfo : Form
     {
-        private Animal animal;
-        AnimalManager animalManager = new AnimalManager(new AnimalDB());
-        MainManu menu;
-        public AnimalInfo(Animal animal, MainManu menu)
+        private Animal animal;    
+        private FlowLayoutPanel panel;
+
+        //Please change wherever is there an manager object :D  PS: Try to use events for update the information
+        public AnimalInfo(Animal animal, FlowLayoutPanel panel)
         {
             InitializeComponent();
+
             this.animal = animal;
-            this.menu = menu;
+            this.panel = panel;
         }
 
         private void AnimalInfo_Load(object sender, EventArgs e)
@@ -35,17 +37,13 @@ namespace ZooBazzar_Group03
             tbReasonForArrival.Text = animal.ReasonForArrival;
             tbYearOfArrival.Text = animal.YearOfArrival;
             tbBirthdate.Text = animal.Birthdate;
-            foreach (var item in Enum.GetValues(typeof(AnimalType)))
-            {
-                cbAnimalType.Items.Add(item);
-            }
-            cbAnimalType.Text = animal.AnimalType.ToString();
 
-            foreach (var item in Enum.GetValues(typeof(Diet)))
-            {
-                cbDiet.Items.Add(item);
-            }
+            cbAnimalType.DataSource = Enum.GetValues(typeof(AnimalType));
+            cbDiet.DataSource = Enum.GetValues(typeof(Diet));
+
+            cbAnimalType.Text = animal.AnimalType.ToString();
             cbDiet.Text = animal.Diet.ToString();
+
         }
 
         private void AnimalInfo_FormClosing(object sender, FormClosingEventArgs e)
@@ -57,7 +55,7 @@ namespace ZooBazzar_Group03
         {
             //Animal updatedAnimal = new Animal(tbAnimalCode.Text, Convert.ToInt32(tbID.Text), Convert.ToInt32(tbCageNumber.Text), tbName.Text, tbReasonForArrival.Text, string.Empty, (Diet)cbDiet.SelectedItem, (AnimalType)cbAnimalType.SelectedItem, tbSpecie.Text, tbYearOfArrival.Text, string.Empty, tbBirthdate.Text);
             //animalManager.UpdateAnimal(updatedAnimal);
-            //menu.UpdateAnimals();
+            
             
         }
 
@@ -68,7 +66,7 @@ namespace ZooBazzar_Group03
 
         private void btnShowNotes_Click(object sender, EventArgs e)
         {
-            animalManager.AssignNotes(animal);
+            //animalManager.AssignNotes(animal);
             fmAnimalNotes animalNotes = new fmAnimalNotes(animal.Notes);
             animalNotes.Show();
         }

@@ -8,22 +8,23 @@ namespace Entities
 {
     public interface IAnimalDB<Animal>
     {
-        List<Animal> GetAnimals();
+       public List<Animal> GetAnimals();
 
-        void AddAnimalToDB(string animalCode, string name, string gender, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes, string specialist, int weeklyFeedingIteration);
+       public void AddAnimalToDB(Animal animal, Specialization specialization);
+
+       public void UpdateAnimalInDB(Animal animal, int id);
 
 
-        void UpdateAnimalInDB(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, int id);
+       public void DeleteAnimalFromDB(int id, string reasonForDeparture);
+       public bool HasImage(string animalCode);
 
+       public MemoryStream GetMemoryStream(string animalCode);
 
-        void DeleteAnimalFromDB(int id, string reasonForDeparture);
-        bool HasImage(string animalCode);
+       public List<string> GetFeeding(Animal animal);
 
-        MemoryStream GetMemoryStream(string animalCode);
-
-        List<string> GetFeeding(Animal animal);
-        List<string> GetNotes(Animal animal);
-        void AddNote(int id, string note);
+        // Change it pls :P
+       public List<string> GetNotes(Animal animal);
+       public void AddNote(int id, string note);
 
     }
 }
