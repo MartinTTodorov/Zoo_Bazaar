@@ -24,9 +24,8 @@ namespace Entities
             
         }
 
-        public void GetDate(string weekday, string date)
+        public void GetDate(string date)
         {
-            lblWeekDay.Text = weekday;
             lblDate.Text = date;
             
             this.currentDate = date;

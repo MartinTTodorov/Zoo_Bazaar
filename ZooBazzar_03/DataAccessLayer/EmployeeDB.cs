@@ -18,13 +18,13 @@ namespace DataAccessLayer
         {
             conn = ConnectionDB.GetConnection();
         }
-        public void Add(int accountid,Employee obj)
+        public void Add( Employee obj)
         {
             string sql = "INSERT INTO employee (ID,FirstName,LastName,Address,Birthdate,Phone,Email,EmergencyContact,BSN,WorkPosition) VALUES (@ID,@FirstName,@LastName,@Address,@Birthdate,@Phone,@Email,@EmergencyContact,@BSN,@WorkPosition)";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
 
-            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = accountid;
+            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = obj.Id;
             cmd.Parameters.Add("@FirstName", MySqlDbType.VarChar).Value = obj.Name;
             cmd.Parameters.Add("@LastName", MySqlDbType.VarChar).Value = obj.Lastname;
             cmd.Parameters.Add("@Address", MySqlDbType.VarChar).Value = obj.Address;
@@ -33,7 +33,7 @@ namespace DataAccessLayer
             cmd.Parameters.Add("@EmergencyContact", MySqlDbType.VarChar).Value = obj.EmargencyContact;
             cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = obj.Email;
             cmd.Parameters.Add("@BSN", MySqlDbType.VarChar).Value = obj.Bsn;
-            cmd.Parameters.Add("@WorkPosition", MySqlDbType.VarChar).Value = obj.GetWorkingPosition();            
+            cmd.Parameters.Add("@WorkPosition", MySqlDbType.VarChar).Value = obj.GetWorkingPosition();
 
             try
             {
@@ -52,32 +52,6 @@ namespace DataAccessLayer
             }
         }
 
-        public void Add(Employee obj)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
-        {
-            string sql = "DELETE FROM employee WHERE ID = @ID";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
-
-            try
-            {
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Employee deleted successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show($"Can't delete employee{id}! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally { conn.Close(); }
-        }
-
         public List<Employee> Read()
         {
             string sql = "SELECT username,password,firstname,lastname,address,birthdate,email,phone,emergencycontact,bsn,workposition,id FROM employee INNER JOIN account ON employee.ID = account.AccountID";
@@ -91,13 +65,13 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    if(reader[10].ToString() == "Manager")
+                    if (reader[10].ToString() == "Manager")
                     {
                         Manager manager = new Manager(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString());
                         manager.Id = Convert.ToInt32(reader[11]);
                         employees.Add(manager);
                     }
-                    else if(reader[10].ToString() == "Resourceplanner")
+                    else if (reader[10].ToString() == "Resourceplanner")
                     {
                         ResourcePlanner resourcePlanner = new ResourcePlanner(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString());
                         resourcePlanner.Id = Convert.ToInt32(reader[11]);
@@ -106,11 +80,11 @@ namespace DataAccessLayer
                     else
                     {
                         Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), reader[10].ToString(), true);
-                        Caretaker caretaker = new Caretaker(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(),specialization);
+                        Caretaker caretaker = new Caretaker(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), specialization);
                         caretaker.Id = Convert.ToInt32(reader[11]);
                         employees.Add((caretaker));
                     }
-                   
+
                 }
             }
             catch (MySqlException ex)
@@ -159,8 +133,6 @@ namespace DataAccessLayer
                 conn.Close();
             }
 
-        }
-
-       
+        }      
     }
 }

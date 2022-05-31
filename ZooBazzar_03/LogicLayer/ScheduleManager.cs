@@ -4,24 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
-using DataAccessLayer;
 
 namespace LogicLayer
 {
     public class ScheduleManager
     {
-        EmployeeManagment em = new EmployeeManagment();
-        CageManager cm = new CageManager();
-        ScheduleDB sdb = new ScheduleDB();
+        private static EmployeeManagment em;
+        private static CageManager cm;
+        private static ContractManager cmngr;
 
-        List<DailySchedule> dailySchedules = new List<DailySchedule>();
+        static List<DailySchedule> dailySchedules = new List<DailySchedule>();
+        public List<DailySchedule> DailySchedules { get { return dailySchedules; } }
+
+        static List<DailySchedule> caretakerSchedule = new List<DailySchedule>();
 
 
-        public List<string> GetCurrentWeek()
+        int fullShiftHours = 6;
+
+        IScheduleDB<DailySchedule> crud;
+        public ScheduleManager(IScheduleDB<DailySchedule> crud, ICRUD<Employee> employeeData, ICageDB<Cage> cageData, IContractDataManagement<EmployeeContract> contractData)
+        {
+            this.crud = crud;
+            em = new EmployeeManagment(employeeData);
+            cm = new CageManager(cageData);
+            cmngr = new ContractManager(contractData);
+        }
+
+
+        public static List<string> GetWeek(DateTime pickDate, int index)
         {
             List<string> daysInWeek = new List<string>();
 
-            var now = DateTime.Now;
+            var now = pickDate;
             var currentDay = now.DayOfWeek;
             int days = (int)currentDay;
 
@@ -29,7 +43,7 @@ namespace LogicLayer
 
             for (int i = 0; i < 7; i++)
             {
-                DateTime day = sunday.AddDays(i);
+                DateTime day = sunday.AddDays(i + index);
 
 
                 string date = $"{day.Day} {day.ToString("MMM")} {day.Year}";
@@ -41,18 +55,29 @@ namespace LogicLayer
         }
 
 
-        public ScheduleManager(string date)
+
+        public void GetWeeklySchedule(DateTime date, int index)
         {
-            dailySchedules = sdb.Read(GetCurrentWeek());
+            bool match = false;
+
+            if (dailySchedules != null)
+            {
+                match = dailySchedules.Any(ds => GetWeek(date, index).Any(days => days == ds.Date));
+            }
+
+            if (!match)
+            {
+                dailySchedules.Clear();
+                dailySchedules.AddRange(crud.Read(GetWeek(date, index)));
+            }
+
         }
 
 
 
-        public List<Caretaker> GetCaretakers(int cageNumber)
+        public List<Caretaker> GetCaretakers(AnimalType type)
         {
-            Cage cage = cm.Cages.Find(x => x.CageNumber == cageNumber);
-
-            switch (cage.Type)
+            switch (type)
             {
                 case AnimalType.Mammal:
                     return em.CaretakersBySpecialization(Specialization.Mammalogist);
@@ -77,60 +102,117 @@ namespace LogicLayer
             }
         }
 
-        public int AssignedCaretaker(int cage, string time)
+        public DailySchedule AssignedCaretakers(string time, string date, AnimalType type)
         {
-            if (dailySchedules.Find(x => x.CageNumber == cage && x.TimeSlot == time) != null)
+            DailySchedule ds = dailySchedules.Find(ds => ds.TimeSlot == time && ds.Date == date && ds.Type == type);
+
+            if (ds != null)
             {
-                return dailySchedules.Find(x => x.CageNumber == cage).EmployeeId;
+                return ds;
             }
-            else
+
+            return null;
+        }
+
+        public bool Insert(DailySchedule ds)
+        {
+            if (crud.Add(ds))
             {
-                return 0;
-            }
-        }
-
-        public int Insert(DailySchedule ds)
-        {
-            dailySchedules.Add(ds);
-            return sdb.Add(ds);
-        }
-
-        public int Update(DailySchedule ds)
-        {
-            int index = dailySchedules.FindIndex(x => x.Date == ds.Date && x.CageNumber == ds.CageNumber);
-
-            dailySchedules[index] = ds;
-
-            return sdb.EditSpecialist(ds);
-
-        }
-
-        public bool CheckDate(DateTime date)
-        {
-            if (date.CompareTo(DateTime.Today) > -1)
-            {
+                dailySchedules.Add(ds);
                 return true;
             }
             return false;
         }
 
-        public List<Cage> GetCages(string feedingTime)
+        public bool Update(DailySchedule ds)
+        {
+            if (crud.Update(ds))
+            {
+                int index = dailySchedules.FindIndex(x => x.Date == ds.Date && x.Type == ds.Type && x.TimeSlot == x.TimeSlot);
+
+                dailySchedules[index] = ds;
+
+                return true;
+            }
+
+            return false;
+
+        }
+
+
+        public List<Cage> GetCages(string feedingTime, AnimalType type, DateTime date)
         {
             List<Cage> allCages = cm.Cages;
 
-            return allCages.FindAll(x => x.CageAnimals.Any(x => x.FeedingTimes.Any(x => x == feedingTime) && x.ReasonForDeparture == null));
+            int day = (int)date.DayOfWeek;
+
+            return allCages.FindAll(x => x.CageAnimals.Any(x => x.FeedingTimes.Any(x => x == feedingTime) && x.ReasonForDeparture == null && x.AnimalType == type && x.WeeklyFeedingIteration > day));
         }
 
-        public int GetWorkerFTE(int cageNr)
+        public int GetWorkedHours(Caretaker caretaker)
         {
-            List<Caretaker> caretakers = GetCaretakers(cageNr);
 
-     
+            int fullShifts = dailySchedules.FindAll(ds => ds.MainCaretakerFir.Id == caretaker.Id || ds.MainCaretakerSec.Id == caretaker.Id).Count * fullShiftHours;
 
-            if (caretakers.Any(x => (x.Id * 40) > caretakers.Where(caretaker => caretaker == x).Count))
-            {
+            fullShifts += dailySchedules.FindAll(ds => ds.HelpCaretaker != null).FindAll(ds => ds.HelpCaretaker.Id == caretaker.Id).Count * fullShiftHours;
 
-            }
+            return fullShifts;
         }
+
+        public List<Caretaker> GetFreeCaretakers(AnimalType type, string date, string timeSlot)
+        {
+            List<Caretaker> caretakers = GetCaretakers(type);
+
+            List<Caretaker> freeCaretakers = new List<Caretaker>();
+
+            foreach (Caretaker caretaker in caretakers)
+            {
+                cmngr.GetContracts(caretaker);
+
+                if ((caretaker.Contracts.Find(c => c.IsValid == true).Fte * 40) >= (GetWorkedHours(caretaker) + fullShiftHours))
+                {
+                    freeCaretakers.Add(caretaker);
+                }
+            }
+
+            DailySchedule ds = AssignedCaretakers(timeSlot, date, type);
+
+            if (ds != null)
+            {
+                if (!freeCaretakers.Any(x => x.Id == ds.MainCaretakerFir.Id))
+                {
+                    freeCaretakers.Add(ds.MainCaretakerFir);
+                }
+                if (!freeCaretakers.Any(x => x.Id == ds.MainCaretakerSec.Id))
+                {
+                    freeCaretakers.Add(ds.MainCaretakerSec);
+                }
+
+                if (ds.HelpCaretaker != null)
+                {
+                    if (!freeCaretakers.Any(x => x.Id == ds.HelpCaretaker.Id))
+                    {
+                        freeCaretakers.Add(ds.HelpCaretaker);
+                    }
+                }
+            }
+
+            return freeCaretakers;
+        }
+
+
+        public List<DailySchedule> GetCaretakerSchedule(Caretaker caretaker, DateTime date, int index)
+        {
+            GetWeeklySchedule(date, index);
+
+            caretakerSchedule = dailySchedules.FindAll(s => s.MainCaretakerFir.Id == caretaker.Id || s.MainCaretakerSec.Id == caretaker.Id);
+            caretakerSchedule.AddRange(dailySchedules.FindAll(x => x.HelpCaretaker != null).FindAll(x => x.HelpCaretaker.Id == caretaker.Id));
+
+            caretakerSchedule.Sort((x, y) => DateTime.ParseExact(x.Date, "d MMM yyyy", null).CompareTo(DateTime.ParseExact(y.Date, "d MMM yyyy", null))); 
+
+            return caretakerSchedule;
+        }
+
+
     }
 }

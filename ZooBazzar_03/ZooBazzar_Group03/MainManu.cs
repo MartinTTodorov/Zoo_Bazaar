@@ -1,229 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ZooBazzar_Group03.Employeee;
+﻿using ZooBazzar_Group03.Employeee;
 using LogicLayer;
 using Entities;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03
 {
     public partial class MainManu : Form
     {
         private Account currentAccount;
-        private EmployeeManagment employeeManagment = new EmployeeManagment();
-        private AccountManager accountManager = new AccountManager();
-        private AnimalManager animalManager = new AnimalManager();
-        
+        private string workingPosition;
+
+        //Fields
+        private Button currentButton;
+        private Random random;
+        private int tempIndex;
+        private Form activeForm;
+
+        private EmployeeManagment employeeManagment = new EmployeeManagment(new EmployeeDB());
+        private AccountManager accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
+        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
+        private ContractManager cm = new ContractManager(new ContractDB());
+        private RequestManager rm = new RequestManager(new RequestedEmployeeDB());
 
         public MainManu(Account account)
         {
             InitializeComponent();
-            updateEmployeeUI();
-            accessability(accountManager.GetWorkPositionByAccount(account.Username));
-            lblHello.Text = $"Hello, {account.Username}!";
-            employeeManagment.ChangedEmployee += OnChangedEmployee;
-            tbUsernameSettings.Text = account.Username;
-            tbPasswordSettings.Text = account.Password;
-            cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
-            updateEmployee();
+            workingPosition = accountManager.GetWorkPositionByAccount(account.Username);
+            accessability(workingPosition);
+            this.currentAccount = account;
+            lblGreeting.Text = $"Hello, {account.Username}!";
+            lblTime.Text = $"{DateTime.UtcNow.TimeOfDay.Hours}:{DateTime.UtcNow.TimeOfDay.Minutes} o'clock"; 
+            random = new Random();
             
-            GetSchedule(0);
-            currentAccount = account;
         }
-
-
-        int index = 0;
-
-        private void GetSchedule(int index)
-        {
-            calendar.Controls.Clear();
-
-            for (int i = 0; i < 7; i++)
-            {
-                DateTime day = DateTime.Now;
-
-                day = day.AddDays(i + index);
-                ucDate uc = new ucDate();
-
-                string date = $"{day.Day} {day.ToString("MMM")} {day.Year}";
-                string weekday = day.DayOfWeek.ToString();
-                uc.GetDate(weekday, date);
-
-                calendar.Controls.Add(uc);
-            }
-        }
-
-        private void btnPrevious_Click(object sender, EventArgs e)
-        {
-            index -= 7;
-            GetSchedule(index);
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            index += 7;
-            GetSchedule(index);
-        }
-
-
-
-        private void btnShowAll_Click(object sender, EventArgs e)
-        {
-            updateEmployeeUI();
-        }
-        private void btnFindBySpecialization_Click(object sender, EventArgs e)
-        {
-            updateEmployeeUIbySpecialization((Specialization)cbSpecialization.SelectedItem);
-        }
-
-        private void updateEmployeeUI()
-        {
-            List<Employee> employees = employeeManagment.GetEmployees();
-
-            flpEmployees.Controls.Clear();
-            foreach (Employee e in employees)
-            {
-                flpEmployees.Controls.Add(new ucEmployee(e));
-
-            }
-        }
-        private void updateEmployeeUIbySpecialization(Specialization specialization)
-        {
-            List<Caretaker> caretakers = employeeManagment.CaretakersBySpecialization(specialization);
-            flpEmployees.Controls.Clear();
-            foreach (Caretaker c in caretakers)
-            {
-                flpEmployees.Controls.Add(new ucEmployee(c));
-            }
-        }
-
-        private void updateEmployeeUIbyFirstName(string name)
-        {
-            List<Employee> employees = employeeManagment.GetEmployees();
-
-            flpEmployees.Controls.Clear();
-            foreach (Employee e in employees)
-            {
-                if (string.Equals(e.Name, name, StringComparison.OrdinalIgnoreCase) || e.Name.Contains(name, StringComparison.OrdinalIgnoreCase))
-                {
-                    flpEmployees.Controls.Add(new ucEmployee(e));
-                }
-
-            }
-        }
-
-
-        private void btnFindByFirstName_Click(object sender, EventArgs e)
-        {
-            updateEmployeeUIbyFirstName(tbFirstName.Text);
-        }
-
-        private void btnNewEmployee_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        public void OnChangedEmployee()
-        {
-            employeeManagment.DataRefresh();
-            updateEmployee();
-            updateEmployeeUI();
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRemoveEmployee_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnShowAllAnimals_Click(object sender, EventArgs e)
-        {
-            UpdateAnimals();
-        }
-
-        public void UpdateAnimals()
-        {
-            flpAnimals.Controls.Clear();
-            animalManager.UpdateLocalList();
-            //for (int i = 0; i < animalManager.animals.Count; i++)
-            //{
-            //    if (animalManager.animals[i].ReasonForDeparture == String.Empty)
-            //    {
-            //        AnimalPic animalPic = new AnimalPic(animalManager.animals[i], this,accountManager.GetWorkPositionByAccount(currentAccount.Username));
-            //        flpAnimals.Controls.Add(animalPic);
-            //    }
-            //}
-
-            //foreach (Animal animal in animalManager.animals)
-            //{
-            //    if (animal.ReasonForDeparture == String.Empty)
-            //    {
-            //        AnimalPic animalPic = new AnimalPic(animal, this, accountManager.GetWorkPositionByAccount(currentAccount.Username));
-            //        flpAnimals.Controls.Add(animalPic);
-            //    }
-            //}
-        }
-
-
-        private void btnAddAnimal_Click(object sender, EventArgs e)
-        {
-            FormAddAnimal frmAddAnimal = new FormAddAnimal(this);
-            frmAddAnimal.Show();
-        }
-
-        private void btnAddEmployee_Click(object sender, EventArgs e)
-        {
-            NewAccount newAccount = new NewAccount();
-            newAccount.Show();
-        }
-
-        private void updateEmployee()
-        {
-            lbEmployees.Items.Clear();
-            foreach (Employee employee in employeeManagment.GetEmployees())
-            {
-                lbEmployees.Items.Add(employee.ToString());
-            }
-        }
-
-        private void btnUpdateEmployee_Click(object sender, EventArgs e)
-        {
-            if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
-            {
-                EditEmployee editEmployee = new EditEmployee(lbEmployees.SelectedIndex);
-                editEmployee.Show();
-            }
-        }
-
-        private void btnRemoveEmployee_Click_1(object sender, EventArgs e)
-        {
-            if (lbEmployees.SelectedIndex >= 0 && lbEmployees.SelectedIndex < employeeManagment.GetEmployees().Count)
-            {
-                employeeManagment.RemoveEmployee(lbEmployees.SelectedIndex);
-            }
-        }
-
-        private void btnSavePassword_Click(object sender, EventArgs e)
-        {
-            accountManager.UpdatePassword(tbUsernameSettings.Text, tbPasswordSettings.Text);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LoginPage loginPage = new LoginPage();
-            loginPage.Show();
-            this.Close();
-        }
+       
         private void accessability(string workingPosition)
         {
 
@@ -233,16 +43,117 @@ namespace ZooBazzar_Group03
             }
             else if (workingPosition == "Resourceplanner")
             {
-                tabControl1.TabPages.Remove(tpEmployeeManagment);
-                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;
+               
             }
             else
             {
-                tabControl1.TabPages.Remove(tpEmployeeManagment);
-                tabControl1.TabPages.Remove(tpSchedule);
-                tabControl1.TabPages[tpAnimals.Name].Controls[btnAddAnimal.Name].Enabled = false;
+                
+            }
+        }
+        private Color SelectThemeColor()
+        {
+            int index = random.Next(ColorThemeHandler.Colors.Count);
+            while (tempIndex == index)
+            {
+                index = random.Next(ColorThemeHandler.Colors.Count);
+            }
+            tempIndex = index;
+            string color = ColorThemeHandler.Colors[index];
+            return ColorTranslator.FromHtml(color);
+        }
+
+        private void ActivateButton(object btnSender)
+        {
+            if (btnSender != null)
+            {
+                if (currentButton != (Button)btnSender)
+                {
+                    DisableButton();
+                    Color color = SelectThemeColor();
+                    Color secColor = ColorThemeHandler.ChangeColorBrightness(color, -0.3d);
+
+                    currentButton = (Button)btnSender;
+                    currentButton.BackColor = color;
+                    currentButton.ForeColor = Color.White;
+                    currentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    pTitle.BackColor = color;
+                    pLogo.BackColor = secColor;
+                    ColorThemeHandler.PrimaryColor = color;
+                    ColorThemeHandler.SecondaryColor = secColor;
+                }
+            }
+        }
+        private void openChildForm(Form form, object btnSender)
+        {
+            if (activeForm != null)
+            {
+                activeForm.Close();
+            }
+
+            ActivateButton(btnSender);
+            activeForm = form;
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            this.pContent.Controls.Add(form);
+            this.pContent.Tag = form;
+            form.BringToFront();
+            form.Show();
+            lblTitle.Text = form.Text;
+        }
+        private void DisableButton()
+        {
+            foreach (Control previousBtn in pMenu.Controls)
+            {
+                if (previousBtn.GetType() == typeof(Button))
+                {
+                    previousBtn.BackColor = Color.FromArgb(51, 51, 76);
+                    previousBtn.ForeColor = Color.Gainsboro;
+                    previousBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                }
             }
         }
 
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            LoginPage loginPage = new LoginPage();
+            loginPage.Show();
+            this.Close();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSchedule_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.ScheduleForm(), sender);
+        }
+
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.EmployeesPage(employeeManagment.GetEmployees(),cm.GetContracts()), sender);
+        }
+
+        private void btnContracts_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.Contracts(employeeManagment.GetEmployees()), sender);
+        }
+
+        private void btnRequest_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.Request(), sender);
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.Settings(currentAccount), sender);
+        }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.Statistics(), sender);
+        }
     }
 }

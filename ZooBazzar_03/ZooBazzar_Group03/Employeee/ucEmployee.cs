@@ -15,7 +15,6 @@ namespace ZooBazzar_Group03.Employeee
 {
     public partial class ucEmployee : UserControl
     {
-        
         public ucEmployee(Employee employee)
         {
             InitializeComponent();           
@@ -23,6 +22,8 @@ namespace ZooBazzar_Group03.Employeee
             this.lblName.Text = $"{employee.Name} {employee.Lastname}";
             this.lblSpecialization.Text = getSpecialization(employee);
             this.lblEmail.Text = employee.Email;
+
+
         }
 
         private void pbEmployee_Click(object sender, EventArgs e)
@@ -72,12 +73,12 @@ namespace ZooBazzar_Group03.Employeee
 
         private string getSpecialization(Employee employee)
         {
-            if(employee is Caretaker caretaker)
+            if (employee is Caretaker caretaker)
             {
 
                 return caretaker.GetSpecialization().ToString();
             }
-           else if(employee is ResourcePlanner)
+            else if (employee is ResourcePlanner)
             {
                 return "Resource planner";
             }
@@ -91,5 +92,7 @@ namespace ZooBazzar_Group03.Employeee
         {
 
         }
+
+        
     }
 }

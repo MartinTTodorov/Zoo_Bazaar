@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicLayer;
 using Entities;
+using DataAccessLayer;
+using ZooBazzar_Group03.Employeee;
 
 namespace ZooBazzar_Group03
 {
     public partial class NewEmployee : Form
     {
-        private EmployeeManagment managment = new EmployeeManagment();
+        private EmployeeManagment managment = new EmployeeManagment(new EmployeeDB());
         private Account account;
 
         public NewEmployee(Account newAccount)
@@ -33,18 +35,27 @@ namespace ZooBazzar_Group03
                 if (cbPosition.SelectedItem.ToString() == "Caretaker")
                 {
                     Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), cbSpecialization.SelectedItem.ToString());
-                    Caretaker caretaker = new Caretaker(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, specialization);
-                    managment.AddEmployee(account.Id, caretaker);
+                    Employee caretaker = new Caretaker(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, specialization);
+                    managment.AddEmployee( caretaker);
+                    ContractForm newContract = new ContractForm(caretaker);
+                    newContract.Show();
+                    this.Hide();
                 }
                 else if (cbPosition.SelectedItem.ToString() == "Manager")
                 {
-                    Manager manager = new Manager(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
-                    managment.AddEmployee(account.Id, manager);
+                    Employee manager = new Manager(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                    managment.AddEmployee( manager);
+                    ContractForm newContract = new ContractForm(manager);
+                    newContract.Show();
+                    this.Hide();
                 }
                 else
                 {
-                    ResourcePlanner resourcePlanner = new ResourcePlanner(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
-                    managment.AddEmployee(account.Id, resourcePlanner);
+                    Employee resourcePlanner = new ResourcePlanner(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                    managment.AddEmployee( resourcePlanner);
+                    ContractForm newContract = new ContractForm(resourcePlanner);
+                    newContract.Show();
+                    this.Hide();
                 }
 
             }

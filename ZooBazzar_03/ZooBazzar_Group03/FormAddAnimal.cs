@@ -9,23 +9,43 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicLayer;
 using Entities;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03
 {
     public partial class FormAddAnimal : Form
     {
-        private AnimalManager animalManager = new AnimalManager();
-        MainManu menu;
-        public FormAddAnimal(MainManu menu)
+        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
+        private List<string> feedingTimes;
+
+        private FlowLayoutPanel panel;
+        public FormAddAnimal(FlowLayoutPanel panel)
         {
             InitializeComponent();
-            this.menu = menu;
+
+            this.panel = panel;            
+            this.feedingTimes = new List<string>();
+            this.cbGender.DataSource = new string[] { "Male", "Female" };
+                       
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            animalManager.AddAnimal(tbAnimalCode.Text, tbName.Text, cbAnimalType.SelectedItem.ToString(), tbSpecie.Text, Convert.ToInt32(tbCageNumber.Text), tbBirthdate.Text, tbReasonForArrival.Text, tbYearOfArrival.Text, string.Empty, string.Empty, cbDiet.SelectedItem.ToString());
-            menu.UpdateAnimals();
+            if (cbMorning.Checked)
+            {
+                feedingTimes.Add("morning");
+            }
+            if (cbAfternoon.Checked)
+            {
+                feedingTimes.Add("aftermoon");
+            }
+            if (cbEvening.Checked)
+            {
+                feedingTimes.Add("evening");
+            }
+            
+            animalManager.AddAnimal(tbAnimalCode.Text, tbName.Text, cbGender.SelectedItem.ToString(), cbAnimalType.SelectedItem.ToString(), tbSpecie.Text, Convert.ToInt32(tbCageNumber.Text), tbBirthdate.Text, tbReasonForArrival.Text, tbYearOfArrival.Text, string.Empty, string.Empty, cbDiet.SelectedItem.ToString(), feedingTimes, cbSpecialist.SelectedItem.ToString(), Convert.ToInt32(tbWeeklyFeedIteration.Text));
+            //panel.Controls.Add(new AnimalPic())
         }
 
         private void FormAddAnimal_FormClosing(object sender, FormClosingEventArgs e)
@@ -44,6 +64,12 @@ namespace ZooBazzar_Group03
             {
                 cbDiet.Items.Add(item);
             }
+            foreach (var item in Enum.GetValues(typeof(Specialization)))
+            {
+                cbSpecialist.Items.Add(item);
+            }
         }
+
+        
     }
 }

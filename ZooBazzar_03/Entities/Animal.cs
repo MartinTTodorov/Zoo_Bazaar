@@ -25,6 +25,9 @@ namespace Entities
         int weeklyFeedingIteration;
         private Specialization specialization;
         List<string> feedingTimes = new List<string>();
+        List<string> notes = new List<string>();
+        
+
 
         public int Id { get { return id; } }
 
@@ -38,14 +41,15 @@ namespace Entities
         public string ReasonForArrival { get { return reasonForArrival; } }
         public string YearOfArrival { get { return yearOfArrival; } }
         public string YearOfDeparture { get { return yearOfDeparture; } }
-        public string ReasonForDeparture { get { return reasonForDeparture; } }
+        public string ReasonForDeparture { get { return reasonForDeparture; } set { reasonForDeparture = value; } }
         public List<string> FeedingTimes { get { return feedingTimes; } set { feedingTimes = value; } }
+        public List<string> Notes { get { return notes; } set { notes = value; } }
 
         public Diet Diet { get { return diet; } set { diet = value; } }
         public AnimalType AnimalType { get { return type; } set { type = value; } }
-        public int WeeklyFeedingIteration{ get { return weeklyFeedingIteration; } set { weeklyFeedingIteration = value; } }
+        public int WeeklyFeedingIteration{ get { return weeklyFeedingIteration; } }
 
-        public Animal(string animalCode, int id, int cageNumber, string name, string gender, string reasonForArrival, string reasonForDeparture, Diet diet, AnimalType type, string specie, string yearOfArrival, string yearOfDeparture, string birthdate, List<string> feedingTimes, Specialization specialization)
+        public Animal(string animalCode, int id, int cageNumber, string name, string gender, string reasonForArrival, string reasonForDeparture, Diet diet, AnimalType type, string specie, string yearOfArrival, string yearOfDeparture, string birthdate, Specialization specialization, List<string> feedingTimes, int weeklyFeeding, List<string> notes)
         {
             this.id = id;
             this.cageNumber = cageNumber;
@@ -60,23 +64,30 @@ namespace Entities
             this.birthDate = birthdate;
             this.animalCode = animalCode;
             this.gender = gender;
-            this.feedingTimes = feedingTimes;
             this.specialization = specialization;
+            this.feedingTimes = feedingTimes;
+            this.weeklyFeedingIteration = weeklyFeeding;
+            this.notes = notes;
         }
 
-        public Animal(string animalCode, int cageNumber, Diet diet, AnimalType type, string specie)//, List<string> feedingTimes)//, int weeklyFeedingIteration)
+        public Animal(string animalCode, int cageNumber, Diet diet, AnimalType type, string specie, int weeklyFeedingIteration)
         {
             this.cageNumber = cageNumber;
             this.diet = diet;
             this.type = type;
             this.specie = specie;
             this.animalCode = animalCode;
-            //this.WeeklyFeedingIteration = weeklyFeedingIteration;
+            this.weeklyFeedingIteration = weeklyFeedingIteration;
         }
 
         public string GetInfo()
         {
             return $"id: {this.id}, name:{this.name}";
+        }
+
+        public void SetNotes(List<string> notes)
+        {
+            this.notes = notes;
         }
     }
 }

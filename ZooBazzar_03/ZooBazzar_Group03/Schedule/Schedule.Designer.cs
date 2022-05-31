@@ -29,99 +29,51 @@
         private void InitializeComponent()
         {
             this.lblTimeSloth = new System.Windows.Forms.Label();
-            this.panelAnimals = new System.Windows.Forms.FlowLayoutPanel();
             this.label7 = new System.Windows.Forms.Label();
-            this.cmbEmployees = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.lblAnimalType = new System.Windows.Forms.Label();
-            this.lblSpecies = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.cmbFirstCaretaker = new System.Windows.Forms.ComboBox();
             this.cmbTimeSloth = new System.Windows.Forms.ComboBox();
             this.btnAssign = new System.Windows.Forms.Button();
-            this.lblCageNumber = new System.Windows.Forms.Label();
-            this.lbl9 = new System.Windows.Forms.Label();
             this.btnEditEmployee = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbAnimalType = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbSecondCaretaker = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmbHelperCaretaker = new System.Windows.Forms.ComboBox();
+            this.lbCages = new System.Windows.Forms.ListBox();
+            this.lblDate = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTimeSloth
             // 
             this.lblTimeSloth.AutoSize = true;
             this.lblTimeSloth.BackColor = System.Drawing.Color.Transparent;
-            this.lblTimeSloth.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblTimeSloth.Location = new System.Drawing.Point(12, 37);
+            this.lblTimeSloth.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTimeSloth.Location = new System.Drawing.Point(19, 133);
             this.lblTimeSloth.Name = "lblTimeSloth";
-            this.lblTimeSloth.Size = new System.Drawing.Size(117, 32);
+            this.lblTimeSloth.Size = new System.Drawing.Size(95, 28);
             this.lblTimeSloth.TabIndex = 0;
             this.lblTimeSloth.Text = "Time slot:";
-            // 
-            // panelAnimals
-            // 
-            this.panelAnimals.AutoScroll = true;
-            this.panelAnimals.BackColor = System.Drawing.Color.Transparent;
-            this.panelAnimals.Location = new System.Drawing.Point(12, 150);
-            this.panelAnimals.Name = "panelAnimals";
-            this.panelAnimals.Size = new System.Drawing.Size(348, 272);
-            this.panelAnimals.TabIndex = 3;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(578, 150);
+            this.label7.Location = new System.Drawing.Point(19, 201);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 28);
+            this.label7.Size = new System.Drawing.Size(191, 28);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Employees:";
+            this.label7.Text = "First main caretaker: ";
             // 
-            // cmbEmployees
+            // cmbFirstCaretaker
             // 
-            this.cmbEmployees.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.cmbEmployees.FormattingEnabled = true;
-            this.cmbEmployees.Location = new System.Drawing.Point(578, 190);
-            this.cmbEmployees.Name = "cmbEmployees";
-            this.cmbEmployees.Size = new System.Drawing.Size(275, 28);
-            this.cmbEmployees.TabIndex = 12;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(405, 150);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 28);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Animal type:";
-            // 
-            // lblAnimalType
-            // 
-            this.lblAnimalType.AutoSize = true;
-            this.lblAnimalType.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.lblAnimalType.Location = new System.Drawing.Point(411, 193);
-            this.lblAnimalType.Name = "lblAnimalType";
-            this.lblAnimalType.Size = new System.Drawing.Size(0, 20);
-            this.lblAnimalType.TabIndex = 14;
-            // 
-            // lblSpecies
-            // 
-            this.lblSpecies.AutoSize = true;
-            this.lblSpecies.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.lblSpecies.Location = new System.Drawing.Point(411, 285);
-            this.lblSpecies.Name = "lblSpecies";
-            this.lblSpecies.Size = new System.Drawing.Size(0, 20);
-            this.lblSpecies.TabIndex = 16;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(405, 246);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 28);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Species:";
+            this.cmbFirstCaretaker.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.cmbFirstCaretaker.FormattingEnabled = true;
+            this.cmbFirstCaretaker.Location = new System.Drawing.Point(19, 241);
+            this.cmbFirstCaretaker.Name = "cmbFirstCaretaker";
+            this.cmbFirstCaretaker.Size = new System.Drawing.Size(275, 28);
+            this.cmbFirstCaretaker.TabIndex = 12;
             // 
             // cmbTimeSloth
             // 
@@ -132,15 +84,15 @@
             "6:00 - 8:00",
             "12:00 - 14:00",
             "20:00 - 22:00"});
-            this.cmbTimeSloth.Location = new System.Drawing.Point(12, 72);
+            this.cmbTimeSloth.Location = new System.Drawing.Point(19, 168);
             this.cmbTimeSloth.Name = "cmbTimeSloth";
-            this.cmbTimeSloth.Size = new System.Drawing.Size(260, 28);
+            this.cmbTimeSloth.Size = new System.Drawing.Size(275, 28);
             this.cmbTimeSloth.TabIndex = 17;
             this.cmbTimeSloth.SelectedIndexChanged += new System.EventHandler(this.cmbTimeSloth_SelectedIndexChanged);
             // 
             // btnAssign
             // 
-            this.btnAssign.Location = new System.Drawing.Point(593, 248);
+            this.btnAssign.Location = new System.Drawing.Point(358, 352);
             this.btnAssign.Name = "btnAssign";
             this.btnAssign.Size = new System.Drawing.Size(203, 57);
             this.btnAssign.TabIndex = 18;
@@ -148,29 +100,9 @@
             this.btnAssign.UseVisualStyleBackColor = true;
             this.btnAssign.Click += new System.EventHandler(this.btnAssign_Click);
             // 
-            // lblCageNumber
-            // 
-            this.lblCageNumber.AutoSize = true;
-            this.lblCageNumber.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.lblCageNumber.Location = new System.Drawing.Point(411, 400);
-            this.lblCageNumber.Name = "lblCageNumber";
-            this.lblCageNumber.Size = new System.Drawing.Size(0, 20);
-            this.lblCageNumber.TabIndex = 20;
-            // 
-            // lbl9
-            // 
-            this.lbl9.AutoSize = true;
-            this.lbl9.BackColor = System.Drawing.Color.Transparent;
-            this.lbl9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl9.Location = new System.Drawing.Point(405, 359);
-            this.lbl9.Name = "lbl9";
-            this.lbl9.Size = new System.Drawing.Size(133, 28);
-            this.lbl9.TabIndex = 19;
-            this.lbl9.Text = "Cage number:";
-            // 
             // btnEditEmployee
             // 
-            this.btnEditEmployee.Location = new System.Drawing.Point(593, 330);
+            this.btnEditEmployee.Location = new System.Drawing.Point(596, 352);
             this.btnEditEmployee.Name = "btnEditEmployee";
             this.btnEditEmployee.Size = new System.Drawing.Size(203, 57);
             this.btnEditEmployee.TabIndex = 21;
@@ -178,24 +110,112 @@
             this.btnEditEmployee.UseVisualStyleBackColor = true;
             this.btnEditEmployee.Click += new System.EventHandler(this.btnEditEmployee_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(19, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(156, 28);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Type of animals: ";
+            // 
+            // cmbAnimalType
+            // 
+            this.cmbAnimalType.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.cmbAnimalType.FormattingEnabled = true;
+            this.cmbAnimalType.Items.AddRange(new object[] {
+            "Mammal",
+            "Bird",
+            "Fish",
+            "Reptile",
+            "Insect",
+            "Amphibian"});
+            this.cmbAnimalType.Location = new System.Drawing.Point(19, 85);
+            this.cmbAnimalType.Name = "cmbAnimalType";
+            this.cmbAnimalType.Size = new System.Drawing.Size(275, 28);
+            this.cmbAnimalType.TabIndex = 22;
+            this.cmbAnimalType.SelectedIndexChanged += new System.EventHandler(this.cmbAnimalType_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(19, 277);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(214, 28);
+            this.label2.TabIndex = 25;
+            this.label2.Text = "Second main caretaker:";
+            // 
+            // cmbSecondCaretaker
+            // 
+            this.cmbSecondCaretaker.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.cmbSecondCaretaker.FormattingEnabled = true;
+            this.cmbSecondCaretaker.Location = new System.Drawing.Point(19, 317);
+            this.cmbSecondCaretaker.Name = "cmbSecondCaretaker";
+            this.cmbSecondCaretaker.Size = new System.Drawing.Size(275, 28);
+            this.cmbSecondCaretaker.TabIndex = 24;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(19, 363);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(159, 28);
+            this.label3.TabIndex = 27;
+            this.label3.Text = "Helper caretaker:";
+            // 
+            // cmbHelperCaretaker
+            // 
+            this.cmbHelperCaretaker.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.cmbHelperCaretaker.FormattingEnabled = true;
+            this.cmbHelperCaretaker.Location = new System.Drawing.Point(19, 403);
+            this.cmbHelperCaretaker.Name = "cmbHelperCaretaker";
+            this.cmbHelperCaretaker.Size = new System.Drawing.Size(275, 28);
+            this.cmbHelperCaretaker.TabIndex = 26;
+            // 
+            // lbCages
+            // 
+            this.lbCages.FormattingEnabled = true;
+            this.lbCages.ItemHeight = 20;
+            this.lbCages.Location = new System.Drawing.Point(358, 84);
+            this.lbCages.Name = "lbCages";
+            this.lbCages.Size = new System.Drawing.Size(450, 224);
+            this.lbCages.TabIndex = 28;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.BackColor = System.Drawing.Color.DarkSeaGreen;
+            this.lblDate.Location = new System.Drawing.Point(360, 47);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(13, 20);
+            this.lblDate.TabIndex = 29;
+            this.lblDate.Text = "!";
+            // 
             // Schedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Background;
-            this.ClientSize = new System.Drawing.Size(865, 515);
+            this.ClientSize = new System.Drawing.Size(865, 478);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.lbCages);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbHelperCaretaker);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbSecondCaretaker);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbAnimalType);
             this.Controls.Add(this.btnEditEmployee);
-            this.Controls.Add(this.lblCageNumber);
-            this.Controls.Add(this.lbl9);
             this.Controls.Add(this.btnAssign);
             this.Controls.Add(this.cmbTimeSloth);
-            this.Controls.Add(this.lblSpecies);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.lblAnimalType);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.cmbEmployees);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.panelAnimals);
+            this.Controls.Add(this.cmbFirstCaretaker);
             this.Controls.Add(this.lblTimeSloth);
             this.Name = "Schedule";
             this.Text = "Schedule";
@@ -208,17 +228,18 @@
         #endregion
 
         private Label lblTimeSloth;
-        private FlowLayoutPanel panelAnimals;
         private Label label7;
-        private Label label8;
-        private Label label5;
         private ComboBox cmbTimeSloth;
-        public ComboBox cmbEmployees;
+        public ComboBox cmbFirstCaretaker;
         public Button btnAssign;
-        private Label lbl9;
-        public Label lblCageNumber;
         public Button btnEditEmployee;
-        public Label lblAnimalType;
-        public Label lblSpecies;
+        private Label label1;
+        public ComboBox cmbAnimalType;
+        private Label label2;
+        public ComboBox cmbSecondCaretaker;
+        private Label label3;
+        public ComboBox cmbHelperCaretaker;
+        private ListBox lbCages;
+        private Label lblDate;
     }
 }

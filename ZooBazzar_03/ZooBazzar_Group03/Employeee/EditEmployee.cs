@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicLayer;
 using Entities;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03.Employeee
 {
     public partial class EditEmployee : Form
     {
         Employee employee;
-        EmployeeManagment managment = new EmployeeManagment();
-        int index;
+        EmployeeManagment managment = new EmployeeManagment(new EmployeeDB());
+        private int index;
         public EditEmployee(int index)
         {
             InitializeComponent();
@@ -61,7 +62,7 @@ namespace ZooBazzar_Group03.Employeee
             else
             {
                 ResourcePlanner resourcePlanner = new ResourcePlanner(employee.Account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
-                managment.AddEmployee(index, resourcePlanner);
+                managment.AddEmployee( resourcePlanner);
             }
 
             }
