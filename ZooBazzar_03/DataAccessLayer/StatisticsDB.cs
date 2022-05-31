@@ -7,13 +7,13 @@ namespace DataAccessLayer
     {
         private MySqlConnection conn = ConnectionDB.GetConnection();
 
-        public Dictionary<int, int> GetTicketSales(string filter, string place)
+        public Dictionary<int, int> GetTicketSales(string filter, string place, string filter2, int value)
         {
             Dictionary<int, int> tickets = new Dictionary<int, int>();
 
             try
             {
-                string sql = $"SELECT {filter}(dateOfPerchese) as date, COUNT(*) as count FROM ticket  WHERE placeOfPurchase = @place GROUP BY {filter}(dateOfPerchese);";
+                string sql = $"SELECT {filter}(dateOfPerchese) as date, COUNT(*) as count FROM ticket  WHERE placeOfPurchase = @place AND {filter2}(dateOfPerchese) = {value} GROUP BY {filter}(dateOfPerchese);";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("place", place);
                 conn.Open();
@@ -42,14 +42,14 @@ namespace DataAccessLayer
             return tickets;
         }
 
-        public Dictionary<int, double> GetIncome(string filter)
+        public Dictionary<int, double> GetIncome(string filter, string filter2, int value)
         {
            
             Dictionary<int, double> income = new Dictionary<int, double>();
 
             try
             {
-                string sql = $"SELECT {filter}(dateOfPerchese) as date, SUM(price) as sum FROM ticket GROUP BY {filter}(dateOfPerchese)";
+                string sql = $"SELECT {filter}(dateOfPerchese) as date, SUM(price) as sum FROM ticket WHERE {filter2}(dateOfPerchese) = {value} GROUP BY {filter}(dateOfPerchese)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();

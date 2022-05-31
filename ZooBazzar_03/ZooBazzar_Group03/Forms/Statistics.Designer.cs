@@ -73,6 +73,7 @@
             this.dtp.Name = "dtp";
             this.dtp.Size = new System.Drawing.Size(250, 27);
             this.dtp.TabIndex = 3;
+            this.dtp.ValueChanged += new System.EventHandler(this.dtp_ValueChanged);
             // 
             // rbMonthlyStats
             // 

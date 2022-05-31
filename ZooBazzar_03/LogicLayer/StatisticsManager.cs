@@ -12,14 +12,14 @@ namespace LogicLayer
             this.manager = manager;
         }
 
-        public Dictionary<int, int> GetTicketSalesStatistics(string filter, string filter2)
+        public Dictionary<int, int> GetTicketSalesStatistics(string filter, string place, string filter2, int value)
         {
-            return manager.GetTicketSales(filter, filter2);
+            return manager.GetTicketSales(filter, place, filter2, value);
         }
 
-        public Dictionary<int, double> GetIncome(string filter)
+        public Dictionary<int, double> GetIncome(string filter, string filter2, int value)
         {
-            return manager.GetIncome(filter);
+            return manager.GetIncome(filter, filter2, value);
         }
     }
 }

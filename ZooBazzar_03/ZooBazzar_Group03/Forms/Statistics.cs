@@ -22,8 +22,20 @@ namespace ZooBazzar_Group03.Forms
             myChart.Dock = DockStyle.Fill;
 
 
-            ticketSales = sm.GetTicketSalesStatistics(filter, "zoo");
-            onlineTicketSales = sm.GetTicketSalesStatistics(filter, "online");
+            if (filter2 == "MONTH")
+            {
+                ticketSales = sm.GetTicketSalesStatistics(filter, "zoo", filter2, date.Month);
+                onlineTicketSales = sm.GetTicketSalesStatistics(filter, "online", filter2, date.Month);
+            }
+            else if (filter2 == "YEAR")
+            {
+                ticketSales = sm.GetTicketSalesStatistics(filter, "zoo", filter2, date.Year);
+                onlineTicketSales = sm.GetTicketSalesStatistics(filter, "online", filter2, date.Year);
+            }
+
+
+            ticketSales = sm.GetTicketSalesStatistics(filter, "zoo", filter2, date.Month);
+            onlineTicketSales = sm.GetTicketSalesStatistics(filter, "online", filter2, date.Month);
 
             myChart.ChartAreas.Add(new ChartArea());
 
@@ -52,6 +64,8 @@ namespace ZooBazzar_Group03.Forms
 
 
         private string filter;
+        private string filter2;
+        DateTime date;
         private Dictionary<int, int> ticketSales;
         private Dictionary<int, int> onlineTicketSales;
 
@@ -65,11 +79,13 @@ namespace ZooBazzar_Group03.Forms
         private void rbMonthlyStats_CheckedChanged(object sender, EventArgs e)
         {
             filter = "MONTH";
+            filter2 = "YEAR";
         }
 
         private void rbWeeklyStats_CheckedChanged(object sender, EventArgs e)
         {
             filter = "WEEK";
+            filter2 = "MONTH";
         }
 
         private void btnGetIncome_Click(object sender, EventArgs e)
@@ -79,7 +95,15 @@ namespace ZooBazzar_Group03.Forms
             Chart myChart = new Chart();
             myChart.Dock = DockStyle.Fill;
 
-            income = sm.GetIncome(filter);
+            if (filter2 == "MONTH")
+            {
+                income = sm.GetIncome(filter, filter2, date.Month);
+            }
+            else if (filter2 == "YEAR")
+            {
+                income = sm.GetIncome(filter, filter2, date.Year);
+            }
+            
 
             myChart.ChartAreas.Add(new ChartArea());
 
@@ -98,6 +122,9 @@ namespace ZooBazzar_Group03.Forms
             panelStatistics.Controls.Add(myChart);
         }
 
-
+        private void dtp_ValueChanged(object sender, EventArgs e)
+        {
+            date = dtp.Value;
+        }
     }
 }
