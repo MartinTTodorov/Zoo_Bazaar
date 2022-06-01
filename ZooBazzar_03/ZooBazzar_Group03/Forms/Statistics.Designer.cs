@@ -117,6 +117,7 @@
             this.btnNrOfVisitors.TabIndex = 9;
             this.btnNrOfVisitors.Text = "Get current number of visitors";
             this.btnNrOfVisitors.UseVisualStyleBackColor = true;
+            this.btnNrOfVisitors.Click += new System.EventHandler(this.btnNrOfVisitors_Click);
             // 
             // Statistics
             // 

@@ -20,29 +20,39 @@ namespace ZooBazzar_Group03.Forms
 
             Chart myChart = new Chart();
             myChart.Dock = DockStyle.Fill;
-
+            myChart.ChartAreas.Add(new ChartArea());
 
             if (filter2 == "MONTH")
             {
                 ticketSales = sm.GetTicketSalesStatistics(filter, "zoo", filter2, date.Month);
                 onlineTicketSales = sm.GetTicketSalesStatistics(filter, "online", filter2, date.Month);
+                myChart.ChartAreas[0].AxisX.Title = date.ToString("MMMM"); 
             }
             else if (filter2 == "YEAR")
             {
                 ticketSales = sm.GetTicketSalesStatistics(filter, "zoo", filter2, date.Year);
                 onlineTicketSales = sm.GetTicketSalesStatistics(filter, "online", filter2, date.Year);
+                myChart.ChartAreas[0].AxisX.Title = date.ToString("yyyy");
+            }
+            else
+            {
+                ticketSales = sm.GetTicketSalesStatistics(filter, "zoo", null, 0);
+                onlineTicketSales = sm.GetTicketSalesStatistics(filter, "online", null, 0);
+                myChart.ChartAreas[0].AxisX.Title = filter;
             }
 
 
             ticketSales = sm.GetTicketSalesStatistics(filter, "zoo", filter2, date.Month);
             onlineTicketSales = sm.GetTicketSalesStatistics(filter, "online", filter2, date.Month);
 
-            myChart.ChartAreas.Add(new ChartArea());
+            
 
             myChart.Series.Add(name: "Tickets bought at the zoo");
             myChart.Series.Add(name: "Tickets bought online");
             myChart.Legends.Add(name: "Tickets");
-            myChart.ChartAreas[0].AxisX.Title = filter;
+
+           
+            
             myChart.ChartAreas[0].AxisY.Title = "Number of tickets";
 
             for (int i = 0; i < ticketSales.Count; i++)
@@ -74,6 +84,7 @@ namespace ZooBazzar_Group03.Forms
         private void rbYearlyStats_CheckedChanged(object sender, EventArgs e)
         {
             filter = "YEAR";
+            filter2 = null;
         }
 
         private void rbMonthlyStats_CheckedChanged(object sender, EventArgs e)
@@ -94,23 +105,31 @@ namespace ZooBazzar_Group03.Forms
 
             Chart myChart = new Chart();
             myChart.Dock = DockStyle.Fill;
+            myChart.ChartAreas.Add(new ChartArea());
 
             if (filter2 == "MONTH")
             {
                 income = sm.GetIncome(filter, filter2, date.Month);
+                myChart.ChartAreas[0].AxisX.Title = date.ToString("MMMM");
             }
             else if (filter2 == "YEAR")
             {
                 income = sm.GetIncome(filter, filter2, date.Year);
+                myChart.ChartAreas[0].AxisX.Title = date.ToString("yyyy");
+            }
+            else
+            {
+                income = sm.GetIncome(filter, null, 0);
+                myChart.ChartAreas[0].AxisX.Title = filter;
             }
             
 
-            myChart.ChartAreas.Add(new ChartArea());
+            
 
             myChart.Series.Add(name: "Income of the zoo in euro");
             myChart.Series[0].ChartType = SeriesChartType.Line;
             myChart.Legends.Add(name: "Income");
-            myChart.ChartAreas[0].AxisX.Title = filter;
+            
             myChart.ChartAreas[0].AxisY.Title = "Income in euros";
 
             for (int i = 0; i < income.Count; i++)
@@ -125,6 +144,11 @@ namespace ZooBazzar_Group03.Forms
         private void dtp_ValueChanged(object sender, EventArgs e)
         {
             date = dtp.Value;
+        }
+
+        private void btnNrOfVisitors_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

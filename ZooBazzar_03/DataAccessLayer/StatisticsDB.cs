@@ -13,13 +13,24 @@ namespace DataAccessLayer
 
             try
             {
-                string sql = $"SELECT {filter}(dateOfPerchese) as date, COUNT(*) as count FROM ticket  WHERE placeOfPurchase = @place AND {filter2}(dateOfPerchese) = {value} GROUP BY {filter}(dateOfPerchese);";
+                string sql = null;
+
+                if (filter2 == null && value == 0)
+                {
+                    sql = $"SELECT {filter}(dateOfPerchese) as date, COUNT(*) as count FROM ticket  WHERE placeOfPurchase = @place GROUP BY {filter}(dateOfPerchese);";
+                }
+                else
+                {
+                    sql = $"SELECT {filter}(dateOfPerchese) as date, COUNT(*) as count FROM ticket  WHERE placeOfPurchase = @place AND {filter2}(dateOfPerchese) = {value} GROUP BY {filter}(dateOfPerchese);";
+                }
+
+
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("place", place);
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
 
-                
+
                 while (reader.Read())
                 {
                     tickets.Add(Convert.ToInt32(reader["date"]), Convert.ToInt32(reader["count"]));
@@ -44,13 +55,22 @@ namespace DataAccessLayer
 
         public Dictionary<int, double> GetIncome(string filter, string filter2, int value)
         {
-           
+
             Dictionary<int, double> income = new Dictionary<int, double>();
 
             try
             {
-                string sql = $"SELECT {filter}(dateOfPerchese) as date, SUM(price) as sum FROM ticket WHERE {filter2}(dateOfPerchese) = {value} GROUP BY {filter}(dateOfPerchese)";
+                string sql = null;
 
+                if (filter2 == null && value == 0)
+                {
+                    sql = $"SELECT {filter}(dateOfPerchese) as date, SUM(price) as sum FROM tickets GROUP BY {filter}(dateOfPerchese)";
+                }
+                else
+                {
+
+                    sql = $"SELECT {filter}(dateOfPerchese) as date, SUM(price) as sum FROM ticket WHERE {filter2}(dateOfPerchese) = {value} GROUP BY {filter}(dateOfPerchese)";
+                }
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
