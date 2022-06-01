@@ -49,6 +49,8 @@
             this.tbBirthdate = new System.Windows.Forms.TextBox();
             this.cbAnimalType = new System.Windows.Forms.ComboBox();
             this.cbDiet = new System.Windows.Forms.ComboBox();
+            this.btnShowNotes = new System.Windows.Forms.Button();
+            this.btnAddNote = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblID
@@ -225,6 +227,26 @@
             this.cbDiet.Size = new System.Drawing.Size(125, 28);
             this.cbDiet.TabIndex = 29;
             // 
+            // btnShowNotes
+            // 
+            this.btnShowNotes.Location = new System.Drawing.Point(398, 270);
+            this.btnShowNotes.Name = "btnShowNotes";
+            this.btnShowNotes.Size = new System.Drawing.Size(226, 57);
+            this.btnShowNotes.TabIndex = 30;
+            this.btnShowNotes.Text = "Show notes";
+            this.btnShowNotes.UseVisualStyleBackColor = true;
+            this.btnShowNotes.Click += new System.EventHandler(this.btnShowNotes_Click);
+            // 
+            // btnAddNote
+            // 
+            this.btnAddNote.Location = new System.Drawing.Point(398, 333);
+            this.btnAddNote.Name = "btnAddNote";
+            this.btnAddNote.Size = new System.Drawing.Size(226, 57);
+            this.btnAddNote.TabIndex = 31;
+            this.btnAddNote.Text = "Add note";
+            this.btnAddNote.UseVisualStyleBackColor = true;
+            this.btnAddNote.Click += new System.EventHandler(this.btnAddNote_Click);
+            // 
             // AnimalInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -232,6 +254,8 @@
             this.BackgroundImage = global::ZooBazzar_Group03.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(671, 496);
+            this.Controls.Add(this.btnAddNote);
+            this.Controls.Add(this.btnShowNotes);
             this.Controls.Add(this.cbDiet);
             this.Controls.Add(this.cbAnimalType);
             this.Controls.Add(this.tbBirthdate);
@@ -286,5 +310,7 @@
         private TextBox tbBirthdate;
         private ComboBox cbAnimalType;
         private ComboBox cbDiet;
+        private Button btnShowNotes;
+        private Button btnAddNote;
     }
 }

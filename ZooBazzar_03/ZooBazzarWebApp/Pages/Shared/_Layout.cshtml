@@ -25,6 +25,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>
+                          <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/ChangeCredentials">Change Details</a>
+                        </li>
+                            <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Profile">Profile</a>
+                        </li>
                         @if (!User.IsInRole("Resourceplanner"))
                         {
                             <li class="nav-item">
@@ -34,6 +40,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Settings">Settings</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>

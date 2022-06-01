@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public interface IAutoIncrementable
+    public enum TypeOfTicket
     {
-        public int GetNextID();
+        Adult,
+        Child
     }
 }

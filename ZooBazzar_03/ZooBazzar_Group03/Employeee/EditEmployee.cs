@@ -17,7 +17,7 @@ namespace ZooBazzar_Group03.Employeee
     {
         Employee employee;
         EmployeeManagment managment = new EmployeeManagment(new EmployeeDB());
-        int index;
+        private int index;
         public EditEmployee(int index)
         {
             InitializeComponent();

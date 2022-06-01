@@ -12,9 +12,6 @@ namespace Entities
         public void Add(T obj);
         public List<T> Read();
         public void Update(int id, T obj);
-        public void Delete(int id);
-        void ChangePassword(string username, string password);
-        string GetEmployeeWorkPositionByAccount(string username);
-     
+            
     }
 }

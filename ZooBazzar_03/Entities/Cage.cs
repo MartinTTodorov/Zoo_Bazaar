@@ -20,12 +20,10 @@ namespace Entities
 
         //Properties
         public List<Animal> CageAnimals { get { return cageAnimals; } set { cageAnimals = value; } }
-        public AnimalType Type { get { return type; } }
         public int Capacity { get { return capacity; } }
         public int AnimalsOutside { get { return animalsOutside; } }
         public int AnimalsInside { get { return animalsInside; } }
         public int CageNumber { get { return cageNumber; } }
-        public string Species { get { return species; } }
 
         public Cage(int cageNumber, int capacity, int animalsOutside, int animalsInside, AnimalType type, string species)
         {

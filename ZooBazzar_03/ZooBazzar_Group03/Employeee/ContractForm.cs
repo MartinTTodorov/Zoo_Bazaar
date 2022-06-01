@@ -71,5 +71,45 @@ namespace ZooBazzar_Group03.Employeee
             }
             return true;
         }
+
+        private void lblFTE_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEndDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblStartDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbReason_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbFte_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblReason_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

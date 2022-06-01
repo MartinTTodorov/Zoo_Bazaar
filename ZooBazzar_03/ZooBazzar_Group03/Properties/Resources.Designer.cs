@@ -63,6 +63,16 @@ namespace ZooBazzar_Group03.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap approved_request {
+            get {
+                object obj = ResourceManager.GetObject("approved_request", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Background {
             get {
                 object obj = ResourceManager.GetObject("Background", resourceCulture);
@@ -86,6 +96,16 @@ namespace ZooBazzar_Group03.Properties {
         internal static System.Drawing.Bitmap BackGroundNewEmployee {
             get {
                 object obj = ResourceManager.GetObject("BackGroundNewEmployee", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackgroundTimetables {
+            get {
+                object obj = ResourceManager.GetObject("BackgroundTimetables", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +173,39 @@ namespace ZooBazzar_Group03.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cows_g2d73e9cad_1920 {
+            get {
+                object obj = ResourceManager.GetObject("cows-g2d73e9cad_1920", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap EmployeeManagmentBackground {
+            get {
+                object obj = ResourceManager.GetObject("EmployeeManagmentBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fish {
             get {
                 object obj = ResourceManager.GetObject("fish", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LandingPage {
+            get {
+                object obj = ResourceManager.GetObject("LandingPage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +226,26 @@ namespace ZooBazzar_Group03.Properties {
         internal static System.Drawing.Bitmap Lion {
             get {
                 object obj = ResourceManager.GetObject("Lion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_zooBazzar {
+            get {
+                object obj = ResourceManager.GetObject("logo_zooBazzar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logout_pic {
+            get {
+                object obj = ResourceManager.GetObject("logout_pic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,6 +283,26 @@ namespace ZooBazzar_Group03.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap penguin_g6eb030e6d_1280 {
+            get {
+                object obj = ResourceManager.GetObject("penguin-g6eb030e6d_1280", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reject_request {
+            get {
+                object obj = ResourceManager.GetObject("reject_request", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap RemoveEmployeeBackground {
             get {
                 object obj = ResourceManager.GetObject("RemoveEmployeeBackground", resourceCulture);
@@ -223,9 +313,29 @@ namespace ZooBazzar_Group03.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rhinoceros_g4cd4a45ea_1920 {
+            get {
+                object obj = ResourceManager.GetObject("rhinoceros-g4cd4a45ea_1920", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap schedule {
             get {
                 object obj = ResourceManager.GetObject("schedule", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SettingsBackground {
+            get {
+                object obj = ResourceManager.GetObject("SettingsBackground", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

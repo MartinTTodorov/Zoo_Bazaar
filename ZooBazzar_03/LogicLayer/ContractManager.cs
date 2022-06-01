@@ -23,6 +23,13 @@ namespace LogicLayer
 
         public void AddContract(EmployeeContract ec, Employee employee)
         {
+            foreach (EmployeeContract employeeContract in contractDataManagement.GetContracts(employee))
+            {
+                if (employeeContract.IsValid == true)
+                {
+                    DisableContract(employeeContract);
+                }
+            }
             contractDataManagement.AddContract(ec, employee);
             employee.AssignContract(ec);
             contracts.Add(ec);

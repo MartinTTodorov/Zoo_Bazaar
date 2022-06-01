@@ -1,0 +1,20 @@
+﻿@page
+@model ZooBazzarWebApp.Pages.ProfileModel
+@{
+    Employee e = Model.employee;
+}
+@using Entities;
+
+
+<div class="personalInfo">
+
+    <p>Name: @e.Name </p>
+    <p> Last Name: @e.Lastname</p>
+    <p>Email: @e.Email</p>
+    <p> Address: @e.Address</p>
+    <p>Birthdate: @e.Birthdate.ToShortDateString()</p>
+    <p>Phone: @e.Phone</p>
+    <p> Emergency Contact: @e.EmargencyContact</p>
+    <p>  BSN: @e.Bsn</p>
+
+</div>

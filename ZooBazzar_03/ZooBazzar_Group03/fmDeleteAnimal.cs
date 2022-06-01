@@ -18,11 +18,13 @@ namespace ZooBazzar_Group03
         Animal animal;
         AnimalManager animalManager = new AnimalManager(new AnimalDB());
         MainManu menu;
-        public fmDeleteAnimal(Animal animal, MainManu menu)
+
+        // Need of improvment 
+        public fmDeleteAnimal(Animal animal)
         {
             InitializeComponent();
             this.animal = animal;
-            this.menu = menu;
+            this.menu = menu; // I delete it in order to work
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -33,10 +35,11 @@ namespace ZooBazzar_Group03
             }
             else
             {
-                //animal.ReasonForDeparture = tbReasonForDeparture.Text;
+                animal.ReasonForDeparture = tbReasonForDeparture.Text;
                 animalManager.DeleteAnimal(animal);
-                menu.UpdateAnimals();
+               // menu.UpdateAnimals();
             }
+            this.Dispose();
         }
 
         private void fmDeleteAnimal_FormClosing(object sender, FormClosingEventArgs e)

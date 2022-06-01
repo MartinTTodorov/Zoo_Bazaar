@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entities;
+﻿using Entities;
 
 
 namespace LogicLayer
@@ -14,7 +9,7 @@ namespace LogicLayer
         public event ChangedEmployeeEventHandler ChangedEmployee;
 
 
-        private List<Employee> employees = new List<Employee>();
+        private static List<Employee> employees = new List<Employee>();
         ICRUD<Employee> crud;
         public EmployeeManagment(ICRUD<Employee> crud)
         {
@@ -30,6 +25,9 @@ namespace LogicLayer
         
         public bool AddEmployee(Employee employee)
         {
+            if(employees == null)
+                employees = new List<Employee>();
+
             if (!employees.Contains(employee))
             {
                 crud.Add(employee);
@@ -38,20 +36,7 @@ namespace LogicLayer
                 return true;
             }
             return false;
-        }
-
-        public bool RemoveEmployee(int index)
-        {                        
-                if (index >=0)
-                {
-                    DataRefresh();
-                crud.Delete(employees[index].Id);
-                    employees.RemoveAt(index);
-                    OnChangedEmployee();
-                    return true ;
-               }
-               return false;                   
-        }
+        }       
         public List<Employee> GetEmployees()
         {
             return employees;
@@ -122,9 +107,19 @@ namespace LogicLayer
             }
         }
 
-        public void ChangeCredentials(Employee e)
+        public Employee GetEmployee(string EmployeeName)
         {
-            //crud.ChangeCredentials(e);
+            return employees.Find(x => x.Name == EmployeeName);
+        }
+
+        public Employee GetEmployeeById(int id)
+        {
+            return employees.Find(x => x.Id == id);
+        }
+
+        public Employee GetEmployeeByUsername(string username)
+        {
+            return employees.Find(x => x.Account.Username == username);
         }
     }
 }

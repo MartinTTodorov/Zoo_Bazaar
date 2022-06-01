@@ -58,6 +58,11 @@ namespace Entities
             contracts = new List<EmployeeContract>();
         }
 
+         public Employee()
+        {
+
+        }
+
         public void AssignContract(EmployeeContract ec)
         {
             contracts.Add(ec);
@@ -71,6 +76,11 @@ namespace Entities
         public virtual string GetWorkingPosition()
         {
             return " ";
+        }
+
+        public string GetNames()
+        {
+            return $"{Name} {Lastname}";
         }
     }
 }

@@ -15,16 +15,17 @@ namespace ZooBazzar_Group03
 {
     public partial class AnimalPic : UserControl
     {
-        private Animal animal;
-        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
-        MainManu menu;
-        string workposition;
-        public AnimalPic(Animal animal, MainManu menu, string workposition)
+        private Animal animal;             
+        private string workposition;
+        private FlowLayoutPanel panel;
+
+        public AnimalPic(Animal animal, string workposition, FlowLayoutPanel panel)
         {
             InitializeComponent();
-            this.animal = animal;
-            this.menu = menu;
+
+            this.animal = animal;        
             this.workposition = workposition;
+            this.panel = panel;
             if (workposition != "Manager")
             {
                 btnRemoveAnimal.Visible = false;
@@ -34,18 +35,18 @@ namespace ZooBazzar_Group03
         private void AnimalPic_Load(object sender, EventArgs e)
         {
             lblName.Text = animal.Name;
-            if (animalManager.HasImage(animal))
-            {
-                MemoryStream ms = animalManager.GetMemoryStream(animal.AnimalCode);
-                pbAnimal.Image = Image.FromStream(ms);
-            }
+            //if (animalManager.HasImage(animal))
+            //{
+            //    MemoryStream ms = animalManager.GetMemoryStream(animal.AnimalCode);
+            //    pbAnimal.Image = Image.FromStream(ms);
+            //}
         }
 
         private void pbAnimal_Click(object sender, EventArgs e)
         {
             if (workposition == "Manager")
             {
-                AnimalInfo animalInfo = new AnimalInfo(animal, menu);
+                AnimalInfo animalInfo = new AnimalInfo(animal,panel); ;
                 animalInfo.Show();
 
             }
@@ -53,7 +54,7 @@ namespace ZooBazzar_Group03
 
         private void btnRemoveAnimal_Click(object sender, EventArgs e)
         {
-            fmDeleteAnimal deleteAnimal = new fmDeleteAnimal(this.animal, menu);
+            fmDeleteAnimal deleteAnimal = new fmDeleteAnimal(this.animal);
             deleteAnimal.Show();
         }
     }
