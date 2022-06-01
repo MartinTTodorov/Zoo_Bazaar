@@ -24,7 +24,7 @@ namespace ZooBazzar_Group03
             InitializeComponent();
             cbSpecialization.Visible = false;
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
-            cbPosition.DataSource = new[] { "Caretaker", "Manager", "Resourceplanner" };
+            cbPosition.DataSource = new[] { "Caretaker", "Manager", "Resourceplanner, Salesman" };
             account = newAccount;
         }
 
@@ -46,6 +46,14 @@ namespace ZooBazzar_Group03
                     Employee manager = new Manager(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
                     managment.AddEmployee( manager);
                     ContractForm newContract = new ContractForm(manager);
+                    newContract.Show();
+                    this.Hide();
+                }
+                else if (cbPosition.SelectedItem.ToString() == "Salesman")
+                {
+                    Employee salesman = new SalesMan(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                    managment.AddEmployee(salesman);
+                    ContractForm newContract = new ContractForm(salesman);
                     newContract.Show();
                     this.Hide();
                 }

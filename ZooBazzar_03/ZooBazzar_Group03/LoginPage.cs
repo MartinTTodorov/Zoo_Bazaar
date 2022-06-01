@@ -7,9 +7,10 @@ namespace ZooBazzar_Group03
     public partial class LoginPage : Form
     {
         private AccountManager accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
+        private EmployeeManagment em = new EmployeeManagment(new EmployeeDB());
         public LoginPage()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -18,10 +19,20 @@ namespace ZooBazzar_Group03
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Account temp = accountManager.GetAccountByUsername(tbUsername.Text);
-            
-            if(temp != null && temp.Password == PasswordHasher.HashPassword(tbPassword.Text + temp.Salt))
+            Account temp = accountManager.GetAccountByUsername2(tbUsername.Text);
+            Employee employee = em.GetEmployeeById(temp.Id);
+
+            if (temp != null && temp.Password == PasswordHasher.HashPassword(tbPassword.Text + temp.Salt))
             {
+                if (employee is SalesMan)
+                {
+                    this.Hide();
+                    TicketForm ticketForm = new TicketForm();
+                    ticketForm.Show();
+                    tbPassword.Text = string.Empty;
+                    tbUsername.Text = string.Empty;
+                    return;
+                }
                 this.Hide();
                 MainManu mainManu = new MainManu(temp);
                 mainManu.Show();
@@ -34,7 +45,6 @@ namespace ZooBazzar_Group03
                 MessageBox.Show("Apperently it seems that unfortunately you don't have an account, sadly, and the database doesn't lie");
             }
         }
-       
 
 
 
@@ -45,7 +55,8 @@ namespace ZooBazzar_Group03
 
 
 
-     //Copyed code for draging the form without border & shadow effect -->
+
+        //Copyed code for draging the form without border & shadow effect -->
 
         private bool Drag;
         private int MouseX;
@@ -148,7 +159,7 @@ namespace ZooBazzar_Group03
             if (cbVisible.Checked)
             {
                 tbPassword.UseSystemPasswordChar = false;
-               
+
             }
             else
             {
@@ -156,6 +167,6 @@ namespace ZooBazzar_Group03
             }
         }
 
-        
+
     }
 }

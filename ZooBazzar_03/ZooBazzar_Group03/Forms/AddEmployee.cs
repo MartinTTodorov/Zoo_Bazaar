@@ -68,6 +68,11 @@ namespace ZooBazzar_Group03.Forms
                     tempEmployee = new Manager(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
                   
                 }
+                else if (cbPosition.SelectedItem.ToString() == "Salesman")
+                {
+                    tempEmployee = new SalesMan(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+
+                }
                 else
                 {
                     tempEmployee = new ResourcePlanner(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);

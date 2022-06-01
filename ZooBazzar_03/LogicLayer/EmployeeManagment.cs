@@ -87,6 +87,10 @@ namespace LogicLayer
             {
                 return "Resource planner";
             }
+            else if (employee is SalesMan)
+            {
+                return "Salesman";
+            }
             else
             {
                 return "Manager";

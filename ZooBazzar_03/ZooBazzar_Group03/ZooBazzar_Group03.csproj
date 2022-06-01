@@ -32,6 +32,12 @@
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\SQL paketa\MySql.Data\MySql.Data.DLL</HintPath>
     </Reference>
+    <Reference Include="USB-Barcode-Scanner">
+      <HintPath>..\USB-Barcode-Scanner.dll</HintPath>
+    </Reference>
+    <Reference Include="Zen.Barcode.Core">
+      <HintPath>..\..\..\..\Scanner\Zen.Barcode.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

@@ -12,7 +12,7 @@ namespace LogicLayer
     {
         private ICRUD<Account> db;
         private IAccount auto;
-        private List<Account> accounts = new List<Account>();
+        private List<Account> accounts ;
         public List<Account> Accounts { get { return accounts; } }
         public AccountManager(ICRUD<Account> db, IAccount a)
         {
@@ -98,6 +98,11 @@ namespace LogicLayer
         public Account GetAccountByUsername(string username)
         {
             return auto.GetAccountByUsername(username);
+        }
+
+        public Account GetAccountByUsername2(string username)
+        {
+            return accounts.Find(x=>x.Username == username);
         }
 
         public bool isExisting(Account account)

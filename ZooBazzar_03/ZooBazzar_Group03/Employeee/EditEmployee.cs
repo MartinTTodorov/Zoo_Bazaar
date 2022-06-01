@@ -22,7 +22,7 @@ namespace ZooBazzar_Group03.Employeee
         {
             InitializeComponent();
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
-            cbPosition.DataSource = new[] { "Caretaker", "Manager", "Resourceplanner" };
+            cbPosition.DataSource = new[] { "Caretaker", "Manager", "Resourceplanner", "Salesman" };
 
             employee = managment.GetEmployees()[index];
             tbName.Text = employee.Name;
@@ -48,22 +48,27 @@ namespace ZooBazzar_Group03.Employeee
         {
             if (checkInput())
             {
-            if (cbPosition.SelectedItem.ToString() == "Caretaker")
-            {
-                Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), cbSpecialization.SelectedItem.ToString());
-                Caretaker caretaker = new Caretaker(employee.Account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, specialization);
-                managment.UpdateEmployee(index, caretaker);
-            }
-            else if (cbPosition.SelectedItem.ToString() == "Manager")
-            {
-                Manager manager = new Manager(employee.Account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
-                managment.UpdateEmployee(index, manager);
-            }
-            else
-            {
-                ResourcePlanner resourcePlanner = new ResourcePlanner(employee.Account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
-                managment.AddEmployee( resourcePlanner);
-            }
+                if (cbPosition.SelectedItem.ToString() == "Caretaker")
+                {
+                    Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), cbSpecialization.SelectedItem.ToString());
+                    Employee caretaker = new Caretaker(employee.Account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, specialization);
+                    managment.UpdateEmployee(index, caretaker);
+                }
+                else if (cbPosition.SelectedItem.ToString() == "Salesman")
+                {
+                    Employee salesman= new SalesMan(employee.Account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                    managment.UpdateEmployee(index, salesman);
+                }
+                else if (cbPosition.SelectedItem.ToString() == "Manager")
+                {
+                    Employee manager = new Manager(employee.Account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                    managment.UpdateEmployee(index, manager);
+                }
+                else
+                {
+                    Employee resourcePlanner = new ResourcePlanner(employee.Account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
+                    managment.AddEmployee(resourcePlanner);
+                }
 
             }
             else
