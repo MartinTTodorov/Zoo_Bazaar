@@ -17,7 +17,7 @@ namespace LogicLayer
         {
             this.crud = crud;
             cages = crud.GetCages();
-            InsertAnimalsInCage();
+            //InsertAnimalsInCage();
             
         }
 
