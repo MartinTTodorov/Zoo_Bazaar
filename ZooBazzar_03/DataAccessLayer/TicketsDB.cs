@@ -75,7 +75,7 @@ namespace DataAccessLayer
 
         public List<Ticket> Read()
         {
-            string sql = "SELECT t.id,typeTicket,date,dateOfPerchese,placeOfPurchase,price,isUsed,,dateOfUse,c.id,email,firstname,lastname FROM `ticket` as t INNER JOIN customer as c on t.cust_id = c.id";
+            string sql = "SELECT t.id,typeTicket,date,dateOfPerchese,placeOfPurchase,price,isUsed,dateOfUse,c.id,email,firstname,lastname FROM `ticket` as t INNER JOIN customer as c on t.cust_id = c.id";
             List<Ticket> tickets = new List<Ticket>();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -86,11 +86,31 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
+                    DateTime? date;
+                    DateTime? dateOfUse;
+                    if (reader[2] == DBNull.Value)
+                    {
+                        date = null;
+                    }
+                    else
+                    {
+                        date = Convert.ToDateTime(reader[2]);
+                    }
+
+
+
+                    if (reader[7] == DBNull.Value)
+                    {
+                        dateOfUse = null;
+                    }
+                    else
+                    {
+                        dateOfUse = Convert.ToDateTime(reader[7]);
+                    }
                     TypeOfTicket typeOfTicket = (TypeOfTicket)Enum.Parse(typeof(TypeOfTicket), reader[1].ToString(), true);
                     PlaceOfPerchase placeOfPerchase = (PlaceOfPerchase)Enum.Parse(typeof(PlaceOfPerchase), reader[4].ToString(), true);
                     Customer customer = new Customer(Convert.ToInt32(reader[8]), reader[9].ToString(), reader[10].ToString(), reader[11].ToString());
-
-                    Ticket ticket = new Ticket(Convert.ToInt32(reader[0]),customer, typeOfTicket, Convert.ToDateTime(reader[2]), Convert.ToDateTime(reader[3]), placeOfPerchase, Convert.ToDecimal(reader[5]), Convert.ToBoolean(reader[6]), Convert.ToDateTime(reader[7]));
+                    Ticket ticket = new Ticket(Convert.ToInt32(reader[0]), customer, typeOfTicket, date, Convert.ToDateTime(reader[3]), placeOfPerchase, Convert.ToDecimal(reader[5]), Convert.ToBoolean(reader[6]), dateOfUse);
                     tickets.Add(ticket);
                 }
                 return tickets;
@@ -123,13 +143,13 @@ namespace DataAccessLayer
             cmd.Parameters.Add("@isUsed", MySqlDbType.Int16).Value = obj.IsUsed;
             cmd.Parameters.Add("@PlaceOfPerchase", MySqlDbType.VarChar).Value = obj.PlaceOfPerchase;
             cmd.Parameters.Add("@Price", MySqlDbType.Decimal).Value = obj.Price;
-            cmd.Parameters.Add("@DateOfUse",MySqlDbType.DateTime).Value = obj.DateOfUse;
+            cmd.Parameters.Add("@DateOfUse", MySqlDbType.DateTime).Value = obj.DateOfUse;
 
             try
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                
+
             }
             catch (MySqlException ex)
             {

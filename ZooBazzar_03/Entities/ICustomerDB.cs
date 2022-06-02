@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public enum PlaceOfPerchase
+    public interface ICustomerDB
     {
-        online,
-        zoo
+        Customer GetCustomer(int id);
+
+        List<Customer> GetCustomers();
     }
 }

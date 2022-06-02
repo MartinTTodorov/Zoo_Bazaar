@@ -18,18 +18,6 @@ namespace Entities
         public string Email
         {
             get { return email; }
-            private set
-            {
-                if (!string.IsNullOrEmpty(value))
-                {
-                    Regex validateEmail = new Regex("?< user >[^@] +)@(?< host >.+)");
-                    if (!validateEmail.IsMatch(email.ToLower().ToString()))
-                    {
-                        throw new Exception("Invalid email");
-                    }
-
-                }
-            }
         }
         public string FirstName
         {
@@ -64,7 +52,7 @@ namespace Entities
         public Customer(int id, string email, string firstName, string lastName)
         {
             this.id = id;
-            this.Email = email;
+            this.email = email;
             this.FirstName = firstName;
             this.LastName = lastName;
         }
