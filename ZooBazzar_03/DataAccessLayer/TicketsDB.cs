@@ -129,21 +129,13 @@ namespace DataAccessLayer
 
         public void Update(Ticket obj)
         {
-            string sql = "UPDATE ticket SET cust_id = @CustID,typeTicket = @TypeOfTicket,date = @Date,dateOfPerchase = @DateOfPerchase,isUsed = @IsUsed,placeOfPerches = @PlaceOfPerchase,price = @Price,dateOfUse = @DateOfUse WHERE id == @ID";
+            string sql = "UPDATE ticket SET isUsed = @isUsed WHERE id = @id";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("id", obj.Id);
+            cmd.Parameters.AddWithValue("isUsed", true);
 
-            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = obj.Id;
-            cmd.Parameters.Add("@Cust_ID", MySqlDbType.Int32).Value = obj.Customer.Id;
-            cmd.Parameters.Add("@TypeOfTicket", MySqlDbType.VarChar).Value = obj.TypeOfTicket;
-            cmd.Parameters.Add("@Date", MySqlDbType.DateTime).Value = obj.Date;
-            cmd.Parameters.Add("@DateOfPerchase", MySqlDbType.DateTime).Value = obj.DateOfPurchase;
-            cmd.Parameters.Add("@isUsed", MySqlDbType.Int16).Value = obj.IsUsed;
-            cmd.Parameters.Add("@PlaceOfPerchase", MySqlDbType.VarChar).Value = obj.PlaceOfPerchase;
-            cmd.Parameters.Add("@Price", MySqlDbType.Decimal).Value = obj.Price;
-            cmd.Parameters.Add("@DateOfUse", MySqlDbType.DateTime).Value = obj.DateOfUse;
 
             try
             {

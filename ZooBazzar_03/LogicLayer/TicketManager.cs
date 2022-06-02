@@ -72,5 +72,14 @@ namespace LogicLayer
         {
             return tickets.Find(x => x.Id == id);
         }
+        public bool ChangeTicketStatus(Ticket t)
+        {
+            if (t.IsUsed == true)
+            {
+                return false;
+            }
+            crud.Update(t);
+            return true;
+        }
     }
 }
