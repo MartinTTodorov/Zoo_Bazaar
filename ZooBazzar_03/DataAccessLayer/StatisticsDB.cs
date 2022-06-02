@@ -137,23 +137,18 @@ namespace DataAccessLayer
         public Dictionary<int, int> GetPeople()
         {
 
-
-
             Dictionary<int, int> people = new Dictionary<int, int>();
-
 
 
             try
             {
-                string sql = "SELECT HOUR(dateOfUse) as time, COUNT(*) as peopleCount FROM `ticket` GROUP BY HOUR(dateOfUse)";
+                string sql = "SELECT HOUR(dateOfUse) as time, COUNT(*) as peopleCount FROM `ticket` WHERE dateOfUse IS NOT null GROUP BY HOUR(dateOfUse);";
 
 
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
-
-
 
 
                 while (reader.Read())

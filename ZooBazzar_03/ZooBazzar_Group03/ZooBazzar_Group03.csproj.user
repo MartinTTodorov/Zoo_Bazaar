@@ -67,6 +67,9 @@
     <Compile Update="Schedule\Schedule.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TicketForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ucAnimalNotes.cs">
       <SubType>UserControl</SubType>
     </Compile>
