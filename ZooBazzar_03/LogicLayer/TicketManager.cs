@@ -9,22 +9,51 @@ namespace LogicLayer
 {
     public class TicketManager
     {
+        //Fields
+        private ICRU<Ticket> crud;
+        private IAutoIncrementable auto;
         private List<Ticket> tickets;
         public IList<Ticket> Tickets { get { return tickets.AsReadOnly(); } }
 
-        public TicketManager()
+        //Constructor
+        public TicketManager(ICRU<Ticket>crud,IAutoIncrementable auto)
         {
             tickets = new List<Ticket>();
+            this.auto = auto;
+            this.crud = crud;
         }
 
+        //Methods
         public void AddTicket(Ticket ticket)
         {
+            Ticket temp = new Ticket(auto.GetNexID(),ticket.Customer,ticket.TypeOfTicket,ticket.Date,ticket.PlaceOfPerchase,ticket.Price);
             tickets.Add(ticket);
+            crud.Add(ticket);
         }
 
-        public void UpdateTicket(int id)
+        public void UseTicket(int id)
         {
-            tickets.Find(t => t.Id == id).UseTicket();
+            for (int i = 0; i < tickets.Count; i++)
+            {
+                if (tickets[i].Id == id)
+                {
+                    tickets[i].UseTicket();
+                    crud.Update(tickets[i]);
+                }
+            }
+            
+        }
+
+        public void Update(Ticket ticket)
+        {
+            crud.Update(ticket);
+            for (int i = 0; i < tickets.Count; i++)
+            {
+                if(tickets[i].Id == ticket.Id)
+                {
+                    tickets[i] = ticket;
+                }
+            }
         }
     }
 }

@@ -53,7 +53,7 @@ namespace UnitTesting
         [TestMethod]
         public void AddEmployee()
         {
-            employeeManagment.AddEmployee(new Manager(new Account("Peppa", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888"));
+            employeeManagment.AddEmployee(new Employee(new Account("Peppa", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888","Manager"));
             
             Assert.IsTrue(employeeManagment.GetEmployees().Any(a => a.Name == "Peppa"));
         }
@@ -61,11 +61,11 @@ namespace UnitTesting
         [TestMethod]
         public void GetCaretakersBySpecialization()
         {
-            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888", Specialization.Mammalogist));
-            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa01", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888", Specialization.Ichthyologist));
-            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa02", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888", Specialization.Entomologist));
-            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa03", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888", Specialization.Ornithologist));
-            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa04", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888", Specialization.Mammalogist));
+            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888","Caretaker", Specialization.Mammalogist));
+            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa01", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888", "Caretaker", Specialization.Ichthyologist));
+            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa02", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888", "Caretaker", Specialization.Entomologist));
+            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa03", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888", "Caretaker", Specialization.Ornithologist));
+            employeeManagment.AddEmployee(new Caretaker(new Account("Peppa04", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888", "Caretaker", Specialization.Mammalogist));
 
             Assert.IsFalse(employeeManagment.CaretakersBySpecialization(Specialization.Mammalogist).Any(c => c.GetSpecialization() != Specialization.Mammalogist));
         }

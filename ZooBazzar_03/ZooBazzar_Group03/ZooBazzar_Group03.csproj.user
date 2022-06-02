@@ -10,21 +10,6 @@
     <Compile Update="AnimalPic.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Employeee\Account\NewAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Employeee\ContractForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Employeee\EditEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Employeee\NewEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Employeee\ucEmployee.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="fmAddNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +65,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ucAnimalNotes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ucEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

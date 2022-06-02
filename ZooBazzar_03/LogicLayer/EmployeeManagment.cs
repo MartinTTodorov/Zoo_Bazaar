@@ -10,8 +10,9 @@ namespace LogicLayer
 
 
         private static List<Employee> employees = new List<Employee>();
-        ICRUD<Employee> crud;
-        public EmployeeManagment(ICRUD<Employee> crud)
+        private ICRU<Employee> crud;
+        public IList<Employee> Employees { get { return employees.AsReadOnly(); } } 
+        public EmployeeManagment(ICRU<Employee> crud)
         {
             this.crud = crud;
             employees = crud.Read();
@@ -28,11 +29,10 @@ namespace LogicLayer
             if(employees == null)
                 employees = new List<Employee>();
 
-            if (!employees.Contains(employee))
+            if (!employees.Any(e => e == employee))
             {
                 crud.Add(employee);
-                employees.Add(employee);
-                OnChangedEmployee();
+                employees.Add(employee);            
                 return true;
             }
             return false;
@@ -70,41 +70,17 @@ namespace LogicLayer
             return result;
         }
 
-        protected virtual void OnChangedEmployee()
+          
+        public void UpdateEmployee(Employee employee)
         {
-            if (ChangedEmployee != null)
-                ChangedEmployee();
-        }
+            
+            if(employee != null)
+            {
+                crud.Update(employee);
+                employees[employees.FindLastIndex(e => employee.Id == employee.Id)] = employee;            
 
-        private string positionCheck(Employee employee)
-        {
-            if (employee is Caretaker caretaker)
-            {
-
-                return caretaker.GetSpecialization().ToString();
             }
-            else if (employee is ResourcePlanner)
-            {
-                return "Resource planner";
-            }
-            else
-            {
-                return "Manager";
-            }
-        }
-        public void DataRefresh()
-        {
-            employees = crud.Read();
-        }
-
-        public void UpdateEmployee(int index,Employee employee)
-        {
-            if(index >= 0)
-            {
-                crud.Update(employees[index].Id, employee);
-                employees[index] = employee;
-                OnChangedEmployee();
-            }
+            
         }
 
         public Employee GetEmployee(string EmployeeName)

@@ -1,27 +1,25 @@
 ﻿using Entities;
 using LogicLayer;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ZooBazzar_Group03.Employeee;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03.Forms
 {
     public partial class AddEmployee : Form
     {
         private Account account;
-        private EmployeeManagment managment;
-        public AddEmployee(Account account)
+        private EmployeeManagment managment = new EmployeeManagment(new EmployeeDB());
+        private Employee employee;
+        private Panel panel;
+
+        public AddEmployee(Account account, Panel panel)
         {
             InitializeComponent();
 
+            this.panel = panel;
             this.account = account;
+            this.cbPosition.DataSource = new string[] {"Caretaker","Manager","ResourcePlanner","Salesman"};
+            this.cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
+            this.cbSpecialization.Visible = false;
         }
         
         private bool checkInput()
@@ -55,35 +53,47 @@ namespace ZooBazzar_Group03.Forms
         {
             if (checkInput())
             {
-                Employee tempEmployee = null;
                 if (cbPosition.SelectedItem.ToString() == "Caretaker")
                 {
-                    Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), cbSpecialization.SelectedText);
-                    tempEmployee = new Caretaker(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, specialization);
-                    
-                   
-                }
-                else if (cbPosition.SelectedItem.ToString() == "Manager")
-                {
-                    tempEmployee = new Manager(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
-                  
+                    Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), cbSpecialization.SelectedItem.ToString());
+                    employee = new Caretaker(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, "Caretaker", specialization);
                 }
                 else
                 {
-                    tempEmployee = new ResourcePlanner(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text);
-                   
+                    employee = new Employee(account, tbName.Text, tbLastname.Text, tbAddress.Text, dtpDateOfBirth.Value, tbEmail.Text, tbPhone.Text, tbEmergencyCon.Text, tbBSN.Text, $"{cbPosition.Text}");
+
                 }
+                
 
-                managment.AddEmployee(tempEmployee);
-                ContractForm newContract = new ContractForm(tempEmployee);
+                managment.AddEmployee(employee);
+                AddContract contractForm = new AddContract(managment.Employees.First(e => e.Name == employee.Name && e.Birthdate == employee.Birthdate ));
+                contractForm.TopLevel = false;
+                contractForm.FormBorderStyle = FormBorderStyle.None;
+                contractForm.Dock = DockStyle.Fill;
+                panel.Controls.Clear();
+                panel.Controls.Add(contractForm);
+                panel.Tag = contractForm;
+                contractForm.BringToFront();
+                contractForm.Show();
+               
 
-                // display it
-                newContract.Show();
                 this.Hide();
             }
             else
             {
                 MessageBox.Show("Please enter all the fields!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbPosition_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbPosition.Text == "Caretaker")
+            {
+                cbSpecialization.Visible = true;
+            }
+            else
+            {
+                cbSpecialization.Visible = false;
             }
         }
     }

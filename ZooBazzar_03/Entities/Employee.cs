@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public abstract class Employee
+    public class Employee
     {
-        
-
+        //Fields
         private Account account;
         private string firstname;
         private string lastname;
@@ -20,9 +19,11 @@ namespace Entities
         private string email;
         private string emergencyContact;
         private string bsn;
+        private string workposition;
         private int id;
         private List<EmployeeContract> contracts;
 
+        public int Id { get { return id; } }
         public Account Account { get { return account; } }
         public string Name { get { return firstname; } }
         public string Lastname { get { return lastname; } }
@@ -32,12 +33,15 @@ namespace Entities
         public string EmargencyContact { get { return emergencyContact; } }
         public string Bsn { get { return bsn; } }
         public string Email { get { return email; } }
-        public int Id { get { return id; } set { id = value; } }
+        public string WorkingPosition { get { return workposition; } }
 
         public List<EmployeeContract> Contracts { get { return this.contracts; } }
-        protected Employee(Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn)
+
+        //Constructor
+        public Employee(Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn,string workposition)
         {
             this.account = account;
+            this.id = account.Id;
             this.firstname = name;
             this.lastname = lastname;
             this.address = address;
@@ -45,24 +49,17 @@ namespace Entities
             this.email = email;
             this.phone = phone;
             this.emergencyContact = emergencyContact;
+            this.workposition = workposition;
             this.bsn = bsn;
             contracts = new List<EmployeeContract>();
         }
 
-
-
-        protected Employee(int id, string name)
-        {
-            this.id = id;
-            this.firstname = name;
-            contracts = new List<EmployeeContract>();
-        }
-
-         public Employee()
+        public Employee(int id,string name)
         {
 
         }
-
+       
+        //Methods
         public void AssignContract(EmployeeContract ec)
         {
             contracts.Add(ec);
@@ -70,14 +67,8 @@ namespace Entities
 
         public override string ToString()
         {
-            return $"{Name} Id:{Id}";
+            return $"{Name} {Lastname} - {WorkingPosition}";
         }
-
-        public virtual string GetWorkingPosition()
-        {
-            return " ";
-        }
-
         public string GetNames()
         {
             return $"{Name} {Lastname}";

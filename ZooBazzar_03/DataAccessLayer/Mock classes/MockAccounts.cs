@@ -2,7 +2,7 @@
 
 namespace DataAccessLayer
 {
-    public class MockAccounts : ICRUD<Account>, IAccount
+    public class MockAccounts : ICRU<Account>, IAccount
     {
         public void Add(Account obj)
         {
@@ -38,8 +38,7 @@ namespace DataAccessLayer
         {
             return null;
         }
-
-        public void Update(int id, Account obj)
+        public void Update(Account obj)
         {
             
         }

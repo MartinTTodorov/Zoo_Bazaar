@@ -22,7 +22,7 @@ namespace LogicLayer
         int fullShiftHours = 6;
 
         IScheduleDB<DailySchedule> crud;
-        public ScheduleManager(IScheduleDB<DailySchedule> crud, ICRUD<Employee> employeeData, ICageDB<Cage> cageData, IContractDataManagement<EmployeeContract> contractData)
+        public ScheduleManager(IScheduleDB<DailySchedule> crud, ICRU<Employee> employeeData, ICageDB<Cage> cageData, IContractDataManagement<EmployeeContract> contractData)
         {
             this.crud = crud;
             em = new EmployeeManagment(employeeData);

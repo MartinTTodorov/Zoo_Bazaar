@@ -2,7 +2,7 @@
 
 namespace DataAccessLayer
 {
-    public class MockEmployeeDB : ICRUD<Employee>
+    public class MockEmployeeDB : ICRU<Employee>
     {
         public void Add(Employee obj)
         {
@@ -17,6 +17,11 @@ namespace DataAccessLayer
         public void Update(int id, Employee obj)
         {
             
+        }
+
+        public void Update(Employee obj)
+        {
+           
         }
     }
 }

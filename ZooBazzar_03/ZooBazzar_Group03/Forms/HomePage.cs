@@ -1,5 +1,5 @@
 ﻿using Entities;
-using ZooBazzar_Group03.Employeee;
+using ZooBazzar_Group03;
 
 namespace ZooBazzar_Group03.Forms
 {
@@ -35,7 +35,7 @@ namespace ZooBazzar_Group03.Forms
         private void btnWorkPosition_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(cbWorkPosition.SelectedText))
-                updateUX(employees.FindAll(e => e.GetWorkingPosition() == cbWorkPosition.SelectedText));
+                updateUX(employees.FindAll(e => e.WorkingPosition == cbWorkPosition.SelectedText));
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

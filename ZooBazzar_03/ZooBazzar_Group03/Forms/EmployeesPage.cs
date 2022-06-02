@@ -29,7 +29,7 @@ namespace ZooBazzar_Group03.Forms
 
         private void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            openChildForm(new AddAccount(), sender);
+            openChildForm(new AddAccount(this.pContent), sender);
         }
 
                     

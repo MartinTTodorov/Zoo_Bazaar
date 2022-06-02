@@ -4,7 +4,7 @@ using Entities;
 
 namespace DataAccessLayer
 {
-    public class AccountManagerDB : ICRUD<Account>, IAccount
+    public class AccountManagerDB : ICRU<Account>, IAccount
     {
         private MySqlConnection conn;
 
@@ -91,13 +91,13 @@ namespace DataAccessLayer
             return accounts;
         }
 
-        public void Update(int id, Account obj)
+        public void Update(Account obj)
         {
             string sql = "UPDATE account SET Username = @Username, Password = @Password, Salt = @Salt WHERE AccountID = @ID"; 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = id;
+            cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = obj.Id;
             cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = obj.Username;
             cmd.Parameters.Add("@Password", MySqlDbType.VarChar).Value = obj.Password;
             cmd.Parameters.Add("@Salt", MySqlDbType.VarChar).Value = obj.Salt;
@@ -106,11 +106,11 @@ namespace DataAccessLayer
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Account updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show($"Can't update account{id}! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
             }
             finally { conn.Close(); }
         }
