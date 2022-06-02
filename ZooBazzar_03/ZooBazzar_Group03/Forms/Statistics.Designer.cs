@@ -36,6 +36,7 @@
             this.rbYearlyStats = new System.Windows.Forms.RadioButton();
             this.btnGetIncome = new System.Windows.Forms.Button();
             this.btnNrOfVisitors = new System.Windows.Forms.Button();
+            this.btnGetNumberOfVisitors = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panelStatistics
@@ -119,11 +120,22 @@
             this.btnNrOfVisitors.UseVisualStyleBackColor = true;
             this.btnNrOfVisitors.Click += new System.EventHandler(this.btnNrOfVisitors_Click);
             // 
+            // btnGetNumberOfVisitors
+            // 
+            this.btnGetNumberOfVisitors.Location = new System.Drawing.Point(21, 338);
+            this.btnGetNumberOfVisitors.Name = "btnGetNumberOfVisitors";
+            this.btnGetNumberOfVisitors.Size = new System.Drawing.Size(215, 29);
+            this.btnGetNumberOfVisitors.TabIndex = 11;
+            this.btnGetNumberOfVisitors.Text = "Get visitors";
+            this.btnGetNumberOfVisitors.UseVisualStyleBackColor = true;
+            this.btnGetNumberOfVisitors.Click += new System.EventHandler(this.btnGetNumberOfVisitors_Click);
+            // 
             // Statistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 430);
+            this.Controls.Add(this.btnGetNumberOfVisitors);
             this.Controls.Add(this.btnNrOfVisitors);
             this.Controls.Add(this.btnGetIncome);
             this.Controls.Add(this.rbYearlyStats);
@@ -149,5 +161,6 @@
         private RadioButton rbYearlyStats;
         private Button btnGetIncome;
         private Button btnNrOfVisitors;
+        private Button btnGetNumberOfVisitors;
     }
 }
