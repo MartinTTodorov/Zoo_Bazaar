@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public interface ITicketDB
+    public interface ICustomerDB
     {
-        List<Ticket> GetTickets();
-        void ChangeTicketStatus(Ticket t);
-        Customer GetCustomer(string email);
+        Customer GetCustomer(int id);
 
+        List<Customer> GetCustomers();
     }
 }

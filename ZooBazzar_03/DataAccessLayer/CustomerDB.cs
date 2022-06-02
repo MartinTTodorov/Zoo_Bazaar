@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class CustomerDB
+    public class CustomerDB: ICustomerDB
     {
         private MySqlConnection conn;
 
@@ -45,5 +45,43 @@ namespace DataAccessLayer
             }
             return null;
         }
+
+        public List<Customer> GetCustomers()
+        {
+            string sql = "SELECT * from customer";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            CustomerDB cdb = new CustomerDB();
+            try
+            {
+                conn.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                List<Customer> customers = new List<Customer>();
+
+
+                while (reader.Read())
+                {
+                    customers.Add(new Customer(Convert.ToInt32(reader["id"]), reader["email"].ToString(), reader["firstname"].ToString(), reader["lastname"].ToString()));
+
+                }
+                return customers;
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+            finally
+            {
+
+                conn.Close();
+            }
+            return null;
+        }
+
+
     }
 }

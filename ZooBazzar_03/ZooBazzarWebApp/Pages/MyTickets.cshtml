@@ -1,0 +1,20 @@
+﻿@page
+@model ZooBazzarWebApp.Pages.MyTicketsModel
+@{
+    Image img = Model.img;
+    TicketManager tm = Model.tm;
+}
+@using Zen;
+@using LogicLayer;
+@using Entities;
+@using System.Security.Claims;
+
+
+@foreach (Ticket t in tm.GetTickets(tm.GetCustomer(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value)))
+{
+    <div class="ticket">
+        <img src=@Model.ConvertImageToUrl(t.Id) alt="Barcode" />
+        <p>@t.Customer.Email</p>
+        <p>@t.TypeOfTicket</p>
+    </div>
+}

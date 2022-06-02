@@ -15,6 +15,7 @@ namespace Entities
        // private DateTime? date;
         private DateTime dateOfPurchase;
         private string placeOfPurchase;
+        private bool isUsed;
 
         //Properties
 
@@ -24,8 +25,9 @@ namespace Entities
       //  public DateTime? Date { get { return this.date; } }
         public DateTime DateOfPurchase { get { return this.dateOfPurchase; } }
         public string PlaceOfPurchase { get { return this.placeOfPurchase; } }
+        public bool IsUsed { get { return this.isUsed; } }
 
-        public Ticket(int id, Customer customer, TypeOfTicket typeOfTicket, DateTime dateOfPurchase, string placeOfPurchase)
+        public Ticket(int id, Customer customer, TypeOfTicket typeOfTicket, DateTime dateOfPurchase, string placeOfPurchase, bool isUsed)
         {
             this.id = id;
             this.customer = customer;   
@@ -33,8 +35,11 @@ namespace Entities
            // this.date = date;
             this.dateOfPurchase = dateOfPurchase;
             this.placeOfPurchase = placeOfPurchase;
-
+            this.isUsed = isUsed;
         }
+
+
+        
 
         public override string ToString()
         {

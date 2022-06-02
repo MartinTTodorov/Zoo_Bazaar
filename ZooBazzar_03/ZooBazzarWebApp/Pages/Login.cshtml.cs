@@ -12,6 +12,8 @@ namespace ZooBazzarWebApp.Pages
     public class LoginModel : PageModel
     {
         private AccountManager accountManager = new AccountManager(new AccountManagerDB(),new AccountManagerDB());
+        private TicketManager tm = new TicketManager(new TicketDB());
+        private CustomerManager cm = new CustomerManager(new CustomerDB());
 
         [BindProperty]
         public AccountDTO Account { get; set; }
@@ -21,7 +23,6 @@ namespace ZooBazzarWebApp.Pages
             if (ModelState.IsValid)
             {
                 Account temp = accountManager.GetAccountByUsername(Account.Username);
-
                 if (temp != null && temp.Password == PasswordHasher.HashPassword(Account.Password + temp.Salt))
                 {
                     return Login();
@@ -35,6 +36,7 @@ namespace ZooBazzarWebApp.Pages
             ClaimsIdentity identity = new ClaimsIdentity(new Claim[]
             {
                         new Claim(ClaimTypes.Name, Account.Username),
+                        new Claim(ClaimTypes.Email, cm.GetCustomer(accountManager.GetAccountByUsername(Account.Username).Id).Email),
                         new Claim(ClaimTypes.Role, accountManager.GetWorkPositionByAccount(Account.Username)),
                         new Claim("ID",accountManager.GetAccountByUsername(Account.Username).Id.ToString())
 

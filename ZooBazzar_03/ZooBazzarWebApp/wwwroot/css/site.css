@@ -64,3 +64,10 @@ span {
     display: block;
     justify-content: space-between;
 }
+
+.ticket{
+    border: 1px;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16) , 0 3px 6px rgba(0, 0, 0, 0.23)
+
+}
