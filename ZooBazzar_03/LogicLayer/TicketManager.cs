@@ -55,5 +55,10 @@ namespace LogicLayer
                 }
             }
         }
+
+        public Ticket GetTicket(int id)
+        {
+            return tickets.Find(x => x.Id == id);
+        }
     }
 }

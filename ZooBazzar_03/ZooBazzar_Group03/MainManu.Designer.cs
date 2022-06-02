@@ -45,6 +45,7 @@
             this.pTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pContent = new System.Windows.Forms.Panel();
+            this.btnStatistics = new System.Windows.Forms.Button();
             this.pMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pLogo.SuspendLayout();
@@ -54,6 +55,7 @@
             // pMenu
             // 
             this.pMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.pMenu.Controls.Add(this.btnStatistics);
             this.pMenu.Controls.Add(this.panel1);
             this.pMenu.Controls.Add(this.btnSettings);
             this.pMenu.Controls.Add(this.btnRequest);
@@ -291,6 +293,24 @@
             this.pContent.Size = new System.Drawing.Size(980, 571);
             this.pContent.TabIndex = 2;
             // 
+            // btnStatistics
+            // 
+            this.btnStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnStatistics.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStatistics.FlatAppearance.BorderSize = 0;
+            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatistics.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnStatistics.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnStatistics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStatistics.Location = new System.Drawing.Point(0, 470);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(247, 60);
+            this.btnStatistics.TabIndex = 8;
+            this.btnStatistics.Text = "   Statistics";
+            this.btnStatistics.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStatistics.UseVisualStyleBackColor = true;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
+            // 
             // MainManu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -334,5 +354,6 @@
         private Label lblTime;
         private Panel pContent;
         private Button btnLogout;
+        private Button btnStatistics;
     }
 }

@@ -6,7 +6,6 @@ namespace LogicLayer
     {
 
         private IStatistics manager;
-
         public StatisticsManager(IStatistics manager)
         {
             this.manager = manager;
@@ -21,5 +20,11 @@ namespace LogicLayer
         {
             return manager.GetIncome(filter, filter2, value);
         }
+
+        public Dictionary<int, int> GetPeople()
+        {
+            return manager.GetPeople();
+        }
+
     }
 }

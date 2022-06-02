@@ -11,5 +11,7 @@ namespace Entities
         public Dictionary<int, int> GetTicketSales(string filter, string place, string filter2, int value);
 
         public Dictionary<int, double> GetIncome(string filter, string filter2, int value);
+
+        public Dictionary<int, int> GetPeople();
     }
 }

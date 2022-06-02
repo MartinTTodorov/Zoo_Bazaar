@@ -20,7 +20,7 @@ namespace ZooBazzar_Group03
         public TicketForm()
         {
             InitializeComponent();
-            tm = new TicketManager(new TicketDB());
+            tm = new TicketManager(new TicketsDB(),new TicketsDB());
             BarcodeScanner barcodeScanner = new BarcodeScanner(tbBarcode);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
         }

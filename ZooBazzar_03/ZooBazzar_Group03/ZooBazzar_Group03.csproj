@@ -15,8 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.0.0-preview2.22096.2" />
     <PackageReference Include="MySql.Data" Version="8.0.28" />
     <PackageReference Include="Renci.SshNet.Async" Version="1.4.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="System.Windows.Forms.DataVisualization" Version="1.0.0-prerelease.20110.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,6 +31,9 @@
   <ItemGroup>
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\SQL paketa\MySql.Data\MySql.Data.DLL</HintPath>
+    </Reference>
+    <Reference Include="USB-Barcode-Scanner">
+      <HintPath>..\USB-Barcode-Scanner.dll</HintPath>
     </Reference>
   </ItemGroup>
 

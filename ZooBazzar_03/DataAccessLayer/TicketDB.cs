@@ -33,7 +33,7 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    tickets.Add(new Ticket(Convert.ToInt32(reader["id"]), cdb.GetCustomer(Convert.ToInt32(reader["cust_id"])), (TypeOfTicket)Enum.Parse(typeof(TypeOfTicket), reader["typeTicket"].ToString()), Convert.ToDateTime(reader["dateOfPerchese"]), reader["placeOfPurchase"].ToString()));
+                   // tickets.Add(new Ticket(Convert.ToInt32(reader["id"]), cdb.GetCustomer(Convert.ToInt32(reader["cust_id"])), (TypeOfTicket)Enum.Parse(typeof(TypeOfTicket), reader["typeTicket"].ToString()), Convert.ToDateTime(reader["dateOfPerchese"]), reader["placeOfPurchase"].ToString()));
 
                 }
                 return tickets;
