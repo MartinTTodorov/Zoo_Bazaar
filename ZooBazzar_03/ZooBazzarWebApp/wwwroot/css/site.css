@@ -71,3 +71,11 @@ span {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16) , 0 3px 6px rgba(0, 0, 0, 0.23)
 
 }
+
+.buyTicket {
+    text-align: center;
+    margin-top: 5rem;
+    margin-left: 7rem;
+    margin-bottom: 5rem;
+    justify-content: space-between;
+}

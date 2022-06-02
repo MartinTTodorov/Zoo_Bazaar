@@ -21,14 +21,14 @@ namespace ZooBazzarWebApp.Pages
 
         public void OnGet()
         {
-            employee = (new EmployeeManagment(new EmployeeDB())).GetEmployees().Find(e => e.Id == Convert.ToInt32(User.FindFirst("ID").Value));
+            employee = em.GetEmployeeByUsername(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value);
         }
 
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
-                Employee currentEmployee = (new EmployeeManagment(new EmployeeDB())).GetEmployees().Find(e => e.Id == Convert.ToInt32(User.FindFirst("ID").Value));
+                Employee currentEmployee = em.GetEmployeeByUsername(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value);
                 RequestedEmployee re = new RequestedEmployee(currentEmployee.Id, Employee.Name, Employee.Lastname, Employee.Address, Employee.Birthdate, Employee.Email, Employee.Phone, Employee.EmargencyContact, Employee.Bsn);
                 rm.Add(re);
                 return RedirectToPage("Index");
