@@ -97,6 +97,5 @@ namespace LogicLayer
         {
             return employees.Find(x => x.Account.Username == username);
         }
-
     }
 }

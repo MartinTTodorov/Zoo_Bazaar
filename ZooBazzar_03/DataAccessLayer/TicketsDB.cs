@@ -19,19 +19,18 @@ namespace DataAccessLayer
         //Methods
         public void Add(Ticket obj)
         {
-            string sql = "INSERT INTO ticket (id,cust_id,typeTicket,date,dateOfPerchese,isUsed,placeOfPurchase,price,dateOfUse) VALUES (@ID,@Cust_ID,@TypeTicket,@Date,@DateOfPerchese,@IsUsed,@PlaceOfPurchase,@Price,@DateOfUse)";
+            string sql = "INSERT INTO account (id,cust_id,typeTicket,date,dateOfPerchase,isUsed,placeOfPerches,price,dateOfUse) VALUES (@ID,@Cust_ID,@TypeTicket,@Date,@DateOfPerchase,@IsUsed,@PlaceOfPerchase,@Price,@DateOfUse)";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
 
             cmd.Parameters.Add("@ID", MySqlDbType.Int32).Value = obj.Id;
             cmd.Parameters.Add("@Cust_ID", MySqlDbType.Int32).Value = obj.Customer.Id;
-            cmd.Parameters.Add("@TypeTicket", MySqlDbType.VarChar).Value = obj.TypeOfTicket;
+            cmd.Parameters.Add("@TypeOfTicket", MySqlDbType.VarChar).Value = obj.TypeOfTicket;
             cmd.Parameters.Add("@Date", MySqlDbType.DateTime).Value = obj.Date;
-            cmd.Parameters.Add("@DateOfPerchese", MySqlDbType.DateTime).Value = obj.DateOfPurchase;
+            cmd.Parameters.Add("@DateOfPerchase", MySqlDbType.DateTime).Value = obj.DateOfPurchase;
             cmd.Parameters.Add("@isUsed", MySqlDbType.Int16).Value = obj.IsUsed;
-            cmd.Parameters.Add("@PlaceOfPurchase", MySqlDbType.VarChar).Value = obj.PlaceOfPerchase;
+            cmd.Parameters.Add("@PlaceOfPerchase", MySqlDbType.VarChar).Value = obj.PlaceOfPerchase;
             cmd.Parameters.Add("@Price", MySqlDbType.Decimal).Value = obj.Price;
-            cmd.Parameters.Add("@DateOfUse", MySqlDbType.Decimal).Value = obj.DateOfUse;
 
             try
             {

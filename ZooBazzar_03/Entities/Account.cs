@@ -43,5 +43,11 @@ namespace Entities
             this.salt = salt;
           
         }
+
+        public Account(int id, string username)
+        {
+            this.id = id;
+            this.username = username;
+        }
     }
 }

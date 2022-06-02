@@ -108,17 +108,18 @@
             // 
             // flpAnimals
             // 
+            this.flpAnimals.AutoScroll = true;
             this.flpAnimals.Dock = System.Windows.Forms.DockStyle.Right;
-            this.flpAnimals.Location = new System.Drawing.Point(457, 0);
+            this.flpAnimals.Location = new System.Drawing.Point(495, 0);
             this.flpAnimals.Name = "flpAnimals";
-            this.flpAnimals.Size = new System.Drawing.Size(469, 430);
+            this.flpAnimals.Size = new System.Drawing.Size(485, 571);
             this.flpAnimals.TabIndex = 18;
             // 
             // AnimalsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 430);
+            this.ClientSize = new System.Drawing.Size(980, 571);
             this.Controls.Add(this.flpAnimals);
             this.Controls.Add(this.cbAnimalType);
             this.Controls.Add(this.btnFilterByType);

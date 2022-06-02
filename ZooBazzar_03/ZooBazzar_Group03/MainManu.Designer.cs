@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.pMenu = new System.Windows.Forms.Panel();
+            this.btnComplaints = new System.Windows.Forms.Button();
+            this.btnAnimals = new System.Windows.Forms.Button();
+            this.btnStatistics = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.lblTime = new System.Windows.Forms.Label();
@@ -45,7 +48,6 @@
             this.pTitle = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pContent = new System.Windows.Forms.Panel();
-            this.btnStatistics = new System.Windows.Forms.Button();
             this.pMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.pLogo.SuspendLayout();
@@ -55,6 +57,8 @@
             // pMenu
             // 
             this.pMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.pMenu.Controls.Add(this.btnComplaints);
+            this.pMenu.Controls.Add(this.btnAnimals);
             this.pMenu.Controls.Add(this.btnStatistics);
             this.pMenu.Controls.Add(this.panel1);
             this.pMenu.Controls.Add(this.btnSettings);
@@ -68,8 +72,62 @@
             this.pMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pMenu.Location = new System.Drawing.Point(0, 0);
             this.pMenu.Name = "pMenu";
-            this.pMenu.Size = new System.Drawing.Size(247, 681);
+            this.pMenu.Size = new System.Drawing.Size(247, 720);
             this.pMenu.TabIndex = 0;
+            // 
+            // btnComplaints
+            // 
+            this.btnComplaints.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnComplaints.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnComplaints.FlatAppearance.BorderSize = 0;
+            this.btnComplaints.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComplaints.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnComplaints.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnComplaints.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnComplaints.Location = new System.Drawing.Point(0, 590);
+            this.btnComplaints.Name = "btnComplaints";
+            this.btnComplaints.Size = new System.Drawing.Size(247, 60);
+            this.btnComplaints.TabIndex = 10;
+            this.btnComplaints.Text = "Complaints";
+            this.btnComplaints.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnComplaints.UseVisualStyleBackColor = true;
+            this.btnComplaints.Click += new System.EventHandler(this.btnComplaints_Click);
+            // 
+            // btnAnimals
+            // 
+            this.btnAnimals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAnimals.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAnimals.FlatAppearance.BorderSize = 0;
+            this.btnAnimals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnimals.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAnimals.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnAnimals.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAnimals.Location = new System.Drawing.Point(0, 530);
+            this.btnAnimals.Name = "btnAnimals";
+            this.btnAnimals.Size = new System.Drawing.Size(247, 60);
+            this.btnAnimals.TabIndex = 9;
+            this.btnAnimals.Text = "Animals";
+            this.btnAnimals.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAnimals.UseVisualStyleBackColor = true;
+            this.btnAnimals.Click += new System.EventHandler(this.btnAnimals_Click);
+            // 
+            // btnStatistics
+            // 
+            this.btnStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnStatistics.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStatistics.FlatAppearance.BorderSize = 0;
+            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatistics.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnStatistics.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnStatistics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStatistics.Location = new System.Drawing.Point(0, 470);
+            this.btnStatistics.Name = "btnStatistics";
+            this.btnStatistics.Size = new System.Drawing.Size(247, 60);
+            this.btnStatistics.TabIndex = 8;
+            this.btnStatistics.Text = "   Statistics";
+            this.btnStatistics.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStatistics.UseVisualStyleBackColor = true;
+            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
             // panel1
             // 
@@ -77,7 +135,7 @@
             this.panel1.Controls.Add(this.lblTime);
             this.panel1.Controls.Add(this.lblGreeting);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 542);
+            this.panel1.Location = new System.Drawing.Point(0, 581);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(247, 139);
             this.panel1.TabIndex = 2;
@@ -290,33 +348,15 @@
             this.pContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pContent.Location = new System.Drawing.Point(247, 110);
             this.pContent.Name = "pContent";
-            this.pContent.Size = new System.Drawing.Size(980, 571);
+            this.pContent.Size = new System.Drawing.Size(980, 610);
             this.pContent.TabIndex = 2;
-            // 
-            // btnStatistics
-            // 
-            this.btnStatistics.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnStatistics.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnStatistics.FlatAppearance.BorderSize = 0;
-            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistics.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnStatistics.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnStatistics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStatistics.Location = new System.Drawing.Point(0, 470);
-            this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(247, 60);
-            this.btnStatistics.TabIndex = 8;
-            this.btnStatistics.Text = "   Statistics";
-            this.btnStatistics.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStatistics.UseVisualStyleBackColor = true;
-            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
             // MainManu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1227, 681);
+            this.ClientSize = new System.Drawing.Size(1227, 720);
             this.Controls.Add(this.pContent);
             this.Controls.Add(this.pTitle);
             this.Controls.Add(this.pMenu);
@@ -355,5 +395,7 @@
         private Panel pContent;
         private Button btnLogout;
         private Button btnStatistics;
+        private Button btnAnimals;
+        private Button btnComplaints;
     }
 }

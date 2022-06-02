@@ -14,7 +14,7 @@ namespace ZooBazzarWebApp.Pages
 
         public void OnGet()
         {
-            employee = em.GetEmployeeByUsername(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value);
+            employee = (new EmployeeManagment(new EmployeeDB())).GetEmployees().Find(e => e.Id == Convert.ToInt32(User.FindFirst("ID").Value));
 
         }
     }
