@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Zen.Barcode.Core">
-      <HintPath>..\..\..\..\Scanner\Zen.Barcode.Core.dll</HintPath>
-    </Reference>
+	  <Reference Include="Zen.Barcode.Core">
+		  <HintPath>..\Zen.Barcode.Core.dll</HintPath>
+	  </Reference>
   </ItemGroup>
 
 </Project>

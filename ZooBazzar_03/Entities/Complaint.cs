@@ -32,7 +32,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return $"Complaint {this.id} by {this.author}";
+            return $"Complaint {this.id} by {this.author.Username}";
         }
 
     }

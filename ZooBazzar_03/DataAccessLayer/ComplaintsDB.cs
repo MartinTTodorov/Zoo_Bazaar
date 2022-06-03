@@ -23,7 +23,7 @@ namespace DataAccessLayer
         {
             try
             {
-                string sql = "INSERT INTO complaints(Title, Description, Time, AuthorID) VALUES (Title, Description, Time, AuthorID)";
+                string sql = "INSERT INTO compaints(Title, Description, Time, AuthorID) VALUES (Title, Description, Time, AuthorID)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 cmd.Parameters.AddWithValue("Title", complaint.Title);
@@ -51,7 +51,7 @@ namespace DataAccessLayer
 
             try
             {
-                string sql = "SELECT AccountID, Username, ComplaintID, Title, Description, Time, AuthorID FROM account a INNER JOIN complaints c ON a.AccountID=c.AuthorID;";
+                string sql = "SELECT AccountID, Username, ComplaintID, Title, Description, Time, AuthorID FROM account a INNER JOIN compaints c ON a.AccountID=c.AuthorID;";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -59,16 +59,16 @@ namespace DataAccessLayer
                 MySqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    complaints.Add(new Complaint(Convert.ToInt32(dr["AuthorID"]), new Account(Convert.ToInt32(dr["AccountID"]), dr["Username"].ToString()), dr["Title"].ToString(), dr["Description"].ToString(), dr.GetDateTime("Title")));
+                    complaints.Add(new Complaint(Convert.ToInt32(dr["AuthorID"]), new Account(Convert.ToInt32(dr["AccountID"]), dr["Username"].ToString()), dr["Title"].ToString(), dr["Description"].ToString(), dr.GetDateTime("Time")));
                 }
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.ToString());
             }
             finally
             {
