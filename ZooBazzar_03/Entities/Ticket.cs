@@ -10,7 +10,7 @@ namespace Entities
     {
         //Fields
         private int id;
-        private Customer customer;
+        private Customer? customer;
         private TypeOfTicket typeOfTicket;
         private DateTime? date; //Date when the ticket is meant to be used
         private DateTime dateOfPurchase;
@@ -80,7 +80,7 @@ namespace Entities
             }
         }
         //Constructor
-        public Ticket(Customer customer, TypeOfTicket typeOfTicket, DateTime? date, PlaceOfPerchase placeOfPerchase, decimal price)
+        public Ticket(Customer? customer, TypeOfTicket typeOfTicket, DateTime? date, PlaceOfPerchase placeOfPerchase, decimal price)
         {
             this.customer = customer;
             this.TypeOfTicket = typeOfTicket;

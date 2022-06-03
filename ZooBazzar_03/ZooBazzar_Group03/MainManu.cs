@@ -163,7 +163,7 @@ namespace ZooBazzar_Group03
 
         private void btnTickets_Click(object sender, EventArgs e)
         {
-
+            openChildForm(new Forms.Tickets(), sender);
         }
     }
 }

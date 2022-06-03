@@ -8,7 +8,7 @@ namespace Entities
 {
     public enum PlaceOfPerchase
     {
-        Online,
-        Zoo
+        online,
+        zoo
     }
 }

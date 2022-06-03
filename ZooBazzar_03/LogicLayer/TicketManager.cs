@@ -27,8 +27,8 @@ namespace LogicLayer
         public void AddTicket(Ticket ticket)
         {
             Ticket temp = new Ticket(auto.GetNexID(),ticket.Customer,ticket.TypeOfTicket,ticket.Date,ticket.PlaceOfPerchase,ticket.Price);
-            tickets.Add(ticket);
-            crud.Add(ticket);
+            tickets.Add(temp);
+            crud.Add(temp);
         }
 
         public void UseTicket(int id)
