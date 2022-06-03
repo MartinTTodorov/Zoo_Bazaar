@@ -92,6 +92,7 @@ namespace ZooBazzar_Group03.Forms
         private Dictionary<int, int> onlineTicketSales;
 
         private Dictionary<int, double> income;
+        private Dictionary<int, int> visitors;
 
         private void rbYearlyStats_CheckedChanged(object sender, EventArgs e)
         {
@@ -185,6 +186,42 @@ namespace ZooBazzar_Group03.Forms
                 myChart.Series[0].Points.AddXY(item.Key, item.Value);
             }
             myChart.ChartAreas[0].AxisX.Title = "Working hours";
+
+            panelStatistics.Controls.Add(myChart);
+        }
+
+        private void btnGetNumberOfVisitors_Click(object sender, EventArgs e)
+        {
+            panelStatistics.Controls.Clear();
+
+            Chart myChart = new Chart();
+            myChart.Dock = DockStyle.Fill;
+            myChart.ChartAreas.Add(new ChartArea());
+
+            if (filter2 == "MONTH")
+            {
+                visitors = sm.GetVisitors(filter, filter2, date.Month);
+                myChart.ChartAreas[0].AxisX.Title = date.ToString("MMMM");
+            }
+            else if (filter2 == "YEAR")
+            {
+                visitors = sm.GetVisitors(filter, filter2, date.Year);
+                myChart.ChartAreas[0].AxisX.Title = date.ToString("yyyy");
+            }
+            else
+            {
+                myChart.ChartAreas[0].AxisX.Title = filter;
+            }
+
+            myChart.Series.Add("Customers");
+
+            myChart.ChartAreas[0].AxisY.Title = "Number of visitors";
+
+            for (int i = 0; i < visitors.Count; i++)
+            {
+                var item = visitors.ElementAt(i);
+                myChart.Series[0].Points.AddXY(item.Key, item.Value);
+            }
 
             panelStatistics.Controls.Add(myChart);
         }

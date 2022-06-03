@@ -12,6 +12,7 @@ namespace Entities
         public void Add(T obj);
         public List<T> Read();
         public void Update(T obj);
-            
+
+
     }
 }

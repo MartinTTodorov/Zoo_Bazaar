@@ -80,7 +80,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(345, 442);
+            this.btnNext.Location = new System.Drawing.Point(335, 421);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(94, 29);
             this.btnNext.TabIndex = 61;

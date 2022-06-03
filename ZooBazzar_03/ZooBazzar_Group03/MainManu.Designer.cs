@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.pMenu = new System.Windows.Forms.Panel();
+            this.btnComplaints = new System.Windows.Forms.Button();
+            this.btnAnimals = new System.Windows.Forms.Button();
+            this.btnStatistics = new System.Windows.Forms.Button();
             this.btnStatistics = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -59,6 +62,8 @@
             this.pMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
             this.pMenu.Controls.Add(this.btnTickets);
             this.pMenu.Controls.Add(this.btnScanning);
+            this.pMenu.Controls.Add(this.btnComplaints);
+            this.pMenu.Controls.Add(this.btnAnimals);
             this.pMenu.Controls.Add(this.btnStatistics);
             this.pMenu.Controls.Add(this.panel1);
             this.pMenu.Controls.Add(this.btnSettings);
@@ -74,6 +79,42 @@
             this.pMenu.Name = "pMenu";
             this.pMenu.Size = new System.Drawing.Size(247, 734);
             this.pMenu.TabIndex = 0;
+            // 
+            // btnComplaints
+            // 
+            this.btnComplaints.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnComplaints.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnComplaints.FlatAppearance.BorderSize = 0;
+            this.btnComplaints.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComplaints.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnComplaints.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnComplaints.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnComplaints.Location = new System.Drawing.Point(0, 590);
+            this.btnComplaints.Name = "btnComplaints";
+            this.btnComplaints.Size = new System.Drawing.Size(247, 60);
+            this.btnComplaints.TabIndex = 10;
+            this.btnComplaints.Text = "Complaints";
+            this.btnComplaints.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnComplaints.UseVisualStyleBackColor = true;
+            this.btnComplaints.Click += new System.EventHandler(this.btnComplaints_Click);
+            // 
+            // btnAnimals
+            // 
+            this.btnAnimals.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAnimals.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAnimals.FlatAppearance.BorderSize = 0;
+            this.btnAnimals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnimals.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAnimals.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnAnimals.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAnimals.Location = new System.Drawing.Point(0, 530);
+            this.btnAnimals.Name = "btnAnimals";
+            this.btnAnimals.Size = new System.Drawing.Size(247, 60);
+            this.btnAnimals.TabIndex = 9;
+            this.btnAnimals.Text = "Animals";
+            this.btnAnimals.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAnimals.UseVisualStyleBackColor = true;
+            this.btnAnimals.Click += new System.EventHandler(this.btnAnimals_Click);
             // 
             // btnStatistics
             // 
@@ -397,5 +438,7 @@
         private Button btnStatistics;
         private Button btnTickets;
         private Button btnScanning;
+        private Button btnAnimals;
+        private Button btnComplaints;
     }
 }

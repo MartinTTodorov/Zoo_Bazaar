@@ -26,6 +26,7 @@ namespace ZooBazzar_Group03
             this.animal = animal;        
             this.workposition = workposition;
             this.panel = panel;
+            this.BackColor = ColorThemeHandler.PrimaryColor;
             if (workposition != "Manager")
             {
                 btnRemoveAnimal.Visible = false;

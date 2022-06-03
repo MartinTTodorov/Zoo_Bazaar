@@ -137,23 +137,18 @@ namespace DataAccessLayer
         public Dictionary<int, int> GetPeople()
         {
 
-
-
             Dictionary<int, int> people = new Dictionary<int, int>();
-
 
 
             try
             {
-                string sql = "SELECT HOUR(dateOfUse) as time, COUNT(*) as peopleCount FROM `ticket` GROUP BY HOUR(dateOfUse)";
+                string sql = "SELECT HOUR(dateOfUse) as time, COUNT(*) as peopleCount FROM `ticket` WHERE dateOfUse IS NOT null GROUP BY HOUR(dateOfUse);";
 
 
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
-
-
 
 
                 while (reader.Read())
@@ -181,8 +176,42 @@ namespace DataAccessLayer
 
             return people;
 
+        }
+
+        public Dictionary<int, int> GetVisitors(string filter1, string filter2, int value)
+        {
+            Dictionary<int, int> visitors = new Dictionary<int, int>();
+            try
+            {
 
 
+                string sql = $"SELECT {filter1}(dateOfUse) as date, COUNT(*) as count FROM ticket WHERE {filter2}(dateOfUse)={value} GROUP BY {filter1}(dateOfUse);";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    visitors.Add(Convert.ToInt32(dr["date"]), Convert.ToInt32(dr["count"]));
+                }
+
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return visitors;
         }
     }
 }

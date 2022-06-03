@@ -18,9 +18,9 @@ namespace LogicLayer
         //Constructor
         public TicketManager(ICRU<Ticket>crud,IAutoIncrementable auto)
         {
-            tickets = new List<Ticket>();
             this.auto = auto;
             this.crud = crud;
+            tickets = crud.Read();
         }
 
         //Methods
@@ -55,10 +55,31 @@ namespace LogicLayer
                 }
             }
         }
+        public List<Ticket> GetTickets(Customer c)
+        {
+            List<Ticket> tickets = new List<Ticket>();
+            foreach (Ticket t in this.tickets)
+            {
+                if (t.Customer.Id == c.Id)
+                {
+                    tickets.Add(t);
+                }
+            }
+            return tickets;
+        }
 
         public Ticket GetTicket(int id)
         {
             return tickets.Find(x => x.Id == id);
+        }
+        public bool ChangeTicketStatus(Ticket t)
+        {
+            if (t.IsUsed == true)
+            {
+                return false;
+            }
+            crud.Update(t);
+            return true;
         }
     }
 }
