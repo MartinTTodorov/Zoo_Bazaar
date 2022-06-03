@@ -155,5 +155,15 @@ namespace ZooBazzar_Group03
         {
             openChildForm(new Forms.Statistics(), sender);
         }
+
+        private void btnScanning_Click(object sender, EventArgs e)
+        {
+            openChildForm(new TicketForm(), sender);
+        }
+
+        private void btnTickets_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

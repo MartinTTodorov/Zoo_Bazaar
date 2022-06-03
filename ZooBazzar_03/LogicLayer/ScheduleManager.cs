@@ -170,6 +170,7 @@ namespace LogicLayer
                 cmngr.GetContracts(caretaker);
 
                 if ((caretaker.Contracts.Find(c => c.IsValid == true).Fte * 40) >= (GetWorkedHours(caretaker) + fullShiftHours))
+
                 {
                     freeCaretakers.Add(caretaker);
                 }
