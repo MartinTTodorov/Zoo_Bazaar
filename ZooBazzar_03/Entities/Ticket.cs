@@ -19,7 +19,7 @@ namespace Entities
         private decimal price;
         private DateTime? dateOfUse; //Date when acctually is used
 
-        public int Id { get { return id; } }
+        public int? Id { get { return id; } }
         public Customer Customer
         {
             get { return customer; }
@@ -136,7 +136,7 @@ namespace Entities
         //Method
         public override string ToString()
         {
-            return $"{customer}: {date} : {isUsed}";
+            return $"{Customer.Email}: {DateOfPurchase} ";
         }
 
         public void UseTicket()

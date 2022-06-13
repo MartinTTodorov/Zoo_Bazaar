@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogicLayer;
 using DataAccessLayer;
+using Entities;
 
 namespace ZooBazzar_Group03.Forms
 {
@@ -29,7 +30,8 @@ namespace ZooBazzar_Group03.Forms
 
         private void lblComplaints_DoubleClick(object sender, EventArgs e)
         {
-            openChildForm(new ShowComplaint(this.pContent), sender);
+            Complaint complaint = (Complaint)lblComplaints.SelectedItem;
+            openChildForm(new ShowComplaint(this.pContent, complaint), sender);
         }
 
         private void openChildForm(Form form, object btnSender)

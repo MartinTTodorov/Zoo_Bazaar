@@ -39,15 +39,43 @@ namespace ZooBazzar_Group03
 
             if (workingPosition == "Manager")
             {
+                this.pMenu.Controls.Remove(btnScanning);
+                this.pMenu.Controls.Remove(btnTickets);
+                this.pMenu.Controls.Remove(btnSchedule);
+                
 
             }
             else if (workingPosition == "Resourceplanner")
             {
-               
+                this.pMenu.Controls.Remove(btnScanning);
+                this.pMenu.Controls.Remove(btnTickets);
+                this.pMenu.Controls.Remove(btnEmployees);
+                this.pMenu.Controls.Remove(btnContracts);
+                this.pMenu.Controls.Remove(btnRequest);
+                this.pMenu.Controls.Remove(btnStatistics);
+                this.pMenu.Controls.Remove(btnComplaints);
+            }
+            else if(workingPosition == "Caretaker")
+            {
+                this.pMenu.Controls.Remove(btnScanning);
+                this.pMenu.Controls.Remove(btnTickets);
+                this.pMenu.Controls.Remove(btnSchedule);
+                this.pMenu.Controls.Remove(btnEmployees);
+                this.pMenu.Controls.Remove(btnContracts);
+                this.pMenu.Controls.Remove(btnRequest);
+                this.pMenu.Controls.Remove(btnStatistics);
+                this.pMenu.Controls.Remove(btnComplaints);
             }
             else
             {
-                
+                this.pMenu.Controls.Remove(btnSchedule);
+                this.pMenu.Controls.Remove(btnEmployees);
+                this.pMenu.Controls.Remove(btnContracts);
+                this.pMenu.Controls.Remove(btnRequest);
+                this.pMenu.Controls.Remove(btnStatistics);
+                this.pMenu.Controls.Remove(btnAnimals);
+                this.pMenu.Controls.Remove(btnStatistics);
+                this.pMenu.Controls.Remove(btnComplaints);
             }
         }
         private Color SelectThemeColor()

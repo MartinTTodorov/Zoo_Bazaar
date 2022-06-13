@@ -27,7 +27,7 @@ namespace DataAccessLayer
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Account added successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
             }
             catch (MySqlException ex)
             {

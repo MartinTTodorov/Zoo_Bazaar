@@ -18,6 +18,7 @@ namespace ZooBazzar_Group03
 
         private void BarcodeScanner_BarcodeScanned(object sender, BarcodeScannerEventArgs e)
         {
+            lbTickets.Items.Clear();
             tbBarcode.Text = e.Barcode;
             int barcode = Convert.ToInt32(tbBarcode.Text);
             Ticket ticket = tm.GetTicket(barcode);
@@ -28,6 +29,7 @@ namespace ZooBazzar_Group03
         {
             int barcode = Convert.ToInt32(tbBarcode.Text);
             Ticket ticket = tm.GetTicket(barcode);
+
             if (ticket is null)
             {
                 MessageBox.Show("Such ticket doesn't exist! PLease scan again!");

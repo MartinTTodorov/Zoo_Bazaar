@@ -28,25 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tbTitle = new System.Windows.Forms.TextBox();
+            this.tbComplaint = new System.Windows.Forms.TextBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // tbTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(77, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 0;
+            this.tbTitle.Enabled = false;
+            this.tbTitle.Location = new System.Drawing.Point(47, 104);
+            this.tbTitle.Name = "tbTitle";
+            this.tbTitle.Size = new System.Drawing.Size(325, 27);
+            this.tbTitle.TabIndex = 0;
             // 
-            // label1
+            // tbComplaint
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(84, 171);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.tbComplaint.Location = new System.Drawing.Point(47, 163);
+            this.tbComplaint.Multiline = true;
+            this.tbComplaint.Name = "tbComplaint";
+            this.tbComplaint.ReadOnly = true;
+            this.tbComplaint.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbComplaint.Size = new System.Drawing.Size(325, 235);
+            this.tbComplaint.TabIndex = 2;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(278, 420);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(94, 29);
+            this.btnClose.TabIndex = 3;
+            this.btnClose.Text = "Close";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // ShowComplaint
             // 
@@ -54,11 +67,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
             this.ClientSize = new System.Drawing.Size(451, 483);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.tbComplaint);
+            this.Controls.Add(this.tbTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ShowComplaint";
             this.Text = "ShowComplaint";
+            this.Load += new System.EventHandler(this.ShowComplaint_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -66,7 +81,8 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private Label label1;
+        private TextBox tbTitle;
+        private TextBox tbComplaint;
+        private Button btnClose;
     }
 }

@@ -1,0 +1,24 @@
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\bin\Debug\net6.0-windows\Entities.deps.json
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\bin\Debug\net6.0-windows\Entities.dll
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\bin\Debug\net6.0-windows\Entities.pdb
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.csproj.AssemblyReference.cache
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.AssemblyInfoInputs.cache
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.AssemblyInfo.cs
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.csproj.CoreCompileInputs.cache
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.dll
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\refint\Entities.dll
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.pdb
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\ref\Entities.dll
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\bin\Debug\net6.0-windows\Entities.deps.json
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\bin\Debug\net6.0-windows\Entities.dll
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\bin\Debug\net6.0-windows\Entities.pdb
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.csproj.AssemblyReference.cache
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.AssemblyInfoInputs.cache
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.AssemblyInfo.cs
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.csproj.CoreCompileInputs.cache
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.dll
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\refint\Entities.dll
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\Entities.pdb
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\Entities\obj\Debug\net6.0-windows\ref\Entities.dll
