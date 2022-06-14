@@ -52,10 +52,6 @@ namespace Entities
         }
 
 
-        public EmployeeContract()
-        {
-
-        }
 
         public override string ToString()
         {
