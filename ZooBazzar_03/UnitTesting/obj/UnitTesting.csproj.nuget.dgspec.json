@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\UnitTesting\\UnitTesting.csproj": {}
+    "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\UnitTesting\\UnitTesting.csproj": {}
   },
   "projects": {
-    "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\stoil\\.nuget\\packages\\",
-        "outputPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\DataAccessLayer\\obj\\",
+        "projectPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\Georgi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\stoil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Georgi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj": {
-                "projectPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj"
+              "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj"
               }
             }
           }
@@ -67,21 +67,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj": {
+    "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj",
-        "packagesPath": "C:\\Users\\stoil\\.nuget\\packages\\",
-        "outputPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\obj\\",
+        "projectPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\Georgi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\stoil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Georgi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -121,21 +121,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj": {
+    "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj",
+        "projectUniqueName": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj",
         "projectName": "LogicLayer",
-        "projectPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj",
-        "packagesPath": "C:\\Users\\stoil\\.nuget\\packages\\",
-        "outputPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\LogicLayer\\obj\\",
+        "projectPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj",
+        "packagesPath": "C:\\Users\\Georgi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\stoil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Georgi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -149,11 +149,11 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj"
+              "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj"
               },
-              "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj": {
-                "projectPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj"
+              "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj"
               }
             }
           }
@@ -185,21 +185,21 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\UnitTesting\\UnitTesting.csproj": {
+    "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\UnitTesting\\UnitTesting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\UnitTesting\\UnitTesting.csproj",
+        "projectUniqueName": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\UnitTesting\\UnitTesting.csproj",
         "projectName": "UnitTesting",
-        "projectPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\UnitTesting\\UnitTesting.csproj",
-        "packagesPath": "C:\\Users\\stoil\\.nuget\\packages\\",
-        "outputPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\UnitTesting\\obj\\",
+        "projectPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\UnitTesting\\UnitTesting.csproj",
+        "packagesPath": "C:\\Users\\Georgi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\UnitTesting\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\stoil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Georgi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -213,8 +213,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj": {
-                "projectPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj"
+              "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj": {
+                "projectPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj"
               }
             }
           }
@@ -261,7 +261,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

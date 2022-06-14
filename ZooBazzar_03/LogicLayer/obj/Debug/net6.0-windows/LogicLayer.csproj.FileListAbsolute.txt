@@ -32,3 +32,20 @@ D:\University\sem_2\Group project\Solution\ZooBazzar_03\LogicLayer\obj\Debug\net
 D:\University\sem_2\Group project\Solution\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\refint\LogicLayer.dll
 D:\University\sem_2\Group project\Solution\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\LogicLayer.pdb
 D:\University\sem_2\Group project\Solution\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\ref\LogicLayer.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\bin\Debug\net6.0-windows\LogicLayer.deps.json
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\bin\Debug\net6.0-windows\LogicLayer.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\bin\Debug\net6.0-windows\LogicLayer.pdb
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\bin\Debug\net6.0-windows\DataAccessLayer.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\bin\Debug\net6.0-windows\Entities.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\bin\Debug\net6.0-windows\DataAccessLayer.pdb
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\bin\Debug\net6.0-windows\Entities.pdb
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\LogicLayer.csproj.AssemblyReference.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\LogicLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\LogicLayer.AssemblyInfoInputs.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\LogicLayer.AssemblyInfo.cs
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\LogicLayer.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\LogicLayer.csproj.CopyComplete
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\LogicLayer.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\refint\LogicLayer.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\LogicLayer.pdb
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\LogicLayer\obj\Debug\net6.0-windows\ref\LogicLayer.dll

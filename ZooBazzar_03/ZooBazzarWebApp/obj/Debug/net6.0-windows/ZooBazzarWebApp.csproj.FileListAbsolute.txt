@@ -82,3 +82,11 @@ D:\University\sem_2\Group project\Solution\ZooBazzar_03\ZooBazzarWebApp\obj\Debu
 D:\University\sem_2\Group project\Solution\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.pdb
 D:\University\sem_2\Group project\Solution\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.genruntimeconfig.cache
 D:\University\sem_2\Group project\Solution\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ref\ZooBazzarWebApp.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.csproj.AssemblyReference.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.AssemblyInfoInputs.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.AssemblyInfo.cs
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.RazorAssemblyInfo.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.RazorAssemblyInfo.cs

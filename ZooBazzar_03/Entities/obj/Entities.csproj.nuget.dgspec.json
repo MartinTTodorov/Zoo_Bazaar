@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj": {}
+    "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj": {}
   },
   "projects": {
-    "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj": {
+    "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\Entities.csproj",
-        "packagesPath": "C:\\Users\\stoil\\.nuget\\packages\\",
-        "outputPath": "D:\\University\\sem_2\\Group project\\Solution\\ZooBazzar_03\\Entities\\obj\\",
+        "projectPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj",
+        "packagesPath": "C:\\Users\\Georgi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Georgi\\Desktop\\Project Zoo Bazzar\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\stoil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Georgi\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
