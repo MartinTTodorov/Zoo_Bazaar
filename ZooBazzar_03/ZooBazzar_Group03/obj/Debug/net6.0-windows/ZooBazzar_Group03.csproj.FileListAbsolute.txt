@@ -238,3 +238,4 @@ C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazz
 C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.pdb
 C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.genruntimeconfig.cache
 C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ref\ZooBazzar_Group03.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzar_Group03\obj\Debug\net6.0-windows\ZooBazzar_Group03.Forms.Description.resources

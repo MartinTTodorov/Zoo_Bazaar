@@ -3,8 +3,15 @@
 @{
     ViewData["Title"] = "Home page";
 }
+@using Entities;
 
 <div class="text-center">
     <h1 class="display-4">Welcome </h1>
-    <p>ZooBazzar content bla bla.</p>
+    @foreach(ZooDescription zooDescription in Model.zm.GetDescriptions())
+    {
+        if (zooDescription.IsActive == true)
+        {
+            <p>@zooDescription</p>
+        }
+    }
 </div>
