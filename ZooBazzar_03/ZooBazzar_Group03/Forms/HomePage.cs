@@ -1,4 +1,5 @@
 ﻿using Entities;
+using LogicLayer;
 using ZooBazzar_Group03;
 
 namespace ZooBazzar_Group03.Forms
@@ -42,6 +43,33 @@ namespace ZooBazzar_Group03.Forms
         {
             if (!string.IsNullOrEmpty(tbSearch.Text))
                 updateUX(employees.FindAll(e => e.Name.Contains(tbSearch.Text) || e.Lastname.Contains(tbSearch.Text)));
+        }
+
+        private void HomePage_Load(object sender, EventArgs e)
+        {
+            LoadTheame();
+        }
+
+        private void LoadTheame()
+        {
+
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = ColorThemeHandler.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = ColorThemeHandler.SecondaryColor;
+                }
+                else if (btns.GetType() == typeof(Label))
+                {
+                    btns.BackColor = ColorThemeHandler.PrimaryColor;
+                    btns.ForeColor = Color.White;
+                }
+
+            }
+
         }
     }
 }
