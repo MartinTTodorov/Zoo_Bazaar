@@ -15,6 +15,11 @@ namespace Entities
             this.specialization = specialization;
             workposition = "Caretacker";
         }
+        public Caretaker(Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn, string? workposition,int id, Specialization specialization) : base(account, name, lastname, address, birthdate, email, phone, emergencyContact, bsn, workposition,id)
+        {
+            this.specialization = specialization;
+            workposition = "Caretacker";
+        }
         public Caretaker(int id, string name, Specialization specialization) : base(id,name)
         {
             this.specialization= specialization;

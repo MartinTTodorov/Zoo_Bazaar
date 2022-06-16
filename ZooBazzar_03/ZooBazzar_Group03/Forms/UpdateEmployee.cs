@@ -18,7 +18,7 @@ namespace ZooBazzar_Group03.Forms
             cbSpecialization.DataSource = Enum.GetValues(typeof(Specialization));
             cbPosition.DataSource = new[] { "Caretaker", "Manager", "Resourceplanner","Salesman" };
 
-            employee = managment.GetEmployees()[index];
+            employee = managment.Employees[index];
             tbName.Text = employee.Name;
             tbLastname.Text = employee.Lastname;
             tbAddress.Text = employee.Address;

@@ -61,7 +61,7 @@ namespace DataAccessLayer
         {
             try
             {
-                string sql = $"SELECT dfs.AnimalType, dfs.Date, dfs.mainEmployeeFir, dfs.mainEmployeeSec, dfs.helperEmployee, e1.FirstName AS mainFirstName, e2.FirstName AS mainSecondName, e3.FirstName AS helperName, e1.WorkPosition, dfs.TimeSlot,specialization FROM daily_feeding_schedule AS dfs " +
+                string sql =$"SELECT dfs.AnimalType, dfs.Date, dfs.mainEmployeeFir, dfs.mainEmployeeSec, dfs.helperEmployee, e1.FirstName AS mainFirstName, e2.FirstName AS mainSecondName, e3.FirstName AS helperName, e1.WorkPosition, dfs.TimeSlot,specialization FROM daily_feeding_schedule AS dfs " +
                     $"INNER JOIN employee e1 ON dfs.mainEmployeeFir = e1.ID " +
                     $"INNER JOIN employee e2 ON dfs.mainEmployeeSec = e2.ID " +
                     $"INNER JOIN caretaker ON dfs.mainEmployeeFir = e1.ID " +                   

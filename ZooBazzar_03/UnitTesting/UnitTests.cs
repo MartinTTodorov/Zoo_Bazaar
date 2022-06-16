@@ -55,7 +55,7 @@ namespace UnitTesting
         {
             employeeManagment.AddEmployee(new Employee(new Account("Peppa", "Pigg"), "Peppa", "The Pig", "In the barn", DateTime.Now, "peppa@abv.bg", "+359400500", "112", "88888","Manager"));
             
-            Assert.IsTrue(employeeManagment.GetEmployees().Any(a => a.Name == "Peppa"));
+            Assert.IsTrue(employeeManagment.Employees.Any(a => a.Name == "Peppa"));
         }
 
         [TestMethod]

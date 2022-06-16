@@ -9,12 +9,17 @@ namespace ZooBazzarWebApp.Pages
 {
     public class ProfileModel : PageModel
     {
-        public EmployeeManagment em = new EmployeeManagment(new EmployeeDB());
+        public EmployeeManagment em;
         public Employee employee;
+
+        public ProfileModel(EmployeeManagment em)
+        {
+            this.em = em;
+        }
 
         public void OnGet()
         {
-            employee = (new EmployeeManagment(new EmployeeDB())).GetEmployees().Find(e => e.Id == Convert.ToInt32(User.FindFirst("ID").Value));
+            employee = em.Employees.First(e => e.Id == Convert.ToInt32(User.FindFirst("ID").Value));
 
         }
     }
