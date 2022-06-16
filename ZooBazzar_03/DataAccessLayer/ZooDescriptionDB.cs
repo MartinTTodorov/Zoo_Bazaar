@@ -26,11 +26,10 @@ namespace DataAccessLayer
             cmd.Parameters.AddWithValue("@dateOfCreation", zd.DateOfCreation);
             try
             {
-                int n;
 
                 conn.Open();
 
-                n = cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
             }
             catch (MySqlException ex)
             {
@@ -41,7 +40,7 @@ namespace DataAccessLayer
                 throw ex;
             }
             finally
-            { 
+            {
 
                 conn.Close();
             }
@@ -79,7 +78,7 @@ namespace DataAccessLayer
 
         public int GetNexID()
         {
-            string sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbi481796' AND TABLE_NAME = 'desription';";
+            string sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbi481796' AND TABLE_NAME = 'description';";
             try
             {
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -102,7 +101,7 @@ namespace DataAccessLayer
         {
             string sqlStatement = "SELECT * FROM description";
             MySqlCommand command = new MySqlCommand(sqlStatement, conn);
-            
+
 
 
 
@@ -126,6 +125,40 @@ namespace DataAccessLayer
 
                 throw ex;
 
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void DeleteDescriptions(List<ZooDescription> descriptions)
+        {
+            string sqlStatement = "";
+            for (int i = 0; i < descriptions.Count; i++)
+            {
+                sqlStatement += $"DELETE FROM description WHERE id=@id{i};";
+
+            }
+            MySqlCommand command = new MySqlCommand(sqlStatement, conn);
+
+            for (int i = 0; i < descriptions.Count; i++)
+            {
+                command.Parameters.AddWithValue($"@id{i}", descriptions[i].Id);
+
+            }
+            try
+            {
+                int n;
+
+                conn.Open();
+
+                n = command.ExecuteNonQuery();
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
             }
             finally
             {

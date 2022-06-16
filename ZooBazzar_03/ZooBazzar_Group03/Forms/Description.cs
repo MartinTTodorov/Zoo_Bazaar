@@ -72,6 +72,11 @@ namespace ZooBazzar_Group03.Forms
                 ZooDescription zd = new ZooDescription(tbDescription.Text, true, DateTime.Today);
                 zm.AddDescription(zd);
                 LoadAllDescriptions();
+                MessageBox.Show("Successful creation of new description!");
+                rbActive.Checked = false;
+                rbDisabled.Checked = false;
+                rbAll.Checked = true;
+                tbDescription.Text = "";
             }
             catch (Exception ex)
             {
@@ -90,9 +95,18 @@ namespace ZooBazzar_Group03.Forms
                 return;
 
             }
+            if (zd.IsActive == false)
+            {
+                MessageBox.Show("This description has already been disabled!");
+                return;
+            }
             try
             {
                 zm.DisablePreviousDescription(zd);
+                LoadDescriptions(false);
+                rbActive.Checked = false;
+                rbDisabled.Checked = false;
+                rbAll.Checked = true;
                 MessageBox.Show("Description disabled!");
             }
             catch (Exception ex)
@@ -101,6 +115,18 @@ namespace ZooBazzar_Group03.Forms
                 MessageBox.Show(ex.Message);
                 return;
             }
+        }
+
+        private void lbDescriptions_DoubleClick(object sender, EventArgs e)
+        {
+            ZooDescription zd = (ZooDescription)lbDescriptions.SelectedItem;
+            if (zd is null)
+            {
+                MessageBox.Show("No description selected!");
+                return;
+            }
+
+            tbReadyDescription.Text = zd.Description;
         }
     }
 }

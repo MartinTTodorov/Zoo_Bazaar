@@ -55,10 +55,13 @@ namespace Entities
             this.isActive = isActive;
             this.DateOfCreation = dateOfCreation;
         }
-
+        public void UpdateStatus(bool isActive)
+        {
+            this.isActive = isActive;
+        }
         public override string ToString()
         {
-            return Description;
+            return DateOfCreation.ToShortDateString();
         }
     }
 }

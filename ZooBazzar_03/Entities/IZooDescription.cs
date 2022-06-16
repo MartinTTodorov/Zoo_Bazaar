@@ -12,7 +12,8 @@ namespace Entities
 
         void DisablePreviousDescription(ZooDescription zd);
 
-        void GetDescriptions(List<ZooDescription>descriptions);
+        void GetDescriptions(List<ZooDescription> descriptions);
+        void DeleteDescriptions(List<ZooDescription> descriptions);
 
     }
 }
