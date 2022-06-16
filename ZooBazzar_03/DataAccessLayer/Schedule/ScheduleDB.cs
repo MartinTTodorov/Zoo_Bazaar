@@ -83,8 +83,8 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    Caretaker firstMain = new Caretaker(Convert.ToInt32(reader["mainEmployeeFir"]), reader["mainFirstName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization),reader["WorkPosition"].ToString()));
-                    Caretaker secondMain = new Caretaker(Convert.ToInt32(reader["mainEmployeeSec"]), reader["mainSecondName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization),reader["WorkPosition"].ToString()));
+                    Caretaker firstMain = new Caretaker(Convert.ToInt32(reader["mainEmployeeFir"]), reader["mainFirstName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization),reader["specialization"].ToString()));
+                    Caretaker secondMain = new Caretaker(Convert.ToInt32(reader["mainEmployeeSec"]), reader["mainSecondName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization),reader["specialization"].ToString()));
                     Caretaker helper;
 
                     if (reader["helperEmployee"] == DBNull.Value)
@@ -93,7 +93,7 @@ namespace DataAccessLayer
                     }
                     else
                     {
-                        helper = new Caretaker(Convert.ToInt32(reader["helperEmployee"]), reader["helperName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization), reader["WorkPosition"].ToString()));
+                        helper = new Caretaker(Convert.ToInt32(reader["helperEmployee"]), reader["helperName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization), reader["specialization"].ToString()));
                     }
 
                     list.Add(new DailySchedule((AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Date"].ToString(), firstMain, secondMain, helper, reader["TimeSlot"].ToString()));
