@@ -82,6 +82,9 @@
     <Compile Update="ucAnimalNotes.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="ucDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ucEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>

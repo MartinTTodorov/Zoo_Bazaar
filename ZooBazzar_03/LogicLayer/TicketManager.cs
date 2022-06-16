@@ -82,30 +82,6 @@ namespace LogicLayer
             return true;
         }
 
-        public List<Ticket> GetTickets(Customer c)
-        {
-            List<Ticket> tickets = new List<Ticket>();
-            foreach (Ticket t in this.tickets)
-            {
-                if (t.Customer.Id == c.Id)
-                {
-                    tickets.Add(t);
-                }
-            }
-            return tickets;
-        }
-        public Customer GetCustomer(string email)
-        {
-           return db.GetCustomer(email);
-        }
-        public bool ChangeTicketStatus(Ticket t)
-        {
-            if (t.IsUsed == true)
-            {
-                return false;
-            }
-            db.ChangeTicketStatus(t);
-            return true;
-        }
+      
     }
 }
