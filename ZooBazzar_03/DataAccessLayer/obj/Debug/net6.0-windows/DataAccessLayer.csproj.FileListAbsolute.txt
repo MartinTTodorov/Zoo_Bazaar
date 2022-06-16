@@ -1,0 +1,45 @@
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.deps.json
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.dll
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.pdb
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\Entities.dll
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\Entities.pdb
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.AssemblyReference.cache
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfoInputs.cache
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfo.cs
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CopyComplete
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.dll
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\refint\DataAccessLayer.dll
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.pdb
+D:\University\sem_2\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\ref\DataAccessLayer.dll
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.deps.json
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.dll
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.pdb
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\Entities.dll
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\Entities.pdb
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.AssemblyReference.cache
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfoInputs.cache
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfo.cs
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CoreCompileInputs.cache
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CopyComplete
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.dll
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\refint\DataAccessLayer.dll
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.pdb
+D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\ref\DataAccessLayer.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.deps.json
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.pdb
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\Entities.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\Entities.pdb
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfo.cs
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CopyComplete
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\refint\DataAccessLayer.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.pdb
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\ref\DataAccessLayer.dll
