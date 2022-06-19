@@ -7055,11 +7055,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
+      "projectUniqueName": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
       "projectName": "ZooBazzar_Group03",
-      "projectPath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
+      "projectPath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
       "packagesPath": "C:\\Users\\radol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\obj\\",
+      "outputPath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\radol\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7076,14 +7076,14 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj": {
-              "projectPath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj"
+            "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj": {
+              "projectPath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\DataAccessLayer\\DataAccessLayer.csproj"
             },
-            "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj": {
-              "projectPath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj"
+            "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj": {
+              "projectPath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj"
             },
-            "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj": {
-              "projectPath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj"
+            "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj": {
+              "projectPath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj"
             }
           }
         }

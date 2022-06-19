@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HYJqd6o/UG0IRhGSmeZGRsCArdaFlTJGEEjRb7s0o4xDC7grffxko+s26uIPvK+2x+rzc0cZlFRKNM21nKMrxQ==",
+  "dgSpecHash": "JV/aluz2MxkiH/86Tce9tnLaBhAKOnEo1HDCnko1IMewrIb0ml7KzFfD17ghlDWdMsSQDiYrgLuAm/fKMc1s3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj",
+  "projectFilePath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\LogicLayer\\LogicLayer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\radol\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",

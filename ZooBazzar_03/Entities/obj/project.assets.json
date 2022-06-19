@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj",
+      "projectUniqueName": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj",
       "projectName": "Entities",
-      "projectPath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj",
+      "projectPath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\Entities.csproj",
       "packagesPath": "C:\\Users\\radol\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\obj\\",
+      "outputPath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\radol\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1YQFou4xDRSPoqoZMrcrziqLxyVwwrAeT0BojEirWeg1e3yYJ/A2y/Hx+rdQjsW6fVJVEUYUc6/HKPtZrJXivw==",
+  "dgSpecHash": "Ph/9521NbWMdGn503mRP5SIS7rSimAmVHeGry5YIHyhrJWmqGHOwniTeu+s76bZj9cz8XKhXt72fePEjN5EZyQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
+  "projectFilePath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzar_Group03\\ZooBazzar_Group03.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\radol\\.nuget\\packages\\azure.core\\1.20.0\\azure.core.1.20.0.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\azure.identity\\1.5.0\\azure.identity.1.5.0.nupkg.sha512",

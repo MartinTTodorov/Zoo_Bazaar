@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dDlKyXExQiO0nS9LfRjAqX/8GdYTVhpD+w4hNeq2r8oiYHqXY63BA497YN7k0Ia2GSKCLqjGTEFhV73TJ8t3lQ==",
+  "dgSpecHash": "+N0lIDjJc75/EbrOt2G3hsY757FuF2cVjhdV/udK7ZpGKIuwB8IjBPpP6ZRh/jE0ALwfJal/reERCLddMfKFiQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\radol\\Desktop\\New folder - Copy\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzarWebApp\\ZooBazzarWebApp.csproj",
+  "projectFilePath": "C:\\Users\\radol\\Desktop\\New folder\\p-cb-s06-group03\\ZooBazzar_03\\ZooBazzarWebApp\\ZooBazzarWebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\radol\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\radol\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",
