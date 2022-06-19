@@ -69,7 +69,8 @@ namespace Entities
         }
         public Employee(int id,string name)
         {
-
+            this.id = id;
+            this.firstname = name;
         }
        
         //Methods
@@ -84,7 +85,7 @@ namespace Entities
         }
         public string GetNames()
         {
-            return $"{Name} {Lastname}";
+            return $"{Name}";
         }
     }
 }

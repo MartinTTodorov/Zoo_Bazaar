@@ -11,7 +11,7 @@ namespace ZooBazzarWebApp.Pages
     public class ScheduleModel : PageModel
     {
         public Employee currentEmployee;
-        public List<DailySchedule> schedules;
+        private List<DailySchedule> schedules;
 
         private ScheduleManager scheduleManager;
         private EmployeeManagment employeeManagment;
@@ -28,10 +28,24 @@ namespace ZooBazzarWebApp.Pages
             schedules = scheduleManager.GetCaretakerSchedule((Caretaker)currentEmployee, DateTime.Now, 0);
         }
 
+        public List<string> GetWeek(int i)
+        {
+            return GUIHelper.GetWeek(DateTime.Today, i);
+        }
         public List<Cage> getCages(DailySchedule ds)
         {
             return scheduleManager.GetCages(ds.TimeSlot, ds.Type, DateTime.ParseExact(ds.Date, "d MMM yyyy", null));
         }
         
+        private List<DailySchedule> GetShifts(string time)
+        {
+            return schedules.FindAll(x => x.TimeSlot == time);
+        }
+
+        public DailySchedule GetShift(string time, int date)
+        {
+            return GetShifts(time).Find(x => (int)DateTime.ParseExact(x.Date, "dd MMM yyyy", null).DayOfWeek == date);
+        }
+
     }
 }

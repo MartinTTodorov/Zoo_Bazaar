@@ -43,3 +43,18 @@ D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debu
 D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\refint\DataAccessLayer.dll
 D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.pdb
 D:\University\sem_2\Group project\Solution\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\ref\DataAccessLayer.dll
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.deps.json
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.dll
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\DataAccessLayer.pdb
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\Entities.dll
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\bin\Debug\net6.0-windows\Entities.pdb
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.AssemblyReference.cache
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfoInputs.cache
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.AssemblyInfo.cs
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CoreCompileInputs.cache
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.csproj.CopyComplete
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.dll
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\refint\DataAccessLayer.dll
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\DataAccessLayer.pdb
+C:\Users\radol\Desktop\New folder - Copy\p-cb-s06-group03\ZooBazzar_03\DataAccessLayer\obj\Debug\net6.0-windows\ref\DataAccessLayer.dll

@@ -31,7 +31,8 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Profile">Profile</a>
                         </li>
-                        @if (!User.IsInRole("Resourceplanner"))
+                       @*@if (!User.IsInRole("Caretaker"))*@ 
+                        @if (User.IsInRole("Caretaker"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Schedule">Schedule</a>
@@ -58,11 +59,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+@*    <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2022 - ZooBazzarWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
-    </footer>
+    </footer>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

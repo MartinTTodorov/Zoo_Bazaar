@@ -10,14 +10,14 @@
 @using Entities;
 @using System.Security.Claims;
 
-if(@User.IsInRole("Customer")){
-
-}
-@foreach (Ticket t in tm.GetTickets(cm.GetCustomerByEmail(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value)))
+@if (@User.IsInRole("Customer"))
 {
-    <div class="ticket">
-        <img src=@Model.ConvertImageToUrl(t.Id) alt="Barcode" />
-        <p>@t.Customer.Email</p>
-        <p>@t.TypeOfTicket</p>
-    </div>
+    @foreach (Ticket t in tm.GetTickets(cm.GetCustomerByEmail(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value)))
+    {
+        <div class="ticket">
+            <img src=@Model.ConvertImageToUrl(t.Id) alt="Barcode" />
+            <p>@t.Customer.Email</p>
+            <p>@t.TypeOfTicket</p>
+        </div>
+    }
 }

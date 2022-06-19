@@ -5,16 +5,21 @@
 }
 @using Entities;
 
+<link rel="stylesheet" href="./css/MyProfile.css">
 
+<p class="info">Personal information</p>
+<body>
 <div class="personalInfo">
-
-    <p>Name: @e.Name </p>
-    <p> Last Name: @e.Lastname</p>
-    <p>Email: @e.Email</p>
-    <p> Address: @e.Address</p>
-    <p>Birthdate: @e.Birthdate.ToShortDateString()</p>
-    <p>Phone: @e.Phone</p>
-    <p> Emergency Contact: @e.EmargencyContact</p>
-    <p>  BSN: @e.Bsn</p>
+    
+    <p><b>Name:</b> @e.Name </p>
+    <p><b>Last Name:</b>  @e.Lastname</p>
+    <p><b>Email:</b> @e.Email</p>
+    <p><b>Address:</b>  @e.Address</p>
+    <p><b>Birthdate: </b>@e.Birthdate.ToShortDateString()</p>
+    <p><b>Phone:</b> @e.Phone</p>
+    <p><b>Emergency Contact:</b>  @e.EmargencyContact</p>
+    <p> <b>BSN: </b> @e.Bsn</p>
 
 </div>
+
+</body>

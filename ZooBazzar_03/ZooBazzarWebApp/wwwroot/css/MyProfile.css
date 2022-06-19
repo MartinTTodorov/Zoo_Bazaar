@@ -1,0 +1,31 @@
+﻿body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url("~/background.jpg");
+    background-color: #BEDFBE;
+    min-height: 100%;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+.personalInfo {
+    font-size: 30px;
+    margin: auto;
+    width: 500px;
+    font-family: Arial;
+    padding: 20px;
+    text-align: center;
+    box-shadow: #577D57 1px 1px 3px 1px;
+    border-radius: 5px;
+    background-color: #7FB67F;
+}
+
+.info{
+    text-align: center;
+    font-size: 45px;
+    color: forestgreen;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
