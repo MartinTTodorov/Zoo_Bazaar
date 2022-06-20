@@ -33,13 +33,23 @@
                         </li>
                         @if (!User.IsInRole("Resourceplanner"))
                         {
+                            if(!User.IsInRole("Customer"))
+                            {
+                                
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Schedule">Schedule</a>
                             </li>
+
+                            }
                         }
+
+                        @if (User.IsInRole("Customer")) 
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/MyTickets">MyTickets</a>
                             </li>
+                        }
+                            
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
                         </li>

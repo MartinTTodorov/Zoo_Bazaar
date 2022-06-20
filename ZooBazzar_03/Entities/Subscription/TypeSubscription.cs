@@ -9,7 +9,7 @@ namespace Entities
 {
     public abstract class TypeSubscription
     {
-        public static List<TypeSubscription> GetTournamentSystem { get { return GetChildClasses(); } }
+        public static List<TypeSubscription> GetTypesSubscription { get { return GetChildClasses(); } }
         public abstract decimal GetPrice();
         public abstract DateTime CalculateEndDate(DateTime startDate);
         public abstract override string ToString();
