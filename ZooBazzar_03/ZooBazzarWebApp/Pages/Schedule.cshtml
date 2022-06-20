@@ -2,74 +2,79 @@
 @using Entities
 @model ZooBazzarWebApp.Pages.ScheduleModel
 @{
-
+    Layout = "MyLayout";
 }
 <script src="~/js/schedule.js"></script>
 <link rel="stylesheet" href="./css/Schedule.css">
-<h1>Hey, @Model.currentEmployee.Name !</h1>
+
+
 <br />
 <br />
 
 <div>
 
-    <table>
-        <tr>
-            <td class="time">Day/Shift</td>
-            @foreach (string day in @Model.GetWeek(0))
-            {
-                <td class="time">@day</td>
-            }
-        </tr>
 
-        <tr>
-            <td class="time">6:00 - 12:00</td>
-            @for (int i = 0; i < 7; i++)
-            {
-                @if (@Model.GetShift("morning", i) != null)
-                {
-                    <td class="shift"><button onclick="GetInfo()" class="button" value="info">Shift</button></td>
-                }
-                else
-                {
-                    <td class="free"></td>
-                }
-            }
-        </tr>
+    <form method="post">
 
-        <tr>
-            <td class="time">12:00 - 18:00</td>
-            @for (int i = 0; i < 7; i++)
-            {
-                @if (@Model.GetShift("noon", i) != null)
+        <table>
+            <tr>
+                <td class="time">Shift/Day</td>
+                @foreach (string day in @ScheduleModel.WeekDays)
                 {
-                    <td class="shift">Shift</td>
+                    <td class="time">@day</td>
                 }
-                else
+            </tr>
+
+            <tr>
+                <td class="time">6:00 - 12:00</td>
+                @for (int i = 0; i < 7; i++)
                 {
-                    <td class="free"></td>
+                    @if (@Model.GetShift("morning", i) != null)
+                    {
+                        <td class="shift"><button name="button" onclick="@(() => @Model.GetShiftInfo(@Model.GetShift("morning", i)))" type="submit" class="button" value="info">Shift</button></td>
+                    }
+                    else
+                    {
+                        <td class="free"></td>
+                    }
                 }
-            }
-        </tr>
+            </tr>
 
-        <tr>
-            <td class="time">18:00 - 00:00</td>
-            @for (int i = 0; i < 7; i++)
-            {
-                @if (@Model.GetShift("evening", i) != null)
+            <tr>
+                <td class="time">12:00 - 18:00</td>
+                @for (int i = 0; i < 7; i++)
                 {
-                    <td class="shift">Shift</td>
+                    @if (@Model.GetShift("noon", i) != null)
+                    {
+                        <td class="shift">Shift</td>
+                    }
+                    else
+                    {
+                        <td class="free"></td>
+                    }
                 }
-                else
+            </tr>
+
+            <tr>
+                <td class="time">18:00 - 00:00</td>
+                @for (int i = 0; i < 7; i++)
                 {
-                    <td class="free"></td>
+                    @if (@Model.GetShift("evening", i) != null)
+                    {
+                        <td class="shift">Shift</td>
+                    }
+                    else
+                    {
+                        <td class="free"></td>
+                    }
                 }
-            }
-        </tr>
+            </tr>
+        </table>
 
-
-    </table>
-
-    <div id="info"></div>
+        <input name="button" class="btn" type="submit" value="Previous week" />
+        <input name="button" class="btn" type="submit" value="Next week" />
+    </form>
+    <div id="info">@ScheduleModel.ShiftInfo</div>
 
 </div>
 

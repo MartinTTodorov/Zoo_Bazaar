@@ -9,3 +9,4 @@ function GetInfo() {
 
     element.innerText = "Hehehe";
 }
+

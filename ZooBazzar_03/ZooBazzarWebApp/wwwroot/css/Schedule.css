@@ -1,9 +1,10 @@
 html {
-  font-size: 14px;
+    font-size: 20px;
+    background-color: #2a3130;
 }
 
 .schedule-card {
-    background-color: #FFFFFF;
+    background-color: #1c3d40;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     border-radius: 10px;
 }
@@ -24,16 +25,26 @@ table, td {
     height: 50px;
     align-content: center;
     font-size: 25px;
-    background-color: rgba(183, 199, 181, 0.56);
-    margin: auto;
+    background-color: #9ab1b7;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    font-family: 'Merriweather Sans', sans-serif;
+    padding: 10px;
+    color: #1c3d40;
+    font-weight: 800;
 }
 
-.button{
+.button {
     min-width: 150px;
     width: auto;
     height: 50px;
     border: none;
     background-color: transparent;
+    font-size: 25px;
+    color: #2a3130;
+    font-weight: 800;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .free {
@@ -42,13 +53,18 @@ table, td {
 
 
 .shift:hover {
-    background-color: #919191;
+    background-color: #537477;
 }
 
-h1{
+h1 {
     text-align: center;
 }
 
-.info{
-    
+.btn {
+    background-color: #9ab1b7;
+    min-width: 200px;
+    min-height: 50px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 50px;
 }

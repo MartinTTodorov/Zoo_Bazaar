@@ -1,7 +1,7 @@
 ﻿body {
     margin: 0px;
     padding: 0px;
-   /* background-color: #BEDFBE;*/
+    background-color: #2a3130;
     min-height: 100%;
 }
 
@@ -11,23 +11,24 @@
 }
 
 .personalInfo {
+    margin-left: auto;
+    margin-right: auto;
     font-size: 30px;
-    margin: auto;
-    width: 500px;
+    padding: 50px;
+    width: 700px;
     font-family: Arial;
-    padding: 20px;
-    text-align: center;
-    box-shadow: #577D57 1px 1px 3px 1px;
+    text-align: left;
     border-radius: 5px;
-    background-color: rgba(127, 179, 134, 0.69);
-   /* display: grid;*/
+    background-color: #537477;
+    height: auto;
+
 }
 
-.info{
+.info {
     text-align: center;
     font-size: 45px;
     color: black;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Merriweather Sans', sans-serif;
 }
 
 .button {
@@ -37,6 +38,8 @@
     padding: 10px;
     margin-top: 10px;
     border: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
     .button:hover {
