@@ -29,6 +29,11 @@ namespace LogicLayer
             //UpdateLocalList();
         }
 
+        public void AddAnimal(Animal animal)
+        {
+            //crud.AddAnimalToDB();
+        }
+
         public void UpdateAnimal(Animal animal)
         {
             if (System.Enum.IsDefined(typeof(AnimalType), animal.AnimalType))

@@ -10,11 +10,11 @@ namespace LogicLayer
 {
     public class AccountManager
     {
-        private ICRUD<Account> db;
+        private ICRU<Account> db;
         private IAccount auto;
         private List<Account> accounts = new List<Account>();
         public List<Account> Accounts { get { return accounts; } }
-        public AccountManager(ICRUD<Account> db, IAccount a)
+        public AccountManager(ICRU<Account> db, IAccount a)
         {
             this.db = db;
             auto = a;
@@ -82,7 +82,7 @@ namespace LogicLayer
         {
             string[] hashedPassword = HashedPassword(account.Password);
             Account temp = new Account(account.Username, hashedPassword[0], hashedPassword[1], account.Id);
-            db.Update(temp.Id, temp);
+            db.Update(temp);
             RefreshData();
         }
         public string GetWorkPositionByAccount(string username)

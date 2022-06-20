@@ -1,25 +1,32 @@
 ﻿using Entities;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Entities;
 
 namespace DataAccessLayer
 {
-    public class EmployeeDB : ICRUD<Employee>
+    public class EmployeeDB : ICRU<Employee>
     {
         private MySqlConnection conn;
-
+        private Employee employee;
         public EmployeeDB()
         {
             conn = ConnectionDB.GetConnection();
         }
-        public void Add( Employee obj)
+        public void Add(Employee obj)
         {
+            string sql2 = " ";
+            MySqlCommand cmd2 = null;
+
+            if(obj.WorkingPosition == "Caretaker")
+            {
+                sql2 = "INSERT INTO caretaker (employee_id,specialization) VALUES (@Employee_ID,@Specialization)";
+                cmd2 = new MySqlCommand(sql2, conn);
+                    
+                cmd2.CommandType = CommandType.Text;
+                cmd2.Parameters.Add("@ID", MySqlDbType.Int32).Value = obj.Id;
+                cmd2.Parameters.Add("@Specialization",MySqlDbType.VarChar).Value = ((Caretaker)obj).GetSpecialization();
+            }
+
             string sql = "INSERT INTO employee (ID,FirstName,LastName,Address,Birthdate,Phone,Email,EmergencyContact,BSN,WorkPosition) VALUES (@ID,@FirstName,@LastName,@Address,@Birthdate,@Phone,@Email,@EmergencyContact,@BSN,@WorkPosition)";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
@@ -33,12 +40,15 @@ namespace DataAccessLayer
             cmd.Parameters.Add("@EmergencyContact", MySqlDbType.VarChar).Value = obj.EmargencyContact;
             cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = obj.Email;
             cmd.Parameters.Add("@BSN", MySqlDbType.VarChar).Value = obj.Bsn;
-            cmd.Parameters.Add("@WorkPosition", MySqlDbType.VarChar).Value = obj.GetWorkingPosition();
+            cmd.Parameters.Add("@WorkPosition", MySqlDbType.VarChar).Value = obj.WorkingPosition;
 
             try
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
+                if(cmd2 != null)
+                    cmd2.ExecuteNonQuery();
+
                 MessageBox.Show("Employee added successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (MySqlException ex)
@@ -54,9 +64,10 @@ namespace DataAccessLayer
 
         public List<Employee> Read()
         {
-            string sql = "SELECT username,password,firstname,lastname,address,birthdate,email,phone,emergencycontact,bsn,workposition,id FROM employee INNER JOIN account ON employee.ID = account.AccountID";
+            string sql = "SELECT username,password,firstname,lastname,address,birthdate,email,phone,emergencycontact,bsn,workposition,id,specialization FROM employee INNER JOIN account ON employee.ID = account.AccountID Left JOIN caretaker On employee.ID = caretaker.employee_id";
             List<Employee> employees = new List<Employee>();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
+
 
             try
             {
@@ -65,38 +76,25 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    if (reader[10].ToString() == "Manager")
+                    
+                    if (reader[10].ToString() == "Caretaker")
                     {
-                        Manager manager = new Manager(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString());
-                        manager.Id = Convert.ToInt32(reader[11]);
-                        employees.Add(manager);
-                    }
-                    else if (reader[10].ToString() == "Resourceplanner")
-                    {
-                        ResourcePlanner resourcePlanner = new ResourcePlanner(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString());
-                        resourcePlanner.Id = Convert.ToInt32(reader[11]);
-                        employees.Add(resourcePlanner);
-                    }
-                    else if (reader[10].ToString() == "Salesman")
-                    {
-                        Manager manager = new Manager(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString());
-                        manager.Id = Convert.ToInt32(reader[11]);
-                        employees.Add(manager);
+                        Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), reader[12].ToString());
+                        employee = new Caretaker(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(),Convert.ToInt32(reader[11]), specialization);
+                        
                     }
                     else
                     {
-                        Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), reader[10].ToString(), true);
-                        Caretaker caretaker = new Caretaker(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), specialization);
-                        caretaker.Id = Convert.ToInt32(reader[11]);
-                        employees.Add((caretaker));
+                        employee = new Employee(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(), Convert.ToInt32(reader[11]));
                     }
 
+                    employees.Add(employee);
                 }
             }
             catch (MySqlException ex)
             {
 
-                MessageBox.Show("Error during reading the data in accounts! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error during reading the data in employees! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -106,7 +104,7 @@ namespace DataAccessLayer
             return employees;
         }
 
-        public void Update(int id, Employee obj)
+        public void Update(Employee obj)
         {
             string sql = "UPDATE employee SET FirstName = @FirstName,LastName = @Lastname,Address = @Address,Birthdate = @Birthdate,Phone = @Phone,Email = @Email,EmergencyContact = @EmergencyContact,BSN = @BSN,WorkPosition = @WorkingPosition WHERE ID = @ID ";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -119,20 +117,19 @@ namespace DataAccessLayer
             cmd.Parameters.Add("@EmergencyContact", MySqlDbType.VarChar).Value = obj.EmargencyContact;
             cmd.Parameters.Add("@Email", MySqlDbType.VarChar).Value = obj.Email;
             cmd.Parameters.Add("@BSN", MySqlDbType.VarChar).Value = obj.Bsn;
-            string workingposition = obj.GetWorkingPosition();
-            cmd.Parameters.Add("@WorkingPosition", MySqlDbType.VarChar).Value = workingposition;
-            cmd.Parameters.Add("@ID", MySqlDbType.VarChar).Value = id;
+            cmd.Parameters.Add("@WorkingPosition", MySqlDbType.VarChar).Value = obj.WorkingPosition;
+            cmd.Parameters.Add("@ID", MySqlDbType.VarChar).Value = obj.Id;
 
             try
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Employee updated successfully!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
             }
             catch (MySqlException ex)
             {
 
-                MessageBox.Show("Employee is not updated! \n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
             }
             finally
             {

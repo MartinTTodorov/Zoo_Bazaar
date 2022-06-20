@@ -8,7 +8,7 @@ namespace Entities
 {
     public enum TypeOfTicket
     {
-        Adult,
-        Child
+        adult,
+        child
     }
 }

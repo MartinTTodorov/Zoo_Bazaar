@@ -15,6 +15,7 @@ namespace Entities
         private double fte;
         private string reason;
         private bool isValid;
+        private int vacationDaysLeft;
 
 
 
@@ -29,8 +30,9 @@ namespace Entities
         public double Fte { get { return this.fte; } }
         public string Reason { get { return this.reason; } }
         public bool IsValid { get { return this.isValid; } }
+        public int VacationDaysLeft { get { return this.vacationDaysLeft; } }
 
-        public EmployeeContract(int id,int employeeId, DateTime startDate, DateTime endDate, double fte, string reason, bool isValid)
+        public EmployeeContract(int id,int employeeId, DateTime startDate, DateTime endDate, double fte, string reason, int vacationDaysLeft, bool isValid)
         {
             this.id = id;
             this.employeeId = employeeId;
@@ -38,6 +40,7 @@ namespace Entities
             this.endDate = endDate;
             this.fte = fte;
             this.reason = reason;
+            this.vacationDaysLeft = vacationDaysLeft;
             this.isValid = isValid;
         }
 
@@ -51,11 +54,9 @@ namespace Entities
             this.isValid = isValid;
         }
 
+        
 
-        public EmployeeContract()
-        {
 
-        }
 
         public override string ToString()
         {

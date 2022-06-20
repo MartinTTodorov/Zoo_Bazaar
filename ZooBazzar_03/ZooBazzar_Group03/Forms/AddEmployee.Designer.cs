@@ -209,6 +209,7 @@
             this.cbPosition.Name = "cbPosition";
             this.cbPosition.Size = new System.Drawing.Size(180, 29);
             this.cbPosition.TabIndex = 53;
+            this.cbPosition.SelectedIndexChanged += new System.EventHandler(this.cbPosition_SelectedIndexChanged);
             // 
             // label7
             // 

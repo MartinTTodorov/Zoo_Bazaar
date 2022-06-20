@@ -1,4 +1,7 @@
+using LogicLayer;
+using Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using DataAccessLayer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +20,21 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.LoginPath = "/Login";
         options.AccessDeniedPath = "/Error";
     });
+
+builder.Services.AddTransient<IAccount, AccountManagerDB>();
+builder.Services.AddTransient<ICRU<Account>, AccountManagerDB>();
+builder.Services.AddTransient<ICRU<Employee>, EmployeeDB>();
+builder.Services.AddTransient<ICRU<Ticket>, TicketsDB>();
+builder.Services.AddTransient<IAutoIncrementable,TicketsDB>();
+builder.Services.AddTransient<IScheduleDB<DailySchedule>, ScheduleDB>();
+builder.Services.AddTransient<ICageDB<Cage>, CageDB>();
+builder.Services.AddTransient<IContractDataManagement<EmployeeContract>,ContractDB>();
+
+builder.Services.AddSingleton<EmployeeManagment>();
+builder.Services.AddSingleton<TicketManager>();
+builder.Services.AddSingleton<AccountManager>();
+builder.Services.AddSingleton<ScheduleManager>();
+
 
 
 var app = builder.Build();

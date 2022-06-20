@@ -1,4 +1,5 @@
 ﻿using Entities;
+using LogicLayer;
 
 namespace ZooBazzar_Group03.Forms
 {
@@ -15,6 +16,7 @@ namespace ZooBazzar_Group03.Forms
 
             this.animals = animals;
             this.workingPosition = workingPosition;
+            LoadTheame();
         }
 
         //Methods
@@ -55,5 +57,28 @@ namespace ZooBazzar_Group03.Forms
             FormAddAnimal frmAddAnimal = new FormAddAnimal(this.flpAnimals);
             frmAddAnimal.Show();
         }
+
+        private void LoadTheame()
+        {
+
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = ColorThemeHandler.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = ColorThemeHandler.SecondaryColor;
+                }
+                else if (btns.GetType() == typeof(Label))
+                {
+                    btns.BackColor = ColorThemeHandler.PrimaryColor;
+                    btns.ForeColor = Color.White;
+                }
+
+            }
+
+        }
+
     }
 }

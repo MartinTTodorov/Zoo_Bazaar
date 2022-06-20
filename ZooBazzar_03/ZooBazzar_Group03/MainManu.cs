@@ -1,4 +1,4 @@
-﻿using ZooBazzar_Group03.Employeee;
+﻿using ZooBazzar_Group03;
 using LogicLayer;
 using Entities;
 using DataAccessLayer;
@@ -39,15 +39,43 @@ namespace ZooBazzar_Group03
 
             if (workingPosition == "Manager")
             {
+                this.pMenu.Controls.Remove(btnScanning);
+                this.pMenu.Controls.Remove(btnTickets);
+                this.pMenu.Controls.Remove(btnSchedule);
+                
 
             }
             else if (workingPosition == "Resourceplanner")
             {
-               
+                this.pMenu.Controls.Remove(btnScanning);
+                this.pMenu.Controls.Remove(btnTickets);
+                this.pMenu.Controls.Remove(btnEmployees);
+                this.pMenu.Controls.Remove(btnContracts);
+                this.pMenu.Controls.Remove(btnRequest);
+                this.pMenu.Controls.Remove(btnStatistics);
+                this.pMenu.Controls.Remove(btnComplaints);
+            }
+            else if(workingPosition == "Caretaker")
+            {
+                this.pMenu.Controls.Remove(btnScanning);
+                this.pMenu.Controls.Remove(btnTickets);
+                this.pMenu.Controls.Remove(btnSchedule);
+                this.pMenu.Controls.Remove(btnEmployees);
+                this.pMenu.Controls.Remove(btnContracts);
+                this.pMenu.Controls.Remove(btnRequest);
+                this.pMenu.Controls.Remove(btnStatistics);
+                this.pMenu.Controls.Remove(btnComplaints);
             }
             else
             {
-                
+                this.pMenu.Controls.Remove(btnSchedule);
+                this.pMenu.Controls.Remove(btnEmployees);
+                this.pMenu.Controls.Remove(btnContracts);
+                this.pMenu.Controls.Remove(btnRequest);
+                this.pMenu.Controls.Remove(btnStatistics);
+                this.pMenu.Controls.Remove(btnAnimals);
+                this.pMenu.Controls.Remove(btnStatistics);
+                this.pMenu.Controls.Remove(btnComplaints);
             }
         }
         private Color SelectThemeColor()
@@ -133,12 +161,12 @@ namespace ZooBazzar_Group03
 
         private void btnEmployees_Click(object sender, EventArgs e)
         {
-            openChildForm(new Forms.EmployeesPage(employeeManagment.GetEmployees(),cm.GetContracts()), sender);
+            openChildForm(new Forms.EmployeesPage(employeeManagment.Employees.ToList(),cm.GetContracts()), sender);
         }
 
         private void btnContracts_Click(object sender, EventArgs e)
         {
-            openChildForm(new Forms.Contracts(employeeManagment.GetEmployees()), sender);
+            openChildForm(new Forms.Contracts(employeeManagment.Employees.ToList()), sender);
         }
 
         private void btnRequest_Click(object sender, EventArgs e)
@@ -154,6 +182,26 @@ namespace ZooBazzar_Group03
         private void btnStatistics_Click(object sender, EventArgs e)
         {
             openChildForm(new Forms.Statistics(), sender);
+        }
+
+        private void btnScanning_Click(object sender, EventArgs e)
+        {
+            openChildForm(new TicketForm(), sender);
+        }
+
+        private void btnTickets_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.Tickets(), sender);
+        }
+
+        private void btnAnimals_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.AnimalsPage(animalManager.Animals.ToList(), workingPosition), sender);
+        }
+
+        private void btnComplaints_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.ComplaintsPage(), sender);
         }
     }
 }

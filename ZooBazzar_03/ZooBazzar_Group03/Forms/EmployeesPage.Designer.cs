@@ -69,14 +69,14 @@
             // 
             this.pContent.Location = new System.Drawing.Point(0, -2);
             this.pContent.Name = "pContent";
-            this.pContent.Size = new System.Drawing.Size(469, 530);
+            this.pContent.Size = new System.Drawing.Size(469, 574);
             this.pContent.TabIndex = 45;
             // 
             // EmployeesPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(962, 524);
+            this.ClientSize = new System.Drawing.Size(980, 571);
             this.Controls.Add(this.pContent);
             this.Controls.Add(this.lbEmployees);
             this.Controls.Add(this.btnUpdateEmployee);

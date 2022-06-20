@@ -10,21 +10,6 @@
     <Compile Update="AnimalPic.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Employeee\Account\NewAccount.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Employeee\ContractForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Employeee\EditEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Employeee\NewEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Employeee\ucEmployee.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="fmAddNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -49,6 +34,9 @@
     <Compile Update="Forms\AnimalsPage.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\ComplaintsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Contracts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,7 +55,13 @@
     <Compile Update="Forms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\ShowComplaint.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\Statistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Tickets.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\UpdateEmployee.cs">
@@ -82,7 +76,16 @@
     <Compile Update="Schedule\Schedule.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="TicketForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="ucAnimalNotes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ucDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ucEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

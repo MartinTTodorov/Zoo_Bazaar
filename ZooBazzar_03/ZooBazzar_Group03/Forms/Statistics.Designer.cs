@@ -122,10 +122,10 @@
             // 
             // btnGetNumberOfVisitors
             // 
-            this.btnGetNumberOfVisitors.Location = new System.Drawing.Point(30, 341);
+            this.btnGetNumberOfVisitors.Location = new System.Drawing.Point(21, 338);
             this.btnGetNumberOfVisitors.Name = "btnGetNumberOfVisitors";
-            this.btnGetNumberOfVisitors.Size = new System.Drawing.Size(206, 29);
-            this.btnGetNumberOfVisitors.TabIndex = 10;
+            this.btnGetNumberOfVisitors.Size = new System.Drawing.Size(215, 29);
+            this.btnGetNumberOfVisitors.TabIndex = 11;
             this.btnGetNumberOfVisitors.Text = "Get visitors";
             this.btnGetNumberOfVisitors.UseVisualStyleBackColor = true;
             this.btnGetNumberOfVisitors.Click += new System.EventHandler(this.btnGetNumberOfVisitors_Click);

@@ -17,8 +17,8 @@ namespace LogicLayer
         {
             this.crud = crud;
             cages = crud.GetCages();
-            //InsertAnimalsInCage();
-            
+            InsertAnimalsInCage();
+
         }
 
         public void GetCages()
@@ -37,15 +37,7 @@ namespace LogicLayer
 
         public void InsertAnimalsInCage()
         {
-            //foreach (Cage c in Cages)
-            //{
-            //    c.CageAnimals = db.GetAnimalsInCage(c.CageNumber);
-            //    foreach (Animal a in c.CageAnimals)
-            //    {
-            //        a.FeedingTimes = db.GetFeedingTimes(a.AnimalCode);
-            //    }
-            //}
-
+            
             for (int i = 0; i < cages.Count; i++)
             {
                 cages[i].CageAnimals = crud.GetAnimalsInCage(cages[i].CageNumber);
