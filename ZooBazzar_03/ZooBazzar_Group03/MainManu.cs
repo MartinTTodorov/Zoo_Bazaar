@@ -54,6 +54,8 @@ namespace ZooBazzar_Group03
                 this.pMenu.Controls.Remove(btnRequest);
                 this.pMenu.Controls.Remove(btnStatistics);
                 this.pMenu.Controls.Remove(btnComplaints);
+                this.pMenu.Controls.Remove(btnZooDescription);
+
             }
             else if(workingPosition == "Caretaker")
             {
@@ -65,6 +67,8 @@ namespace ZooBazzar_Group03
                 this.pMenu.Controls.Remove(btnRequest);
                 this.pMenu.Controls.Remove(btnStatistics);
                 this.pMenu.Controls.Remove(btnComplaints);
+                this.pMenu.Controls.Remove(btnZooDescription);
+
             }
             else
             {
@@ -76,6 +80,7 @@ namespace ZooBazzar_Group03
                 this.pMenu.Controls.Remove(btnAnimals);
                 this.pMenu.Controls.Remove(btnStatistics);
                 this.pMenu.Controls.Remove(btnComplaints);
+                this.pMenu.Controls.Remove(btnZooDescription);
             }
         }
         private Color SelectThemeColor()
@@ -202,6 +207,11 @@ namespace ZooBazzar_Group03
         private void btnComplaints_Click(object sender, EventArgs e)
         {
             openChildForm(new Forms.ComplaintsPage(), sender);
+        }
+
+        private void btnZooDescription_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.Description(), sender);
         }
     }
 }

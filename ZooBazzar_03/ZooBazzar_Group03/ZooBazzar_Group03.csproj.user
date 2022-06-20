@@ -40,6 +40,9 @@
     <Compile Update="Forms\Contracts.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Description.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\EmployeesPage.cs">
       <SubType>Form</SubType>
     </Compile>
