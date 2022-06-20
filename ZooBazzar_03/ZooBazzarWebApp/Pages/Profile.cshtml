@@ -20,6 +20,11 @@
     <p><b>Emergency Contact:</b>  @e.EmargencyContact</p>
     <p> <b>BSN: </b> @e.Bsn</p>
 
+        @if (User.IsInRole("Caretaker"))
+        {
+            <a class ="button" href="~/ChangeCredentials"> Change personal information</a>
+        }
+
 </div>
 
 </body>

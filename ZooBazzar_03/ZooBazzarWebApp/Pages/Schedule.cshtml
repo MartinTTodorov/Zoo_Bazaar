@@ -14,15 +14,15 @@
 
     <table>
         <tr>
-            <td>Day/Shift</td>
+            <td class="time">Day/Shift</td>
             @foreach (string day in @Model.GetWeek(0))
             {
-                <td>@day</td>
+                <td class="time">@day</td>
             }
         </tr>
 
         <tr>
-            <td>6:00 - 12:00</td>
+            <td class="time">6:00 - 12:00</td>
             @for (int i = 0; i < 7; i++)
             {
                 @if (@Model.GetShift("morning", i) != null)
@@ -37,7 +37,7 @@
         </tr>
 
         <tr>
-            <td>12:00 - 18:00</td>
+            <td class="time">12:00 - 18:00</td>
             @for (int i = 0; i < 7; i++)
             {
                 @if (@Model.GetShift("noon", i) != null)
@@ -52,7 +52,7 @@
         </tr>
 
         <tr>
-            <td>18:00 - 00:00</td>
+            <td class="time">18:00 - 00:00</td>
             @for (int i = 0; i < 7; i++)
             {
                 @if (@Model.GetShift("evening", i) != null)

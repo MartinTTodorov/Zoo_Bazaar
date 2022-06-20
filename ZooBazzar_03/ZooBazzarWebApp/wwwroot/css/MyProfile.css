@@ -1,8 +1,7 @@
 ﻿body {
     margin: 0px;
     padding: 0px;
-    background-image: url("~/background.jpg");
-    background-color: #BEDFBE;
+   /* background-color: #BEDFBE;*/
     min-height: 100%;
 }
 
@@ -20,12 +19,42 @@
     text-align: center;
     box-shadow: #577D57 1px 1px 3px 1px;
     border-radius: 5px;
-    background-color: #7FB67F;
+    background-color: rgba(127, 179, 134, 0.69);
+   /* display: grid;*/
 }
 
 .info{
     text-align: center;
     font-size: 45px;
-    color: forestgreen;
+    color: black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.button {
+    text-decoration: none;
+    color: black;
+    background-color: rgba(161, 161, 161, 0.4);
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+}
+
+    .button:hover {
+        background-color: rgba(161, 161, 161, 0.68);
+        color: black;
+        border-radius: 5px;
+    }
+
+.label{
+    margin-top: 10px;
+}
+
+.cred{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+#birthdate{
+    width: 390px;
 }

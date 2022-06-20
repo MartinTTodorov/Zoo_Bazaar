@@ -24,6 +24,8 @@ table, td {
     height: 50px;
     align-content: center;
     font-size: 25px;
+    background-color: rgba(183, 199, 181, 0.56);
+    margin: auto;
 }
 
 .button{
@@ -34,10 +36,19 @@ table, td {
     background-color: transparent;
 }
 
-.free{
-    background-color: grey;
+.free {
+    background-color: rgba(82, 89, 81, 0.62);
+}
+
+
+.shift:hover {
+    background-color: #919191;
+}
+
+h1{
+    text-align: center;
 }
 
 .info{
-    color: black;
+    
 }

@@ -5,7 +5,7 @@
 
 
 function GetInfo() {
-    var element = document.getElementById("info"); debugger;
+    var element = document.getElementById("info"); 
 
-    element.innerText = "Shift information: " + mainCaretakerFir + " " + mainCaretakerSec;
+    element.innerText = "Hehehe";
 }

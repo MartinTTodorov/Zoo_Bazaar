@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ZooBazzarWebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    @if (User.IsInRole("Caretaker"))
+    {
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    }
+
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ZooBazzarWebApp.styles.css" asp-append-version="true" />
 </head>
@@ -22,25 +28,29 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
+                       @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
+                        </li>*@
+                      @*  <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/ChangeCredentials">Change Details</a>
-                        </li>
+                        </li>*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Profile">Profile</a>
                         </li>
-                       @*@if (!User.IsInRole("Caretaker"))*@ 
+
                         @if (User.IsInRole("Caretaker"))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/Schedule">Schedule</a>
                             </li>
                         }
+                        @if (User.IsInRole("Customer"))
+                        {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/MyTickets">MyTickets</a>
                             </li>
+                        }
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
                         </li>
@@ -59,11 +69,11 @@
         </main>
     </div>
 
-@*    <footer class="border-top footer text-muted">
+    @*    <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - ZooBazzarWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        &copy; 2022 - ZooBazzarWebApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
-    </footer>*@
+        </footer>*@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
