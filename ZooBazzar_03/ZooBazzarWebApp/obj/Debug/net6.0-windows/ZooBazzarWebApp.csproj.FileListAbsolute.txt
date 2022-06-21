@@ -125,3 +125,5 @@ C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazz
 C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.pdb
 C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ZooBazzarWebApp.genruntimeconfig.cache
 C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\obj\Debug\net6.0-windows\ref\ZooBazzarWebApp.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\bin\Debug\net6.0-windows\MailKit.dll
+C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp\bin\Debug\net6.0-windows\MimeKit.dll

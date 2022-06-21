@@ -21,6 +21,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Georgi\Desktop\Project Zoo Bazzar\p-cb-s06-group03\ZooBazzar_03\ZooBazzarWebApp
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Georgi/Desktop/Project Zoo Bazzar/p-cb-s06-group03/ZooBazzar_03/ZooBazzarWebApp/Pages/BuyTicket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnV5VGlja2V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Georgi/Desktop/Project Zoo Bazzar/p-cb-s06-group03/ZooBazzar_03/ZooBazzarWebApp/Pages/ChangeCredentials.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhbmdlQ3JlZGVudGlhbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
