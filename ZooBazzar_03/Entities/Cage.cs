@@ -40,6 +40,11 @@ namespace Entities
             this.cageNumber = cageNr;
         }
 
+        public string GetSpecie()
+        {
+            return cageAnimals[0].Specie;
+        }
+
         public override string ToString()
         {
             return $"Cage number: {this.CageNumber}\tSpecies: {this.CageAnimals[0].Specie}";

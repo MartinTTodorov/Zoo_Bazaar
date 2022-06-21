@@ -63,9 +63,9 @@ namespace DataAccessLayer
             {
                 string sql =$"SELECT dfs.AnimalType, dfs.Date, dfs.mainEmployeeFir, dfs.mainEmployeeSec, dfs.helperEmployee, e1.FirstName AS mainFirstName, e2.FirstName AS mainSecondName, e3.FirstName AS helperName, e1.WorkPosition, dfs.TimeSlot,specialization FROM daily_feeding_schedule AS dfs " +
                     $"INNER JOIN employee e1 ON dfs.mainEmployeeFir = e1.ID " +
-                    $"INNER JOIN caretaker c1 ON e1.ID = c1.employee_id " +
-                    $"INNER JOIN employee e2 ON dfs.mainEmployeeSec = e2.ID " +               
-                    $"LEFT JOIN employee e3 ON dfs.helperEmployee = e3.ID " +        
+                    $"INNER JOIN employee e2 ON dfs.mainEmployeeSec = e2.ID " +
+                    $"INNER JOIN employee e3 ON dfs.helperEmployee = e3.ID " +
+                    $"INNER JOIN caretaker c ON dfs.mainEmployeeFir = c.employee_id " +  
                     $"WHERE Date = @date0 OR Date = @date1 OR Date = @date2 OR Date = @date3 OR Date = @date4 OR Date = @date5 OR Date = @date6 ";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 

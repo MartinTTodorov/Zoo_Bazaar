@@ -2,19 +2,36 @@
 @model ZooBazzarWebApp.Pages.ProfileModel
 @{
     Employee e = Model.employee;
+    Layout = "MyLayout";
 }
 @using Entities;
 
+<link rel="stylesheet" href="./css/MyProfile.css">
 
-<div class="personalInfo">
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
-    <p>Name: @e.Name </p>
-    <p> Last Name: @e.Lastname</p>
-    <p>Email: @e.Email</p>
-    <p> Address: @e.Address</p>
-    <p>Birthdate: @e.Birthdate.ToShortDateString()</p>
-    <p>Phone: @e.Phone</p>
-    <p> Emergency Contact: @e.EmargencyContact</p>
-    <p>  BSN: @e.Bsn</p>
+<div class="personalInfo
+        <p class="info">Personal information</p>
 
-</div>
+
+        <p><b>Name:</b> @e.Name </p>
+        <p><b>Last Name:</b>  @e.Lastname</p>
+        <p><b>Email:</b> @e.Email</p>
+        <p><b>Address:</b>  @e.Address</p>
+        <p><b>Birthdate: </b>@e.Birthdate.ToShortDateString()</p>
+        <p><b>Phone:</b> @e.Phone</p>
+        <p><b>Emergency Contact:</b>  @e.EmargencyContact</p>
+        <p> <b>BSN: </b> @e.Bsn</p>
+
+    @if (User.IsInRole("Caretaker"))
+    {
+                <a class="button" href="~/ChangeCredentials"> Change personal information</a>
+    }
+
+    </div>
+
