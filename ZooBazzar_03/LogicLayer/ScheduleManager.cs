@@ -23,12 +23,16 @@ namespace LogicLayer
         int fullShiftHours = 6;
 
         IScheduleDB<DailySchedule> crud;
-        public ScheduleManager(IScheduleDB<DailySchedule> crud, ICRU<Employee> employeeData, ICageDB<Cage> cageData, IContractDataManagement<EmployeeContract> contractData)
+
+        IAutoIncrementable autoIncr;
+
+        public ScheduleManager(IScheduleDB<DailySchedule> crud, ICRU<Employee> employeeData, ICageDB<Cage> cageData, IContractDataManagement<EmployeeContract> contractData, IAutoIncrementable autoIncr)
         {
             this.crud = crud;
             em = new EmployeeManagment(employeeData);
             cm = new CageManager(cageData);
             cmngr = new ContractManager(contractData);
+            this.autoIncr = autoIncr;   
         }
 
 
@@ -200,6 +204,10 @@ namespace LogicLayer
             return caretakerSchedule;
         }
 
+        public int GetId()
+        {
+            return autoIncr.GetNexID();
+        }
 
     }
 }

@@ -15,7 +15,7 @@ namespace ZooBazzar_Group03
         }
         string date;
 
-        ScheduleManager sm = new ScheduleManager(new ScheduleDB(), new EmployeeDB(), new CageDB(), new ContractDB());
+        ScheduleManager sm = new ScheduleManager(new ScheduleDB(), new EmployeeDB(), new CageDB(), new ContractDB(), new ScheduleDB());
 
         DateTime currentDate;
         AnimalType currentType;
@@ -205,7 +205,7 @@ namespace ZooBazzar_Group03
                     caretaker3 = null;
                 }
 
-                if (sm.Insert(new DailySchedule((AnimalType)Enum.Parse(typeof(AnimalType), cmbAnimalType.SelectedItem.ToString()), date, caretaker1, caretaker2, caretaker3, timeSlot)))
+                if (sm.Insert(new DailySchedule(sm.GetId(), (AnimalType)Enum.Parse(typeof(AnimalType), cmbAnimalType.SelectedItem.ToString()), date, caretaker1, caretaker2, caretaker3, timeSlot)))
                 {
                     MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully assign a caretaker to the animal");
                     btnAssign.Enabled = false;
@@ -240,7 +240,7 @@ namespace ZooBazzar_Group03
                 }
 
 
-                if (sm.Update(new DailySchedule(currentType, date, caretaker1, caretaker2, caretaker3, timeSlot)))
+                if (sm.Update(new DailySchedule(sm.GetId(), currentType, date, caretaker1, caretaker2, caretaker3, timeSlot)))
                 {
                     MessageBox.Show("Fortunately, thanks to my great coding skills you were able to successfully edit the assigned caretaker to the animal");
                 }

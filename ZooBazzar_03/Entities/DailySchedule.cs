@@ -8,6 +8,7 @@ namespace Entities
 {
     public class DailySchedule
     {
+        private int id;
         private string date;
         private Caretaker mainCaretakerFir;
         private Caretaker mainCaretakerSec;
@@ -15,6 +16,7 @@ namespace Entities
         private string timeSlot;
         private AnimalType type;
 
+        public int Id { get { return id; } }
         public string Date { get { return date; } }
         public string TimeSlot { get { return timeSlot; } }
         public Caretaker MainCaretakerFir { get { return mainCaretakerFir; } }
@@ -23,8 +25,9 @@ namespace Entities
         public AnimalType Type { get { return type; } }
 
 
-        public DailySchedule(AnimalType type, string date, Caretaker mainFirst, Caretaker mainSecond, Caretaker helpCaretaker, string timeSlot)
+        public DailySchedule(int id, AnimalType type, string date, Caretaker mainFirst, Caretaker mainSecond, Caretaker helpCaretaker, string timeSlot)
         {
+            this.id = id;
             this.type = type;
             this.date = date;
             this.mainCaretakerFir = mainFirst;
