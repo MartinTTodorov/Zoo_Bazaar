@@ -10,9 +10,10 @@ namespace Entities
     {
         //Fields
         private int id;
+        private int customer_id;
         private DateTime startDate;
         private DateTime endDate;
-        private TypeSubscription subscription;
+        private TypeSubscription subscription;       
 
         public int Id { get { return id; } }
         public DateTime StartDate
@@ -32,20 +33,24 @@ namespace Entities
         }
         public DateTime EndDate { get { return endDate; } }
         public TypeSubscription SubscriptionType { get { return subscription; } }
+        public int CustomerId { get { return customer_id; } }
 
-        public Subscription(DateTime startDate, TypeSubscription type)
+        public Subscription(int custId,DateTime startDate, TypeSubscription type)
         {
+            this.customer_id = custId;
             this.StartDate = startDate;
             this.subscription = type;
             this.endDate = type.CalculateEndDate(StartDate);
         }
 
-        public Subscription(int id, DateTime startDate, DateTime endDate, TypeSubscription subscription)
+        public Subscription(int id, int custId, DateTime startDate, DateTime endDate, TypeSubscription subscription)
         {
             this.id = id;
+            this.customer_id = custId;  
             this.startDate = startDate;
             this.subscription = subscription;
             this.endDate = endDate;
+            this.subscription = subscription; 
         }
     }
 }
