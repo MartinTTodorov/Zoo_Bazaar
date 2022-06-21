@@ -164,6 +164,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ScheduleForm";
             this.Text = "ScheduleForm";
+            this.Load += new System.EventHandler(this.ScheduleForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -8,8 +8,7 @@ namespace ZooBazzar_Group03.Forms
         private int weekIndex = 0;
         public ScheduleForm()
         {
-            InitializeComponent();
-            LoadTheame();
+            InitializeComponent();         
             GetSchedule(0);
         }
 
@@ -71,6 +70,11 @@ namespace ZooBazzar_Group03.Forms
                 
             }
 
+        }
+
+        private void ScheduleForm_Load(object sender, EventArgs e)
+        {
+            LoadTheame();
         }
     }
 }

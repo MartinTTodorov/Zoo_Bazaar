@@ -23,7 +23,7 @@ namespace ZooBazzar_Group03.Forms
 
             this.account = account;
             tbUsernameSettings.Text = account.Username;
-            LoadTheame();
+           
         }
 
         private void btnSavePassword_Click(object sender, EventArgs e)
@@ -53,6 +53,11 @@ namespace ZooBazzar_Group03.Forms
 
             }
 
+        }
+
+        private void Settings_Load(object sender, EventArgs e)
+        {
+            LoadTheame();
         }
     }
 }

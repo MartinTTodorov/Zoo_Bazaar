@@ -57,5 +57,31 @@ namespace ZooBazzar_Group03.Forms
         {
             MessageBox.Show($"{(EmployeeContract)lbContracts.SelectedItem}");
         }
+        private void LoadTheame()
+        {
+
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = ColorThemeHandler.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = ColorThemeHandler.SecondaryColor;
+                }
+                else if (btns.GetType() == typeof(Label))
+                {
+                    btns.BackColor = ColorThemeHandler.PrimaryColor;
+                    btns.ForeColor = Color.White;
+                }
+
+            }
+
+        }
+
+        private void Contracts_Load(object sender, EventArgs e)
+        {
+            LoadTheame();
+        }
     }
 }
