@@ -31,7 +31,7 @@
                 {
                     @if (@Model.GetShift("morning", i) != null)
                     {
-                        <td class="shift"><button name="button" onclick="@(() => @Model.GetShiftInfo(@Model.GetShift("morning", i)))" type="submit" class="button" value="info">Shift</button></td>
+                        <td class="shift"><button name="button" onclick="GetInfo(@Model.GetShift("morning", i).MainCaretakerFir))" type="submit" class="button" value="info">Shift</button></td>
                     }
                     else
                     {

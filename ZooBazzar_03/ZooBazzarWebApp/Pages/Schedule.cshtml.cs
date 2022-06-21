@@ -19,6 +19,9 @@ namespace ZooBazzarWebApp.Pages
 
         public static List<string> WeekDays;
 
+        [BindProperty]
+        public ScheduleDTO ScheduleDTO { get; set; }
+
         static int index;
 
         public ScheduleModel(ScheduleManager sm,EmployeeManagment em)

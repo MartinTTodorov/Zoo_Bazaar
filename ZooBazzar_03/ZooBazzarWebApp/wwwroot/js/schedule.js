@@ -4,9 +4,9 @@
 // Write your JavaScript code.
 
 
-function GetInfo() {
+function GetInfo(Name) {
     var element = document.getElementById("info"); 
 
-    element.innerText = "Hehehe";
+    element.innerText = "Hehehe" + Name;
 }
 
