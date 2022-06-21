@@ -69,6 +69,42 @@ namespace DataAccessLayer
             }
         }
 
+        public List<Vacation> ReadVacations()
+        {
+            List<Vacation> vacations = new List<Vacation>();
+            try
+            {
+                string sql = "Select RequestID, EmployeeID, StartDate, EndDate, Status FROM vacations WHERE Status=@Status AND CURRENT_DATE() BETWEEN StartDate AND EndDate";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                cmd.Parameters.AddWithValue("@Status", "Accepted");
+
+
+                conn.Open();
+
+                while (dr.Read())
+                {
+                    vacations.Add(new Vacation(Convert.ToInt32(dr["RequestID"]), Convert.ToInt32(dr["EmployeeID"]), Convert.ToDateTime(dr["StartDate"]), Convert.ToDateTime(dr["EndDate"])));
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return vacations;
+        }
+
         public void RequestVacation(Vacation vacation)
         {
             try

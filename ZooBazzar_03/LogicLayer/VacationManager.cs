@@ -13,12 +13,18 @@ namespace LogicLayer
 
         private EmployeeManagment employeeManager = new EmployeeManagment(new EmployeeDB());
         private ContractManager contractManager = new ContractManager(new ContractDB());
+        private List<Vacation> vacations;
         private IVacations db;
+
+        public List<Vacation> Vacations { get { return vacations; } }
 
         public VacationManager(IVacations db)
         {
             this.db = db;
+            vacations = db.ReadVacations();
         }
+
+        
 
         public void RequestVacation(Vacation vacation)
         {

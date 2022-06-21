@@ -12,6 +12,7 @@ namespace LogicLayer
         private static EmployeeManagment em;
         private static CageManager cm;
         private static ContractManager cmngr;
+        private VacationManager vm;
 
         static List<DailySchedule> dailySchedules = new List<DailySchedule>();
         public List<DailySchedule> DailySchedules { get { return dailySchedules; } }
@@ -163,11 +164,17 @@ namespace LogicLayer
         {
             List<Caretaker> caretakers = GetCaretakers(type);
 
+            //caretakers.FindAll(x => x.Account.Id == vm.Vacations.Find(v => v.EmployeeID == x.Account.Id).EmployeeID);
+
             List<Caretaker> freeCaretakers = new List<Caretaker>();
 
             foreach (Caretaker caretaker in caretakers)
             {
                 cmngr.GetContracts(caretaker);
+                //if (vm.Vacations.Any(x=>x.EmployeeID==caretaker.Account.Id))
+                //{
+                    
+                //}
 
                 if ((caretaker.Contracts.Find(c => c.IsValid == true).Fte * 40) >= (GetWorkedHours(caretaker) + fullShiftHours))
 
@@ -175,6 +182,14 @@ namespace LogicLayer
                     freeCaretakers.Add(caretaker);
                 }
             }
+
+            //foreach (Vacation vacation in vm.Vacations)
+            //{
+            //    if (freeCaretakers.Any(x=>x.Account.Id==vacation.EmployeeID))
+            //    {
+            //        freeCaretakers.Remove(freeCaretakers.First(x => x.Account.Id == vacation.EmployeeID));
+            //    }
+            //}
 
             DailySchedule ds = AssignedCaretakers(timeSlot, date, type);
 

@@ -9,7 +9,7 @@ namespace Entities
     public interface IVacations
 
     {
-        
+        public List<Vacation> ReadVacations();
         public void RequestVacation(Vacation vacation);
         public void AcceptVacation(Vacation vacation);
         public void DenyVacation(Vacation vacation);
