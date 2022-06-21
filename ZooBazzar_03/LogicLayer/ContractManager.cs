@@ -56,5 +56,23 @@ namespace LogicLayer
             return contracts;
         }
 
+        public EmployeeContract GetActiveContract(Employee employee)
+        {
+            if (contracts.Any(x => x.EmployeeId == employee.Id && x.IsValid == true))
+            {
+                return contracts.First(x => x.EmployeeId == employee.Id && x.IsValid == true);
+            }
+            else
+            {
+                throw new Exception("The employee doesn't have an active contract");
+            }
+        }
+        public void ReduceVacationDays(EmployeeContract contract, int days)
+        {
+            int daysLeft = contract.VacationDaysLeft - days;
+            EmployeeContract c = new EmployeeContract(contract.Id, contract.EmployeeId, contract.StartDate, contract.EndDate, contract.Fte, contract.Reason, daysLeft, contract.IsValid);
+            contractDataManagement.UpdateVacationDays(c);
+        }
+
     }
 }

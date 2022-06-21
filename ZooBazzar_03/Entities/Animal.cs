@@ -44,6 +44,7 @@ namespace Entities
         public string ReasonForDeparture { get { return reasonForDeparture; } set { reasonForDeparture = value; } }
         public List<string> FeedingTimes { get { return feedingTimes; } set { feedingTimes = value; } }
         public List<string> Notes { get { return notes; } set { notes = value; } }
+        public Specialization Specialization { get { return specialization; } }
 
         public Diet Diet { get { return diet; } set { diet = value; } }
         public AnimalType AnimalType { get { return type; } set { type = value; } }
@@ -69,6 +70,12 @@ namespace Entities
             this.weeklyFeedingIteration = weeklyFeeding;
             this.notes = notes;
         }
+
+        //tbAnimalCode.Text, tbName.Text, cbGender.SelectedItem.ToString(), cbAnimalType.SelectedItem.ToString(), tbSpecie.Text, Convert.ToInt32(tbCageNumber.Text), tbBirthdate.Text, tbReasonForArrival.Text, tbYearOfArrival.Text, string.Empty, string.Empty, cbDiet.SelectedItem.ToString(), feedingTimes, cbSpecialist.SelectedItem.ToString(), Convert.ToInt32(tbWeeklyFeedIteration.Text
+        //public Animal(string animalCode, string Name, string gender, AnimalType type, string specie, int cageNumber, )
+        //{
+
+        //}
 
         public Animal(string animalCode, int cageNumber, Diet diet, AnimalType type, string specie, int weeklyFeedingIteration)
         {
