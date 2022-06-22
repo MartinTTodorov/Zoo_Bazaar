@@ -24,6 +24,7 @@ namespace Entities
         public int AnimalsOutside { get { return animalsOutside; } }
         public int AnimalsInside { get { return animalsInside; } }
         public int CageNumber { get { return cageNumber; } }
+        public AnimalType AnimalType { get { return type; } }
 
         public Cage(int cageNumber, int capacity, int animalsOutside, int animalsInside, AnimalType type, string species)
         {

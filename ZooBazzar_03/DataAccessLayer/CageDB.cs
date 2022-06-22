@@ -25,7 +25,6 @@ namespace DataAccessLayer
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    //Error Two SQL Statments
                     cages.Add(new Cage(Convert.ToInt32(reader["CageNumber"]), Convert.ToInt32(reader["Capacity"]), Convert.ToInt32(reader["AnimalsOutside"]), Convert.ToInt32(reader["AnimalsInside"]), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Species"].ToString()));
                 }
             }
