@@ -24,7 +24,7 @@ namespace ZooBazzarWebApp.Pages
         private readonly IConfiguration _configuration;
         public void OnGet()
         {
-            
+
         }
 
         public BuyTicketModel(IConfiguration configuration)
@@ -77,10 +77,12 @@ namespace ZooBazzarWebApp.Pages
             }
             return Page();
         }
-        public  async Task SendAsync(string name, string clientEmail, Ticket product)
+        public async Task SendAsync(string name, string clientEmail, Ticket product)
         {
             string senderName = _configuration.GetSection("MailboxAddress").GetSection("Name").Value;
             string sender = _configuration.GetSection("MailboxAddress").GetSection("Address").Value;
+            string password = _configuration.GetSection("MailboxAddress").GetSection("Password").Value;
+            string username = _configuration.GetSection("MailboxAddress").GetSection("Username").Value;
 
             var messageToSend = new MimeMessage
             {
@@ -100,9 +102,9 @@ namespace ZooBazzarWebApp.Pages
                     Console.WriteLine(args.Response);
                 };
                 smtp.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                await smtp.ConnectAsync("appssmtp.abv.bg", 465, SecureSocketOptions.None);
-                //await smtp.AuthenticateAsync("Username", "Password");
-                await smtp.SendAsync(messageToSend);
+                await smtp.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTlsWhenAvailable);
+                smtp.SendAsync(messageToSend);
+                smtp.AuthenticateAsync(sender, password);
                 await smtp.DisconnectAsync(true);
             };
 
