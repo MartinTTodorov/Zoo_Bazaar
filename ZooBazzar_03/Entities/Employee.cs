@@ -71,6 +71,7 @@ namespace Entities
         {
             this.id = id;
             this.firstname = name;
+            this.contracts = new List<EmployeeContract>();
         }
        
         //Methods

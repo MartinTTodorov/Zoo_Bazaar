@@ -25,8 +25,54 @@ namespace Entities
         public AnimalType Type { get { return type; } }
 
 
+        private void CheckCaretakers(AnimalType type, Caretaker c1, Caretaker c2, Caretaker c3)
+        {
+            switch (type)
+            {
+                case AnimalType.Mammal:
+                    if (c1.GetSpecialization() != Specialization.Mammalogist || c2.GetSpecialization() != Specialization.Mammalogist || (c3 != null && c3.GetSpecialization() != Specialization.Mammalogist))
+                    {
+                        throw new Exception("You can only assign spezialized caretakers!");
+                    }
+                    break;
+                case AnimalType.Bird:
+                    if (c1.GetSpecialization() != Specialization.Ornithologist || c2.GetSpecialization() != Specialization.Ornithologist || (c3 != null && c3.GetSpecialization() != Specialization.Ornithologist))
+                    {
+                        throw new Exception("You can only assign spezialized caretakers!");
+                    }
+                    break;
+                case AnimalType.Fish:
+                    if (c1.GetSpecialization() != Specialization.Ichthyologist || c2.GetSpecialization() != Specialization.Ichthyologist || (c3 != null && c3.GetSpecialization() != Specialization.Ichthyologist))
+                    {
+                        throw new Exception("You can only assign spezialized caretakers!");
+                    }
+                    break;
+                case AnimalType.Insect:
+                    if (c1.GetSpecialization() != Specialization.Entomologist || c2.GetSpecialization() != Specialization.Ichthyologist || (c3 != null && c3.GetSpecialization() != Specialization.Ichthyologist))
+                    {
+                        throw new Exception("You can only assign spezialized caretakers!");
+                    }
+                    break;
+                case AnimalType.Reptile:
+                    if (c1.GetSpecialization() != Specialization.Herprtologist || c2.GetSpecialization() != Specialization.Herprtologist || (c3 != null && c3.GetSpecialization() != Specialization.Herprtologist))
+                    {
+                        throw new Exception("You can only assign spezialized caretakers!");
+                    }
+                    break;
+                case AnimalType.Amphibian:
+                    if (c1.GetSpecialization() != Specialization.Herprtologist || c2.GetSpecialization() != Specialization.Herprtologist || (c3 != null && c3.GetSpecialization() != Specialization.Herprtologist))
+                    {
+                        throw new Exception("You can only assign spezialized caretakers!");
+                    }
+                    break;
+                default:
+                    throw new Exception("How did u get here");
+                    break;
+            }
+        }
         public DailySchedule(int id, AnimalType type, string date, Caretaker mainFirst, Caretaker mainSecond, Caretaker helpCaretaker, string timeSlot)
         {
+            CheckCaretakers(type, mainFirst, mainSecond, helpCaretaker);
             this.id = id;
             this.type = type;
             this.date = date;
@@ -35,12 +81,6 @@ namespace Entities
             this.helpCaretaker = helpCaretaker;
             this.timeSlot = timeSlot;
         }
-
-
-        //Not id save a cage
-        //Not relly on the gui to check if the caretaker is specialized
-        //List of animals in the cage class   --- methods - getCurrentSpecies or smth like that
-
 
     }
 }
