@@ -79,21 +79,6 @@ namespace LogicLayer
 
             }
             
-        }
-
-        public Employee GetEmployee(string EmployeeName)
-        {
-            return employees.Find(x => x.Name == EmployeeName);
-        }
-
-        public Employee GetEmployeeById(int id)
-        {
-            return employees.Find(x => x.Id == id);
-        }
-
-        public Employee GetEmployeeByUsername(string username)
-        {
-            return employees.Find(x => x.Account.Username == username);
-        }
+        }       
     }
 }
