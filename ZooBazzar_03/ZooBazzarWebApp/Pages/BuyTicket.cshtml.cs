@@ -33,12 +33,11 @@ namespace ZooBazzarWebApp.Pages
             _configuration = configuration;
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPostWithAccount()
         {
-            if (ModelState.IsValid)
-            {
+            
                 decimal price = 0;
-                Customer customer = cm.GetCustomerByEmail(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value);
+                Customer customer = cm.GetCustomerByID(Convert.ToInt32(User.FindFirst("ID").Value));
                 if (Ticket.Type == TypeOfTicket.adult)
                 {
                     price = 8;
@@ -52,8 +51,7 @@ namespace ZooBazzarWebApp.Pages
 
                 return RedirectToPage("MyTickets");
 
-            }
-            return Page();
+            
         }
 
         public async Task<IActionResult> OnPostNoAccount()

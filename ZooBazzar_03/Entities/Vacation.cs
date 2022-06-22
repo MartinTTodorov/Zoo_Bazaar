@@ -16,6 +16,8 @@ namespace Entities
         private DateTime startDate;
         private DateTime endDate;
 
+        
+
         //Properties
         public int ID { get { return id; } }
         public int EmployeeID { get { return employeeID; } }

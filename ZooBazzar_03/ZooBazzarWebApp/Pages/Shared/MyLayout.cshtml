@@ -26,7 +26,8 @@
             }
             @if (User.IsInRole("Customer"))
             {
-                <a class="nav-link text-dark" asp-area="" asp-page="/MyTickets">MyTickets</a>
+                <a class="nav-link text-dark" asp-area="" asp-page="/MyTickets">My Tickets</a>
+                <a class="nav-link text-dark" asp-area="" asp-page="/BuyTicket">Buy tickets</a>
                 <a class="nav-link text-dark" asp-area="" asp-page="/Complaint">File a complaint</a>
             }
             <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>

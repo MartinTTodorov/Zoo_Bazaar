@@ -22,6 +22,9 @@ namespace LogicLayer
         //Methods
         public void AddTicket(Ticket ticket)
         {
+            //Ticket temp = new Ticket(auto.GetNexID(), ticket.Customer, ticket.TypeOfTicket, ticket.Date, ticket.PlaceOfPerchase, ticket.Price);
+            //tickets.Add(temp);
+            //crud.Add(temp);
             tickets.Add(ticket);
             crud.Add(ticket);
         }
@@ -30,9 +33,7 @@ namespace LogicLayer
         public int GetNextID()
         {
            return auto.GetNexID();
-            Ticket temp = new Ticket(auto.GetNexID(), ticket.Customer, ticket.TypeOfTicket, ticket.Date, ticket.PlaceOfPerchase, ticket.Price);
-            tickets.Add(temp);
-            crud.Add(temp);
+
         }
 
         public void UseTicket(Ticket t)
