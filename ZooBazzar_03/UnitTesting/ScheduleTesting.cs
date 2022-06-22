@@ -40,6 +40,16 @@ namespace UnitTesting
         }
 
 
+        [TestMethod]
+        public void CreateDailyScheduleWrongData()
+        {
+            DailySchedule ds;
+            GetTestEmployees();
+            List<Caretaker> employees = em.AllCaretakers();
+
+            Assert.ThrowsException<Exception>(() => ds = new DailySchedule(1, AnimalType.Mammal, "10 May 2022", employees[1], employees[3], employees[2], "evening"));
+        }
+
         public List<DailySchedule> GetTestSchedule()
         {
             sm.DailySchedules.Clear();
