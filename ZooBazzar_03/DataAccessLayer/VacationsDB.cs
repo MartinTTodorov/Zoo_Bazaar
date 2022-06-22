@@ -28,6 +28,11 @@ namespace DataAccessLayer
 
                 cmd.Parameters.AddWithValue("@ID", vacation.ID);
                 cmd.Parameters.AddWithValue("@Status", "Accepted");
+
+                if (cmd.ExecuteNonQuery()!=1)
+                {
+                    throw new Exception("Vacation was not accepted");
+                }
             }
             catch (MySqlException ex)
             {
@@ -54,6 +59,11 @@ namespace DataAccessLayer
 
                 cmd.Parameters.AddWithValue("@ID", vacation.ID);
                 cmd.Parameters.AddWithValue("@Status", "Denied");
+
+                if (cmd.ExecuteNonQuery()!=1)
+                {
+                    throw new Exception("Vacation was not denied");
+                }
             }
             catch (MySqlException ex)
             {
@@ -112,7 +122,7 @@ namespace DataAccessLayer
             List<Vacation> vacations = new List<Vacation>();
             try
             {
-                string sql = "Select RequestID, EmployeeID, StartDate, EndDate, Status FROM vacations WHERE Status=@Status AND CURRENT_DATE() < StartDate";
+                string sql = "Select RequestID, Username, EmployeeID, StartDate, EndDate, Status FROM vacations WHERE Status=@Status AND CURRENT_DATE() < StartDate";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Status", "Awaiting");
@@ -157,6 +167,12 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@StartDate", vacation.StartDate);
                 cmd.Parameters.AddWithValue("@EndDate", vacation.EndDate);
                 cmd.Parameters.AddWithValue("@Status", "Awaiting");
+
+
+                if (cmd.ExecuteNonQuery()!=1)
+                {
+                    throw new Exception("Vacation request not sent successfully");
+                }
             }
             catch (MySqlException ex)
             {

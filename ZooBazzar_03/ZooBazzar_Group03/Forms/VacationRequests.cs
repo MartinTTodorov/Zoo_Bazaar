@@ -54,8 +54,10 @@ namespace ZooBazzar_Group03.Forms
             {
                 try
                 {
-                    vacationManager.DenyVacation((Vacation)lbVacations.SelectedItem);
+                    Vacation vacation = (Vacation)lbVacations.SelectedItem;
+                    vacationManager.DenyVacation(vacation);
                     MessageBox.Show("Vacation denied successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lbVacations.Items.Remove(vacation);
                 }
                 catch (Exception ex)
                 {
@@ -71,6 +73,11 @@ namespace ZooBazzar_Group03.Forms
             {
                 lbVacations.Items.Add(vacation);
             }
+        }
+
+        private void VacationRequests_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
