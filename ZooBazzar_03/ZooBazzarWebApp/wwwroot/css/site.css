@@ -199,11 +199,11 @@ body {
 
 .complaint{
     margin-left: 30px;
-   flex-wrap: nowrap;
 }
 
-.cmpl{
+.cmpl {
     font-size: 20px;
+    color: #f0e0b5;
 }
 
 .btnRequest {
@@ -212,13 +212,12 @@ body {
     border: none;
     border-radius: 2px;
 }
-.cmplTitle{
+.cmplTitle {
     min-width: 300px;
 }
 
-.cmplDescr{
+.cmplDescr {
     width: 300px;
-    height: 200px;
 }
 
 
@@ -233,4 +232,20 @@ body {
 
 .btnRequest{
     font-size: 20px;
+}
+
+.buyTicket {
+    margin-left: 30px;
+    font-size: 20px;
+    color: #f0e0b5;
+}
+
+.details{
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.btn-default{
+    font-size: 18px;
+    height: 40px;
 }
