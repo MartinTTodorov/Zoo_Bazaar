@@ -31,7 +31,7 @@
                 {
                     @if (@Model.GetShift("morning", i) != null)
                     {
-                        <td class="shift"><button name="button" onclick="GetInfo(@Model.GetShift("morning", i).MainCaretakerFir))" type="submit" class="button" value="info">Shift</button></td>
+                        <td class="shift"><button name="button" onclick="ClearInfo()" type="submit" class="button" value="@Model.GetShift("morning", i).Id">Shift</button></td>
                     }
                     else
                     {
@@ -46,7 +46,7 @@
                 {
                     @if (@Model.GetShift("noon", i) != null)
                     {
-                        <td class="shift">Shift</td>
+                        <td class="shift"><button name="button" type="submit" class="button" value="@Model.GetShift("noon", i).Id">Shift</button></td>
                     }
                     else
                     {
@@ -61,7 +61,7 @@
                 {
                     @if (@Model.GetShift("evening", i) != null)
                     {
-                        <td class="shift">Shift</td>
+                        <td class="shift"><button name="button" type="submit" class="button" value="@Model.GetShift("evening", i).Id">Shift</button></td>
                     }
                     else
                     {
@@ -74,7 +74,21 @@
         <input name="button" class="btn" type="submit" value="Previous week" />
         <input name="button" class="btn" type="submit" value="Next week" />
     </form>
-    <div id="info">@ScheduleModel.ShiftInfo</div>
+    <div id="info">
+        @if (@ScheduleModel.ShiftInfo.Count > 0)
+        {
+            <p id="shiftInfo">
+                <b>Shift information: </b><br/>
+                @foreach (string info in @ScheduleModel.ShiftInfo)
+                {
+                    @info
+
+                    <br />
+                }
+            </p>
+
+        }
+    </div>
 
 </div>
 

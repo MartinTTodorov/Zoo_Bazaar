@@ -31,5 +31,10 @@ namespace LogicLayer
             return manager.GetVisitors(filter1, filter2, value);
         }
 
+        public Dictionary<int, int> GetVisitorsLive()
+        {
+            return manager.GetVisitorsLive();
+        }
+
     }
 }

@@ -12,15 +12,13 @@ namespace ZooBazzarWebApp.Pages
     {
         public static Employee currentEmployee;
         private List<DailySchedule> schedules;
-        public static string ShiftInfo = "";
+        public static List<string> ShiftInfo = new List<string>();
 
         private ScheduleManager scheduleManager;
         private EmployeeManagment employeeManagment;
 
         public static List<string> WeekDays;
 
-        [BindProperty]
-        public ScheduleDTO ScheduleDTO { get; set; }
 
         static int index;
 
@@ -53,28 +51,25 @@ namespace ZooBazzarWebApp.Pages
             return GetShifts(time).Find(x => (int)DateTime.ParseExact(x.Date, "dd MMM yyyy", null).DayOfWeek == date);
         }
 
-        public string GetShiftInfo(DailySchedule ds)
+        public List<string> GetShiftInfo(DailySchedule ds)
         {
             if (ds == null)
             {
-                ShiftInfo = "";
+                ShiftInfo = new List<string>();
             }
             else
             {
                 List<Cage> cages = getCages(ds);
+                
 
-                string cageInfo = "";
-
+                ShiftInfo.Add($"First main caretaker: {ds.MainCaretakerFir.Name}\r\n");
+                ShiftInfo.Add($"Second main caretaker: {ds.MainCaretakerSec.Name}\r\n");
+                ShiftInfo.Add($"Helper caretaker: {ds.HelpCaretaker.Name}\r\n");
+                ShiftInfo.Add($"Cages: \r\n");
                 foreach (Cage cage in cages)
                 {
-                    cageInfo += $"Cage nr: {cage.CageNumber} Animal specie: {cage.GetSpecie()}\r\n";
+                    ShiftInfo.Add($"Cage nr: {cage.CageNumber}      Animal specie: {cage.GetSpecie()}\r\n");
                 }
-
-                ShiftInfo = $"First main caretaker: {ds.MainCaretakerFir.Name}\r\n" +
-                    $"Second main caretaker: {ds.MainCaretakerSec.Name}\r\n" +
-                    $"Helper aretaker: {ds.HelpCaretaker.Name}\r\n" +
-                    $"Cages: \r\n" +
-                    $"{cageInfo}";
             }
             return ShiftInfo;
         }
@@ -98,6 +93,10 @@ namespace ZooBazzarWebApp.Pages
             else
             {
                 schedules = scheduleManager.GetCaretakerSchedule((Caretaker)currentEmployee, DateTime.Now, index);
+
+                DailySchedule ds = schedules.Find(x => x.Id == Convert.ToInt32(button));
+                GetShiftInfo(ds);
+
                 WeekDays = GUIHelper.GetWeek(DateTime.Today, index);
                 return Page();
             }

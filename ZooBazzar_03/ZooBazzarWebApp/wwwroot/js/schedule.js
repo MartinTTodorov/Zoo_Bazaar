@@ -4,9 +4,8 @@
 // Write your JavaScript code.
 
 
-function GetInfo(Name) {
-    var element = document.getElementById("info"); 
-
-    element.innerText = "Hehehe" + Name;
+function ClearInfo() {
+    var div = document.getElementById("info");
+    div.removeChild(document.getElementById("shiftInfo"));
 }
 

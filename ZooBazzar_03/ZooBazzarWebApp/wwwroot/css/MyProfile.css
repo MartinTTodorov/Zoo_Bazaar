@@ -13,9 +13,9 @@
 .personalInfo {
     margin-left: auto;
     margin-right: auto;
-    font-size: 30px;
+    font-size: 25px;
     padding: 50px;
-    width: 700px;
+    width: 400px;
     font-family: Arial;
     text-align: left;
     border-radius: 5px;
@@ -40,6 +40,7 @@
     border: none;
     margin-left: auto;
     margin-right: auto;
+    font-size: 20px;
 }
 
     .button:hover {
@@ -56,8 +57,9 @@
     margin-left: 20px;
     margin-right: 20px;
     margin-bottom: 10px;
+    font-size: 25px;
 }
 
 #birthdate{
-    width: 390px;
+    width: 310px;
 }
