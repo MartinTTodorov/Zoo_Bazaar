@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MimeKit;
 using MimeKit.Text;
+using System.Drawing.Imaging;
 using System.Net.Mail;
 using System.Security.Claims;
 
@@ -68,9 +69,8 @@ namespace ZooBazzarWebApp.Pages
                 {
                     price = 6;
                 }
-                Ticket ticket = new Ticket(null, Ticket.Type, Ticket.Date, PlaceOfPerchase.online, price);
+                Ticket ticket = new Ticket(tm.GetNextID(),  null, Ticket.Type, Ticket.Date, PlaceOfPerchase.online, price);
                 tm.AddTicket(ticket);
-                // Mail.SendAsync(Customer.Name,Customer.Email, ticket);
                 await SendAsync(Customer.Name, Customer.Email, ticket);
                 return RedirectToPage("Index");
 
@@ -87,10 +87,10 @@ namespace ZooBazzarWebApp.Pages
             var messageToSend = new MimeMessage
             {
                 Sender = new MailboxAddress(senderName, sender),
-                Subject = "Your Subject",
+                Subject = "Zoo bazzar ticket",
             };
             if (messageToSend == null) throw new ArgumentNullException(nameof(messageToSend));
-            messageToSend.Body = new TextPart(TextFormat.Html) { Text = "test" };
+            messageToSend.Body = new TextPart(TextFormat.Html) { Text = $"Your zoo bazzar ticket with number {product.Id} made on {product.DateOfPurchase} " };
             messageToSend.From.Add(new MailboxAddress(senderName, sender));
             messageToSend.To.Add(new MailboxAddress(name, clientEmail)); //important!!
 
@@ -103,13 +103,13 @@ namespace ZooBazzarWebApp.Pages
                 };
                 smtp.ServerCertificateValidationCallback = (s, c, h, e) => true;
                 await smtp.ConnectAsync("smtp.gmail.com", 587, SecureSocketOptions.StartTlsWhenAvailable);
-                smtp.SendAsync(messageToSend);
-                smtp.AuthenticateAsync(sender, password);
+                await smtp.AuthenticateAsync(sender, password);
+                await smtp.SendAsync(messageToSend);
                 await smtp.DisconnectAsync(true);
             };
 
-
-
         }
+
+
     }
 }
