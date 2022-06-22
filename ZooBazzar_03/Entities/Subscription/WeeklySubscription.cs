@@ -19,7 +19,7 @@ namespace Entities
         }
         public override string ToString()
         {
-            return "Weekly subscription";
+            return "WeeklySubscription";
         }
     }
 }

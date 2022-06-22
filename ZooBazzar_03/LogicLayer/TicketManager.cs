@@ -1,9 +1,5 @@
 ﻿using Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LogicLayer
 {
@@ -16,7 +12,7 @@ namespace LogicLayer
         public IList<Ticket> Tickets { get { return tickets.AsReadOnly(); } }
 
         //Constructor
-        public TicketManager(ICRU<Ticket>crud,IAutoIncrementable auto)
+        public TicketManager(ICRU<Ticket> crud,IAutoIncrementable auto)
         {
             this.auto = auto;
             this.crud = crud;

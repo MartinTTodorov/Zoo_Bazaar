@@ -8,10 +8,12 @@ namespace ZooBazzar_Group03
     public partial class TicketForm : Form
     {
         private TicketManager tm;
+        private SubscriptionManager subscriptionManager;
         public TicketForm()
         {
             InitializeComponent();
             tm = new TicketManager(new TicketsDB(),new TicketsDB());
+            subscriptionManager = new SubscriptionManager(new SubscriptionDB());
             BarcodeScanner barcodeScanner = new BarcodeScanner(tbBarcode);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
         }

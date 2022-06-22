@@ -20,7 +20,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return "Annual subscription";
+            return "AnnualSubscription";
         }
     }
 }
