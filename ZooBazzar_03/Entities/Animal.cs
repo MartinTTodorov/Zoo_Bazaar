@@ -30,8 +30,6 @@ namespace Entities
 
 
         public int Id { get { return id; } }
-
-       
         public int CageNumber { get { return cageNumber; } }
         public string Name { get { return name; } }
         public string Gender { get { return gender; } }
@@ -71,12 +69,24 @@ namespace Entities
             this.notes = notes;
         }
 
-        //tbAnimalCode.Text, tbName.Text, cbGender.SelectedItem.ToString(), cbAnimalType.SelectedItem.ToString(), tbSpecie.Text, Convert.ToInt32(tbCageNumber.Text), tbBirthdate.Text, tbReasonForArrival.Text, tbYearOfArrival.Text, string.Empty, string.Empty, cbDiet.SelectedItem.ToString(), feedingTimes, cbSpecialist.SelectedItem.ToString(), Convert.ToInt32(tbWeeklyFeedIteration.Text
-        //public Animal(string animalCode, string Name, string gender, AnimalType type, string specie, int cageNumber, )
-        //{
 
-        //}
-
+        public Animal(int cageNumber, string animalCode, string name, Diet diet, AnimalType type, string gender, Specialization specialization, string specie, string reasonForArrival, string yearOfArrival, string birthDate, int weeklyFeeding, List<string> feedingTimes)
+        {
+            ValidateData(weeklyFeeding);
+            this.cageNumber = cageNumber;
+            this.animalCode = animalCode;
+            this.name = name;
+            this.diet = diet;
+            this.type = type;
+            this.gender = gender;
+            this.specialization = specialization;
+            this.specie = specie;
+            this.reasonForArrival = reasonForArrival;
+            this.yearOfArrival = yearOfArrival;
+            this.birthDate = birthDate;
+            this.weeklyFeedingIteration = weeklyFeeding;
+            this.feedingTimes = feedingTimes;
+        }
         public Animal(string animalCode, int cageNumber, Diet diet, AnimalType type, string specie, int weeklyFeedingIteration)
         {
             this.cageNumber = cageNumber;
@@ -85,6 +95,15 @@ namespace Entities
             this.specie = specie;
             this.animalCode = animalCode;
             this.weeklyFeedingIteration = weeklyFeedingIteration;
+        }
+
+        public void ValidateData(int weeklyFeeding)
+        {
+            if (weeklyFeeding<1)
+            {
+                throw new Exception("The animal must be fed at least once per week");
+            }
+
         }
 
 

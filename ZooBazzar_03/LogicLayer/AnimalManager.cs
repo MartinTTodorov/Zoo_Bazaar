@@ -12,27 +12,36 @@ namespace LogicLayer
         //Fields
         private IAnimalDB<Animal> crud;
         private List<Animal> animals;
+        private IAutoIncrementable autoIncrement;
 
+        //Properties
         public IList<Animal> Animals { get { return animals.AsReadOnly(); } }
 
         //Constructor
-        public AnimalManager(IAnimalDB<Animal> crud)
+        public AnimalManager(IAnimalDB<Animal> crud, IAutoIncrementable autoIncrement)
         {
             this.crud = crud;
+            this.autoIncrement = autoIncrement;
             animals = crud.GetAnimals();
         }
 
         //Methods
         public void AddAnimal(Animal animal)
         {
-            crud.AddAnimalToDB(animal);
+            //Create the animal with the next ID from the database
+            Animal newAnimal = new Animal(animal.AnimalCode, autoIncrement.GetNexID(), animal.CageNumber, animal.Name, animal.Gender, animal.ReasonForArrival, animal.ReasonForDeparture, animal.Diet, animal.AnimalType, animal.Specie, animal.YearOfArrival, animal.YearOfDeparture, animal.Birthdate, animal.Specialization, animal.FeedingTimes, animal.WeeklyFeedingIteration, animal.Notes);
+            crud.AddAnimalToDB(newAnimal);
+            animals.Add(newAnimal);
         }
 
         public void UpdateAnimal(Animal animal)
         {
             crud.UpdateAnimalInDB(animal);
+            animals.Remove(animals.First(x=>x.Id==animal.Id));
+            animals.Add(animal);
         }
 
+        //only sets its reason for departure without deleting the data of the animal
         public void DeleteAnimal(Animal animal)
         {
             crud.DeleteAnimalFromDB(animal);
@@ -59,18 +68,5 @@ namespace LogicLayer
             crud.AddNote(id, note);
         }
 
-
-        public List<Animal> GetAnimalsByType(AnimalType type)
-        {
-            List<Animal> typeAnimals = new List<Animal>();
-            foreach (Animal animal in Animals)
-            {
-                if (animal.AnimalType==type)
-                {
-                    typeAnimals.Add(animal);
-                }
-            }
-            return typeAnimals;
-        }
     }
 }

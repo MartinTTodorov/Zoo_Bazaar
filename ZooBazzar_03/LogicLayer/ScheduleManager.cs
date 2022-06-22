@@ -34,7 +34,7 @@ namespace LogicLayer
             cm = new CageManager(cageData);
             cmngr = new ContractManager(contractData);
             this.autoIncr = autoIncr;
-            vm.ReadCurrentVacations();
+            //vm.ReadCurrentVacations();
         }
 
 
@@ -158,10 +158,10 @@ namespace LogicLayer
             List<Caretaker> freeCaretakers = new List<Caretaker>();
 
             //Removes the caretakers that are currently on vacation
-            foreach (Vacation vacation in vm.Vacations)
-            {
-                caretakers.Remove(caretakers.Find(x => x.Account.Id == vacation.EmployeeID));
-            }
+            //foreach (Vacation vacation in vm.Vacations)
+            //{
+            //    caretakers.Remove(caretakers.Find(x => x.Account.Id == vacation.EmployeeID));
+            //}
 
             foreach (Caretaker caretaker in caretakers)
             {

@@ -18,7 +18,7 @@ namespace ZooBazzar_Group03
 
         private EmployeeManagment employeeManagment = new EmployeeManagment(new EmployeeDB());
         private AccountManager accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
-        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
+        private AnimalManager animalManager = new AnimalManager(new AnimalDB(), new AnimalDB());
         private ContractManager cm = new ContractManager(new ContractDB());
         private RequestManager rm = new RequestManager(new RequestedEmployeeDB());
 

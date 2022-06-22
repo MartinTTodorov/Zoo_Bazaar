@@ -17,14 +17,15 @@ namespace ZooBazzar_Group03
     {
         private Animal animal;    
         private FlowLayoutPanel panel;
+        private AnimalManager manager;
 
-        //Please change wherever is there an manager object :D  PS: Try to use events for update the information
-        public AnimalInfo(Animal animal, FlowLayoutPanel panel)
+        public AnimalInfo(Animal animal, FlowLayoutPanel panel, AnimalManager manager)
         {
             InitializeComponent();
 
             this.animal = animal;
             this.panel = panel;
+            this.manager = manager;
         }
 
         private void AnimalInfo_Load(object sender, EventArgs e)
@@ -53,10 +54,18 @@ namespace ZooBazzar_Group03
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //Animal updatedAnimal = new Animal(tbAnimalCode.Text, Convert.ToInt32(tbID.Text), Convert.ToInt32(tbCageNumber.Text), tbName.Text, tbReasonForArrival.Text, string.Empty, (Diet)cbDiet.SelectedItem, (AnimalType)cbAnimalType.SelectedItem, tbSpecie.Text, tbYearOfArrival.Text, string.Empty, tbBirthdate.Text);
-            //animalManager.UpdateAnimal(updatedAnimal);
-            
-            
+            Animal updatedAnimal = new Animal(tbAnimalCode.Text, animal.Id, Convert.ToInt32(tbCageNumber.Text), tbName.Text, animal.Gender, tbReasonForArrival.Text, animal.ReasonForDeparture, (Diet)cbDiet.SelectedItem, (AnimalType)cbAnimalType.SelectedItem, tbSpecie.Text, tbYearOfArrival.Text, animal.YearOfDeparture, tbBirthdate.Text, animal.Specialization, animal.FeedingTimes, animal.WeeklyFeedingIteration, animal.Notes);
+            try
+            {
+                manager.UpdateAnimal(updatedAnimal);
+                MessageBox.Show("Updated successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

@@ -16,14 +16,15 @@ namespace ZooBazzar_Group03
     public partial class fmDeleteAnimal : Form
     {
         Animal animal;
-        AnimalManager animalManager = new AnimalManager(new AnimalDB());
+        AnimalManager manager;
         MainManu menu;
 
         // Need of improvment 
-        public fmDeleteAnimal(Animal animal)
+        public fmDeleteAnimal(Animal animal, AnimalManager manager)
         {
             InitializeComponent();
             this.animal = animal;
+            this.manager = manager;
             this.menu = menu; // I delete it in order to work
         }
 
@@ -36,8 +37,16 @@ namespace ZooBazzar_Group03
             else
             {
                 animal.ReasonForDeparture = tbReasonForDeparture.Text;
-                animalManager.DeleteAnimal(animal);
-               // menu.UpdateAnimals();
+                try
+                {
+                    manager.DeleteAnimal(animal);
+                    MessageBox.Show("Deleted successfully");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                // menu.UpdateAnimals();
             }
             this.Dispose();
         }

@@ -3,7 +3,7 @@ using Entities;
 
 namespace DataAccessLayer
 {
-    public class AnimalDB: IAnimalDB<Animal>
+    public class AnimalDB: IAnimalDB<Animal>, IAutoIncrementable
     {
         private MySqlConnection conn;
         private List<Animal> animals; 
@@ -34,11 +34,11 @@ namespace DataAccessLayer
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                throw;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                throw;
             }
             finally
             {
@@ -64,14 +64,16 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@animalCode", animal.AnimalCode);
                 cmd.Parameters.AddWithValue("@name", animal.Name);
                 cmd.Parameters.AddWithValue("@gender", animal.Gender);
-                cmd.Parameters.AddWithValue("@animalType", animal.AnimalType);
+                cmd.Parameters.AddWithValue("@animalType", animal.AnimalType.ToString());
                 cmd.Parameters.AddWithValue("@species", animal.Specie);
                 cmd.Parameters.AddWithValue("@cageNumber", animal.CageNumber);
                 cmd.Parameters.AddWithValue("@birthdate", animal.Birthdate);
                 cmd.Parameters.AddWithValue("@reasonForArrival", animal.ReasonForArrival);
-                cmd.Parameters.AddWithValue("@yearOfArrival", animal.YearOfArrival);             
-                cmd.Parameters.AddWithValue("@diet", animal.Diet);
-                cmd.Parameters.AddWithValue("@specialist", animal.Specialization);
+                cmd.Parameters.AddWithValue("@yearOfArrival", animal.YearOfArrival);
+                cmd.Parameters.AddWithValue("@yearOfDeparture", animal.YearOfDeparture);
+                cmd.Parameters.AddWithValue("@reasonForDeparture", animal.ReasonForDeparture);
+                cmd.Parameters.AddWithValue("@diet", animal.Diet.ToString());
+                cmd.Parameters.AddWithValue("@specialist", animal.Specialization.ToString());
                 cmd.Parameters.AddWithValue("@weeklyFeedingIteration", animal.WeeklyFeedingIteration);
 
                 for (int i = 0; i < animal.FeedingTimes.Count; i++)
@@ -80,14 +82,11 @@ namespace DataAccessLayer
                 }
 
                 conn.Open();
-                if (cmd.ExecuteNonQuery() >= 1)
+                if (cmd.ExecuteNonQuery() < 1)
                 {
-                    MessageBox.Show("New animal has been added");
+                    throw new Exception("Failed to add a new animal");
                 }
-                else
-                {
-                    MessageBox.Show("Failed to add a new animal");
-                }
+                
             }
             catch (MySqlException ex)
             {
@@ -105,94 +104,8 @@ namespace DataAccessLayer
 
         }
 
-
-        public void UpdateAnimalInDB(Animal animal, int id)
-        {
-            try
-            {
-                string sql = "UPDATE animal set AnimalCode=@animalCode, Name=@name, AnimalType=@animalType, Species=@species, CageNumber=@cageNumber, Birthdate=@birthdate, ReasonForArrival=@reasonForArrival, YearOfArrival = @yearOfArrival, YearOfDeparture=@yearOfDeparture, ReasonOFDeparture=@reasonForDeparture, Diet=@diet WHERE id=@id;";
-
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@animalCode", animal.AnimalCode);
-                cmd.Parameters.AddWithValue("@name", animal.Name);
-                cmd.Parameters.AddWithValue("@animalType", animal.AnimalType);
-                cmd.Parameters.AddWithValue("@species", animal.Specie);
-                cmd.Parameters.AddWithValue("@cageNumber", animal.CageNumber);
-                cmd.Parameters.AddWithValue("@birthdate", animal.Birthdate);
-                cmd.Parameters.AddWithValue("@reasonForArrival", animal.ReasonForArrival);
-                cmd.Parameters.AddWithValue("@yearOfArrival", animal.YearOfArrival);
-                cmd.Parameters.AddWithValue("@yearOfDeparture", animal.YearOfDeparture);
-                cmd.Parameters.AddWithValue("@reasonForDeparture", animal.ReasonForDeparture);
-                cmd.Parameters.AddWithValue("@diet", animal.Diet);
-                cmd.Parameters.AddWithValue("@id", id);
-
-                conn.Open();
-                if (cmd.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("The information has been updated");
-                }
-                else
-                {
-                    MessageBox.Show("Failed to update the information");
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-
-                conn.Close();
-            }
-        }
-
-
-
-
-        public void DeleteAnimalFromDB(int id, string reasonForDeparture)
-        {
-            try
-            {
-                string sql = "UPDATE animal SET ReasonOFDeparture=@reasonForDeparture WHERE id=@id;";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-
-                cmd.Parameters.AddWithValue("@reasonForDeparture", reasonForDeparture);
-                cmd.Parameters.AddWithValue("@id", id);
-
-                conn.Open();
-
-                if (cmd.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("Animal has been deleted from the database");
-                }
-                else
-                {
-                    MessageBox.Show("Failed to delete the animal from the database");
-                }
-            }
-            catch (MySqlException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
-
-        }
-        
 
         
-
         public List<string> GetFeeding(Animal animal)
         {
             List<string> feedingTimes = new List<string>();
@@ -292,7 +205,104 @@ namespace DataAccessLayer
             }
         }
 
+        public int GetNexID()
+        {
+            string sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbi481796' AND TABLE_NAME = 'animal';";
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
 
+                conn.Open();
+                return Convert.ToInt32(cmd.ExecuteScalar());
+
+            }
+            catch (MySqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void UpdateAnimalInDB(Animal animal)
+        {
+            try
+            {
+                string sql = "UPDATE animal set AnimalCode=@animalCode, Name=@name, AnimalType=@animalType, Species=@species, CageNumber=@cageNumber, Birthdate=@birthdate, ReasonForArrival=@reasonForArrival, YearOfArrival = @yearOfArrival, YearOfDeparture=@yearOfDeparture, ReasonOFDeparture=@reasonForDeparture, Diet=@diet WHERE id=@id;";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@animalCode", animal.AnimalCode);
+                cmd.Parameters.AddWithValue("@name", animal.Name);
+                cmd.Parameters.AddWithValue("@animalType", animal.AnimalType.ToString());
+                cmd.Parameters.AddWithValue("@species", animal.Specie);
+                cmd.Parameters.AddWithValue("@cageNumber", animal.CageNumber);
+                cmd.Parameters.AddWithValue("@birthdate", animal.Birthdate);
+                cmd.Parameters.AddWithValue("@reasonForArrival", animal.ReasonForArrival);
+                cmd.Parameters.AddWithValue("@yearOfArrival", animal.YearOfArrival);
+                cmd.Parameters.AddWithValue("@yearOfDeparture", animal.YearOfDeparture);
+                cmd.Parameters.AddWithValue("@reasonForDeparture", animal.ReasonForDeparture);
+                cmd.Parameters.AddWithValue("@diet", animal.Diet.ToString());
+                cmd.Parameters.AddWithValue("@id", animal.Id);
+
+                conn.Open();
+                if (cmd.ExecuteNonQuery() != 1)
+                {
+                    throw new Exception("Animal was not updated");
+                }
+                
+            }
+            catch (MySqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+
+                conn.Close();
+            }
+        }
+
+        public void DeleteAnimalFromDB(Animal animal)
+        {
+            try
+            {
+                string sql = "UPDATE animal SET ReasonOFDeparture=@reasonForDeparture WHERE id=@id;";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue("@reasonForDeparture", animal.ReasonForDeparture);
+                cmd.Parameters.AddWithValue("@id", animal.Id);
+
+                conn.Open();
+
+                if (cmd.ExecuteNonQuery() != 1)
+                {
+                    throw new Exception("Failed to delete animal from the database");
+                }
+                
+            }
+            catch (MySqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 
 }
