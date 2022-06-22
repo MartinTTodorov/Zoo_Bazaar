@@ -15,23 +15,23 @@
 <br />
 <br />
 
-<div class="personalInfo
-        <p class="info">Personal information</p>
+<div class="personalInfo">
+    <p class="info">Personal information</p>
 
 
-        <p><b>Name:</b> @e.Name </p>
-        <p><b>Last Name:</b>  @e.Lastname</p>
-        <p><b>Email:</b> @e.Email</p>
-        <p><b>Address:</b>  @e.Address</p>
-        <p><b>Birthdate: </b>@e.Birthdate.ToShortDateString()</p>
-        <p><b>Phone:</b> @e.Phone</p>
-        <p><b>Emergency Contact:</b>  @e.EmargencyContact</p>
-        <p> <b>BSN: </b> @e.Bsn</p>
+    <p><b>Name:</b> @e.Name </p>
+    <p><b>Last Name:</b>  @e.Lastname</p>
+    <p><b>Email:</b> @e.Email</p>
+    <p><b>Address:</b>  @e.Address</p>
+    <p><b>Birthdate: </b>@e.Birthdate.ToShortDateString()</p>
+    <p><b>Phone:</b> @e.Phone</p>
+    <p><b>Emergency Contact:</b>  @e.EmargencyContact</p>
+    <p> <b>BSN: </b> @e.Bsn</p>
 
     @if (User.IsInRole("Caretaker"))
     {
-                <a class="button" href="~/ChangeCredentials"> Change personal information</a>
+        <a class="button" href="~/ChangeCredentials"> Change personal information</a>
     }
 
-    </div>
+</div>
 

@@ -44,17 +44,6 @@ namespace LogicLayer
             
         }
 
-        public void Update(Ticket ticket)
-        {
-            crud.Update(ticket);
-            for (int i = 0; i < tickets.Count; i++)
-            {
-                if(tickets[i].Id == ticket.Id)
-                {
-                    tickets[i] = ticket;
-                }
-            }
-        }
         public List<Ticket> GetTickets(Customer c)
         {
             List<Ticket> tickets = new List<Ticket>();

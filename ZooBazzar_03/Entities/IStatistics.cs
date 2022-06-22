@@ -13,7 +13,10 @@ namespace Entities
         public Dictionary<int, double> GetIncome(string filter, string filter2, int value);
 
         public Dictionary<int, int> GetPeople();
+        public Dictionary<int, int> GetVisitorsLive();
 
         public Dictionary<int, int> GetVisitors(string filter1, string filter2, int value);
+
+
     }
 }

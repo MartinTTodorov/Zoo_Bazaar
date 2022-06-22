@@ -37,6 +37,7 @@
             this.btnGetIncome = new System.Windows.Forms.Button();
             this.btnNrOfVisitors = new System.Windows.Forms.Button();
             this.btnGetNumberOfVisitors = new System.Windows.Forms.Button();
+            this.btnLiveStatistics = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // panelStatistics
@@ -50,7 +51,7 @@
             // 
             this.btnGetStatistics.Location = new System.Drawing.Point(21, 188);
             this.btnGetStatistics.Name = "btnGetStatistics";
-            this.btnGetStatistics.Size = new System.Drawing.Size(215, 33);
+            this.btnGetStatistics.Size = new System.Drawing.Size(251, 33);
             this.btnGetStatistics.TabIndex = 1;
             this.btnGetStatistics.Text = "Get number of tickets sold";
             this.btnGetStatistics.UseVisualStyleBackColor = true;
@@ -102,9 +103,9 @@
             // 
             // btnGetIncome
             // 
-            this.btnGetIncome.Location = new System.Drawing.Point(21, 241);
+            this.btnGetIncome.Location = new System.Drawing.Point(21, 227);
             this.btnGetIncome.Name = "btnGetIncome";
-            this.btnGetIncome.Size = new System.Drawing.Size(215, 33);
+            this.btnGetIncome.Size = new System.Drawing.Size(251, 33);
             this.btnGetIncome.TabIndex = 8;
             this.btnGetIncome.Text = "Get income";
             this.btnGetIncome.UseVisualStyleBackColor = true;
@@ -112,29 +113,40 @@
             // 
             // btnNrOfVisitors
             // 
-            this.btnNrOfVisitors.Location = new System.Drawing.Point(21, 289);
+            this.btnNrOfVisitors.Location = new System.Drawing.Point(21, 273);
             this.btnNrOfVisitors.Name = "btnNrOfVisitors";
-            this.btnNrOfVisitors.Size = new System.Drawing.Size(215, 33);
+            this.btnNrOfVisitors.Size = new System.Drawing.Size(251, 49);
             this.btnNrOfVisitors.TabIndex = 9;
-            this.btnNrOfVisitors.Text = "Get current number of visitors";
+            this.btnNrOfVisitors.Text = "Get avarage number of visitors per day";
             this.btnNrOfVisitors.UseVisualStyleBackColor = true;
             this.btnNrOfVisitors.Click += new System.EventHandler(this.btnNrOfVisitors_Click);
             // 
             // btnGetNumberOfVisitors
             // 
-            this.btnGetNumberOfVisitors.Location = new System.Drawing.Point(21, 338);
+            this.btnGetNumberOfVisitors.Location = new System.Drawing.Point(21, 328);
             this.btnGetNumberOfVisitors.Name = "btnGetNumberOfVisitors";
-            this.btnGetNumberOfVisitors.Size = new System.Drawing.Size(215, 29);
+            this.btnGetNumberOfVisitors.Size = new System.Drawing.Size(251, 29);
             this.btnGetNumberOfVisitors.TabIndex = 11;
             this.btnGetNumberOfVisitors.Text = "Get visitors";
             this.btnGetNumberOfVisitors.UseVisualStyleBackColor = true;
             this.btnGetNumberOfVisitors.Click += new System.EventHandler(this.btnGetNumberOfVisitors_Click);
+            // 
+            // btnLiveStatistics
+            // 
+            this.btnLiveStatistics.Location = new System.Drawing.Point(21, 368);
+            this.btnLiveStatistics.Name = "btnLiveStatistics";
+            this.btnLiveStatistics.Size = new System.Drawing.Size(251, 29);
+            this.btnLiveStatistics.TabIndex = 12;
+            this.btnLiveStatistics.Text = "Get live number of visitors";
+            this.btnLiveStatistics.UseVisualStyleBackColor = true;
+            this.btnLiveStatistics.Click += new System.EventHandler(this.btnLiveStatistics_Click);
             // 
             // Statistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 430);
+            this.Controls.Add(this.btnLiveStatistics);
             this.Controls.Add(this.btnGetNumberOfVisitors);
             this.Controls.Add(this.btnNrOfVisitors);
             this.Controls.Add(this.btnGetIncome);
@@ -163,5 +175,6 @@
         private Button btnGetIncome;
         private Button btnNrOfVisitors;
         private Button btnGetNumberOfVisitors;
+        private Button btnLiveStatistics;
     }
 }

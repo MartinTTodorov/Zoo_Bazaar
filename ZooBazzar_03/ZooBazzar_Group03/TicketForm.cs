@@ -22,6 +22,7 @@ namespace ZooBazzar_Group03
             tbBarcode.Text = e.Barcode;
             int barcode = Convert.ToInt32(tbBarcode.Text);
             Ticket ticket = tm.GetTicket(barcode);
+            tm.UseTicket(barcode);
             GetTicket();
         }
 
@@ -42,6 +43,12 @@ namespace ZooBazzar_Group03
             }
 
             lbTickets.Items.Add(ticket);
+
+        }
+
+        private void TicketForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
