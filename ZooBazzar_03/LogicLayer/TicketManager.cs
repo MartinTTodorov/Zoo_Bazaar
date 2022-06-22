@@ -22,22 +22,16 @@ namespace LogicLayer
         //Methods
         public void AddTicket(Ticket ticket)
         {
-            Ticket temp = new Ticket(auto.GetNexID(),ticket.Customer,ticket.TypeOfTicket,ticket.Date,ticket.PlaceOfPerchase,ticket.Price);
+            Ticket temp = new Ticket(auto.GetNexID(), ticket.Customer, ticket.TypeOfTicket, ticket.Date, ticket.PlaceOfPerchase, ticket.Price);
             tickets.Add(temp);
             crud.Add(temp);
         }
 
-        public void UseTicket(int id)
+        public void UseTicket(Ticket t)
         {
-            for (int i = 0; i < tickets.Count; i++)
-            {
-                if (tickets[i].Id == id)
-                {
-                    tickets[i].UseTicket();
-                    crud.Update(tickets[i]);
-                }
-            }
-            
+            t.UseTicket();
+            crud.Update(t);
+
         }
 
         public List<Ticket> GetTickets(Customer c)
@@ -67,6 +61,6 @@ namespace LogicLayer
             return true;
         }
 
-      
+
     }
 }

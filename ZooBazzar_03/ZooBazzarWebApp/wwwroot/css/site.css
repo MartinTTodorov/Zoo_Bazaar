@@ -72,7 +72,7 @@ span {
 }
 
 .ticket {
-   /* background-image: url("zoo2.jpg");*/
+    background-image: url("zoo2.jpg");
     background-color: white;
     background-repeat: no-repeat;
     background-size: 800px 300px;
@@ -92,13 +92,13 @@ span {
 }
 
     .ticket img {
-        /*height: 60px;
+        height: 60px;
         min-width: 150px;
         position: absolute;
         bottom: 0;
         right: 0;
-        margin: 15px;*/
-        border: solid 20px white;
+        margin: 15px;
+        border: solid 10px white;
     }
 
 .title {
@@ -146,6 +146,7 @@ span {
     display: flex;
     position: fixed;
     font-family: 'Merriweather Sans', sans-serif;
+    z-index: 3;
 }
 
 header {
