@@ -57,7 +57,7 @@ namespace LogicLayer
         public void AcceptVacation(Vacation vacation)
         {
             
-            if (DateTime.Today<=vacation.StartDate.Date)
+            if (DateTime.Now.Date>vacation.StartDate.Date)
             {
                 throw new Exception("You can only accept requests before their start date");
             }

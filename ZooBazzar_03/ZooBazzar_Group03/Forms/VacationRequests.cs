@@ -35,7 +35,7 @@ namespace ZooBazzar_Group03.Forms
                 try
                 {
                     Vacation vacation = (Vacation)lbVacations.SelectedItem;
-                    vacationManager.DenyVacation(vacation);
+                    vacationManager.AcceptVacation(vacation);
                     MessageBox.Show("Vacation acepted successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     lbVacations.Items.Remove(vacation);
                 }

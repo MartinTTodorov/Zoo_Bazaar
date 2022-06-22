@@ -122,15 +122,12 @@ namespace DataAccessLayer
             List<Vacation> vacations = new List<Vacation>();
             try
             {
-                string sql = "Select RequestID, Username, EmployeeID, StartDate, EndDate, Status FROM vacations WHERE Status=@Status AND CURRENT_DATE() < StartDate";
+                string sql = "Select RequestID, Username, EmployeeID, StartDate, EndDate, Status FROM vacations WHERE Status=@Status AND CURRENT_DATE() <= StartDate";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Status", "Awaiting");
                 conn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
-
-
-
 
                 while (dr.Read())
                 {

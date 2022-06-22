@@ -99,7 +99,7 @@ namespace Entities
             }
         }
 
-        public Ticket(int id, Customer customer, TypeOfTicket typeOfTicket, DateTime? date,PlaceOfPerchase placeOfPerchase, decimal price)
+        public Ticket(int id, Customer customer, TypeOfTicket typeOfTicket, DateTime? date, PlaceOfPerchase placeOfPerchase, decimal price)
         {
             this.id = id;
             this.customer = customer;
@@ -118,7 +118,7 @@ namespace Entities
                 this.price = price;
             }
         }
-        public Ticket(int id, Customer customer, TypeOfTicket typeOfTicket, DateTime? date, DateTime dateOfPurchase, PlaceOfPerchase placeOfPerchase, decimal price,bool isUsed,DateTime? dateOfUse)
+        public Ticket(int id, Customer customer, TypeOfTicket typeOfTicket, DateTime? date, DateTime dateOfPurchase, PlaceOfPerchase placeOfPerchase, decimal price, bool isUsed, DateTime? dateOfUse)
         {
             this.id = id;
             this.customer = customer;
@@ -136,6 +136,10 @@ namespace Entities
         //Method
         public override string ToString()
         {
+            if (Customer == null)
+            {
+                return $" {DateOfPurchase} ";
+            }
             return $"{Customer.Email}: {DateOfPurchase} ";
         }
 
