@@ -1,0 +1,23 @@
+﻿@page
+@model ZooBazzarWebApp.Pages.ComplaintModel
+@{
+
+}
+
+<div>
+    <form method="post">
+        
+        @ViewData["Error"]
+
+        <label asp-for="ComplaintDTO.Title"><b>Title</b></label>
+        <input class = "ComplaintTitle" asp-for="ComplaintDTO.Title">
+        <span class="validation-message text-danger" asp-validation-for="ComplaintDTO.Title"></span>
+
+        <label asp-for="ComplaintDTO.Description"><b>Description</b></label>
+        <input class = "ComplaintDescription" asp-for="ComplaintDTO.Description">
+        <span class="validation-message text-danger" asp-validation-for="ComplaintDTO.Description"></span>
+
+        <button class = "btnRequest" type="submit">Request a vacation</button>
+    </form>
+
+</div>

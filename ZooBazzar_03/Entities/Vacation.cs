@@ -26,6 +26,7 @@ namespace Entities
         //Constructor
         public Vacation(int id, int employeeID, string username, DateTime startDate, DateTime endDate)
         {
+            ValidateDates(startDate, endDate);
             this.id = id;
             this.employeeID = employeeID;
             this.startDate = startDate;
@@ -35,7 +36,7 @@ namespace Entities
 
         public Vacation(int employeeID, string username, DateTime startDate, DateTime endDate)
         {
-            
+            ValidateDates(startDate, endDate);
             this.employeeID = employeeID;
             this.startDate = startDate;
             this.endDate = endDate;

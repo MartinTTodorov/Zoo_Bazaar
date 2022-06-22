@@ -7,12 +7,12 @@
 <form method = "post">
 
     <div>
-
-        <label> Vacation from:</label> <span asp-validation-for="@Model.Request.StartDate"></span>
+        
+        <@*label> Vacation from:</label> <span asp-validation-for="@Model.Request.StartDate"></span>
         <input asp-for="@Model.Request.StartDate" id="date">
 
         <label> Challenge date:</label> <span asp-validation-for="@Model.Request.EndDate"></span>
-        <input asp-for="@Model.Request.EndDate" id="date">
+        <input asp-for="@Model.Request.EndDate" id="date">*@
 
         <button class = "btnRequest" type="submit">Request a vacation</button>
 
