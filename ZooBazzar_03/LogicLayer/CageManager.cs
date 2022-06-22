@@ -21,6 +21,20 @@ namespace LogicLayer
 
         }
 
+        public void AddAnimalToCage(Animal animal, Cage cage)
+        {
+            if (cage.CageAnimals.Count==cage.Capacity)
+            {
+                throw new Exception("This cage is full");
+            }
+
+            if (cage.AnimalType!=animal.AnimalType)
+            {
+                throw new Exception("You cant add this animal to this cage");
+            }
+            
+        }
+
         public void GetCages()
         {
             if (cages != null)
@@ -34,6 +48,7 @@ namespace LogicLayer
         {
             return cages.Find(x => x.CageNumber == cageNr);
         }
+        
 
         public void InsertAnimalsInCage()
         {
@@ -60,25 +75,6 @@ namespace LogicLayer
             return null;
         }
 
-        //public void GetCageAnimals(List<DailySchedule> schedules)
-        //{
-        //    for (int i = 0; i < schedules.Count; i++)
-        //    {
-        //        schedules[i].Cage.CageAnimals = db.GetAnimalsInCage(schedules[i].Cage.CageNumber);
-        //        for (int j = 0; j < schedules[i].Cage.CageAnimals.Count; j++)
-        //        {
-        //            schedules[i].Cage.CageAnimals[j].FeedingTimes = db.GetFeedingTimes(schedules[i].Cage.CageAnimals[j].AnimalCode);
-        //        }
-        //    }
-        //}
-
-
-        //public bool AddAnimalInCage(Animal animal, Cage cage)
-        //{
-        //    if (animal.AnimalType == cage.Type)
-        //    {
-        //        cages[]
-        //    }
-        //}
+        
     }
 }

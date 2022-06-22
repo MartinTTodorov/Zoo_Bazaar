@@ -56,7 +56,7 @@ namespace Entities
 
         public override string ToString()
         {
-            return $"Vacation id: {this.ID} from {this.startDate.Date} to {this.endDate.Date}";
+            return $"Vacation id: {this.ID} for {this.username}. Start from {this.startDate.Date.ToShortDateString()} to {this.endDate.Date.ToShortDateString()}";
         }
 
     }

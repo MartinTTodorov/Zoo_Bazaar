@@ -40,14 +40,12 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbAnimalCode = new System.Windows.Forms.TextBox();
             this.tbCageNumber = new System.Windows.Forms.TextBox();
-            this.tbID = new System.Windows.Forms.TextBox();
             this.lblSpecie = new System.Windows.Forms.Label();
             this.lblAnimalType = new System.Windows.Forms.Label();
             this.lblDiet = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.lblAnimalCode = new System.Windows.Forms.Label();
             this.lblCageNumber = new System.Windows.Forms.Label();
-            this.lblID = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbWeeklyFeedIteration = new System.Windows.Forms.TextBox();
@@ -153,15 +151,6 @@
             this.tbCageNumber.Size = new System.Drawing.Size(125, 27);
             this.tbCageNumber.TabIndex = 38;
             // 
-            // tbID
-            // 
-            this.tbID.Enabled = false;
-            this.tbID.Location = new System.Drawing.Point(163, 43);
-            this.tbID.Name = "tbID";
-            this.tbID.ReadOnly = true;
-            this.tbID.Size = new System.Drawing.Size(125, 27);
-            this.tbID.TabIndex = 37;
-            // 
             // lblSpecie
             // 
             this.lblSpecie.AutoSize = true;
@@ -215,15 +204,6 @@
             this.lblCageNumber.Size = new System.Drawing.Size(101, 20);
             this.lblCageNumber.TabIndex = 31;
             this.lblCageNumber.Text = "Cage number:";
-            // 
-            // lblID
-            // 
-            this.lblID.AutoSize = true;
-            this.lblID.Location = new System.Drawing.Point(104, 43);
-            this.lblID.Name = "lblID";
-            this.lblID.Size = new System.Drawing.Size(27, 20);
-            this.lblID.TabIndex = 30;
-            this.lblID.Text = "ID:";
             // 
             // btnAdd
             // 
@@ -354,14 +334,12 @@
             this.Controls.Add(this.tbName);
             this.Controls.Add(this.tbAnimalCode);
             this.Controls.Add(this.tbCageNumber);
-            this.Controls.Add(this.tbID);
             this.Controls.Add(this.lblSpecie);
             this.Controls.Add(this.lblAnimalType);
             this.Controls.Add(this.lblDiet);
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.lblAnimalCode);
             this.Controls.Add(this.lblCageNumber);
-            this.Controls.Add(this.lblID);
             this.DoubleBuffered = true;
             this.Name = "FormAddAnimal";
             this.Text = "FormAddAnimal";
@@ -386,14 +364,12 @@
         private TextBox tbName;
         private TextBox tbAnimalCode;
         private TextBox tbCageNumber;
-        private TextBox tbID;
         private Label lblSpecie;
         private Label lblAnimalType;
         private Label lblDiet;
         private Label lblName;
         private Label lblAnimalCode;
         private Label lblCageNumber;
-        private Label lblID;
         private Button btnAdd;
         private Label label1;
         private TextBox tbWeeklyFeedIteration;
