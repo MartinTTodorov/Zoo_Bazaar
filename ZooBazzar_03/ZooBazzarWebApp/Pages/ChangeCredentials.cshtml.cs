@@ -1,12 +1,14 @@
 using DataAccessLayer;
 using Entities;
 using LogicLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
 namespace ZooBazzarWebApp.Pages
 {
+    [Authorize]
     public class ChangeCredentialsModel : PageModel
     {
         [BindProperty]

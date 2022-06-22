@@ -69,7 +69,9 @@ namespace DataAccessLayer
             }
         }
 
-        public List<Vacation> ReadVacations()
+
+
+        public List<Vacation> ReadCurrentVacations()
         {
             List<Vacation> vacations = new List<Vacation>();
             try
@@ -77,16 +79,52 @@ namespace DataAccessLayer
                 string sql = "Select RequestID, EmployeeID, StartDate, EndDate, Status FROM vacations WHERE Status=@Status AND CURRENT_DATE() BETWEEN StartDate AND EndDate";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Status", "Accepted");
+                conn.Open();
                 MySqlDataReader dr = cmd.ExecuteReader();
 
-                cmd.Parameters.AddWithValue("@Status", "Accepted");
 
 
-                conn.Open();
 
                 while (dr.Read())
                 {
-                    vacations.Add(new Vacation(Convert.ToInt32(dr["RequestID"]), Convert.ToInt32(dr["EmployeeID"]), Convert.ToDateTime(dr["StartDate"]), Convert.ToDateTime(dr["EndDate"])));
+                    vacations.Add(new Vacation(Convert.ToInt32(dr["RequestID"]), Convert.ToInt32(dr["EmployeeID"]), dr["Username"].ToString(), Convert.ToDateTime(dr["StartDate"]), Convert.ToDateTime(dr["EndDate"])));
+                }
+            }
+            catch (MySqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return vacations;
+        }
+
+        public List<Vacation> ReadRequests()
+        {
+            List<Vacation> vacations = new List<Vacation>();
+            try
+            {
+                string sql = "Select RequestID, EmployeeID, StartDate, EndDate, Status FROM vacations WHERE Status=@Status AND CURRENT_DATE() BETWEEN StartDate AND EndDate";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Status", "Awaiting");
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+
+
+
+                while (dr.Read())
+                {
+                    vacations.Add(new Vacation(Convert.ToInt32(dr["RequestID"]), Convert.ToInt32(dr["EmployeeID"]), dr["Username"].ToString(), Convert.ToDateTime(dr["StartDate"]), Convert.ToDateTime(dr["EndDate"])));
                 }
             }
             catch (MySqlException ex)
@@ -109,12 +147,13 @@ namespace DataAccessLayer
         {
             try
             {
-                string sql = "INSERT INTO vacations (EmployeeID, StartDate, EndDate, Status) VALUES (@EmployeeID, @StartDate, @EndDate, @Status)";
+                string sql = "INSERT INTO vacations (EmployeeID, Username, StartDate, EndDate, Status) VALUES (@EmployeeID, @Username, @StartDate, @EndDate, @Status)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
 
                 cmd.Parameters.AddWithValue("@EmployeeID", vacation.EmployeeID);
+                cmd.Parameters.AddWithValue("@Username", vacation.Username);
                 cmd.Parameters.AddWithValue("@StartDate", vacation.StartDate);
                 cmd.Parameters.AddWithValue("@EndDate", vacation.EndDate);
                 cmd.Parameters.AddWithValue("@Status", "Awaiting");

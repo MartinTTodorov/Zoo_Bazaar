@@ -48,7 +48,7 @@ namespace DataAccessLayer
             return animals;
         }
 
-        public void AddAnimalToDB(Animal animal, Specialization specialization)
+        public void AddAnimalToDB(Animal animal)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace DataAccessLayer
                 cmd.Parameters.AddWithValue("@reasonForArrival", animal.ReasonForArrival);
                 cmd.Parameters.AddWithValue("@yearOfArrival", animal.YearOfArrival);             
                 cmd.Parameters.AddWithValue("@diet", animal.Diet);
-                cmd.Parameters.AddWithValue("@specialist", specialization);
+                cmd.Parameters.AddWithValue("@specialist", animal.Specialization);
                 cmd.Parameters.AddWithValue("@weeklyFeedingIteration", animal.WeeklyFeedingIteration);
 
                 for (int i = 0; i < animal.FeedingTimes.Count; i++)
@@ -189,42 +189,9 @@ namespace DataAccessLayer
             }
 
         }
-        public bool HasImage(string animalCode)
-        {
-            string sql = "SELECT Picture, ap.AnimalCode FROM animalpictures ap INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE ap.AnimalCode = @animalCode;";
+        
 
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            conn.Open();
-            cmd.Parameters.AddWithValue("@animalCode", animalCode);
-            if (cmd.ExecuteScalar() == null)
-            {
-                conn.Close();
-                return false;
-            }
-            else
-            {
-                conn.Close();
-                return true;
-            }
-        }
-
-        public MemoryStream GetMemoryStream(string animalCode)
-        {
-            string sql = "SELECT Picture, ap.AnimalCode FROM animalpictures ap INNER JOIN animal a ON ap.AnimalCode = a.AnimalCode WHERE ap.AnimalCode = @animalCode;";
-            MySqlCommand cmd;
-            MySqlDataReader dr;
-
-            cmd = new MySqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@animalCode", animalCode);
-
-            conn.Open();
-
-            byte[] img = (byte[])cmd.ExecuteScalar();
-            MemoryStream ms = new MemoryStream(img);
-            conn.Close();
-            return ms;
-
-        }
+        
 
         public List<string> GetFeeding(Animal animal)
         {

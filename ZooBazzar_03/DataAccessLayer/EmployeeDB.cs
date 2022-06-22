@@ -68,7 +68,6 @@ namespace DataAccessLayer
             List<Employee> employees = new List<Employee>();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-
             try
             {
                 conn.Open();
@@ -81,7 +80,6 @@ namespace DataAccessLayer
                     {
                         Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), reader[12].ToString());
                         employee = new Caretaker(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(),Convert.ToInt32(reader[11]), specialization);
-                        
                     }
                     else
                     {

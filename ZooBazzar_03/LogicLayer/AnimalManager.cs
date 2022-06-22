@@ -23,69 +23,19 @@ namespace LogicLayer
         }
 
         //Methods
-        public void AddAnimal(string animalCode, string name, string gender, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes, string specialist, int weeklyFeedingIteration)
-        {
-          //  crud.AddAnimalToDB(new Animal(animalCode, name, gender, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet, feedingTimes, specialist, weeklyFeedingIteration);
-            //UpdateLocalList();
-        }
-
         public void AddAnimal(Animal animal)
         {
-            //crud.AddAnimalToDB();
+            crud.AddAnimalToDB(animal);
         }
 
         public void UpdateAnimal(Animal animal)
         {
-            if (System.Enum.IsDefined(typeof(AnimalType), animal.AnimalType))
-            {
-               
-            }
-          //  crud.UpdateAnimalInDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.Id);
-            //UpdateLocalList();
-        }
-
-
-        public bool UpdateAnimals(Animal animal)
-        {
-            if (System.Enum.IsDefined(typeof(AnimalType), animal.AnimalType))
-            {
-                return false;
-            }
-            else
-            {
-               // crud.UpdateAnimalInDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.Id);
-                return true;
-            }
-            //UpdateLocalList();
+            crud.UpdateAnimalInDB(animal);
         }
 
         public void DeleteAnimal(Animal animal)
         {
-            crud.DeleteAnimalFromDB(animal.Id, animal.ReasonForDeparture);
-            //UpdateLocalList();
-        }
-
-        public void DeleteAnimalByID(int id)
-        {
-            //animalDB.DeleteAnimalFromDB(id);
-            //UpdateLocalList();
-        }
-
-        public bool HasImage(Animal animal) //check against the animal code in the database directly in the animalpictures table. If true, run a query where animal code is this animal code and get the memory stream
-        {
-            if (crud.HasImage(animal.AnimalCode))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public MemoryStream GetMemoryStream(string animalCode)
-        {
-            return crud.GetMemoryStream(animalCode);
+            crud.DeleteAnimalFromDB(animal);
         }
 
         public void AssignFeedingTimes()

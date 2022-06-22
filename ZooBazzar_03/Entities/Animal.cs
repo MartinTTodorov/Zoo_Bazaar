@@ -9,19 +9,19 @@ namespace Entities
 {
     public class Animal
     {
-        private int id; //
-        private string animalCode; //
-        private string name; //
+        private int id;
+        private string animalCode;
+        private string name;
         private string gender;
-        private AnimalType type; //
-        private string specie; //
-        private int cageNumber; //
+        private AnimalType type;
+        private string specie;
+        private int cageNumber;
         private string birthDate;
         private string reasonForArrival;
         private string yearOfArrival;
         private string yearOfDeparture;
         private string reasonForDeparture;
-        private Diet diet; //
+        private Diet diet;
         int weeklyFeedingIteration;
         private Specialization specialization;
         List<string> feedingTimes = new List<string>();
@@ -86,6 +86,7 @@ namespace Entities
             this.animalCode = animalCode;
             this.weeklyFeedingIteration = weeklyFeedingIteration;
         }
+
 
         public string GetInfo()
         {

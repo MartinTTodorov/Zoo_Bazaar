@@ -10,16 +10,12 @@ namespace Entities
     {
        public List<Animal> GetAnimals();
 
-       public void AddAnimalToDB(Animal animal, Specialization specialization);
+       public void AddAnimalToDB(Animal animal);
 
-       public void UpdateAnimalInDB(Animal animal, int id);
+       public void UpdateAnimalInDB(Animal animal);
 
 
-       public void DeleteAnimalFromDB(int id, string reasonForDeparture);
-       public bool HasImage(string animalCode);
-
-       public MemoryStream GetMemoryStream(string animalCode);
-
+       public void DeleteAnimalFromDB(Animal animal);
        public List<string> GetFeeding(Animal animal);
 
         // Change it pls :P

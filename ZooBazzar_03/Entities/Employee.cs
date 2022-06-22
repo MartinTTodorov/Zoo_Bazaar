@@ -69,7 +69,8 @@ namespace Entities
         }
         public Employee(int id,string name)
         {
-
+            this.id = id;
+            this.firstname = name;
         }
        
         //Methods
@@ -78,15 +79,13 @@ namespace Entities
             contracts.Add(ec);
         }
 
-        
-
         public override string ToString()
         {
             return $"{Name} {Lastname} - {WorkingPosition}";
         }
         public string GetNames()
         {
-            return $"{Name} {Lastname}";
+            return $"{Name}";
         }
     }
 }

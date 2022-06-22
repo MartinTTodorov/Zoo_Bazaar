@@ -12,22 +12,34 @@ namespace Entities
         //Fields
         private int id;
         private int employeeID;
+        private string username;
         private DateTime startDate;
         private DateTime endDate;
 
         //Properties
         public int ID { get { return id; } }
         public int EmployeeID { get { return employeeID; } }
+        public string Username { get { return username; } }
         public DateTime StartDate { get { return startDate; } }
         public DateTime EndDate { get { return endDate; } }
 
         //Constructor
-        public Vacation(int id, int employeeID, DateTime startDate, DateTime endDate)
+        public Vacation(int id, int employeeID, string username, DateTime startDate, DateTime endDate)
         {
             this.id = id;
             this.employeeID = employeeID;
             this.startDate = startDate;
             this.endDate = endDate;
+            this.username = username;
+        }
+
+        public Vacation(int employeeID, string username, DateTime startDate, DateTime endDate)
+        {
+            
+            this.employeeID = employeeID;
+            this.startDate = startDate;
+            this.endDate = endDate;
+            this.username = username;
         }
 
         //Methods
@@ -37,6 +49,11 @@ namespace Entities
             {
                 throw new Exception("End date can't be before the start date");
             }
+        }
+
+        public override string ToString()
+        {
+            return $"Vacation id: {this.ID} from {this.startDate.Date} to {this.endDate.Date}";
         }
 
     }

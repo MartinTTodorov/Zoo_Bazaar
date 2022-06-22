@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace LogicLayer
         private static EmployeeManagment em;
         private static CageManager cm;
         private static ContractManager cmngr;
-        private VacationManager vm;
+        private static VacationManager vm;
 
         static List<DailySchedule> dailySchedules = new List<DailySchedule>();
         public List<DailySchedule> DailySchedules { get { return dailySchedules; } }
@@ -23,36 +24,26 @@ namespace LogicLayer
         int fullShiftHours = 6;
 
         IScheduleDB<DailySchedule> crud;
-        public ScheduleManager(IScheduleDB<DailySchedule> crud, ICRU<Employee> employeeData, ICageDB<Cage> cageData, IContractDataManagement<EmployeeContract> contractData)
+
+        IAutoIncrementable autoIncr;
+
+        public ScheduleManager(IScheduleDB<DailySchedule> crud, ICRU<Employee> employeeData, ICageDB<Cage> cageData, IContractDataManagement<EmployeeContract> contractData, IAutoIncrementable autoIncr)
         {
             this.crud = crud;
             em = new EmployeeManagment(employeeData);
             cm = new CageManager(cageData);
             cmngr = new ContractManager(contractData);
+            this.autoIncr = autoIncr;
+            vm.ReadCurrentVacations();
         }
 
 
-        public static List<string> GetWeek(DateTime pickDate, int index)
+        private int GetWeekNumber(DateTime date, int index)
         {
-            List<string> daysInWeek = new List<string>();
-
-            var now = pickDate;
-            var currentDay = now.DayOfWeek;
-            int days = (int)currentDay;
-
-            DateTime sunday = now.AddDays(-days);
-
-            for (int i = 0; i < 7; i++)
-            {
-                DateTime day = sunday.AddDays(i + index);
-
-
-                string date = $"{day.Day} {day.ToString("MMM")} {day.Year}";
-
-                daysInWeek.Add(date);
-            }
-
-            return daysInWeek;
+            date = date.AddDays(index);
+            CultureInfo ciCurr = CultureInfo.CurrentCulture;
+            int weekNum = ciCurr.Calendar.GetWeekOfYear(date, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Sunday);
+            return weekNum;
         }
 
 
@@ -63,13 +54,13 @@ namespace LogicLayer
 
             if (dailySchedules != null)
             {
-                match = dailySchedules.Any(ds => GetWeek(date, index).Any(days => days == ds.Date));
+                match = dailySchedules.Any(ds => GetWeekNumber(date, index) == GetWeekNumber(DateTime.ParseExact(ds.Date, "dd MMM yyyy", null), 0));
             }
 
             if (!match)
             {
                 dailySchedules.Clear();
-                dailySchedules.AddRange(crud.Read(GetWeek(date, index)));
+                dailySchedules.AddRange(crud.Read(GUIHelper.GetWeek(date, index)));
             }
 
         }
@@ -164,17 +155,17 @@ namespace LogicLayer
         {
             List<Caretaker> caretakers = GetCaretakers(type);
 
-            //caretakers.FindAll(x => x.Account.Id == vm.Vacations.Find(v => v.EmployeeID == x.Account.Id).EmployeeID);
-
             List<Caretaker> freeCaretakers = new List<Caretaker>();
+
+            //Removes the caretakers that are currently on vacation
+            foreach (Vacation vacation in vm.Vacations)
+            {
+                caretakers.Remove(caretakers.Find(x => x.Account.Id == vacation.EmployeeID));
+            }
 
             foreach (Caretaker caretaker in caretakers)
             {
                 cmngr.GetContracts(caretaker);
-                //if (vm.Vacations.Any(x=>x.EmployeeID==caretaker.Account.Id))
-                //{
-                    
-                //}
 
                 if ((caretaker.Contracts.Find(c => c.IsValid == true).Fte * 40) >= (GetWorkedHours(caretaker) + fullShiftHours))
 
@@ -182,14 +173,6 @@ namespace LogicLayer
                     freeCaretakers.Add(caretaker);
                 }
             }
-
-            //foreach (Vacation vacation in vm.Vacations)
-            //{
-            //    if (freeCaretakers.Any(x=>x.Account.Id==vacation.EmployeeID))
-            //    {
-            //        freeCaretakers.Remove(freeCaretakers.First(x => x.Account.Id == vacation.EmployeeID));
-            //    }
-            //}
 
             DailySchedule ds = AssignedCaretakers(timeSlot, date, type);
 
@@ -229,6 +212,10 @@ namespace LogicLayer
             return caretakerSchedule;
         }
 
+        public int GetId()
+        {
+            return autoIncr.GetNexID();
+        }
 
     }
 }

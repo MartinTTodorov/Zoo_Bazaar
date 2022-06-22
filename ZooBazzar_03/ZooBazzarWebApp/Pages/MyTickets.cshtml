@@ -10,10 +10,7 @@
 @using Entities;
 @using System.Security.Claims;
 
-if(@User.IsInRole("Customer")){
-
-}
-@foreach (Ticket t in tm.GetTickets(cm.GetCustomerByEmail(User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email).Value)))
+@foreach (Ticket t in tm.GetTickets(cm.GetCustomer(@Convert.ToInt32(User.FindFirst("ID").Value))))
 {
     <div class="ticket">
         <img src=@Model.ConvertImageToUrl(t.Id) alt="Barcode" />

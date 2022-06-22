@@ -25,9 +25,35 @@ namespace Entities
         public int EmployeeId { get { return this.employeeId; } }
         public DateTime StartDate { get { return this.startDate; } }
 
-        public DateTime EndDate { get { return this.endDate; } }
+        public DateTime EndDate
+        {
+            get { return this.endDate; }
+            private set
+            {
+                if (value.CompareTo(startDate) < 0)
+                {
+                    throw new Exception("End date cannot be after the start date!");
+                }
+                this.endDate = value;
+            }
+        }
 
-        public double Fte { get { return this.fte; } }
+        public double Fte
+        {
+            get { return this.fte; }
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new Exception("FTEs cannot be less than 0!");
+                }
+                if (value > 1)
+                {
+                    throw new Exception("FTEs cannot be more than 1!");
+                }
+                this.fte = value;
+            }
+        }
         public string Reason { get { return this.reason; } }
         public bool IsValid { get { return this.isValid; } }
         public int VacationDaysLeft { get { return this.vacationDaysLeft; } }
@@ -48,8 +74,8 @@ namespace Entities
         {
             this.employeeId = employeeId;
             this.startDate = startDate;
-            this.endDate = endDate;
-            this.fte = fte;
+            this.EndDate = endDate;
+            this.Fte = fte;
             this.reason = reason;
             this.isValid = isValid;
         }

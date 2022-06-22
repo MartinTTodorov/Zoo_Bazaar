@@ -8,19 +8,18 @@ namespace ZooBazzar_Group03.Forms
         private int weekIndex = 0;
         public ScheduleForm()
         {
-            InitializeComponent();
-            LoadTheame();
+            InitializeComponent();         
             GetSchedule(0);
         }
 
-        
+
 
         private void GetSchedule(int index)
         {
             pCalendar.Controls.Clear();
             pCalendar2.Controls.Clear();
 
-            List<string> days = ScheduleManager.GetWeek(DateTime.Now, index);
+            List<string> days = GUIHelper.GetWeek(DateTime.Now, index);
 
 
             for (int i = 0; i < days.Count; i++)
@@ -71,6 +70,11 @@ namespace ZooBazzar_Group03.Forms
                 
             }
 
+        }
+
+        private void ScheduleForm_Load(object sender, EventArgs e)
+        {
+            LoadTheame();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace ZooBazzar_Group03.Forms
 
             this.animals = animals;
             this.workingPosition = workingPosition;
-            LoadTheame();
+          
         }
 
         //Methods
@@ -80,5 +80,9 @@ namespace ZooBazzar_Group03.Forms
 
         }
 
+        private void AnimalsPage_Load(object sender, EventArgs e)
+        {
+            LoadTheame();
+        }
     }
 }

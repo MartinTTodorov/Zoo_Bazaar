@@ -59,20 +59,14 @@ namespace DataAccessLayer
             return new List<string>();
         }
 
-        public MemoryStream GetMemoryStream(string animalCode)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public List<string> GetNotes(Animal animal)
         {
             throw new NotImplementedException();
         }
 
-        public bool HasImage(string animalCode)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void UpdateAnimalInDB(string animalCode, string name, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, int id)
         {

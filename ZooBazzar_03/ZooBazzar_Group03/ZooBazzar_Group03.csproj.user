@@ -40,6 +40,9 @@
     <Compile Update="Forms\Contracts.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\Description.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\EmployeesPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +68,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\UpdateEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\VacationRequests.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="LoginPage.cs">

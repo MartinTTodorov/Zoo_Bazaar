@@ -10,13 +10,13 @@ namespace DataAccessLayer
 
         public AccountManagerDB()
         {
-           conn = ConnectionDB.GetConnection();
+            conn = ConnectionDB.GetConnection();
         }
 
         public void Add(Account obj)
         {
             string sql = "INSERT INTO account (Username,Password,Salt) VALUES (@Username,@Password,@Salt)";
-            MySqlCommand cmd = new MySqlCommand(sql,conn);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
 
             cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = obj.Username;
@@ -27,7 +27,7 @@ namespace DataAccessLayer
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                
+
             }
             catch (MySqlException ex)
             {
@@ -42,7 +42,7 @@ namespace DataAccessLayer
 
         public void Delete(int id)
         {
-            string sql = "DELETE FROM account WHERE AccountID = @ID"; 
+            string sql = "DELETE FROM account WHERE AccountID = @ID";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             cmd.CommandType = CommandType.Text;
@@ -63,8 +63,8 @@ namespace DataAccessLayer
 
         public List<Account> Read()
         {
-            string sql = "SELECT username,password,salt,AccountID FROM account INNER JOIN contract On contract.employee_id = account.AccountID WHERE contract.is_valid = true";
-            List<Account> accounts = new List<Account>(); 
+            string sql = "SELECT username,password,salt,AccountID, customer.id FROM account LEFT JOIN contract contract On contract.employee_id = account.AccountID LEFT JOIN customer ON AccountID = customer.id WHERE customer.id  > 0 OR contract.is_valid = 1";
+            List<Account> accounts = new List<Account>();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             try
@@ -74,7 +74,7 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    Account account = new Account(reader[0].ToString(), reader[1].ToString(),reader[2].ToString(),Convert.ToInt32(reader[3]));                    
+                    Account account = new Account(reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), Convert.ToInt32(reader[3]));
                     accounts.Add(account);
                 }
             }
@@ -93,7 +93,7 @@ namespace DataAccessLayer
 
         public void Update(Account obj)
         {
-            string sql = "UPDATE account SET Username = @Username, Password = @Password, Salt = @Salt WHERE AccountID = @ID"; 
+            string sql = "UPDATE account SET Username = @Username, Password = @Password, Salt = @Salt WHERE AccountID = @ID";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
             cmd.CommandType = CommandType.Text;
@@ -106,7 +106,7 @@ namespace DataAccessLayer
             {
                 conn.Open();
                 cmd.ExecuteNonQuery();
-               
+
             }
             catch (MySqlException ex)
             {
@@ -138,17 +138,17 @@ namespace DataAccessLayer
                 conn.Close();
             }
         }
-        public string GetEmployeeWorkPositionByAccount(string username)
+        public string? GetEmployeeWorkPositionByAccount(string username)
         {
-            string sql = "SELECT Workposition FROM `employee` INNER JOIN account On employee.ID = account.AccountID WHERE account.Username = @Username"; 
+            string sql = "SELECT Workposition FROM `employee` INNER JOIN account On employee.ID = account.AccountID WHERE account.Username = @Username";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Add("@Username", MySqlDbType.VarChar).Value = username;
-            string result = " ";
+            string? result = " ";
             try
             {
                 conn.Open();
-                result = cmd.ExecuteScalar().ToString();
+                result = cmd.ExecuteScalar()?.ToString();
             }
             catch (MySqlException ex)
             {
@@ -169,7 +169,7 @@ namespace DataAccessLayer
             {
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
-                conn.Open();              
+                conn.Open();
                 return Convert.ToInt32(cmd.ExecuteScalar());
 
             }
@@ -185,7 +185,8 @@ namespace DataAccessLayer
 
         public Account GetAccountByUsername(string username)
         {
-            string sql = "SELECT username,password,salt,AccountID FROM account INNER JOIN contract On contract.employee_id = account.AccountID WHERE contract.is_valid = true AND username = @Username";
+            string sql = $"SELECT username,password,salt,AccountID, customer.id FROM account LEFT JOIN contract contract On contract.employee_id = account.AccountID LEFT JOIN customer ON AccountID = customer.id WHERE "
+                         + "(customer.id > 0 OR contract.is_valid = 1) AND account.Username = @Username";
             Account account = null;
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -199,7 +200,7 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    account = new Account(reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), Convert.ToInt32(reader[3]));                    
+                    account = new Account(reader[0].ToString(), reader[1].ToString(), reader[2].ToString(), Convert.ToInt32(reader[3]));
                 }
             }
             catch (MySqlException ex)
@@ -214,7 +215,7 @@ namespace DataAccessLayer
 
             return account;
         }
-       
+
     }
 
 }
