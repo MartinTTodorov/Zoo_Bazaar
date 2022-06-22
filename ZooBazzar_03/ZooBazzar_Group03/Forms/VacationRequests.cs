@@ -34,8 +34,10 @@ namespace ZooBazzar_Group03.Forms
             {
                 try
                 {
-                    vacationManager.AcceptVacation((Vacation)lbVacations.SelectedItem);
+                    Vacation vacation = (Vacation)lbVacations.SelectedItem;
+                    vacationManager.DenyVacation(vacation);
                     MessageBox.Show("Vacation acepted successfully", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    lbVacations.Items.Remove(vacation);
                 }
                 catch (Exception ex)
                 {
