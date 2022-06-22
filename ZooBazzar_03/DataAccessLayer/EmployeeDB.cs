@@ -16,6 +16,7 @@ namespace DataAccessLayer
         {
             string sql2 = " ";
             MySqlCommand cmd2 = null;
+
             if(obj.WorkingPosition == "Caretaker")
             {
                 sql2 = "INSERT INTO caretaker (employee_id,specialization) VALUES (@Employee_ID,@Specialization)";
@@ -77,12 +78,12 @@ namespace DataAccessLayer
                     
                     if (reader[10].ToString() == "Caretaker")
                     {
-                        Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), reader[11].ToString());
-                        employee = new Caretaker(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(), specialization);
+                        Specialization specialization = (Specialization)Enum.Parse(typeof(Specialization), reader[12].ToString());
+                        employee = new Caretaker(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(),Convert.ToInt32(reader[11]), specialization);
                     }
                     else
                     {
-                        employee = new Employee(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString());
+                        employee = new Employee(new Account(reader[0].ToString(), reader[1].ToString()), reader[2].ToString(), reader[3].ToString(), reader[4].ToString(), Convert.ToDateTime(reader[5]), reader[6].ToString(), reader[7].ToString(), reader[8].ToString(), reader[9].ToString(), reader[10].ToString(), Convert.ToInt32(reader[11]));
                     }
 
                     employees.Add(employee);

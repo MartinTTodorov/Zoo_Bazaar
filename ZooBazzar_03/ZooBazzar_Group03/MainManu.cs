@@ -18,7 +18,7 @@ namespace ZooBazzar_Group03
 
         private EmployeeManagment employeeManagment = new EmployeeManagment(new EmployeeDB());
         private AccountManager accountManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());
-        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
+        private AnimalManager animalManager = new AnimalManager(new AnimalDB(), new AnimalDB());
         private ContractManager cm = new ContractManager(new ContractDB());
         private RequestManager rm = new RequestManager(new RequestedEmployeeDB());
 
@@ -166,12 +166,12 @@ namespace ZooBazzar_Group03
 
         private void btnEmployees_Click(object sender, EventArgs e)
         {
-            openChildForm(new Forms.EmployeesPage(employeeManagment.GetEmployees(),cm.GetContracts()), sender);
+            openChildForm(new Forms.EmployeesPage(employeeManagment.Employees.ToList(),cm.GetContracts()), sender);
         }
 
         private void btnContracts_Click(object sender, EventArgs e)
         {
-            openChildForm(new Forms.Contracts(employeeManagment.GetEmployees()), sender);
+            openChildForm(new Forms.Contracts(employeeManagment.Employees.ToList()), sender);
         }
 
         private void btnRequest_Click(object sender, EventArgs e)
@@ -212,6 +212,11 @@ namespace ZooBazzar_Group03
         private void btnZooDescription_Click(object sender, EventArgs e)
         {
             openChildForm(new Forms.Description(), sender);
+        }
+
+        private void btnVacationRequests_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.VacationRequests(), sender);
         }
     }
 }

@@ -106,6 +106,7 @@ namespace DataAccessLayer
                         databaseReader.GetDateTime("end_date"),
                         databaseReader.GetDouble("fte"),
                         databaseReader.GetString("reason"),
+                        databaseReader.GetInt32("vacationDaysLeft"),
                         databaseReader.GetBoolean("is_valid"));
                     contracts.Add(ec);
                 }
@@ -145,7 +146,7 @@ namespace DataAccessLayer
                 {
 
 
-                    ec = new EmployeeContract(databaseReader.GetInt32("id"), databaseReader.GetInt32("employee_id"), databaseReader.GetDateTime("start_date"), databaseReader.GetDateTime("end_date"), databaseReader.GetDouble("fte"), databaseReader.GetString("reason"), databaseReader.GetBoolean("is_valid"));
+                    ec = new EmployeeContract(databaseReader.GetInt32("id"), databaseReader.GetInt32("employee_id"), databaseReader.GetDateTime("start_date"), databaseReader.GetDateTime("end_date"), databaseReader.GetDouble("fte"), databaseReader.GetString("reason"), databaseReader.GetInt32("vacationDaysLeft"), databaseReader.GetBoolean("is_valid"));
                     contracts.Add(ec);
                 }
                 return contracts;
@@ -155,6 +156,32 @@ namespace DataAccessLayer
 
                 throw ex;
 
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void UpdateVacationDays(EmployeeContract contract)
+        {
+            try
+            {
+                string sql = "UPDATE contract SET vacationDaysLeft=@Days WHERE id = @ID";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+
+                cmd.Parameters.AddWithValue("@ID", contract.Id);
+                cmd.Parameters.AddWithValue("@Days", contract.VacationDaysLeft);
+            }
+            catch (MySqlException ex)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
             finally
             {

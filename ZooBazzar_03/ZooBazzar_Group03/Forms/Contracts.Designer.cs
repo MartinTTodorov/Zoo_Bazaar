@@ -186,6 +186,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Contracts";
             this.Text = "Contracts";
+            this.Load += new System.EventHandler(this.Contracts_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

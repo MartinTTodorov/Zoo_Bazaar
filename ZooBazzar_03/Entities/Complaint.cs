@@ -29,6 +29,13 @@ namespace Entities
             this.description = description;
             this.time = time;
         }
+        public Complaint(Account author, string title, string description, DateTime time)
+        {
+            this.author = author;
+            this.title = title;
+            this.description = description;
+            this.time = time;
+        }
 
         public override string ToString()
         {

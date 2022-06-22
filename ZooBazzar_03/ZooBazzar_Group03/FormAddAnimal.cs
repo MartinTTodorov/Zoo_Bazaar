@@ -15,15 +15,16 @@ namespace ZooBazzar_Group03
 {
     public partial class FormAddAnimal : Form
     {
-        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
+        private AnimalManager animalManager;
         private List<string> feedingTimes;
 
         private FlowLayoutPanel panel;
-        public FormAddAnimal(FlowLayoutPanel panel)
+        public FormAddAnimal(FlowLayoutPanel panel, AnimalManager animalManager)
         {
             InitializeComponent();
 
             this.panel = panel;            
+            this.animalManager = animalManager;
             this.feedingTimes = new List<string>();
             this.cbGender.DataSource = new string[] { "Male", "Female" };
                        
@@ -43,9 +44,18 @@ namespace ZooBazzar_Group03
             {
                 feedingTimes.Add("evening");
             }
-            
-            animalManager.AddAnimal(tbAnimalCode.Text, tbName.Text, cbGender.SelectedItem.ToString(), cbAnimalType.SelectedItem.ToString(), tbSpecie.Text, Convert.ToInt32(tbCageNumber.Text), tbBirthdate.Text, tbReasonForArrival.Text, tbYearOfArrival.Text, string.Empty, string.Empty, cbDiet.SelectedItem.ToString(), feedingTimes, cbSpecialist.SelectedItem.ToString(), Convert.ToInt32(tbWeeklyFeedIteration.Text));
-            //panel.Controls.Add(new AnimalPic())
+            Animal newAnimal = new Animal(Convert.ToInt32(tbCageNumber.Text), tbAnimalCode.Text, tbName.Text, (Diet)cbDiet.SelectedItem, (AnimalType)cbAnimalType.SelectedItem, cbGender.SelectedItem.ToString(), (Specialization)cbSpecialist.SelectedItem, tbSpecie.Text, tbReasonForArrival.Text, tbYearOfArrival.Text, tbBirthdate.Text, Convert.ToInt32(tbWeeklyFeedIteration.Text), feedingTimes);
+            try
+            {
+                animalManager.AddAnimal(newAnimal);
+                MessageBox.Show("Added an animal successfully");
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //panel.Controls.Add(new AnimalPic());
         }
 
         private void FormAddAnimal_FormClosing(object sender, FormClosingEventArgs e)

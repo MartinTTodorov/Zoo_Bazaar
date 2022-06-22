@@ -1,9 +1,5 @@
 ﻿using Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LogicLayer
 {
@@ -16,7 +12,7 @@ namespace LogicLayer
         public IList<Ticket> Tickets { get { return tickets.AsReadOnly(); } }
 
         //Constructor
-        public TicketManager(ICRU<Ticket>crud,IAutoIncrementable auto)
+        public TicketManager(ICRU<Ticket> crud,IAutoIncrementable auto)
         {
             this.auto = auto;
             this.crud = crud;
@@ -34,32 +30,18 @@ namespace LogicLayer
         public int GetNextID()
         {
            return auto.GetNexID();
+            Ticket temp = new Ticket(auto.GetNexID(), ticket.Customer, ticket.TypeOfTicket, ticket.Date, ticket.PlaceOfPerchase, ticket.Price);
+            tickets.Add(temp);
+            crud.Add(temp);
         }
 
-        public void UseTicket(int id)
+        public void UseTicket(Ticket t)
         {
-            for (int i = 0; i < tickets.Count; i++)
-            {
-                if (tickets[i].Id == id)
-                {
-                    tickets[i].UseTicket();
-                    crud.Update(tickets[i]);
-                }
-            }
-            
+            t.UseTicket();
+            crud.Update(t);
+
         }
 
-        public void Update(Ticket ticket)
-        {
-            crud.Update(ticket);
-            for (int i = 0; i < tickets.Count; i++)
-            {
-                if(tickets[i].Id == ticket.Id)
-                {
-                    tickets[i] = ticket;
-                }
-            }
-        }
         public List<Ticket> GetTickets(Customer c)
         {
             List<Ticket> tickets = new List<Ticket>();
@@ -86,5 +68,7 @@ namespace LogicLayer
             crud.Update(t);
             return true;
         }
+
+
     }
 }

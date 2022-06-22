@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pMenu = new System.Windows.Forms.Panel();
+            this.btnVacationRequests = new System.Windows.Forms.Button();
+            this.btnZooDescription = new System.Windows.Forms.Button();
             this.btnTickets = new System.Windows.Forms.Button();
             this.btnScanning = new System.Windows.Forms.Button();
             this.btnComplaints = new System.Windows.Forms.Button();
@@ -60,6 +62,7 @@
             // pMenu
             // 
             this.pMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(56)))));
+            this.pMenu.Controls.Add(this.btnVacationRequests);
             this.pMenu.Controls.Add(this.btnZooDescription);
             this.pMenu.Controls.Add(this.btnTickets);
             this.pMenu.Controls.Add(this.btnScanning);
@@ -79,8 +82,44 @@
             this.pMenu.Location = new System.Drawing.Point(0, 0);
             this.pMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pMenu.Name = "pMenu";
-            this.pMenu.Size = new System.Drawing.Size(216, 680);
+            this.pMenu.Size = new System.Drawing.Size(247, 907);
             this.pMenu.TabIndex = 0;
+            // 
+            // btnVacationRequests
+            // 
+            this.btnVacationRequests.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnVacationRequests.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnVacationRequests.FlatAppearance.BorderSize = 0;
+            this.btnVacationRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVacationRequests.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnVacationRequests.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnVacationRequests.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVacationRequests.Location = new System.Drawing.Point(0, 829);
+            this.btnVacationRequests.Name = "btnVacationRequests";
+            this.btnVacationRequests.Size = new System.Drawing.Size(247, 60);
+            this.btnVacationRequests.TabIndex = 12;
+            this.btnVacationRequests.Text = "Vacation Requests";
+            this.btnVacationRequests.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVacationRequests.UseVisualStyleBackColor = true;
+            this.btnVacationRequests.Click += new System.EventHandler(this.btnVacationRequests_Click);
+            // 
+            // btnZooDescription
+            // 
+            this.btnZooDescription.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnZooDescription.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnZooDescription.FlatAppearance.BorderSize = 0;
+            this.btnZooDescription.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZooDescription.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnZooDescription.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnZooDescription.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnZooDescription.Location = new System.Drawing.Point(0, 769);
+            this.btnZooDescription.Name = "btnZooDescription";
+            this.btnZooDescription.Size = new System.Drawing.Size(247, 60);
+            this.btnZooDescription.TabIndex = 11;
+            this.btnZooDescription.Text = "Zoo Description";
+            this.btnZooDescription.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnZooDescription.UseVisualStyleBackColor = true;
+            this.btnZooDescription.Click += new System.EventHandler(this.btnZooDescription_Click);
             // 
             // btnTickets
             // 
@@ -91,10 +130,9 @@
             this.btnTickets.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnTickets.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnTickets.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTickets.Location = new System.Drawing.Point(0, 532);
-            this.btnTickets.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTickets.Location = new System.Drawing.Point(0, 709);
             this.btnTickets.Name = "btnTickets";
-            this.btnTickets.Size = new System.Drawing.Size(216, 45);
+            this.btnTickets.Size = new System.Drawing.Size(247, 60);
             this.btnTickets.TabIndex = 10;
             this.btnTickets.Text = "   Tickets";
             this.btnTickets.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -110,10 +148,9 @@
             this.btnScanning.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnScanning.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnScanning.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnScanning.Location = new System.Drawing.Point(0, 487);
-            this.btnScanning.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnScanning.Location = new System.Drawing.Point(0, 649);
             this.btnScanning.Name = "btnScanning";
-            this.btnScanning.Size = new System.Drawing.Size(216, 45);
+            this.btnScanning.Size = new System.Drawing.Size(247, 60);
             this.btnScanning.TabIndex = 9;
             this.btnScanning.Text = "   Scanning";
             this.btnScanning.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -129,6 +166,7 @@
             this.btnComplaints.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnComplaints.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnComplaints.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnComplaints.Location = new System.Drawing.Point(0, 589);
             this.btnComplaints.Location = new System.Drawing.Point(0, 442);
             this.btnComplaints.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnComplaints.Name = "btnComplaints";
@@ -148,6 +186,7 @@
             this.btnAnimals.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnAnimals.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnAnimals.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAnimals.Location = new System.Drawing.Point(0, 529);
             this.btnAnimals.Location = new System.Drawing.Point(0, 397);
             this.btnAnimals.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAnimals.Name = "btnAnimals";
@@ -167,6 +206,7 @@
             this.btnStatistics.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnStatistics.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnStatistics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStatistics.Location = new System.Drawing.Point(0, 469);
             this.btnStatistics.Location = new System.Drawing.Point(0, 352);
             this.btnStatistics.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatistics.Name = "btnStatistics";
@@ -185,6 +225,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 576);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(0, 768);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(216, 104);
             this.panel1.TabIndex = 2;
@@ -218,7 +259,7 @@
             this.lblGreeting.AutoSize = true;
             this.lblGreeting.Font = new System.Drawing.Font("Rockwell", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblGreeting.ForeColor = System.Drawing.Color.Gainsboro;
-            this.lblGreeting.Location = new System.Drawing.Point(10, 53);
+            this.lblGreeting.Location = new System.Drawing.Point(11, 71);
             this.lblGreeting.Name = "lblGreeting";
             this.lblGreeting.Size = new System.Drawing.Size(70, 17);
             this.lblGreeting.TabIndex = 2;
@@ -480,5 +521,6 @@
         private Button btnAnimals;
         private Button btnComplaints;
         private Button btnZooDescription;
+        private Button btnVacationRequests;
     }
 }

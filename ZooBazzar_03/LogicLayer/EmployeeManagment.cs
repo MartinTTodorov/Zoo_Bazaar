@@ -12,6 +12,7 @@ namespace LogicLayer
         private static List<Employee> employees = new List<Employee>();
         private ICRU<Employee> crud;
         public IList<Employee> Employees { get { return employees.AsReadOnly(); } } 
+
         public EmployeeManagment(ICRU<Employee> crud)
         {
             this.crud = crud;
@@ -37,10 +38,7 @@ namespace LogicLayer
             }
             return false;
         }       
-        public List<Employee> GetEmployees()
-        {
-            return employees;
-        }
+        
         public List<Caretaker> AllCaretakers()
         {
             List<Caretaker> result = new List<Caretaker>();
@@ -83,19 +81,9 @@ namespace LogicLayer
             
         }
 
-        public Employee GetEmployee(string EmployeeName)
-        {
-            return employees.Find(x => x.Name == EmployeeName);
-        }
-
         public Employee GetEmployeeById(int id)
         {
             return employees.Find(x => x.Id == id);
-        }
-
-        public Employee GetEmployeeByUsername(string username)
-        {
-            return employees.Find(x => x.Account.Username == username);
         }
     }
 }

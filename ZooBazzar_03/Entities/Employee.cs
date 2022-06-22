@@ -41,7 +41,6 @@ namespace Entities
         public Employee(Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn,string workposition)
         {
             this.account = account;
-            this.id = account.Id;
             this.firstname = name;
             this.lastname = lastname;
             this.address = address;
@@ -53,10 +52,25 @@ namespace Entities
             this.bsn = bsn;
             contracts = new List<EmployeeContract>();
         }
-
+        public Employee(Account account, string name, string lastname, string address, DateTime birthdate, string email, string phone, string emergencyContact, string bsn, string workposition,int id)
+        {
+            this.account = account;
+            this.id = id;
+            this.firstname = name;
+            this.lastname = lastname;
+            this.address = address;
+            this.birthdate = birthdate;
+            this.email = email;
+            this.phone = phone;
+            this.emergencyContact = emergencyContact;
+            this.workposition = workposition;
+            this.bsn = bsn;
+            contracts = new List<EmployeeContract>();
+        }
         public Employee(int id,string name)
         {
-
+            this.id = id;
+            this.firstname = name;
         }
        
         //Methods
@@ -71,7 +85,7 @@ namespace Entities
         }
         public string GetNames()
         {
-            return $"{Name} {Lastname}";
+            return $"{Name}";
         }
     }
 }

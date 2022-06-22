@@ -19,7 +19,6 @@ namespace DataAccessLayer
                 string sql = null;
 
 
-
                 if (filter2 == null && value == 0)
                 {
                     sql = $"SELECT {filter}(dateOfPerchese) as date, COUNT(*) as count FROM ticket WHERE placeOfPurchase = @place GROUP BY {filter}(dateOfPerchese);";
@@ -186,6 +185,42 @@ namespace DataAccessLayer
 
 
                 string sql = $"SELECT {filter1}(dateOfUse) as date, COUNT(*) as count FROM ticket WHERE {filter2}(dateOfUse)={value} GROUP BY {filter1}(dateOfUse);";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                conn.Open();
+                MySqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    visitors.Add(Convert.ToInt32(dr["date"]), Convert.ToInt32(dr["count"]));
+                }
+
+
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return visitors;
+        }
+
+        public Dictionary<int, int> GetVisitorsLive()
+        {
+            Dictionary<int, int> visitors = new Dictionary<int, int>();
+            try
+            {
+
+
+                string sql = $"SELECT HOUR(dateOfUse) as date, COUNT(*) as count FROM ticket WHERE DATE(dateOfUse)= CURDATE() GROUP BY HOUR(dateOfUse);";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();

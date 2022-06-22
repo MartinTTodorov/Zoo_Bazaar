@@ -70,6 +70,9 @@
     <Compile Update="Forms\UpdateEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\VacationRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="LoginPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +86,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ucAnimalNotes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ucDate.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ucEmployee.cs">

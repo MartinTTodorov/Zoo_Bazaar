@@ -16,7 +16,7 @@ namespace ZooBazzar_Group03
     public partial class fmAddNote : Form
     {
         private int id;
-        private AnimalManager animalManager = new AnimalManager(new AnimalDB());
+        private AnimalManager animalManager = new AnimalManager(new AnimalDB(), new AnimalDB());
         public fmAddNote(int id)
         {
             InitializeComponent();

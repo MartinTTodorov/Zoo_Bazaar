@@ -4,7 +4,7 @@ using Entities;
 
 namespace DataAccessLayer
 {
-    public class ScheduleDB : IScheduleDB<DailySchedule>
+    public class ScheduleDB : IScheduleDB<DailySchedule>, IAutoIncrementable
     {
         private MySqlConnection conn;
 
@@ -57,15 +57,36 @@ namespace DataAccessLayer
             return false;
         }
 
+        public int GetNexID()
+        {
+            string sql = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbi481796' AND TABLE_NAME = 'daily_feeding_schedule';";
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+
+                conn.Open();
+                return Convert.ToInt32(cmd.ExecuteScalar());
+
+            }
+            catch (MySqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public List<DailySchedule> Read(List<string> days)
         {
             try
             {
-                string sql = $"SELECT dfs.AnimalType, dfs.Date, dfs.mainEmployeeFir, dfs.mainEmployeeSec, dfs.helperEmployee, e1.FirstName AS mainFirstName, e2.FirstName AS mainSecondName, e3.FirstName AS helperName, e1.WorkPosition, dfs.TimeSlot,specialization FROM daily_feeding_schedule AS dfs " +
+                string sql =$"SELECT dfs.id, dfs.AnimalType, dfs.Date, dfs.mainEmployeeFir, dfs.mainEmployeeSec, dfs.helperEmployee, e1.FirstName AS mainFirstName, e2.FirstName AS mainSecondName, e3.FirstName AS helperName, e1.WorkPosition, dfs.TimeSlot,specialization FROM daily_feeding_schedule AS dfs " +
                     $"INNER JOIN employee e1 ON dfs.mainEmployeeFir = e1.ID " +
                     $"INNER JOIN employee e2 ON dfs.mainEmployeeSec = e2.ID " +
-                    $"INNER JOIN caretaker ON dfs.mainEmployeeFir = e1.ID " +                   
-                    $"LEFT JOIN employee e3 ON dfs.helperEmployee = e3.ID " +
+                    $"INNER JOIN employee e3 ON dfs.helperEmployee = e3.ID " +
+                    $"INNER JOIN caretaker c ON dfs.mainEmployeeFir = c.employee_id " +  
                     $"WHERE Date = @date0 OR Date = @date1 OR Date = @date2 OR Date = @date3 OR Date = @date4 OR Date = @date5 OR Date = @date6 ";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -83,8 +104,8 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
-                    Caretaker firstMain = new Caretaker(Convert.ToInt32(reader["mainEmployeeFir"]), reader["mainFirstName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization),reader["WorkPosition"].ToString()));
-                    Caretaker secondMain = new Caretaker(Convert.ToInt32(reader["mainEmployeeSec"]), reader["mainSecondName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization),reader["WorkPosition"].ToString()));
+                    Caretaker firstMain = new Caretaker(Convert.ToInt32(reader["mainEmployeeFir"]), reader["mainFirstName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization),reader["specialization"].ToString()));
+                    Caretaker secondMain = new Caretaker(Convert.ToInt32(reader["mainEmployeeSec"]), reader["mainSecondName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization),reader["specialization"].ToString()));
                     Caretaker helper;
 
                     if (reader["helperEmployee"] == DBNull.Value)
@@ -93,10 +114,10 @@ namespace DataAccessLayer
                     }
                     else
                     {
-                        helper = new Caretaker(Convert.ToInt32(reader["helperEmployee"]), reader["helperName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization), reader["WorkPosition"].ToString()));
+                        helper = new Caretaker(Convert.ToInt32(reader["helperEmployee"]), reader["helperName"].ToString(), (Specialization)Enum.Parse(typeof(Specialization), reader["specialization"].ToString()));
                     }
 
-                    list.Add(new DailySchedule((AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Date"].ToString(), firstMain, secondMain, helper, reader["TimeSlot"].ToString()));
+                    list.Add(new DailySchedule(Convert.ToInt32(reader["id"]), (AnimalType)Enum.Parse(typeof(AnimalType), reader["AnimalType"].ToString()), reader["Date"].ToString(), firstMain, secondMain, helper, reader["TimeSlot"].ToString()));
                 }
 
                 return list;
