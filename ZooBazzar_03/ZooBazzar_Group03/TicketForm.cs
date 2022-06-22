@@ -22,8 +22,8 @@ namespace ZooBazzar_Group03
             tbBarcode.Text = e.Barcode;
             int barcode = Convert.ToInt32(tbBarcode.Text);
             Ticket ticket = tm.GetTicket(barcode);
-            tm.UseTicket(barcode);
             GetTicket();
+            tm.UseTicket(ticket);
         }
 
         private void GetTicket()

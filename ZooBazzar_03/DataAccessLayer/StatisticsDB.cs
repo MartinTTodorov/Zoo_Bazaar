@@ -220,7 +220,7 @@ namespace DataAccessLayer
             {
 
 
-                string sql = $"SELECT HOUR(dateOfUse) as date, COUNT(*) as count FROM ticket WHERE DATE(dateOfUse)= CURDATE();";
+                string sql = $"SELECT HOUR(dateOfUse) as date, COUNT(*) as count FROM ticket WHERE DATE(dateOfUse)= CURDATE() GROUP BY HOUR(dateOfUse);";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
