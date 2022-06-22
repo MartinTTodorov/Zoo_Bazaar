@@ -28,7 +28,7 @@ namespace DataAccessLayer
 
         public void UpdateVacationDays(EmployeeContract contract)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

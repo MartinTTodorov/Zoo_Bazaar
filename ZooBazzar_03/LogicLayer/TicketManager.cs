@@ -38,7 +38,6 @@ namespace LogicLayer
 
         public void UseTicket(Ticket t)
         {
-            t.UseTicket();
             crud.Update(t);
 
         }
@@ -66,6 +65,7 @@ namespace LogicLayer
             {
                 return false;
             }
+            t.UseTicket();
             crud.Update(t);
             return true;
         }

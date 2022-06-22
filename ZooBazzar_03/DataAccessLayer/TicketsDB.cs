@@ -85,7 +85,7 @@ namespace DataAccessLayer
 
         public List<Ticket> Read()
         {
-            string sql = "SELECT t.id,typeTicket,date,dateOfPerchese,placeOfPurchase,price,isUsed,dateOfUse,c.id,email,firstname,lastname FROM `ticket` as t INNER JOIN customer as c on t.cust_id = c.id";
+            string sql = "SELECT t.id,typeTicket,date,dateOfPerchese,placeOfPurchase,price,isUsed,dateOfUse,c.id,email,firstname,lastname FROM `ticket` as t LEFT JOIN customer as c on t.cust_id = c.id";
             List<Ticket> tickets = new List<Ticket>();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 
@@ -96,6 +96,7 @@ namespace DataAccessLayer
 
                 while (reader.Read())
                 {
+                    Customer? customer;
                     DateTime? date;
                     DateTime? dateOfUse;
                     if (reader[2] == DBNull.Value)
@@ -107,6 +108,14 @@ namespace DataAccessLayer
                         date = Convert.ToDateTime(reader[2]);
                     }
 
+                    if (reader[8] == DBNull.Value)
+                    {
+                        customer = null;
+                    }
+                    else
+                    {
+                        customer = new Customer(Convert.ToInt32(reader[8]), reader[9].ToString(), reader[10].ToString(), reader[11].ToString());
+                    }
 
 
                     if (reader[7] == DBNull.Value)
@@ -119,7 +128,6 @@ namespace DataAccessLayer
                     }
                     TypeOfTicket typeOfTicket = (TypeOfTicket)Enum.Parse(typeof(TypeOfTicket), reader[1].ToString(), true);
                     PlaceOfPerchase placeOfPerchase = (PlaceOfPerchase)Enum.Parse(typeof(PlaceOfPerchase), reader[4].ToString(), true);
-                    Customer customer = new Customer(Convert.ToInt32(reader[8]), reader[9].ToString(), reader[10].ToString(), reader[11].ToString());
                     Ticket ticket = new Ticket(Convert.ToInt32(reader[0]), customer, typeOfTicket, date, Convert.ToDateTime(reader[3]), placeOfPerchase, Convert.ToDecimal(reader[5]), Convert.ToBoolean(reader[6]), dateOfUse);
                     tickets.Add(ticket);
                 }
