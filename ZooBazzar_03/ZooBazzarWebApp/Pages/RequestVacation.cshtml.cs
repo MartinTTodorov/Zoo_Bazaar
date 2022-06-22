@@ -11,8 +11,10 @@ namespace ZooBazzarWebApp.Pages
     {
         private VacationManager vacationManager = new VacationManager(new VacationsDB());
 
+        private VacationRequestDTO request = new VacationRequestDTO();
+
         [BindProperty]
-        public VacationRequestDTO Request { get; set; }
+        public VacationRequestDTO Request { get { return request; } set { request = value; } }
         public void OnGet()
         {
 
