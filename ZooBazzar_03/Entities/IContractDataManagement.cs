@@ -14,5 +14,6 @@ namespace Entities
 
         List<EmployeeContract> GetContracts();
         List<EmployeeContract> GetContracts(Employee e);
+        public void UpdateVacationDays(EmployeeContract contract);
     }
 }

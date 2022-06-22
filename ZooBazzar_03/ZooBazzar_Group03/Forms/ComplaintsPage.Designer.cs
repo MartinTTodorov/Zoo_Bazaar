@@ -71,6 +71,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ComplaintsPage";
             this.Text = "ComplaintsPage";
+            this.Load += new System.EventHandler(this.ComplaintsPage_Load);
             this.ResumeLayout(false);
 
         }

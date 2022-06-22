@@ -1,9 +1,5 @@
 ﻿using Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LogicLayer
 {
@@ -16,7 +12,7 @@ namespace LogicLayer
         public IList<Ticket> Tickets { get { return tickets.AsReadOnly(); } }
 
         //Constructor
-        public TicketManager(ICRU<Ticket>crud,IAutoIncrementable auto)
+        public TicketManager(ICRU<Ticket> crud,IAutoIncrementable auto)
         {
             this.auto = auto;
             this.crud = crud;
@@ -26,35 +22,27 @@ namespace LogicLayer
         //Methods
         public void AddTicket(Ticket ticket)
         {
-            Ticket temp = new Ticket(auto.GetNexID(),ticket.Customer,ticket.TypeOfTicket,ticket.Date,ticket.PlaceOfPerchase,ticket.Price);
-            tickets.Add(temp);
-            crud.Add(temp);
+            //Ticket temp = new Ticket(auto.GetNexID(), ticket.Customer, ticket.TypeOfTicket, ticket.Date, ticket.PlaceOfPerchase, ticket.Price);
+            //tickets.Add(temp);
+            //crud.Add(temp);
+            tickets.Add(ticket);
+            crud.Add(ticket);
         }
 
-        public void UseTicket(int id)
+
+        public int GetNextID()
         {
-            for (int i = 0; i < tickets.Count; i++)
-            {
-                if (tickets[i].Id == id)
-                {
-                    tickets[i].UseTicket();
-                    crud.Update(tickets[i]);
-                }
-            }
-            
+           return auto.GetNexID();
+
         }
 
-        public void Update(Ticket ticket)
+        public void UseTicket(Ticket t)
         {
-            crud.Update(ticket);
-            for (int i = 0; i < tickets.Count; i++)
-            {
-                if(tickets[i].Id == ticket.Id)
-                {
-                    tickets[i] = ticket;
-                }
-            }
+            t.UseTicket();
+            crud.Update(t);
+
         }
+
         public List<Ticket> GetTickets(Customer c)
         {
             List<Ticket> tickets = new List<Ticket>();
@@ -82,6 +70,6 @@ namespace LogicLayer
             return true;
         }
 
-      
+
     }
 }

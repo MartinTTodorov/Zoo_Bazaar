@@ -29,11 +29,15 @@ builder.Services.AddTransient<IAutoIncrementable,TicketsDB>();
 builder.Services.AddTransient<IScheduleDB<DailySchedule>, ScheduleDB>();
 builder.Services.AddTransient<ICageDB<Cage>, CageDB>();
 builder.Services.AddTransient<IContractDataManagement<EmployeeContract>,ContractDB>();
+builder.Services.AddTransient<ISubscription, SubscriptionDB>();
+builder.Services.AddTransient<ICustomerDB, CustomerDB>();
 
 builder.Services.AddSingleton<EmployeeManagment>();
 builder.Services.AddSingleton<TicketManager>();
 builder.Services.AddSingleton<AccountManager>();
 builder.Services.AddSingleton<ScheduleManager>();
+builder.Services.AddSingleton<SubscriptionManager>();
+builder.Services.AddSingleton<CustomerManager>();
 
 
 

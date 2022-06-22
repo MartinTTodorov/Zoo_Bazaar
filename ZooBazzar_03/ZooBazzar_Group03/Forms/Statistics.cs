@@ -185,7 +185,8 @@ namespace ZooBazzar_Group03.Forms
                 var item = people.ElementAt(i);
                 myChart.Series[0].Points.AddXY(item.Key, item.Value);
             }
-            myChart.ChartAreas[0].AxisX.Title = "Working hours";
+            myChart.ChartAreas[0].AxisX.Title = "Working hours"; 
+            myChart.ChartAreas[0].AxisY.Title = "Average number of visitors per day";
 
             panelStatistics.Controls.Add(myChart);
         }
@@ -224,6 +225,57 @@ namespace ZooBazzar_Group03.Forms
             }
 
             panelStatistics.Controls.Add(myChart);
+        }
+        private void LoadTheame()
+        {
+
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = ColorThemeHandler.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = ColorThemeHandler.SecondaryColor;
+                }
+                else if (btns.GetType() == typeof(Label))
+                {
+                    btns.BackColor = ColorThemeHandler.PrimaryColor;
+                    btns.ForeColor = Color.White;
+                }
+
+            }
+
+        }
+
+        private void Statistics_Load(object sender, EventArgs e)
+        {
+            LoadTheame();
+        }
+
+        private void btnLiveStatistics_Click(object sender, EventArgs e)
+        {
+            panelStatistics.Controls.Clear();
+
+            Chart myChart = new Chart();
+            myChart.Dock = DockStyle.Fill;
+            myChart.ChartAreas.Add(new ChartArea());
+
+            Dictionary<int, int> liveVisitors = sm.GetVisitorsLive();
+
+
+            myChart.Series.Add(name: "Live number of visitors");
+
+            for (int i = 0; i < liveVisitors.Count; i++)
+            {
+                var item = liveVisitors.ElementAt(i);
+                myChart.Series[0].Points.AddXY(item.Key, item.Value);
+            }
+            myChart.ChartAreas[0].AxisX.Title = "Working hours";
+            myChart.ChartAreas[0].AxisY.Title = "Number of visitors";
+
+            panelStatistics.Controls.Add(myChart);
+
         }
     }
 }

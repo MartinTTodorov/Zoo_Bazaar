@@ -18,8 +18,9 @@ namespace ZooBazzar_Group03
         private Animal animal;             
         private string workposition;
         private FlowLayoutPanel panel;
+        private AnimalManager manager;
 
-        public AnimalPic(Animal animal, string workposition, FlowLayoutPanel panel)
+        public AnimalPic(Animal animal, string workposition, FlowLayoutPanel panel, AnimalManager manager)
         {
             InitializeComponent();
 
@@ -27,6 +28,7 @@ namespace ZooBazzar_Group03
             this.workposition = workposition;
             this.panel = panel;
             this.BackColor = ColorThemeHandler.PrimaryColor;
+            this.manager = manager;
             if (workposition != "Manager")
             {
                 btnRemoveAnimal.Visible = false;
@@ -47,15 +49,15 @@ namespace ZooBazzar_Group03
         {
             if (workposition == "Manager")
             {
-                AnimalInfo animalInfo = new AnimalInfo(animal,panel); ;
+                AnimalInfo animalInfo = new AnimalInfo(animal,panel, manager); ;
                 animalInfo.Show();
-
+                
             }
         }
 
         private void btnRemoveAnimal_Click(object sender, EventArgs e)
         {
-            fmDeleteAnimal deleteAnimal = new fmDeleteAnimal(this.animal);
+            fmDeleteAnimal deleteAnimal = new fmDeleteAnimal(this.animal, manager);
             deleteAnimal.Show();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using Entities;
 using LogicLayer;
+using DataAccessLayer;
 
 namespace ZooBazzar_Group03.Forms
 {
@@ -8,6 +9,7 @@ namespace ZooBazzar_Group03.Forms
         //Fields
         private List<Animal> animals;
         private string workingPosition;
+        private AnimalManager animalManager = new AnimalManager(new AnimalDB(), new AnimalDB());
 
         //Constructor
         public AnimalsPage(List<Animal> animals, string workingPosition)
@@ -16,7 +18,7 @@ namespace ZooBazzar_Group03.Forms
 
             this.animals = animals;
             this.workingPosition = workingPosition;
-            LoadTheame();
+          
         }
 
         //Methods
@@ -28,7 +30,7 @@ namespace ZooBazzar_Group03.Forms
             {
                 if (animal.ReasonForDeparture == String.Empty)
                 {
-                    AnimalPic animalPic = new AnimalPic(animal, workingPosition,flpAnimals);
+                    AnimalPic animalPic = new AnimalPic(animal, workingPosition,flpAnimals, animalManager);
                     flpAnimals.Controls.Add(animalPic);
                 }
             }
@@ -54,7 +56,7 @@ namespace ZooBazzar_Group03.Forms
 
         private void btnAddAnimal_Click(object sender, EventArgs e)
         {
-            FormAddAnimal frmAddAnimal = new FormAddAnimal(this.flpAnimals);
+            FormAddAnimal frmAddAnimal = new FormAddAnimal(this.flpAnimals, animalManager);
             frmAddAnimal.Show();
         }
 
@@ -80,5 +82,9 @@ namespace ZooBazzar_Group03.Forms
 
         }
 
+        private void AnimalsPage_Load(object sender, EventArgs e)
+        {
+            LoadTheame();
+        }
     }
 }

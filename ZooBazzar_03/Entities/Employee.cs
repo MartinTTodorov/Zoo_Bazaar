@@ -69,7 +69,9 @@ namespace Entities
         }
         public Employee(int id,string name)
         {
-
+            this.id = id;
+            this.firstname = name;
+            this.contracts = new List<EmployeeContract>();
         }
        
         //Methods
@@ -84,7 +86,7 @@ namespace Entities
         }
         public string GetNames()
         {
-            return $"{Name} {Lastname}";
+            return $"{Name}";
         }
     }
 }

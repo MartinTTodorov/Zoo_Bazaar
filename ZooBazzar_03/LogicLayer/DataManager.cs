@@ -5,7 +5,7 @@ namespace LogicLayer
     public class DataManager
     {
         private static AccountManager accountManager = new AccountManager(new AccountManagerDB(),new AccountManagerDB());
-        private static AnimalManager animalManager = new AnimalManager(new AnimalDB());
+        private static AnimalManager animalManager = new AnimalManager(new AnimalDB(), new AnimalDB());
         private static CageManager cageManager = new CageManager(new CageDB());
         private static ContractManager contractManager = new ContractManager(new ContractDB());
         private static EmployeeManagment employeeManagment = new EmployeeManagment(new EmployeeDB());

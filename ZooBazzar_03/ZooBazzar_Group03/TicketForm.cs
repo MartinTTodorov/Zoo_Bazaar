@@ -8,10 +8,12 @@ namespace ZooBazzar_Group03
     public partial class TicketForm : Form
     {
         private TicketManager tm;
+        private SubscriptionManager subscriptionManager;
         public TicketForm()
         {
             InitializeComponent();
             tm = new TicketManager(new TicketsDB(),new TicketsDB());
+            subscriptionManager = new SubscriptionManager(new SubscriptionDB());
             BarcodeScanner barcodeScanner = new BarcodeScanner(tbBarcode);
             barcodeScanner.BarcodeScanned += BarcodeScanner_BarcodeScanned;
         }
@@ -23,6 +25,7 @@ namespace ZooBazzar_Group03
             int barcode = Convert.ToInt32(tbBarcode.Text);
             Ticket ticket = tm.GetTicket(barcode);
             GetTicket();
+            tm.UseTicket(ticket);
         }
 
         private void GetTicket()
@@ -42,6 +45,12 @@ namespace ZooBazzar_Group03
             }
 
             lbTickets.Items.Add(ticket);
+
+        }
+
+        private void TicketForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

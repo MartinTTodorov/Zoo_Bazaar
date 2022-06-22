@@ -23,13 +23,19 @@ namespace DataAccessLayer
         {
             try
             {
-                string sql = "INSERT INTO compaints(Title, Description, Time, AuthorID) VALUES (Title, Description, Time, AuthorID)";
+                string sql = "INSERT INTO compaints(Title, Description, Time, AuthorID) VALUES (@Title, @Description, @Time, @AuthorID)";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 conn.Open();
-                cmd.Parameters.AddWithValue("Title", complaint.Title);
-                cmd.Parameters.AddWithValue("Description", complaint.Description);
-                cmd.Parameters.Add("Time", MySqlDbType.Datetime).Value = complaint.Time;
-                cmd.Parameters.AddWithValue("AuthorID", complaint.Author.Id);
+                cmd.Parameters.AddWithValue("@Title", complaint.Title);
+                cmd.Parameters.AddWithValue("@Description", complaint.Description);
+                cmd.Parameters.Add("@Time", MySqlDbType.Datetime).Value = complaint.Time;
+                cmd.Parameters.AddWithValue("@AuthorID", complaint.Author.Id);
+
+                if (cmd.ExecuteNonQuery()!=1)
+                {
+                    throw new Exception("Complaint was not added");
+                }
+
             }
             catch (MySqlException ex)
             {

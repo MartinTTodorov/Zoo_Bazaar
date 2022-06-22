@@ -12,75 +12,39 @@ namespace LogicLayer
         //Fields
         private IAnimalDB<Animal> crud;
         private List<Animal> animals;
+        private IAutoIncrementable autoIncrement;
 
+        //Properties
         public IList<Animal> Animals { get { return animals.AsReadOnly(); } }
 
         //Constructor
-        public AnimalManager(IAnimalDB<Animal> crud)
+        public AnimalManager(IAnimalDB<Animal> crud, IAutoIncrementable autoIncrement)
         {
             this.crud = crud;
+            this.autoIncrement = autoIncrement;
             animals = crud.GetAnimals();
         }
 
         //Methods
-        public void AddAnimal(string animalCode, string name, string gender, string animalType, string species, int cageNumber, string birthdate, string reasonForArrival, string yearOfArrival, string yearOfDeparture, string reasonForDeparture, string diet, List<string> feedingTimes, string specialist, int weeklyFeedingIteration)
+        public void AddAnimal(Animal animal)
         {
-          //  crud.AddAnimalToDB(new Animal(animalCode, name, gender, animalType, species, cageNumber, birthdate, reasonForArrival, yearOfArrival, yearOfDeparture, reasonForDeparture, diet, feedingTimes, specialist, weeklyFeedingIteration);
-            //UpdateLocalList();
+            //Create the animal with the next ID from the database
+            Animal newAnimal = new Animal(animal.AnimalCode, autoIncrement.GetNexID(), animal.CageNumber, animal.Name, animal.Gender, animal.ReasonForArrival, animal.ReasonForDeparture, animal.Diet, animal.AnimalType, animal.Specie, animal.YearOfArrival, animal.YearOfDeparture, animal.Birthdate, animal.Specialization, animal.FeedingTimes, animal.WeeklyFeedingIteration, animal.Notes);
+            crud.AddAnimalToDB(newAnimal);
+            animals.Add(newAnimal);
         }
 
         public void UpdateAnimal(Animal animal)
         {
-            if (System.Enum.IsDefined(typeof(AnimalType), animal.AnimalType))
-            {
-               
-            }
-          //  crud.UpdateAnimalInDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.Id);
-            //UpdateLocalList();
+            crud.UpdateAnimalInDB(animal);
+            animals.Remove(animals.First(x=>x.Id==animal.Id));
+            animals.Add(animal);
         }
 
-
-        public bool UpdateAnimals(Animal animal)
-        {
-            if (System.Enum.IsDefined(typeof(AnimalType), animal.AnimalType))
-            {
-                return false;
-            }
-            else
-            {
-               // crud.UpdateAnimalInDB(animal.AnimalCode, animal.Name, animal.AnimalType.ToString(), animal.Specie, animal.CageNumber, animal.Birthdate, animal.ReasonForArrival, animal.YearOfArrival, animal.YearOfDeparture, animal.ReasonForDeparture, animal.Diet.ToString(), animal.Id);
-                return true;
-            }
-            //UpdateLocalList();
-        }
-
+        //only sets its reason for departure without deleting the data of the animal
         public void DeleteAnimal(Animal animal)
         {
-            crud.DeleteAnimalFromDB(animal.Id, animal.ReasonForDeparture);
-            //UpdateLocalList();
-        }
-
-        public void DeleteAnimalByID(int id)
-        {
-            //animalDB.DeleteAnimalFromDB(id);
-            //UpdateLocalList();
-        }
-
-        public bool HasImage(Animal animal) //check against the animal code in the database directly in the animalpictures table. If true, run a query where animal code is this animal code and get the memory stream
-        {
-            if (crud.HasImage(animal.AnimalCode))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public MemoryStream GetMemoryStream(string animalCode)
-        {
-            return crud.GetMemoryStream(animalCode);
+            crud.DeleteAnimalFromDB(animal);
         }
 
         public void AssignFeedingTimes()
@@ -104,18 +68,5 @@ namespace LogicLayer
             crud.AddNote(id, note);
         }
 
-
-        public List<Animal> GetAnimalsByType(AnimalType type)
-        {
-            List<Animal> typeAnimals = new List<Animal>();
-            foreach (Animal animal in Animals)
-            {
-                if (animal.AnimalType==type)
-                {
-                    typeAnimals.Add(animal);
-                }
-            }
-            return typeAnimals;
-        }
     }
 }

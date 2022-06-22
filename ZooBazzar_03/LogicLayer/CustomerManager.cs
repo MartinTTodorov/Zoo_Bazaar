@@ -19,7 +19,7 @@ namespace LogicLayer
 
         public Customer GetCustomer(int id)
         {
-            return customers.Find(x => x.Id == id);
+            return customers.FirstOrDefault(x => x.Id == id);
         }
 
         public Customer GetCustomerByEmail(string email)
@@ -27,6 +27,10 @@ namespace LogicLayer
             return customers.Find(x => x.Email == email);
         }
 
+        public Customer GetCustomerByID(int id)
+        {
+            return customers.First(x => x.Id == id);
+        }
 
 
 

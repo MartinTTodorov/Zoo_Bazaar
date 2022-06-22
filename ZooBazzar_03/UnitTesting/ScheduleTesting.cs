@@ -12,7 +12,7 @@ namespace UnitTesting
     [TestClass]
     public class ScheduleTesting
     {
-        ScheduleManager sm = new ScheduleManager(new ScheduleDBMock(), new MockEmployeeDB(), new CageDBMock(), new ContractsDBMock());
+        ScheduleManager sm = new ScheduleManager(new ScheduleDBMock(), new MockEmployeeDB(), new CageDBMock(), new ContractsDBMock(), new ScheduleDBMock());
         EmployeeManagment em = new EmployeeManagment(new MockEmployeeDB());
         CageManager cm = new CageManager(new CageDBMock());
 
@@ -24,7 +24,7 @@ namespace UnitTesting
             DateTime date = DateTime.ParseExact("11 May 2022", "d MMM yyyy", null);
 
             //Creating a list with the days of the week that starts at 8 May(sunday) and ends on 14 May(saturday)
-            List<string> dates = ScheduleManager.GetWeek(date, 0);
+            List<string> dates = GUIHelper.GetWeek(date, 0);
 
             //Creating manually a list with the days of the week starting from 8 May and ending on 14 May
             List<string> weeks = new List<string>();
@@ -40,6 +40,16 @@ namespace UnitTesting
         }
 
 
+        [TestMethod]
+        public void CreateDailyScheduleWrongData()
+        {
+            DailySchedule ds;
+            GetTestEmployees();
+            List<Caretaker> employees = em.AllCaretakers();
+
+            Assert.ThrowsException<Exception>(() => ds = new DailySchedule(1, AnimalType.Mammal, "10 May 2022", employees[1], employees[3], employees[2], "evening"));
+        }
+
         public List<DailySchedule> GetTestSchedule()
         {
             sm.DailySchedules.Clear();
@@ -50,9 +60,9 @@ namespace UnitTesting
             List<Caretaker> employees = em.AllCaretakers();    
 
 
-            DailySchedule ds1 = new DailySchedule(AnimalType.Mammal, "10 May 2022", employees[0], employees[3], employees[2], "evening");
-            DailySchedule ds2 = new DailySchedule(AnimalType.Mammal, "11 May 2022", employees[0], employees[3], employees[2], "evening");
-            DailySchedule ds3 = new DailySchedule(AnimalType.Mammal, "10 May 2022", employees[0], employees[2], null, "morning");
+            DailySchedule ds1 = new DailySchedule(1, AnimalType.Mammal, "10 May 2022", employees[0], employees[3], employees[2], "evening");
+            DailySchedule ds2 = new DailySchedule(2, AnimalType.Mammal, "11 May 2022", employees[0], employees[3], employees[2], "evening");
+            DailySchedule ds3 = new DailySchedule(3, AnimalType.Mammal, "10 May 2022", employees[0], employees[2], null, "morning");
 
             //Creating list with all the daily initialised daily schedules^
             List<DailySchedule> schedules = new List<DailySchedule>();
@@ -86,7 +96,7 @@ namespace UnitTesting
         [TestMethod]
         public void TestInsertDailySchedule()
         {
-            DailySchedule ds = new DailySchedule(AnimalType.Mammal, "12 May 2022", new Caretaker(6, "Neshto", Specialization.Mammalogist), new Caretaker(7, "Nishto", Specialization.Mammalogist), null, "noon");
+            DailySchedule ds = new DailySchedule(1, AnimalType.Mammal, "12 May 2022", new Caretaker(6, "Neshto", Specialization.Mammalogist), new Caretaker(7, "Nishto", Specialization.Mammalogist), null, "noon");
 
             Assert.IsTrue(sm.Insert(ds));
 
@@ -115,7 +125,7 @@ namespace UnitTesting
         {
             List<DailySchedule> schedules = GetTestSchedule();
 
-            DailySchedule editedSchedule = new DailySchedule(AnimalType.Mammal, "10 May 2022", new Caretaker(4, "felicia", Specialization.Mammalogist), new Caretaker(1, "Radka", Specialization.Mammalogist), new Caretaker(3, "Peza", Specialization.Mammalogist), "morning");
+            DailySchedule editedSchedule = new DailySchedule(1, AnimalType.Mammal, "10 May 2022", new Caretaker(4, "felicia", Specialization.Mammalogist), new Caretaker(1, "Radka", Specialization.Mammalogist), new Caretaker(3, "Peza", Specialization.Mammalogist), "morning");
 
             //Updating the caretakers where the date, time slot and type of animals match (the third record in the list) in the manager class
             sm.Update(editedSchedule);

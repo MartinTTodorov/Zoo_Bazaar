@@ -139,7 +139,7 @@ namespace DataAccessLayer
 
         public void Update(Ticket obj)
         {
-            string sql = "UPDATE ticket SET isUsed = @isUsed WHERE id = @id";
+            string sql = "UPDATE ticket SET isUsed = @isUsed, DateOfUse = CURRENT_TIMESTAMP WHERE id = @id";
 
             MySqlCommand cmd = new MySqlCommand(sql, conn);
 

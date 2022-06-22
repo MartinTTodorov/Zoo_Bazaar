@@ -130,6 +130,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AnimalsPage";
             this.Text = "Animals";
+            this.Load += new System.EventHandler(this.AnimalsPage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
