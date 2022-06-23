@@ -11,7 +11,7 @@
     "ZooBazzarWebApp": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "https://localhost:7090/index",
+      "launchUrl": "https://localhost:7090/Index",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

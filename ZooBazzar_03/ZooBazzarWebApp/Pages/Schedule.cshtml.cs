@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ZooBazzarWebApp.Pages
 {
-    [Authorize]
+    [Authorize(Roles = "Caretaker")]
     public class ScheduleModel : PageModel
     {
         public static Employee currentEmployee;

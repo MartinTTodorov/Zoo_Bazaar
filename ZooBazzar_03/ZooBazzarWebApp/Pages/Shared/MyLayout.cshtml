@@ -16,22 +16,33 @@
     <header>
         <div class="navigation">
             <img src="~/css/logo.png" />
-            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-            <a class="nav-link text-dark" asp-area="" asp-page="/Profile">Profile</a>
 
-            @if (User.IsInRole("Caretaker"))
+            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+            
+             
+
+            @if (User.Identity.IsAuthenticated)
             {
-                <a class="nav-link text-dark" asp-area="" asp-page="/Schedule">Schedule</a>
-                <a class="nav-link text-dark" asp-area="" asp-page="/RequestVacation">Request vacation</a>
+                <a class="nav-link text-dark" asp-area="" asp-page="/Profile">Profile</a>
+                @if (User.IsInRole("Caretaker"))
+                {
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Schedule">Schedule</a>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/RequestVacation">Request vacation</a>
+                }
+                @if (User.IsInRole("Customer"))
+                {
+                    <a class="nav-link text-dark" asp-area="" asp-page="/MyTickets">My Tickets</a>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/BuyTicket">Buy tickets</a>
+                    <a class="nav-link text-dark" asp-area="" asp-page="/Complaint">File a complaint</a>
+                }
+                <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
+                <a class="nav-link text-dark" asp-area="" asp-page="/Settings">Settings</a>
             }
-            @if (User.IsInRole("Customer"))
+            else
             {
-                <a class="nav-link text-dark" asp-area="" asp-page="/MyTickets">My Tickets</a>
                 <a class="nav-link text-dark" asp-area="" asp-page="/BuyTicket">Buy tickets</a>
-                <a class="nav-link text-dark" asp-area="" asp-page="/Complaint">File a complaint</a>
+                <a class="nav-link text-dark" asp-area="" asp-page="/Login">Log In</a>
             }
-            <a class="nav-link text-dark" asp-area="" asp-page="/Logout">Logout</a>
-            <a class="nav-link text-dark" asp-area="" asp-page="/Settings">Settings</a>
         </div>
     </header>
 

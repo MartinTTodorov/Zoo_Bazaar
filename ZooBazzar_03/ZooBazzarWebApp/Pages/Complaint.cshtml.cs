@@ -4,9 +4,11 @@ using Entities;
 using LogicLayer;
 using DataAccessLayer;
 using ZooBazzarWebApp.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZooBazzarWebApp.Pages
 {
+    [Authorize]
     public class ComplaintModel : PageModel
     {
         private ComplaintsManager complaintsManager = new ComplaintsManager(new ComplaintsDB());

@@ -1,12 +1,14 @@
 using DataAccessLayer;
 using Entities;
 using LogicLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 
 namespace ZooBazzarWebApp.Pages
 {
+    [Authorize]
     public class SettingsModel : PageModel
     {
         private AccountManager accounManager = new AccountManager(new AccountManagerDB(), new AccountManagerDB());

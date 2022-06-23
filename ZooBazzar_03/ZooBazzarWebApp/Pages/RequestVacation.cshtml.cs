@@ -4,9 +4,11 @@ using LogicLayer;
 using DataAccessLayer;
 using Entities;
 using ZooBazzarWebApp.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ZooBazzarWebApp.Pages
 {
+    [Authorize(Roles = "Caretaker")]
     public class RequestVacationModel : PageModel
     {
         private VacationManager vacationManager = new VacationManager(new VacationsDB());

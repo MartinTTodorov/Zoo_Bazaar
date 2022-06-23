@@ -32,9 +32,13 @@
             <input class="details" asp-for="Customer.Name" id="name" name="name">
             <label> Email:</label> <span asp-validation-for="Customer.Email"></span>
             <input class="details" asp-for="Customer.Email" id="email" name="email">
-            <button class="btn btn-default" asp-page-handler="NoAccount">Buy Ticket Annonimously</button>
+            <button class="btn btn-default" asp-page-handler="NoAccount">Buy Ticket Anonymously</button>
         }
-        <button class="btn btn-default" asp-page-handler="WithAccount">Buy Ticket</button>
+        else
+        {
+             <button class="btn btn-default" asp-page-handler="WithAccount">Buy Ticket</button>
+        }
+       
 
 
     </div>

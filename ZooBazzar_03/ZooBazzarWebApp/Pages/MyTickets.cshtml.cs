@@ -1,11 +1,13 @@
 using DataAccessLayer;
 using LogicLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Drawing.Imaging;
 
 namespace ZooBazzarWebApp.Pages
 {
+    [Authorize(Roles = "Customer")]
     public class MyTicketsModel : PageModel
     {
         public TicketManager tm = new TicketManager(new TicketsDB(), new TicketsDB());
